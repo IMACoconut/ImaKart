@@ -1,1 +1,5 @@
 *.[oa]
+.make
+.cmake
+.txt
+.log
