@@ -2,6 +2,8 @@
 #include <Graphics/Shader.hpp>
 #include <Graphics/VAO.hpp>
 #include <Graphics/VBO.hpp>
+#include <Utility/LogManager.hpp>
+#include <Utility/Tools.hpp>
 #include <SFML/Graphics.hpp>
 
 #include <GL/glew.h>
@@ -41,14 +43,16 @@ int main(void) {
 
 	GLenum glewCode = glewInit();
 	if(GLEW_OK != glewCode) {
-		std::cerr << "Unable to initialize GLEW : " << glewGetErrorString(glewCode) << std::endl;
+		Util::LogManager::error("Unable to initialize GLEW : "+Util::ToString(glewGetErrorString(glewCode)));
 		return EXIT_FAILURE;
 	}
 
 	Graph::Shader s;
 	s.loadFromFile("resources/shaders/basic.vert", Graph::Shader::ShaderType_Vertex);
 	s.loadFromFile("resources/shaders/basic.frag", Graph::Shader::ShaderType_Fragment);
-	s.compile();
+	if(!s.compile()) {
+		std::cerr << "Error" << std::endl;
+	}
 	glClearColor(0,0,0,0);
 	
 	Graph::VBO posVBO;
@@ -67,7 +71,7 @@ int main(void) {
 	posVBO.unbind();
 	vao.unbind();
 	s.bind();
-
+	Util::LogManager::notice("Running");
 	while(window.isOpen()) {
 		// Rendering code goes here
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

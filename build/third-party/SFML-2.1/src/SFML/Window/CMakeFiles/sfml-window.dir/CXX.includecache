@@ -402,13 +402,13 @@ stdint.h
 inttypes.h
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Context.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Context.cpp
 SFML/Window/Context.hpp
 -
 SFML/Window/GlContext.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/GlContext.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/GlContext.cpp
 SFML/Window/GlContext.hpp
 -
 SFML/System/ThreadLocalPtr.hpp
@@ -434,7 +434,7 @@ SFML/Window/Linux/GlxContext.hpp
 SFML/Window/OSX/SFContext.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/GlResource.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/GlResource.cpp
 SFML/Window/GlResource.hpp
 -
 SFML/Window/GlContext.hpp
@@ -444,29 +444,29 @@ SFML/System/Mutex.hpp
 SFML/System/Lock.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Joystick.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Joystick.cpp
 SFML/Window/Joystick.hpp
 -
 SFML/Window/JoystickManager.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/JoystickManager.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/JoystickManager.cpp
 SFML/Window/JoystickManager.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Keyboard.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Keyboard.cpp
 SFML/Window/Keyboard.hpp
 -
 SFML/Window/InputImpl.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/Display.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/Display.cpp
 SFML/Window/Linux/Display.hpp
 -
 cassert
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/GlxContext.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/GlxContext.cpp
 SFML/Window/Linux/GlxContext.hpp
 -
 SFML/Window/Linux/WindowImplX11.hpp
@@ -480,7 +480,7 @@ SFML/Window/glext/glxext.h
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/InputImpl.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/InputImpl.cpp
 SFML/Window/Linux/InputImpl.hpp
 -
 SFML/Window/Window.hpp
@@ -492,7 +492,7 @@ X11/Xlib.h
 X11/keysym.h
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/JoystickImpl.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/JoystickImpl.cpp
 SFML/Window/JoystickImpl.hpp
 -
 SFML/System/Err.hpp
@@ -508,7 +508,7 @@ errno.h
 cstdio
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/VideoModeImpl.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/VideoModeImpl.cpp
 SFML/Window/VideoModeImpl.hpp
 -
 SFML/Window/Linux/Display.hpp
@@ -522,7 +522,7 @@ X11/extensions/Xrandr.h
 algorithm
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/WindowImplX11.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/WindowImplX11.cpp
 SFML/Window/WindowStyle.hpp
 -
 SFML/Window/Linux/WindowImplX11.hpp
@@ -554,7 +554,7 @@ string
 iterator
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Mouse.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Mouse.cpp
 SFML/Window/Mouse.hpp
 -
 SFML/Window/InputImpl.hpp
@@ -562,7 +562,7 @@ SFML/Window/InputImpl.hpp
 SFML/Window/Window.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/VideoMode.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/VideoMode.cpp
 SFML/Window/VideoMode.hpp
 -
 SFML/Window/VideoModeImpl.hpp
@@ -572,7 +572,7 @@ algorithm
 functional
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Window.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Window.cpp
 SFML/Window/Window.hpp
 -
 SFML/Window/GlContext.hpp
@@ -584,7 +584,7 @@ SFML/System/Sleep.hpp
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/WindowImpl.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/WindowImpl.cpp
 SFML/Window/WindowImpl.hpp
 -
 SFML/Window/Event.hpp

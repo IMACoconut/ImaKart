@@ -448,23 +448,23 @@ string.h
 assert.h
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp
 SFML/Graphics/CircleShape.hpp
 -
 cmath
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp
 SFML/Graphics/Color.hpp
 -
 algorithm
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp
 SFML/Graphics/ConvexShape.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp
 SFML/Graphics/Font.hpp
 -
 SFML/Graphics/GLCheck.hpp
@@ -480,13 +480,13 @@ cstdlib
 cstring
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp
 SFML/Graphics/GLCheck.hpp
 -
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp
 SFML/Graphics/Image.hpp
 -
 SFML/Graphics/ImageLoader.hpp
@@ -498,7 +498,7 @@ algorithm
 cstring
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp
 SFML/Graphics/ImageLoader.hpp
 -
 SFML/System/InputStream.hpp
@@ -516,19 +516,19 @@ jerror.h
 cctype
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp
 SFML/Graphics/RectangleShape.hpp
 -
 cmath
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp
 SFML/Graphics/RenderStates.hpp
 -
 cstddef
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp
 SFML/Graphics/RenderTarget.hpp
 -
 SFML/Graphics/Drawable.hpp
@@ -546,7 +546,7 @@ SFML/System/Err.hpp
 iostream
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp
 SFML/Graphics/RenderTexture.hpp
 -
 SFML/Graphics/RenderTextureImplFBO.hpp
@@ -556,11 +556,11 @@ SFML/Graphics/RenderTextureImplDefault.hpp
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp
 SFML/Graphics/RenderTextureImpl.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp
 SFML/Graphics/RenderTextureImplDefault.hpp
 -
 SFML/Graphics/GLCheck.hpp
@@ -572,7 +572,7 @@ SFML/Window/Context.hpp
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp
 SFML/Graphics/RenderTextureImplFBO.hpp
 -
 SFML/Graphics/Texture.hpp
@@ -582,13 +582,13 @@ SFML/Graphics/GLCheck.hpp
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp
 SFML/Graphics/RenderWindow.hpp
 -
 SFML/Graphics/GLCheck.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp
 SFML/Graphics/Shader.hpp
 -
 SFML/Graphics/Texture.hpp
@@ -604,7 +604,7 @@ fstream
 vector
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp
 SFML/Graphics/Shape.hpp
 -
 SFML/Graphics/RenderTarget.hpp
@@ -616,7 +616,7 @@ SFML/System/Err.hpp
 cmath
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp
 SFML/Graphics/Sprite.hpp
 -
 SFML/Graphics/Texture.hpp
@@ -626,7 +626,7 @@ SFML/Graphics/RenderTarget.hpp
 cstdlib
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp
 SFML/Graphics/Text.hpp
 -
 SFML/Graphics/Texture.hpp
@@ -636,7 +636,7 @@ SFML/Graphics/RenderTarget.hpp
 cassert
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp
 SFML/Graphics/Texture.hpp
 -
 SFML/Graphics/Image.hpp
@@ -658,33 +658,33 @@ cassert
 cstring
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp
 SFML/Graphics/TextureSaver.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp
 SFML/Graphics/Transform.hpp
 -
 cmath
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp
 SFML/Graphics/Transformable.hpp
 -
 cmath
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp
 SFML/Graphics/Vertex.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp
 SFML/Graphics/VertexArray.hpp
 -
 SFML/Graphics/RenderTarget.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp
 SFML/Graphics/View.hpp
 -
 cmath

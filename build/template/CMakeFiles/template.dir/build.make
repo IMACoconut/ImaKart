@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart
+CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build
+CMAKE_BINARY_DIR = /home/andre/Documents/Projects/ImaKart/build
 
 # Include any dependencies generated for this target.
 include template/CMakeFiles/template.dir/depend.make
@@ -48,17 +48,17 @@ include template/CMakeFiles/template.dir/flags.make
 
 template/CMakeFiles/template.dir/Utility/LogManager.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/Utility/LogManager.cpp.o: ../template/Utility/LogManager.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Utility/LogManager.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Utility/LogManager.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Utility/LogManager.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Utility/LogManager.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Utility/LogManager.cpp
 
 template/CMakeFiles/template.dir/Utility/LogManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/template.dir/Utility/LogManager.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Utility/LogManager.cpp > CMakeFiles/template.dir/Utility/LogManager.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Projects/ImaKart/template/Utility/LogManager.cpp > CMakeFiles/template.dir/Utility/LogManager.cpp.i
 
 template/CMakeFiles/template.dir/Utility/LogManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/template.dir/Utility/LogManager.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Utility/LogManager.cpp -o CMakeFiles/template.dir/Utility/LogManager.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Projects/ImaKart/template/Utility/LogManager.cpp -o CMakeFiles/template.dir/Utility/LogManager.cpp.s
 
 template/CMakeFiles/template.dir/Utility/LogManager.cpp.o.requires:
 .PHONY : template/CMakeFiles/template.dir/Utility/LogManager.cpp.o.requires
@@ -71,17 +71,17 @@ template/CMakeFiles/template.dir/Utility/LogManager.cpp.o.provides.build: templa
 
 template/CMakeFiles/template.dir/main.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/main.cpp.o: ../template/main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/main.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/main.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/main.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/main.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/main.cpp
 
 template/CMakeFiles/template.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/template.dir/main.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/main.cpp > CMakeFiles/template.dir/main.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Projects/ImaKart/template/main.cpp > CMakeFiles/template.dir/main.cpp.i
 
 template/CMakeFiles/template.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/template.dir/main.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/main.cpp -o CMakeFiles/template.dir/main.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Projects/ImaKart/template/main.cpp -o CMakeFiles/template.dir/main.cpp.s
 
 template/CMakeFiles/template.dir/main.cpp.o.requires:
 .PHONY : template/CMakeFiles/template.dir/main.cpp.o.requires
@@ -94,17 +94,17 @@ template/CMakeFiles/template.dir/main.cpp.o.provides.build: template/CMakeFiles/
 
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.o: ../template/Graphics/Shader.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Graphics/Shader.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Shader.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Shader.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Shader.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Graphics/Shader.cpp
 
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/template.dir/Graphics/Shader.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Shader.cpp > CMakeFiles/template.dir/Graphics/Shader.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Projects/ImaKart/template/Graphics/Shader.cpp > CMakeFiles/template.dir/Graphics/Shader.cpp.i
 
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/template.dir/Graphics/Shader.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Shader.cpp -o CMakeFiles/template.dir/Graphics/Shader.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Projects/ImaKart/template/Graphics/Shader.cpp -o CMakeFiles/template.dir/Graphics/Shader.cpp.s
 
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.o.requires:
 .PHONY : template/CMakeFiles/template.dir/Graphics/Shader.cpp.o.requires
@@ -117,17 +117,17 @@ template/CMakeFiles/template.dir/Graphics/Shader.cpp.o.provides.build: template/
 
 template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o: ../template/Graphics/Heightmap.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Heightmap.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Heightmap.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Heightmap.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Graphics/Heightmap.cpp
 
 template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/template.dir/Graphics/Heightmap.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Heightmap.cpp > CMakeFiles/template.dir/Graphics/Heightmap.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Projects/ImaKart/template/Graphics/Heightmap.cpp > CMakeFiles/template.dir/Graphics/Heightmap.cpp.i
 
 template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/template.dir/Graphics/Heightmap.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Heightmap.cpp -o CMakeFiles/template.dir/Graphics/Heightmap.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Projects/ImaKart/template/Graphics/Heightmap.cpp -o CMakeFiles/template.dir/Graphics/Heightmap.cpp.s
 
 template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o.requires:
 .PHONY : template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o.requires
@@ -140,17 +140,17 @@ template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o.provides.build: templa
 
 template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o: ../template/Graphics/Mesh.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Mesh.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Mesh.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Mesh.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Graphics/Mesh.cpp
 
 template/CMakeFiles/template.dir/Graphics/Mesh.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/template.dir/Graphics/Mesh.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Mesh.cpp > CMakeFiles/template.dir/Graphics/Mesh.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Projects/ImaKart/template/Graphics/Mesh.cpp > CMakeFiles/template.dir/Graphics/Mesh.cpp.i
 
 template/CMakeFiles/template.dir/Graphics/Mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/template.dir/Graphics/Mesh.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Mesh.cpp -o CMakeFiles/template.dir/Graphics/Mesh.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Projects/ImaKart/template/Graphics/Mesh.cpp -o CMakeFiles/template.dir/Graphics/Mesh.cpp.s
 
 template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o.requires:
 .PHONY : template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o.requires
@@ -163,17 +163,17 @@ template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o.provides.build: template/CM
 
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/Graphics/Node.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Graphics/Node.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Node.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Node.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Node.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Graphics/Node.cpp
 
 template/CMakeFiles/template.dir/Graphics/Node.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/template.dir/Graphics/Node.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Node.cpp > CMakeFiles/template.dir/Graphics/Node.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Projects/ImaKart/template/Graphics/Node.cpp > CMakeFiles/template.dir/Graphics/Node.cpp.i
 
 template/CMakeFiles/template.dir/Graphics/Node.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/template.dir/Graphics/Node.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template/Graphics/Node.cpp -o CMakeFiles/template.dir/Graphics/Node.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Projects/ImaKart/template/Graphics/Node.cpp -o CMakeFiles/template.dir/Graphics/Node.cpp.s
 
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o.requires:
 .PHONY : template/CMakeFiles/template.dir/Graphics/Node.cpp.o.requires
@@ -224,7 +224,7 @@ template/template: /usr/lib/i386-linux-gnu/libXext.so
 template/template: template/CMakeFiles/template.dir/build.make
 template/template: template/CMakeFiles/template.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable template"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/template.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andre/Documents/Projects/ImaKart/build/template && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/template.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 template/CMakeFiles/template.dir/build: template/template
@@ -239,10 +239,10 @@ template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Grap
 .PHONY : template/CMakeFiles/template.dir/requires
 
 template/CMakeFiles/template.dir/clean:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template && $(CMAKE_COMMAND) -P CMakeFiles/template.dir/cmake_clean.cmake
+	cd /home/andre/Documents/Projects/ImaKart/build/template && $(CMAKE_COMMAND) -P CMakeFiles/template.dir/cmake_clean.cmake
 .PHONY : template/CMakeFiles/template.dir/clean
 
 template/CMakeFiles/template.dir/depend:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andre/Documents/Cours/2A/OpenGL/ImaKart /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template/CMakeFiles/template.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andre/Documents/Projects/ImaKart /home/andre/Documents/Projects/ImaKart/template /home/andre/Documents/Projects/ImaKart/build /home/andre/Documents/Projects/ImaKart/build/template /home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : template/CMakeFiles/template.dir/depend
 

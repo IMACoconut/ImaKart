@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart
+CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build
+CMAKE_BINARY_DIR = /home/andre/Documents/Projects/ImaKart/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -107,14 +107,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/CMakeFiles/progress.marks
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/CMakeFiles/progress.marks
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/clean
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/clean
 .PHONY : clean
 
 # The main clean target
@@ -123,17 +123,17 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Help Target
@@ -159,6 +159,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

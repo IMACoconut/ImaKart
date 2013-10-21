@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart
+CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build
+CMAKE_BINARY_DIR = /home/andre/Documents/Projects/ImaKart/build
 
 # Include any dependencies generated for this target.
 include third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/depend.make
@@ -48,17 +48,17 @@ include third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flag
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Color.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Color.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Color.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Color.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Color.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Color.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Color.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Color.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp > CMakeFiles/sfml-graphics.dir/Color.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp > CMakeFiles/sfml-graphics.dir/Color.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Color.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Color.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp -o CMakeFiles/sfml-graphics.dir/Color.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp -o CMakeFiles/sfml-graphics.dir/Color.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Color.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Color.cpp.o.requires
@@ -71,17 +71,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Color.cpp.o.
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Font.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Font.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Font.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Font.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp > CMakeFiles/sfml-graphics.dir/Font.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp > CMakeFiles/sfml-graphics.dir/Font.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Font.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp -o CMakeFiles/sfml-graphics.dir/Font.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp -o CMakeFiles/sfml-graphics.dir/Font.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o.requires
@@ -94,17 +94,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o.p
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/GLCheck.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp > CMakeFiles/sfml-graphics.dir/GLCheck.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp > CMakeFiles/sfml-graphics.dir/GLCheck.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/GLCheck.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp -o CMakeFiles/sfml-graphics.dir/GLCheck.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp -o CMakeFiles/sfml-graphics.dir/GLCheck.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o.requires
@@ -117,17 +117,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Image.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Image.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Image.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Image.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp > CMakeFiles/sfml-graphics.dir/Image.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp > CMakeFiles/sfml-graphics.dir/Image.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Image.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp -o CMakeFiles/sfml-graphics.dir/Image.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp -o CMakeFiles/sfml-graphics.dir/Image.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.o.requires
@@ -140,17 +140,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.o.
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -fno-strict-aliasing -o CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -fno-strict-aliasing -o CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -fno-strict-aliasing -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp > CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -fno-strict-aliasing -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp > CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -fno-strict-aliasing -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp -o CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -fno-strict-aliasing -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp -o CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.o.requires
@@ -163,17 +163,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderStates.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderStates.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/RenderStates.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp > CMakeFiles/sfml-graphics.dir/RenderStates.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp > CMakeFiles/sfml-graphics.dir/RenderStates.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/RenderStates.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp -o CMakeFiles/sfml-graphics.dir/RenderStates.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp -o CMakeFiles/sfml-graphics.dir/RenderStates.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates.cpp.o.requires
@@ -186,17 +186,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp > CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp > CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp -o CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp -o CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.o.requires
@@ -209,17 +209,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextur
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp > CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp > CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp -o CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp -o CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.o.requires
@@ -232,17 +232,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp > CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp > CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp -o CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp -o CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.o.requires
@@ -255,17 +255,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Shader.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Shader.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Shader.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp > CMakeFiles/sfml-graphics.dir/Shader.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp > CMakeFiles/sfml-graphics.dir/Shader.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Shader.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp -o CMakeFiles/sfml-graphics.dir/Shader.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp -o CMakeFiles/sfml-graphics.dir/Shader.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.o.requires
@@ -278,17 +278,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.o
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Texture.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Texture.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Texture.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp > CMakeFiles/sfml-graphics.dir/Texture.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp > CMakeFiles/sfml-graphics.dir/Texture.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Texture.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp -o CMakeFiles/sfml-graphics.dir/Texture.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp -o CMakeFiles/sfml-graphics.dir/Texture.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.o.requires
@@ -301,17 +301,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp > CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp > CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp -o CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp -o CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.o.requires
@@ -324,17 +324,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Transform.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Transform.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Transform.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp > CMakeFiles/sfml-graphics.dir/Transform.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp > CMakeFiles/sfml-graphics.dir/Transform.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Transform.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp -o CMakeFiles/sfml-graphics.dir/Transform.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp -o CMakeFiles/sfml-graphics.dir/Transform.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.o.requires
@@ -347,17 +347,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformable.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformable.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformable.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Transformable.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Transformable.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformable.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Transformable.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp > CMakeFiles/sfml-graphics.dir/Transformable.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp > CMakeFiles/sfml-graphics.dir/Transformable.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Transformable.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp -o CMakeFiles/sfml-graphics.dir/Transformable.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp -o CMakeFiles/sfml-graphics.dir/Transformable.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformable.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformable.cpp.o.requires
@@ -370,17 +370,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformabl
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/View.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/View.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/View.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/View.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp > CMakeFiles/sfml-graphics.dir/View.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp > CMakeFiles/sfml-graphics.dir/View.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/View.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp -o CMakeFiles/sfml-graphics.dir/View.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp -o CMakeFiles/sfml-graphics.dir/View.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.o.requires
@@ -393,17 +393,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.o.p
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Vertex.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Vertex.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Vertex.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp > CMakeFiles/sfml-graphics.dir/Vertex.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp > CMakeFiles/sfml-graphics.dir/Vertex.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Vertex.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp -o CMakeFiles/sfml-graphics.dir/Vertex.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp -o CMakeFiles/sfml-graphics.dir/Vertex.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.o.requires
@@ -416,17 +416,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.o
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Shape.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Shape.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Shape.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp > CMakeFiles/sfml-graphics.dir/Shape.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp > CMakeFiles/sfml-graphics.dir/Shape.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Shape.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp -o CMakeFiles/sfml-graphics.dir/Shape.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp -o CMakeFiles/sfml-graphics.dir/Shape.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.o.requires
@@ -439,17 +439,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.o.
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_18)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/CircleShape.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/CircleShape.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/CircleShape.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp > CMakeFiles/sfml-graphics.dir/CircleShape.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp > CMakeFiles/sfml-graphics.dir/CircleShape.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/CircleShape.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp -o CMakeFiles/sfml-graphics.dir/CircleShape.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp -o CMakeFiles/sfml-graphics.dir/CircleShape.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.cpp.o.requires
@@ -462,17 +462,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_19)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_19)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp > CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp > CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp -o CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp -o CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.o.requires
@@ -485,17 +485,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleSha
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_20)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp > CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp > CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp -o CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp -o CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.o.requires
@@ -508,17 +508,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_21)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Sprite.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Sprite.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Sprite.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp > CMakeFiles/sfml-graphics.dir/Sprite.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp > CMakeFiles/sfml-graphics.dir/Sprite.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Sprite.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp -o CMakeFiles/sfml-graphics.dir/Sprite.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp -o CMakeFiles/sfml-graphics.dir/Sprite.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.o.requires
@@ -531,17 +531,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.o
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Text.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_22)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_22)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Text.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/Text.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/Text.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp > CMakeFiles/sfml-graphics.dir/Text.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp > CMakeFiles/sfml-graphics.dir/Text.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/Text.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp -o CMakeFiles/sfml-graphics.dir/Text.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp -o CMakeFiles/sfml-graphics.dir/Text.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.o.requires
@@ -554,17 +554,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.o.p
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_23)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_23)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/VertexArray.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/VertexArray.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/VertexArray.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp > CMakeFiles/sfml-graphics.dir/VertexArray.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp > CMakeFiles/sfml-graphics.dir/VertexArray.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/VertexArray.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp -o CMakeFiles/sfml-graphics.dir/VertexArray.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp -o CMakeFiles/sfml-graphics.dir/VertexArray.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.cpp.o.requires
@@ -577,17 +577,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_24)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_24)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp > CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp > CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp -o CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp -o CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.o.requires
@@ -600,17 +600,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextur
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_25)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_25)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp > CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp > CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp -o CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp -o CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.o.requires
@@ -623,17 +623,17 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextur
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.o: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/flags.make
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_26)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_26)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp > CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp > CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.i
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp -o CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp -o CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.s
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.o.requires
@@ -716,8 +716,8 @@ third-party/SFML-2.1/lib/libsfml-graphics.so.2.1: /usr/lib/i386-linux-gnu/libXra
 third-party/SFML-2.1/lib/libsfml-graphics.so.2.1: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/build.make
 third-party/SFML-2.1/lib/libsfml-graphics.so.2.1: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library ../../../lib/libsfml-graphics.so"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sfml-graphics.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libsfml-graphics.so.2.1 ../../../lib/libsfml-graphics.so.2 ../../../lib/libsfml-graphics.so
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sfml-graphics.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libsfml-graphics.so.2.1 ../../../lib/libsfml-graphics.so.2 ../../../lib/libsfml-graphics.so
 
 third-party/SFML-2.1/lib/libsfml-graphics.so.2: third-party/SFML-2.1/lib/libsfml-graphics.so.2.1
 
@@ -756,10 +756,10 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/requires: th
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/requires
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/clean:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && $(CMAKE_COMMAND) -P CMakeFiles/sfml-graphics.dir/cmake_clean.cmake
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics && $(CMAKE_COMMAND) -P CMakeFiles/sfml-graphics.dir/cmake_clean.cmake
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/clean
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/depend:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andre/Documents/Cours/2A/OpenGL/ImaKart /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andre/Documents/Projects/ImaKart /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics /home/andre/Documents/Projects/ImaKart/build /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/depend
 

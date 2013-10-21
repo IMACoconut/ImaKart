@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart
+CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build
+CMAKE_BINARY_DIR = /home/andre/Documents/Projects/ImaKart/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -107,14 +107,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/lib/CMakeFiles/progress.marks
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles /home/andre/Documents/Projects/ImaKart/build/lib/CMakeFiles/progress.marks
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/clean
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/clean
 .PHONY : clean
 
 # The main clean target
@@ -123,22 +123,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 lib/CMakeFiles/glimac.dir/rule:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/glimac.dir/rule
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/glimac.dir/rule
 .PHONY : lib/CMakeFiles/glimac.dir/rule
 
 # Convenience name for target.
@@ -147,7 +147,7 @@ glimac: lib/CMakeFiles/glimac.dir/rule
 
 # fast build rule for target.
 glimac/fast:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/build
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/build
 .PHONY : glimac/fast
 
 src/hello.o: src/hello.cpp.o
@@ -155,7 +155,7 @@ src/hello.o: src/hello.cpp.o
 
 # target to build an object file
 src/hello.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/src/hello.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/src/hello.cpp.o
 .PHONY : src/hello.cpp.o
 
 src/hello.i: src/hello.cpp.i
@@ -163,7 +163,7 @@ src/hello.i: src/hello.cpp.i
 
 # target to preprocess a source file
 src/hello.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/src/hello.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/src/hello.cpp.i
 .PHONY : src/hello.cpp.i
 
 src/hello.s: src/hello.cpp.s
@@ -171,7 +171,7 @@ src/hello.s: src/hello.cpp.s
 
 # target to generate assembly for a file
 src/hello.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/src/hello.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/src/hello.cpp.s
 .PHONY : src/hello.cpp.s
 
 # Help Target
@@ -201,6 +201,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

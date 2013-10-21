@@ -1,4 +1,4 @@
-# Install script for directory: /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML
+# Install script for directory: /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,11 +34,11 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/System/cmake_install.cmake")
-  INCLUDE("/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Window/cmake_install.cmake")
-  INCLUDE("/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network/cmake_install.cmake")
-  INCLUDE("/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics/cmake_install.cmake")
-  INCLUDE("/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Audio/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/System/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Window/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Audio/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

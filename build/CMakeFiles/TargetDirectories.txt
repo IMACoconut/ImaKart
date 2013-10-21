@@ -1,7 +1,7 @@
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/lib/CMakeFiles/glimac.dir
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Audio/CMakeFiles/sfml-audio.dir
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template/CMakeFiles/template.dir
+/home/andre/Documents/Projects/ImaKart/build/lib/CMakeFiles/glimac.dir
+/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Audio/CMakeFiles/sfml-audio.dir
+/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir
+/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir
+/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir
+/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir
+/home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir

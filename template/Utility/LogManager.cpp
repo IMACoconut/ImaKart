@@ -2,11 +2,12 @@
 #include <Utility/File.hpp>
 
 #include <chrono>
+#include <iostream>
 #include <iomanip>
 #include <ctime>
 #include <fstream>
 
-namespace util {
+namespace Util {
 	void LogManager::error(const std::string& msg)
 	{
 		write("ERROR: "+msg);
@@ -29,11 +30,10 @@ namespace util {
 	
 	void LogManager::write(const std::string& msg)
 	{
-		std::ofstream file("LOGFILE");
-		util::OFile logFile(file);
+		std::ofstream file("LOGFILE", std::ios_base::app);
 		time_t currentTime = std::time(nullptr);
 		char buffer[64];
 		std::strftime(buffer, 24, "%d/%m/%Y - %H:%M:%S: ", std::localtime(&currentTime));
-		file << buffer << msg;
+		file << buffer << msg << std::endl;
 	}
 }

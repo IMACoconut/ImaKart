@@ -32,10 +32,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart
+CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build
+CMAKE_BINARY_DIR = /home/andre/Documents/Projects/ImaKart/build
 
 # Include any dependencies generated for this target.
 include third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/depend.make
@@ -48,17 +48,17 @@ include third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Ftp.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Ftp.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/Ftp.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Ftp.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Ftp.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Ftp.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Ftp.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Ftp.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Ftp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/Ftp.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Ftp.cpp > CMakeFiles/sfml-network.dir/Ftp.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Ftp.cpp > CMakeFiles/sfml-network.dir/Ftp.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Ftp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/Ftp.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Ftp.cpp -o CMakeFiles/sfml-network.dir/Ftp.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Ftp.cpp -o CMakeFiles/sfml-network.dir/Ftp.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Ftp.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Ftp.cpp.o.requires
@@ -71,17 +71,17 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Ftp.cpp.o.prov
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Http.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Http.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/Http.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Http.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Http.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Http.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Http.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Http.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Http.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/Http.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Http.cpp > CMakeFiles/sfml-network.dir/Http.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Http.cpp > CMakeFiles/sfml-network.dir/Http.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Http.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/Http.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Http.cpp -o CMakeFiles/sfml-network.dir/Http.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Http.cpp -o CMakeFiles/sfml-network.dir/Http.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Http.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Http.cpp.o.requires
@@ -94,17 +94,17 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Http.cpp.o.pro
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/IpAddress.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/IpAddress.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/IpAddress.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/IpAddress.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/IpAddress.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/IpAddress.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/IpAddress.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/IpAddress.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/IpAddress.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/IpAddress.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/IpAddress.cpp > CMakeFiles/sfml-network.dir/IpAddress.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/IpAddress.cpp > CMakeFiles/sfml-network.dir/IpAddress.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/IpAddress.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/IpAddress.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/IpAddress.cpp -o CMakeFiles/sfml-network.dir/IpAddress.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/IpAddress.cpp -o CMakeFiles/sfml-network.dir/IpAddress.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/IpAddress.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/IpAddress.cpp.o.requires
@@ -117,17 +117,17 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/IpAddress.cpp.
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Packet.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Packet.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/Packet.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Packet.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Packet.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Packet.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Packet.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Packet.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Packet.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/Packet.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Packet.cpp > CMakeFiles/sfml-network.dir/Packet.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Packet.cpp > CMakeFiles/sfml-network.dir/Packet.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Packet.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/Packet.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Packet.cpp -o CMakeFiles/sfml-network.dir/Packet.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Packet.cpp -o CMakeFiles/sfml-network.dir/Packet.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Packet.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Packet.cpp.o.requires
@@ -140,17 +140,17 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Packet.cpp.o.p
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Socket.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Socket.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/Socket.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Socket.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Socket.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Socket.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Socket.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Socket.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Socket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/Socket.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Socket.cpp > CMakeFiles/sfml-network.dir/Socket.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Socket.cpp > CMakeFiles/sfml-network.dir/Socket.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Socket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/Socket.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Socket.cpp -o CMakeFiles/sfml-network.dir/Socket.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Socket.cpp -o CMakeFiles/sfml-network.dir/Socket.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Socket.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Socket.cpp.o.requires
@@ -163,17 +163,17 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Socket.cpp.o.p
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/SocketSelector.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/SocketSelector.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/SocketSelector.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/SocketSelector.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/SocketSelector.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/SocketSelector.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/SocketSelector.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/SocketSelector.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/SocketSelector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/SocketSelector.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/SocketSelector.cpp > CMakeFiles/sfml-network.dir/SocketSelector.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/SocketSelector.cpp > CMakeFiles/sfml-network.dir/SocketSelector.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/SocketSelector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/SocketSelector.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/SocketSelector.cpp -o CMakeFiles/sfml-network.dir/SocketSelector.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/SocketSelector.cpp -o CMakeFiles/sfml-network.dir/SocketSelector.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/SocketSelector.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/SocketSelector.cpp.o.requires
@@ -186,17 +186,17 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/SocketSelector
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpListener.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpListener.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/TcpListener.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_7)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpListener.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/TcpListener.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpListener.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/TcpListener.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpListener.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpListener.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/TcpListener.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpListener.cpp > CMakeFiles/sfml-network.dir/TcpListener.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpListener.cpp > CMakeFiles/sfml-network.dir/TcpListener.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpListener.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/TcpListener.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpListener.cpp -o CMakeFiles/sfml-network.dir/TcpListener.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpListener.cpp -o CMakeFiles/sfml-network.dir/TcpListener.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpListener.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpListener.cpp.o.requires
@@ -209,17 +209,17 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpListener.cp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/TcpSocket.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/TcpSocket.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpSocket.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/TcpSocket.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpSocket.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/TcpSocket.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpSocket.cpp > CMakeFiles/sfml-network.dir/TcpSocket.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpSocket.cpp > CMakeFiles/sfml-network.dir/TcpSocket.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/TcpSocket.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpSocket.cpp -o CMakeFiles/sfml-network.dir/TcpSocket.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpSocket.cpp -o CMakeFiles/sfml-network.dir/TcpSocket.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.o.requires
@@ -232,17 +232,17 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/UdpSocket.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/UdpSocket.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/UdpSocket.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/UdpSocket.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/UdpSocket.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/UdpSocket.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/UdpSocket.cpp > CMakeFiles/sfml-network.dir/UdpSocket.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/UdpSocket.cpp > CMakeFiles/sfml-network.dir/UdpSocket.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/UdpSocket.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/UdpSocket.cpp -o CMakeFiles/sfml-network.dir/UdpSocket.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/UdpSocket.cpp -o CMakeFiles/sfml-network.dir/UdpSocket.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.o.requires
@@ -255,17 +255,17 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.o: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/flags.make
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.o: ../third-party/SFML-2.1/src/SFML/Network/Unix/SocketImpl.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.o"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.o -c /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Unix/SocketImpl.cpp
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -o CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.o -c /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Unix/SocketImpl.cpp
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.i"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Unix/SocketImpl.cpp > CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -E /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Unix/SocketImpl.cpp > CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.i
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.s"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Unix/SocketImpl.cpp -o CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -fvisibility=hidden -S /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Unix/SocketImpl.cpp -o CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.s
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.o.requires:
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.o.requires
@@ -306,8 +306,8 @@ third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/lib/libsfm
 third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/build.make
 third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library ../../../lib/libsfml-network.so"
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sfml-network.dir/link.txt --verbose=$(VERBOSE)
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libsfml-network.so.2.1 ../../../lib/libsfml-network.so.2 ../../../lib/libsfml-network.so
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sfml-network.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && $(CMAKE_COMMAND) -E cmake_symlink_library ../../../lib/libsfml-network.so.2.1 ../../../lib/libsfml-network.so.2 ../../../lib/libsfml-network.so
 
 third-party/SFML-2.1/lib/libsfml-network.so.2: third-party/SFML-2.1/lib/libsfml-network.so.2.1
 
@@ -330,10 +330,10 @@ third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/requires: thir
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/requires
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/clean:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && $(CMAKE_COMMAND) -P CMakeFiles/sfml-network.dir/cmake_clean.cmake
+	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && $(CMAKE_COMMAND) -P CMakeFiles/sfml-network.dir/cmake_clean.cmake
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/clean
 
 third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/depend:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andre/Documents/Cours/2A/OpenGL/ImaKart /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andre/Documents/Projects/ImaKart /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network /home/andre/Documents/Projects/ImaKart/build /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/depend
 

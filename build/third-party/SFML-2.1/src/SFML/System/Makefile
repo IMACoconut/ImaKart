@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart
+CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build
+CMAKE_BINARY_DIR = /home/andre/Documents/Projects/ImaKart/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -107,14 +107,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/System/CMakeFiles/progress.marks
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/System/CMakeFiles/progress.marks
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/clean
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/clean
 .PHONY : clean
 
 # The main clean target
@@ -123,22 +123,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/rule:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/rule
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/rule
 .PHONY : third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/rule
 
 # Convenience name for target.
@@ -147,7 +147,7 @@ sfml-system: third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/rul
 
 # fast build rule for target.
 sfml-system/fast:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build
 .PHONY : sfml-system/fast
 
 Clock.o: Clock.cpp.o
@@ -155,7 +155,7 @@ Clock.o: Clock.cpp.o
 
 # target to build an object file
 Clock.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Clock.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Clock.cpp.o
 .PHONY : Clock.cpp.o
 
 Clock.i: Clock.cpp.i
@@ -163,7 +163,7 @@ Clock.i: Clock.cpp.i
 
 # target to preprocess a source file
 Clock.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Clock.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Clock.cpp.i
 .PHONY : Clock.cpp.i
 
 Clock.s: Clock.cpp.s
@@ -171,7 +171,7 @@ Clock.s: Clock.cpp.s
 
 # target to generate assembly for a file
 Clock.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Clock.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Clock.cpp.s
 .PHONY : Clock.cpp.s
 
 Err.o: Err.cpp.o
@@ -179,7 +179,7 @@ Err.o: Err.cpp.o
 
 # target to build an object file
 Err.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Err.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Err.cpp.o
 .PHONY : Err.cpp.o
 
 Err.i: Err.cpp.i
@@ -187,7 +187,7 @@ Err.i: Err.cpp.i
 
 # target to preprocess a source file
 Err.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Err.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Err.cpp.i
 .PHONY : Err.cpp.i
 
 Err.s: Err.cpp.s
@@ -195,7 +195,7 @@ Err.s: Err.cpp.s
 
 # target to generate assembly for a file
 Err.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Err.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Err.cpp.s
 .PHONY : Err.cpp.s
 
 Lock.o: Lock.cpp.o
@@ -203,7 +203,7 @@ Lock.o: Lock.cpp.o
 
 # target to build an object file
 Lock.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Lock.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Lock.cpp.o
 .PHONY : Lock.cpp.o
 
 Lock.i: Lock.cpp.i
@@ -211,7 +211,7 @@ Lock.i: Lock.cpp.i
 
 # target to preprocess a source file
 Lock.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Lock.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Lock.cpp.i
 .PHONY : Lock.cpp.i
 
 Lock.s: Lock.cpp.s
@@ -219,7 +219,7 @@ Lock.s: Lock.cpp.s
 
 # target to generate assembly for a file
 Lock.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Lock.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Lock.cpp.s
 .PHONY : Lock.cpp.s
 
 Mutex.o: Mutex.cpp.o
@@ -227,7 +227,7 @@ Mutex.o: Mutex.cpp.o
 
 # target to build an object file
 Mutex.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Mutex.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Mutex.cpp.o
 .PHONY : Mutex.cpp.o
 
 Mutex.i: Mutex.cpp.i
@@ -235,7 +235,7 @@ Mutex.i: Mutex.cpp.i
 
 # target to preprocess a source file
 Mutex.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Mutex.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Mutex.cpp.i
 .PHONY : Mutex.cpp.i
 
 Mutex.s: Mutex.cpp.s
@@ -243,7 +243,7 @@ Mutex.s: Mutex.cpp.s
 
 # target to generate assembly for a file
 Mutex.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Mutex.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Mutex.cpp.s
 .PHONY : Mutex.cpp.s
 
 Sleep.o: Sleep.cpp.o
@@ -251,7 +251,7 @@ Sleep.o: Sleep.cpp.o
 
 # target to build an object file
 Sleep.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Sleep.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Sleep.cpp.o
 .PHONY : Sleep.cpp.o
 
 Sleep.i: Sleep.cpp.i
@@ -259,7 +259,7 @@ Sleep.i: Sleep.cpp.i
 
 # target to preprocess a source file
 Sleep.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Sleep.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Sleep.cpp.i
 .PHONY : Sleep.cpp.i
 
 Sleep.s: Sleep.cpp.s
@@ -267,7 +267,7 @@ Sleep.s: Sleep.cpp.s
 
 # target to generate assembly for a file
 Sleep.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Sleep.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Sleep.cpp.s
 .PHONY : Sleep.cpp.s
 
 String.o: String.cpp.o
@@ -275,7 +275,7 @@ String.o: String.cpp.o
 
 # target to build an object file
 String.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/String.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/String.cpp.o
 .PHONY : String.cpp.o
 
 String.i: String.cpp.i
@@ -283,7 +283,7 @@ String.i: String.cpp.i
 
 # target to preprocess a source file
 String.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/String.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/String.cpp.i
 .PHONY : String.cpp.i
 
 String.s: String.cpp.s
@@ -291,7 +291,7 @@ String.s: String.cpp.s
 
 # target to generate assembly for a file
 String.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/String.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/String.cpp.s
 .PHONY : String.cpp.s
 
 Thread.o: Thread.cpp.o
@@ -299,7 +299,7 @@ Thread.o: Thread.cpp.o
 
 # target to build an object file
 Thread.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Thread.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Thread.cpp.o
 .PHONY : Thread.cpp.o
 
 Thread.i: Thread.cpp.i
@@ -307,7 +307,7 @@ Thread.i: Thread.cpp.i
 
 # target to preprocess a source file
 Thread.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Thread.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Thread.cpp.i
 .PHONY : Thread.cpp.i
 
 Thread.s: Thread.cpp.s
@@ -315,7 +315,7 @@ Thread.s: Thread.cpp.s
 
 # target to generate assembly for a file
 Thread.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Thread.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Thread.cpp.s
 .PHONY : Thread.cpp.s
 
 ThreadLocal.o: ThreadLocal.cpp.o
@@ -323,7 +323,7 @@ ThreadLocal.o: ThreadLocal.cpp.o
 
 # target to build an object file
 ThreadLocal.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/ThreadLocal.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/ThreadLocal.cpp.o
 .PHONY : ThreadLocal.cpp.o
 
 ThreadLocal.i: ThreadLocal.cpp.i
@@ -331,7 +331,7 @@ ThreadLocal.i: ThreadLocal.cpp.i
 
 # target to preprocess a source file
 ThreadLocal.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/ThreadLocal.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/ThreadLocal.cpp.i
 .PHONY : ThreadLocal.cpp.i
 
 ThreadLocal.s: ThreadLocal.cpp.s
@@ -339,7 +339,7 @@ ThreadLocal.s: ThreadLocal.cpp.s
 
 # target to generate assembly for a file
 ThreadLocal.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/ThreadLocal.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/ThreadLocal.cpp.s
 .PHONY : ThreadLocal.cpp.s
 
 Time.o: Time.cpp.o
@@ -347,7 +347,7 @@ Time.o: Time.cpp.o
 
 # target to build an object file
 Time.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Time.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Time.cpp.o
 .PHONY : Time.cpp.o
 
 Time.i: Time.cpp.i
@@ -355,7 +355,7 @@ Time.i: Time.cpp.i
 
 # target to preprocess a source file
 Time.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Time.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Time.cpp.i
 .PHONY : Time.cpp.i
 
 Time.s: Time.cpp.s
@@ -363,7 +363,7 @@ Time.s: Time.cpp.s
 
 # target to generate assembly for a file
 Time.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Time.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Time.cpp.s
 .PHONY : Time.cpp.s
 
 Unix/ClockImpl.o: Unix/ClockImpl.cpp.o
@@ -371,7 +371,7 @@ Unix/ClockImpl.o: Unix/ClockImpl.cpp.o
 
 # target to build an object file
 Unix/ClockImpl.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ClockImpl.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ClockImpl.cpp.o
 .PHONY : Unix/ClockImpl.cpp.o
 
 Unix/ClockImpl.i: Unix/ClockImpl.cpp.i
@@ -379,7 +379,7 @@ Unix/ClockImpl.i: Unix/ClockImpl.cpp.i
 
 # target to preprocess a source file
 Unix/ClockImpl.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ClockImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ClockImpl.cpp.i
 .PHONY : Unix/ClockImpl.cpp.i
 
 Unix/ClockImpl.s: Unix/ClockImpl.cpp.s
@@ -387,7 +387,7 @@ Unix/ClockImpl.s: Unix/ClockImpl.cpp.s
 
 # target to generate assembly for a file
 Unix/ClockImpl.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ClockImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ClockImpl.cpp.s
 .PHONY : Unix/ClockImpl.cpp.s
 
 Unix/MutexImpl.o: Unix/MutexImpl.cpp.o
@@ -395,7 +395,7 @@ Unix/MutexImpl.o: Unix/MutexImpl.cpp.o
 
 # target to build an object file
 Unix/MutexImpl.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/MutexImpl.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/MutexImpl.cpp.o
 .PHONY : Unix/MutexImpl.cpp.o
 
 Unix/MutexImpl.i: Unix/MutexImpl.cpp.i
@@ -403,7 +403,7 @@ Unix/MutexImpl.i: Unix/MutexImpl.cpp.i
 
 # target to preprocess a source file
 Unix/MutexImpl.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/MutexImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/MutexImpl.cpp.i
 .PHONY : Unix/MutexImpl.cpp.i
 
 Unix/MutexImpl.s: Unix/MutexImpl.cpp.s
@@ -411,7 +411,7 @@ Unix/MutexImpl.s: Unix/MutexImpl.cpp.s
 
 # target to generate assembly for a file
 Unix/MutexImpl.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/MutexImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/MutexImpl.cpp.s
 .PHONY : Unix/MutexImpl.cpp.s
 
 Unix/SleepImpl.o: Unix/SleepImpl.cpp.o
@@ -419,7 +419,7 @@ Unix/SleepImpl.o: Unix/SleepImpl.cpp.o
 
 # target to build an object file
 Unix/SleepImpl.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/SleepImpl.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/SleepImpl.cpp.o
 .PHONY : Unix/SleepImpl.cpp.o
 
 Unix/SleepImpl.i: Unix/SleepImpl.cpp.i
@@ -427,7 +427,7 @@ Unix/SleepImpl.i: Unix/SleepImpl.cpp.i
 
 # target to preprocess a source file
 Unix/SleepImpl.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/SleepImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/SleepImpl.cpp.i
 .PHONY : Unix/SleepImpl.cpp.i
 
 Unix/SleepImpl.s: Unix/SleepImpl.cpp.s
@@ -435,7 +435,7 @@ Unix/SleepImpl.s: Unix/SleepImpl.cpp.s
 
 # target to generate assembly for a file
 Unix/SleepImpl.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/SleepImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/SleepImpl.cpp.s
 .PHONY : Unix/SleepImpl.cpp.s
 
 Unix/ThreadImpl.o: Unix/ThreadImpl.cpp.o
@@ -443,7 +443,7 @@ Unix/ThreadImpl.o: Unix/ThreadImpl.cpp.o
 
 # target to build an object file
 Unix/ThreadImpl.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadImpl.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadImpl.cpp.o
 .PHONY : Unix/ThreadImpl.cpp.o
 
 Unix/ThreadImpl.i: Unix/ThreadImpl.cpp.i
@@ -451,7 +451,7 @@ Unix/ThreadImpl.i: Unix/ThreadImpl.cpp.i
 
 # target to preprocess a source file
 Unix/ThreadImpl.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadImpl.cpp.i
 .PHONY : Unix/ThreadImpl.cpp.i
 
 Unix/ThreadImpl.s: Unix/ThreadImpl.cpp.s
@@ -459,7 +459,7 @@ Unix/ThreadImpl.s: Unix/ThreadImpl.cpp.s
 
 # target to generate assembly for a file
 Unix/ThreadImpl.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadImpl.cpp.s
 .PHONY : Unix/ThreadImpl.cpp.s
 
 Unix/ThreadLocalImpl.o: Unix/ThreadLocalImpl.cpp.o
@@ -467,7 +467,7 @@ Unix/ThreadLocalImpl.o: Unix/ThreadLocalImpl.cpp.o
 
 # target to build an object file
 Unix/ThreadLocalImpl.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadLocalImpl.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadLocalImpl.cpp.o
 .PHONY : Unix/ThreadLocalImpl.cpp.o
 
 Unix/ThreadLocalImpl.i: Unix/ThreadLocalImpl.cpp.i
@@ -475,7 +475,7 @@ Unix/ThreadLocalImpl.i: Unix/ThreadLocalImpl.cpp.i
 
 # target to preprocess a source file
 Unix/ThreadLocalImpl.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadLocalImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadLocalImpl.cpp.i
 .PHONY : Unix/ThreadLocalImpl.cpp.i
 
 Unix/ThreadLocalImpl.s: Unix/ThreadLocalImpl.cpp.s
@@ -483,7 +483,7 @@ Unix/ThreadLocalImpl.s: Unix/ThreadLocalImpl.cpp.s
 
 # target to generate assembly for a file
 Unix/ThreadLocalImpl.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadLocalImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/build.make third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/Unix/ThreadLocalImpl.cpp.s
 .PHONY : Unix/ThreadLocalImpl.cpp.s
 
 # Help Target
@@ -552,6 +552,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

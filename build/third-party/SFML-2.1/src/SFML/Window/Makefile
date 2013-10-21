@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart
+CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build
+CMAKE_BINARY_DIR = /home/andre/Documents/Projects/ImaKart/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -107,14 +107,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/Window/CMakeFiles/progress.marks
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Window/CMakeFiles/progress.marks
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/clean
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/clean
 .PHONY : clean
 
 # The main clean target
@@ -123,22 +123,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/rule:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/rule
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/rule
 .PHONY : third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/rule
 
 # Convenience name for target.
@@ -147,7 +147,7 @@ sfml-window: third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/rul
 
 # fast build rule for target.
 sfml-window/fast:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build
 .PHONY : sfml-window/fast
 
 Context.o: Context.cpp.o
@@ -155,7 +155,7 @@ Context.o: Context.cpp.o
 
 # target to build an object file
 Context.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Context.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Context.cpp.o
 .PHONY : Context.cpp.o
 
 Context.i: Context.cpp.i
@@ -163,7 +163,7 @@ Context.i: Context.cpp.i
 
 # target to preprocess a source file
 Context.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Context.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Context.cpp.i
 .PHONY : Context.cpp.i
 
 Context.s: Context.cpp.s
@@ -171,7 +171,7 @@ Context.s: Context.cpp.s
 
 # target to generate assembly for a file
 Context.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Context.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Context.cpp.s
 .PHONY : Context.cpp.s
 
 GlContext.o: GlContext.cpp.o
@@ -179,7 +179,7 @@ GlContext.o: GlContext.cpp.o
 
 # target to build an object file
 GlContext.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.o
 .PHONY : GlContext.cpp.o
 
 GlContext.i: GlContext.cpp.i
@@ -187,7 +187,7 @@ GlContext.i: GlContext.cpp.i
 
 # target to preprocess a source file
 GlContext.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.i
 .PHONY : GlContext.cpp.i
 
 GlContext.s: GlContext.cpp.s
@@ -195,7 +195,7 @@ GlContext.s: GlContext.cpp.s
 
 # target to generate assembly for a file
 GlContext.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.s
 .PHONY : GlContext.cpp.s
 
 GlResource.o: GlResource.cpp.o
@@ -203,7 +203,7 @@ GlResource.o: GlResource.cpp.o
 
 # target to build an object file
 GlResource.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlResource.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlResource.cpp.o
 .PHONY : GlResource.cpp.o
 
 GlResource.i: GlResource.cpp.i
@@ -211,7 +211,7 @@ GlResource.i: GlResource.cpp.i
 
 # target to preprocess a source file
 GlResource.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlResource.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlResource.cpp.i
 .PHONY : GlResource.cpp.i
 
 GlResource.s: GlResource.cpp.s
@@ -219,7 +219,7 @@ GlResource.s: GlResource.cpp.s
 
 # target to generate assembly for a file
 GlResource.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlResource.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlResource.cpp.s
 .PHONY : GlResource.cpp.s
 
 Joystick.o: Joystick.cpp.o
@@ -227,7 +227,7 @@ Joystick.o: Joystick.cpp.o
 
 # target to build an object file
 Joystick.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Joystick.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Joystick.cpp.o
 .PHONY : Joystick.cpp.o
 
 Joystick.i: Joystick.cpp.i
@@ -235,7 +235,7 @@ Joystick.i: Joystick.cpp.i
 
 # target to preprocess a source file
 Joystick.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Joystick.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Joystick.cpp.i
 .PHONY : Joystick.cpp.i
 
 Joystick.s: Joystick.cpp.s
@@ -243,7 +243,7 @@ Joystick.s: Joystick.cpp.s
 
 # target to generate assembly for a file
 Joystick.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Joystick.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Joystick.cpp.s
 .PHONY : Joystick.cpp.s
 
 JoystickManager.o: JoystickManager.cpp.o
@@ -251,7 +251,7 @@ JoystickManager.o: JoystickManager.cpp.o
 
 # target to build an object file
 JoystickManager.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/JoystickManager.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/JoystickManager.cpp.o
 .PHONY : JoystickManager.cpp.o
 
 JoystickManager.i: JoystickManager.cpp.i
@@ -259,7 +259,7 @@ JoystickManager.i: JoystickManager.cpp.i
 
 # target to preprocess a source file
 JoystickManager.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/JoystickManager.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/JoystickManager.cpp.i
 .PHONY : JoystickManager.cpp.i
 
 JoystickManager.s: JoystickManager.cpp.s
@@ -267,7 +267,7 @@ JoystickManager.s: JoystickManager.cpp.s
 
 # target to generate assembly for a file
 JoystickManager.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/JoystickManager.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/JoystickManager.cpp.s
 .PHONY : JoystickManager.cpp.s
 
 Keyboard.o: Keyboard.cpp.o
@@ -275,7 +275,7 @@ Keyboard.o: Keyboard.cpp.o
 
 # target to build an object file
 Keyboard.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Keyboard.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Keyboard.cpp.o
 .PHONY : Keyboard.cpp.o
 
 Keyboard.i: Keyboard.cpp.i
@@ -283,7 +283,7 @@ Keyboard.i: Keyboard.cpp.i
 
 # target to preprocess a source file
 Keyboard.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Keyboard.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Keyboard.cpp.i
 .PHONY : Keyboard.cpp.i
 
 Keyboard.s: Keyboard.cpp.s
@@ -291,7 +291,7 @@ Keyboard.s: Keyboard.cpp.s
 
 # target to generate assembly for a file
 Keyboard.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Keyboard.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Keyboard.cpp.s
 .PHONY : Keyboard.cpp.s
 
 Linux/Display.o: Linux/Display.cpp.o
@@ -299,7 +299,7 @@ Linux/Display.o: Linux/Display.cpp.o
 
 # target to build an object file
 Linux/Display.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/Display.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/Display.cpp.o
 .PHONY : Linux/Display.cpp.o
 
 Linux/Display.i: Linux/Display.cpp.i
@@ -307,7 +307,7 @@ Linux/Display.i: Linux/Display.cpp.i
 
 # target to preprocess a source file
 Linux/Display.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/Display.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/Display.cpp.i
 .PHONY : Linux/Display.cpp.i
 
 Linux/Display.s: Linux/Display.cpp.s
@@ -315,7 +315,7 @@ Linux/Display.s: Linux/Display.cpp.s
 
 # target to generate assembly for a file
 Linux/Display.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/Display.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/Display.cpp.s
 .PHONY : Linux/Display.cpp.s
 
 Linux/GlxContext.o: Linux/GlxContext.cpp.o
@@ -323,7 +323,7 @@ Linux/GlxContext.o: Linux/GlxContext.cpp.o
 
 # target to build an object file
 Linux/GlxContext.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/GlxContext.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/GlxContext.cpp.o
 .PHONY : Linux/GlxContext.cpp.o
 
 Linux/GlxContext.i: Linux/GlxContext.cpp.i
@@ -331,7 +331,7 @@ Linux/GlxContext.i: Linux/GlxContext.cpp.i
 
 # target to preprocess a source file
 Linux/GlxContext.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/GlxContext.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/GlxContext.cpp.i
 .PHONY : Linux/GlxContext.cpp.i
 
 Linux/GlxContext.s: Linux/GlxContext.cpp.s
@@ -339,7 +339,7 @@ Linux/GlxContext.s: Linux/GlxContext.cpp.s
 
 # target to generate assembly for a file
 Linux/GlxContext.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/GlxContext.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/GlxContext.cpp.s
 .PHONY : Linux/GlxContext.cpp.s
 
 Linux/InputImpl.o: Linux/InputImpl.cpp.o
@@ -347,7 +347,7 @@ Linux/InputImpl.o: Linux/InputImpl.cpp.o
 
 # target to build an object file
 Linux/InputImpl.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/InputImpl.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/InputImpl.cpp.o
 .PHONY : Linux/InputImpl.cpp.o
 
 Linux/InputImpl.i: Linux/InputImpl.cpp.i
@@ -355,7 +355,7 @@ Linux/InputImpl.i: Linux/InputImpl.cpp.i
 
 # target to preprocess a source file
 Linux/InputImpl.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/InputImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/InputImpl.cpp.i
 .PHONY : Linux/InputImpl.cpp.i
 
 Linux/InputImpl.s: Linux/InputImpl.cpp.s
@@ -363,7 +363,7 @@ Linux/InputImpl.s: Linux/InputImpl.cpp.s
 
 # target to generate assembly for a file
 Linux/InputImpl.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/InputImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/InputImpl.cpp.s
 .PHONY : Linux/InputImpl.cpp.s
 
 Linux/JoystickImpl.o: Linux/JoystickImpl.cpp.o
@@ -371,7 +371,7 @@ Linux/JoystickImpl.o: Linux/JoystickImpl.cpp.o
 
 # target to build an object file
 Linux/JoystickImpl.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/JoystickImpl.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/JoystickImpl.cpp.o
 .PHONY : Linux/JoystickImpl.cpp.o
 
 Linux/JoystickImpl.i: Linux/JoystickImpl.cpp.i
@@ -379,7 +379,7 @@ Linux/JoystickImpl.i: Linux/JoystickImpl.cpp.i
 
 # target to preprocess a source file
 Linux/JoystickImpl.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/JoystickImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/JoystickImpl.cpp.i
 .PHONY : Linux/JoystickImpl.cpp.i
 
 Linux/JoystickImpl.s: Linux/JoystickImpl.cpp.s
@@ -387,7 +387,7 @@ Linux/JoystickImpl.s: Linux/JoystickImpl.cpp.s
 
 # target to generate assembly for a file
 Linux/JoystickImpl.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/JoystickImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/JoystickImpl.cpp.s
 .PHONY : Linux/JoystickImpl.cpp.s
 
 Linux/VideoModeImpl.o: Linux/VideoModeImpl.cpp.o
@@ -395,7 +395,7 @@ Linux/VideoModeImpl.o: Linux/VideoModeImpl.cpp.o
 
 # target to build an object file
 Linux/VideoModeImpl.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/VideoModeImpl.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/VideoModeImpl.cpp.o
 .PHONY : Linux/VideoModeImpl.cpp.o
 
 Linux/VideoModeImpl.i: Linux/VideoModeImpl.cpp.i
@@ -403,7 +403,7 @@ Linux/VideoModeImpl.i: Linux/VideoModeImpl.cpp.i
 
 # target to preprocess a source file
 Linux/VideoModeImpl.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/VideoModeImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/VideoModeImpl.cpp.i
 .PHONY : Linux/VideoModeImpl.cpp.i
 
 Linux/VideoModeImpl.s: Linux/VideoModeImpl.cpp.s
@@ -411,7 +411,7 @@ Linux/VideoModeImpl.s: Linux/VideoModeImpl.cpp.s
 
 # target to generate assembly for a file
 Linux/VideoModeImpl.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/VideoModeImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/VideoModeImpl.cpp.s
 .PHONY : Linux/VideoModeImpl.cpp.s
 
 Linux/WindowImplX11.o: Linux/WindowImplX11.cpp.o
@@ -419,7 +419,7 @@ Linux/WindowImplX11.o: Linux/WindowImplX11.cpp.o
 
 # target to build an object file
 Linux/WindowImplX11.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/WindowImplX11.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/WindowImplX11.cpp.o
 .PHONY : Linux/WindowImplX11.cpp.o
 
 Linux/WindowImplX11.i: Linux/WindowImplX11.cpp.i
@@ -427,7 +427,7 @@ Linux/WindowImplX11.i: Linux/WindowImplX11.cpp.i
 
 # target to preprocess a source file
 Linux/WindowImplX11.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/WindowImplX11.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/WindowImplX11.cpp.i
 .PHONY : Linux/WindowImplX11.cpp.i
 
 Linux/WindowImplX11.s: Linux/WindowImplX11.cpp.s
@@ -435,7 +435,7 @@ Linux/WindowImplX11.s: Linux/WindowImplX11.cpp.s
 
 # target to generate assembly for a file
 Linux/WindowImplX11.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/WindowImplX11.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/WindowImplX11.cpp.s
 .PHONY : Linux/WindowImplX11.cpp.s
 
 Mouse.o: Mouse.cpp.o
@@ -443,7 +443,7 @@ Mouse.o: Mouse.cpp.o
 
 # target to build an object file
 Mouse.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.o
 .PHONY : Mouse.cpp.o
 
 Mouse.i: Mouse.cpp.i
@@ -451,7 +451,7 @@ Mouse.i: Mouse.cpp.i
 
 # target to preprocess a source file
 Mouse.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.i
 .PHONY : Mouse.cpp.i
 
 Mouse.s: Mouse.cpp.s
@@ -459,7 +459,7 @@ Mouse.s: Mouse.cpp.s
 
 # target to generate assembly for a file
 Mouse.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.s
 .PHONY : Mouse.cpp.s
 
 VideoMode.o: VideoMode.cpp.o
@@ -467,7 +467,7 @@ VideoMode.o: VideoMode.cpp.o
 
 # target to build an object file
 VideoMode.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.o
 .PHONY : VideoMode.cpp.o
 
 VideoMode.i: VideoMode.cpp.i
@@ -475,7 +475,7 @@ VideoMode.i: VideoMode.cpp.i
 
 # target to preprocess a source file
 VideoMode.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.i
 .PHONY : VideoMode.cpp.i
 
 VideoMode.s: VideoMode.cpp.s
@@ -483,7 +483,7 @@ VideoMode.s: VideoMode.cpp.s
 
 # target to generate assembly for a file
 VideoMode.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.s
 .PHONY : VideoMode.cpp.s
 
 Window.o: Window.cpp.o
@@ -491,7 +491,7 @@ Window.o: Window.cpp.o
 
 # target to build an object file
 Window.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Window.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Window.cpp.o
 .PHONY : Window.cpp.o
 
 Window.i: Window.cpp.i
@@ -499,7 +499,7 @@ Window.i: Window.cpp.i
 
 # target to preprocess a source file
 Window.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Window.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Window.cpp.i
 .PHONY : Window.cpp.i
 
 Window.s: Window.cpp.s
@@ -507,7 +507,7 @@ Window.s: Window.cpp.s
 
 # target to generate assembly for a file
 Window.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Window.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Window.cpp.s
 .PHONY : Window.cpp.s
 
 WindowImpl.o: WindowImpl.cpp.o
@@ -515,7 +515,7 @@ WindowImpl.o: WindowImpl.cpp.o
 
 # target to build an object file
 WindowImpl.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowImpl.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowImpl.cpp.o
 .PHONY : WindowImpl.cpp.o
 
 WindowImpl.i: WindowImpl.cpp.i
@@ -523,7 +523,7 @@ WindowImpl.i: WindowImpl.cpp.i
 
 # target to preprocess a source file
 WindowImpl.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowImpl.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowImpl.cpp.i
 .PHONY : WindowImpl.cpp.i
 
 WindowImpl.s: WindowImpl.cpp.s
@@ -531,7 +531,7 @@ WindowImpl.s: WindowImpl.cpp.s
 
 # target to generate assembly for a file
 WindowImpl.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowImpl.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowImpl.cpp.s
 .PHONY : WindowImpl.cpp.s
 
 # Help Target
@@ -606,6 +606,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -36,10 +36,10 @@ CMAKE_COMMAND = /usr/bin/cmake
 RM = /usr/bin/cmake -E remove -f
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart
+CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build
+CMAKE_BINARY_DIR = /home/andre/Documents/Projects/ImaKart/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -107,14 +107,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template/CMakeFiles/progress.marks
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/CMakeFiles 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles /home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/progress.marks
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/clean
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/clean
 .PHONY : clean
 
 # The main clean target
@@ -123,22 +123,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/preinstall
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 template/CMakeFiles/template.dir/rule:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/CMakeFiles/template.dir/rule
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 template/CMakeFiles/template.dir/rule
 .PHONY : template/CMakeFiles/template.dir/rule
 
 # Convenience name for target.
@@ -147,7 +147,7 @@ template: template/CMakeFiles/template.dir/rule
 
 # fast build rule for target.
 template/fast:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/build
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/build
 .PHONY : template/fast
 
 Graphics/Heightmap.o: Graphics/Heightmap.cpp.o
@@ -155,7 +155,7 @@ Graphics/Heightmap.o: Graphics/Heightmap.cpp.o
 
 # target to build an object file
 Graphics/Heightmap.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o
 .PHONY : Graphics/Heightmap.cpp.o
 
 Graphics/Heightmap.i: Graphics/Heightmap.cpp.i
@@ -163,7 +163,7 @@ Graphics/Heightmap.i: Graphics/Heightmap.cpp.i
 
 # target to preprocess a source file
 Graphics/Heightmap.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.i
 .PHONY : Graphics/Heightmap.cpp.i
 
 Graphics/Heightmap.s: Graphics/Heightmap.cpp.s
@@ -171,7 +171,7 @@ Graphics/Heightmap.s: Graphics/Heightmap.cpp.s
 
 # target to generate assembly for a file
 Graphics/Heightmap.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.s
 .PHONY : Graphics/Heightmap.cpp.s
 
 Graphics/Mesh.o: Graphics/Mesh.cpp.o
@@ -179,7 +179,7 @@ Graphics/Mesh.o: Graphics/Mesh.cpp.o
 
 # target to build an object file
 Graphics/Mesh.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o
 .PHONY : Graphics/Mesh.cpp.o
 
 Graphics/Mesh.i: Graphics/Mesh.cpp.i
@@ -187,7 +187,7 @@ Graphics/Mesh.i: Graphics/Mesh.cpp.i
 
 # target to preprocess a source file
 Graphics/Mesh.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Mesh.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Mesh.cpp.i
 .PHONY : Graphics/Mesh.cpp.i
 
 Graphics/Mesh.s: Graphics/Mesh.cpp.s
@@ -195,7 +195,7 @@ Graphics/Mesh.s: Graphics/Mesh.cpp.s
 
 # target to generate assembly for a file
 Graphics/Mesh.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Mesh.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Mesh.cpp.s
 .PHONY : Graphics/Mesh.cpp.s
 
 Graphics/Node.o: Graphics/Node.cpp.o
@@ -203,7 +203,7 @@ Graphics/Node.o: Graphics/Node.cpp.o
 
 # target to build an object file
 Graphics/Node.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Node.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Node.cpp.o
 .PHONY : Graphics/Node.cpp.o
 
 Graphics/Node.i: Graphics/Node.cpp.i
@@ -211,7 +211,7 @@ Graphics/Node.i: Graphics/Node.cpp.i
 
 # target to preprocess a source file
 Graphics/Node.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Node.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Node.cpp.i
 .PHONY : Graphics/Node.cpp.i
 
 Graphics/Node.s: Graphics/Node.cpp.s
@@ -219,7 +219,7 @@ Graphics/Node.s: Graphics/Node.cpp.s
 
 # target to generate assembly for a file
 Graphics/Node.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Node.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Node.cpp.s
 .PHONY : Graphics/Node.cpp.s
 
 Graphics/Shader.o: Graphics/Shader.cpp.o
@@ -227,7 +227,7 @@ Graphics/Shader.o: Graphics/Shader.cpp.o
 
 # target to build an object file
 Graphics/Shader.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Shader.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Shader.cpp.o
 .PHONY : Graphics/Shader.cpp.o
 
 Graphics/Shader.i: Graphics/Shader.cpp.i
@@ -235,7 +235,7 @@ Graphics/Shader.i: Graphics/Shader.cpp.i
 
 # target to preprocess a source file
 Graphics/Shader.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Shader.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Shader.cpp.i
 .PHONY : Graphics/Shader.cpp.i
 
 Graphics/Shader.s: Graphics/Shader.cpp.s
@@ -243,7 +243,7 @@ Graphics/Shader.s: Graphics/Shader.cpp.s
 
 # target to generate assembly for a file
 Graphics/Shader.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Shader.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Shader.cpp.s
 .PHONY : Graphics/Shader.cpp.s
 
 Utility/LogManager.o: Utility/LogManager.cpp.o
@@ -251,7 +251,7 @@ Utility/LogManager.o: Utility/LogManager.cpp.o
 
 # target to build an object file
 Utility/LogManager.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Utility/LogManager.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Utility/LogManager.cpp.o
 .PHONY : Utility/LogManager.cpp.o
 
 Utility/LogManager.i: Utility/LogManager.cpp.i
@@ -259,7 +259,7 @@ Utility/LogManager.i: Utility/LogManager.cpp.i
 
 # target to preprocess a source file
 Utility/LogManager.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Utility/LogManager.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Utility/LogManager.cpp.i
 .PHONY : Utility/LogManager.cpp.i
 
 Utility/LogManager.s: Utility/LogManager.cpp.s
@@ -267,7 +267,7 @@ Utility/LogManager.s: Utility/LogManager.cpp.s
 
 # target to generate assembly for a file
 Utility/LogManager.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Utility/LogManager.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Utility/LogManager.cpp.s
 .PHONY : Utility/LogManager.cpp.s
 
 main.o: main.cpp.o
@@ -275,7 +275,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/main.cpp.o
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -283,7 +283,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/main.cpp.i
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -291,7 +291,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/main.cpp.s
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -336,6 +336,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/andre/Documents/Cours/2A/OpenGL/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

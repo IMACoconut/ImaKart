@@ -1,4 +1,4 @@
-# Install script for directory: /home/andre/Documents/Cours/2A/OpenGL/ImaKart/template
+# Install script for directory: /home/andre/Documents/Projects/ImaKart/template
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -19,12 +19,12 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/CircleShape.
  ../third-party/SFML-2.1/include/SFML/Graphics/VertexArray.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/CircleShape.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Color.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Color.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -43,7 +43,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ConvexShape.
  ../third-party/SFML-2.1/include/SFML/Graphics/VertexArray.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ConvexShape.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
@@ -63,7 +63,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/Export.hpp
  ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp
  /usr/local/include/freetype2/freetype/config/ftheader.h
  /usr/local/include/ft2build.h
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o
@@ -71,7 +71,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.
  ../third-party/SFML-2.1/include/SFML/System/Err.hpp
  ../third-party/SFML-2.1/include/SFML/System/Export.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/GLCheck.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
@@ -85,7 +85,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Image.cpp.o
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
  ../third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Image.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Err.hpp
@@ -97,7 +97,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/ImageLoader.
  ../third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/stb_image/stb_image.h
  ../third-party/SFML-2.1/src/SFML/Graphics/stb_image/stb_image_write.h
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/ImageLoader.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleShape.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -116,7 +116,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RectangleSha
  ../third-party/SFML-2.1/include/SFML/Graphics/VertexArray.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RectangleShape.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -127,7 +127,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderStates
  ../third-party/SFML-2.1/include/SFML/Graphics/Transform.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderStates.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -156,7 +156,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTarget
  ../third-party/SFML-2.1/include/SFML/Window/Export.hpp
  ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTarget.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTexture.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -185,13 +185,13 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextur
  ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTexture.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImpl.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Export.hpp
  ../third-party/SFML-2.1/include/SFML/System/NonCopyable.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplDefault.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Err.hpp
@@ -205,7 +205,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextur
  ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplDefault.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextureImplFBO.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
@@ -226,7 +226,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderTextur
  ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderTextureImplFBO.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -257,7 +257,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/RenderWindow
  ../third-party/SFML-2.1/include/SFML/Window/WindowHandle.hpp
  ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/RenderWindow.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
@@ -279,7 +279,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shader.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/Export.hpp
  ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shader.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -306,7 +306,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Shape.cpp.o
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
  ../third-party/SFML-2.1/include/SFML/Window/Export.hpp
  ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Shape.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -331,7 +331,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Sprite.cpp.o
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
  ../third-party/SFML-2.1/include/SFML/Window/Export.hpp
  ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Sprite.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -360,7 +360,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Text.cpp.o
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
  ../third-party/SFML-2.1/include/SFML/Window/Export.hpp
  ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Text.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
@@ -388,12 +388,12 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Texture.cpp.
  ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Texture.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/TextureSaver.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/TextureSaver.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
@@ -402,7 +402,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transform.cp
  ../third-party/SFML-2.1/include/SFML/Graphics/Transform.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transform.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformable.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
@@ -412,7 +412,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Transformabl
  ../third-party/SFML-2.1/include/SFML/Graphics/Transformable.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Transformable.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
@@ -420,7 +420,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Vertex.cpp.o
  ../third-party/SFML-2.1/include/SFML/Graphics/Vertex.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Vertex.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp
@@ -440,7 +440,7 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/VertexArray.
  ../third-party/SFML-2.1/include/SFML/System/NonCopyable.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/VertexArray.cpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
@@ -450,4 +450,4 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/View.cpp.o
  ../third-party/SFML-2.1/include/SFML/Graphics/View.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/View.cpp

@@ -1,4 +1,4 @@
-# Install script for directory: /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window
+# Install script for directory: /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -46,9 +46,9 @@ IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "bin")
     ENDIF()
   ENDFOREACH()
   FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/lib/libsfml-window.so.2.1"
-    "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/lib/libsfml-window.so.2"
-    "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/lib/libsfml-window.so"
+    "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/lib/libsfml-window.so.2.1"
+    "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/lib/libsfml-window.so.2"
+    "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/lib/libsfml-window.so"
     )
   FOREACH(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libsfml-window.so.2.1"

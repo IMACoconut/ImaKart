@@ -176,7 +176,7 @@ sndfile.h
 string
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/ALCheck.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/ALCheck.cpp
 SFML/Audio/ALCheck.hpp
 -
 SFML/Audio/AudioDevice.hpp
@@ -184,7 +184,7 @@ SFML/Audio/AudioDevice.hpp
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/AudioDevice.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/AudioDevice.cpp
 SFML/Audio/AudioDevice.hpp
 -
 SFML/Audio/ALCheck.hpp
@@ -194,13 +194,13 @@ SFML/Audio/Listener.hpp
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/Listener.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/Listener.cpp
 SFML/Audio/Listener.hpp
 -
 SFML/Audio/ALCheck.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/Music.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/Music.cpp
 SFML/Audio/Music.hpp
 -
 SFML/Audio/ALCheck.hpp
@@ -214,7 +214,7 @@ SFML/System/Err.hpp
 fstream
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/Sound.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/Sound.cpp
 SFML/Audio/Sound.hpp
 -
 SFML/Audio/SoundBuffer.hpp
@@ -222,7 +222,7 @@ SFML/Audio/SoundBuffer.hpp
 SFML/Audio/ALCheck.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundBuffer.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundBuffer.cpp
 SFML/Audio/SoundBuffer.hpp
 -
 SFML/Audio/SoundFile.hpp
@@ -238,7 +238,7 @@ SFML/System/Err.hpp
 memory
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundBufferRecorder.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundBufferRecorder.cpp
 SFML/Audio/SoundBufferRecorder.hpp
 -
 algorithm
@@ -246,7 +246,7 @@ algorithm
 iterator
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundFile.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundFile.cpp
 SFML/Audio/SoundFile.hpp
 -
 SFML/System/InputStream.hpp
@@ -258,7 +258,7 @@ cstring
 cctype
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundRecorder.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundRecorder.cpp
 SFML/Audio/SoundRecorder.hpp
 -
 SFML/Audio/AudioDevice.hpp
@@ -270,13 +270,13 @@ SFML/System/Sleep.hpp
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundSource.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundSource.cpp
 SFML/Audio/SoundSource.hpp
 -
 SFML/Audio/ALCheck.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundStream.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Audio/SoundStream.cpp
 SFML/Audio/SoundStream.hpp
 -
 SFML/Audio/AudioDevice.hpp

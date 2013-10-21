@@ -1,4 +1,4 @@
-# Install script for directory: /home/andre/Documents/Cours/2A/OpenGL/ImaKart
+# Install script for directory: /home/andre/Documents/Projects/ImaKart
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,9 +34,9 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/cmake_install.cmake")
-  INCLUDE("/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/lib/cmake_install.cmake")
-  INCLUDE("/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/template/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/lib/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/template/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -46,7 +46,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/andre/Documents/Projects/ImaKart/build/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/andre/Documents/Projects/ImaKart/build/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

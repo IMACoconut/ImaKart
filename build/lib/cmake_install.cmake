@@ -1,4 +1,4 @@
-# Install script for directory: /home/andre/Documents/Cours/2A/OpenGL/ImaKart/lib
+# Install script for directory: /home/andre/Documents/Projects/ImaKart/lib
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

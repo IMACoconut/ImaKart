@@ -1,4 +1,4 @@
-# Install script for directory: /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1
+# Install script for directory: /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,58 +35,58 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
    "/usr/local/lib/pkgconfig/sfml-all.pc")
-FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-all.pc")
+FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-all.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
    "/usr/local/lib/pkgconfig/sfml-system.pc")
-FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-system.pc")
+FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-system.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
    "/usr/local/lib/pkgconfig/sfml-window.pc")
-FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-window.pc")
+FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-window.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
    "/usr/local/lib/pkgconfig/sfml-graphics.pc")
-FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-graphics.pc")
+FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-graphics.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
    "/usr/local/lib/pkgconfig/sfml-audio.pc")
-FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-audio.pc")
+FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-audio.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   list(APPEND CPACK_ABSOLUTE_DESTINATION_FILES
    "/usr/local/lib/pkgconfig/sfml-network.pc")
-FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-network.pc")
+FILE(INSTALL DESTINATION "/usr/local/lib/pkgconfig" TYPE FILE FILES "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/tools/pkg-config/sfml-network.pc")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "devel")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE DIRECTORY FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/include" REGEX "/\\.svn$" EXCLUDE)
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/." TYPE DIRECTORY FILES "/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/include" REGEX "/\\.svn$" EXCLUDE)
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "devel")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/SFML/cmake/Modules" TYPE FILE FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/cmake/Modules/FindSFML.cmake")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/SFML/cmake/Modules" TYPE FILE FILES "/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/cmake/Modules/FindSFML.cmake")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/SFML" TYPE FILE FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/license.txt")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/SFML" TYPE FILE FILES "/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/license.txt")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/SFML" TYPE FILE FILES "/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/readme.txt")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/SFML" TYPE FILE FILES "/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/readme.txt")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/home/andre/Documents/Cours/2A/OpenGL/ImaKart/build/third-party/SFML-2.1/src/SFML/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

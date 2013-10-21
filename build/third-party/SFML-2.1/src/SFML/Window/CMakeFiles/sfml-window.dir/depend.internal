@@ -10,7 +10,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Context.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/Export.hpp
  ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
  ../third-party/SFML-2.1/src/SFML/Window/GlContext.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Context.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Context.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/OpenGL.hpp
@@ -27,7 +27,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlContext.cpp.o
  ../third-party/SFML-2.1/src/SFML/Window/OSX/SFContext.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Win32/WglContext.hpp
  ../third-party/SFML-2.1/src/SFML/Window/glext/glext.h
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/GlContext.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/GlContext.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlResource.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Export.hpp
@@ -38,7 +38,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/GlResource.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/Export.hpp
  ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
  ../third-party/SFML-2.1/src/SFML/Window/GlContext.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/GlResource.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/GlResource.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Joystick.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Export.hpp
@@ -50,7 +50,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Joystick.cpp.o
  ../third-party/SFML-2.1/src/SFML/Window/Linux/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/OSX/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Win32/JoystickImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Joystick.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Joystick.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/JoystickManager.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Export.hpp
@@ -62,7 +62,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/JoystickManager.
  ../third-party/SFML-2.1/src/SFML/Window/Linux/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/OSX/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Win32/JoystickImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/JoystickManager.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/JoystickManager.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Keyboard.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
@@ -74,10 +74,10 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Keyboard.cpp.o
  ../third-party/SFML-2.1/src/SFML/Window/Linux/InputImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/OSX/InputImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Win32/InputImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Keyboard.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Keyboard.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/Display.cpp.o
  ../third-party/SFML-2.1/src/SFML/Window/Linux/Display.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/Display.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/Display.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/GlxContext.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/OpenGL.hpp
@@ -105,7 +105,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/GlxContext
  ../third-party/SFML-2.1/src/SFML/Window/Win32/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/WindowImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/glext/glxext.h
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/GlxContext.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/GlxContext.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/InputImpl.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Clock.hpp
@@ -126,7 +126,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/InputImpl.
  ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Linux/Display.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Linux/InputImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/InputImpl.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/InputImpl.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/JoystickImpl.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Err.hpp
@@ -137,7 +137,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/JoystickIm
  ../third-party/SFML-2.1/src/SFML/Window/Linux/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/OSX/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Win32/JoystickImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/JoystickImpl.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/JoystickImpl.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/VideoModeImpl.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Err.hpp
@@ -146,7 +146,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/VideoModeI
  ../third-party/SFML-2.1/include/SFML/Window/VideoMode.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Linux/Display.hpp
  ../third-party/SFML-2.1/src/SFML/Window/VideoModeImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/VideoModeImpl.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/VideoModeImpl.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/WindowImplX11.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Err.hpp
@@ -175,7 +175,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/WindowImpl
  ../third-party/SFML-2.1/src/SFML/Window/OSX/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Win32/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/WindowImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/WindowImplX11.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Linux/WindowImplX11.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Clock.hpp
@@ -198,13 +198,13 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Mouse.cpp.o
  ../third-party/SFML-2.1/src/SFML/Window/Linux/InputImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/OSX/InputImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Win32/InputImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Mouse.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Mouse.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/VideoMode.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Window/Export.hpp
  ../third-party/SFML-2.1/include/SFML/Window/VideoMode.hpp
  ../third-party/SFML-2.1/src/SFML/Window/VideoModeImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/VideoMode.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/VideoMode.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Window.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Clock.hpp
@@ -233,7 +233,7 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Window.cpp.o
  ../third-party/SFML-2.1/src/SFML/Window/OSX/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Win32/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/WindowImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/Window.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/Window.cpp
 third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowImpl.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Export.hpp
@@ -261,4 +261,4 @@ third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/WindowImpl.cpp.o
  ../third-party/SFML-2.1/src/SFML/Window/Win32/JoystickImpl.hpp
  ../third-party/SFML-2.1/src/SFML/Window/Win32/WindowImplWin32.hpp
  ../third-party/SFML-2.1/src/SFML/Window/WindowImpl.hpp
- /home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Window/WindowImpl.cpp
+ /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Window/WindowImpl.cpp

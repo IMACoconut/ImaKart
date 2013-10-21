@@ -1,8 +1,8 @@
 #include <Graphics/Shader.hpp>
 #include <Utility/LogManager.hpp>
-#include <Utility/File.hpp>
 #include <exception>
 #include <iostream>
+#include <fstream>
 
 namespace Graph {
 	Shader::Shader() :
@@ -20,7 +20,6 @@ namespace Graph {
 		
 		try {
 			std::ifstream file(src);
-			util::IFile f(file);
 			std::string data;
 			char c;
 			while(!file.eof()) {
@@ -35,12 +34,12 @@ namespace Graph {
 				m_fragment = glCreateShader(GL_FRAGMENT_SHADER);
 				glShaderSource(m_fragment, 1, &s, 0);
 			} else {
-				util::LogManager::error("Unknown ShaderType");
+				Util::LogManager::error("Unknown ShaderType");
 				return false;
 			}
 		return true;
 		} catch(const std::exception& e) {
-			util::LogManager::error(e.what());
+			Util::LogManager::error(e.what());
 			return false;
 		}
 
@@ -51,18 +50,44 @@ namespace Graph {
 	{
 		m_program = glCreateProgram();
 		glCompileShader(m_vertex);
-		glCompileShader(m_fragment);
+		GLint status;
+		glGetShaderiv(m_vertex, GL_COMPILE_STATUS, &status);
+		if(status != GL_TRUE)
+		{
+			Util::LogManager::error("Error while compiling vertex shader");
+			return false;
+		} else
+			m_vertexLoaded = true;
 
+		glCompileShader(m_fragment);
+		glGetShaderiv(m_vertex, GL_COMPILE_STATUS, &status);
+		if(status != GL_TRUE)
+		{
+			Util::LogManager::error("Error while compiling fragment shader");
+			return false;
+		} else
+			m_fragmentLoaded = true;
 		glAttachShader(m_program, m_vertex);
 		glAttachShader(m_program, m_fragment);
 		glLinkProgram(m_program);
+
+		glGetProgramiv(m_program, GL_LINK_STATUS, &status);
+		if(status != GL_TRUE)
+		{
+			Util::LogManager::error("Error while linking shader");
+			return false;
+		} else
+			m_programLoaded = true;
 
 		return true;
 	}
 
 	void Shader::bind()
 	{
-		glUseProgram(m_program);
+		if(!m_programLoaded)
+			Util::LogManager::error("Shader not compiled!");
+		else
+			glUseProgram(m_program);
 	}
 	void Shader::unbind()
 	{

@@ -8,7 +8,6 @@ template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o: ../template/Graphics/Mesh.
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/Graphics/Node.cpp
 
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.o: ../template/./Graphics/Shader.hpp
-template/CMakeFiles/template.dir/Graphics/Shader.cpp.o: ../template/./Utility/File.hpp
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.o: ../template/./Utility/LogManager.hpp
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.o: ../template/Graphics/Shader.cpp
 
@@ -21,6 +20,8 @@ template/CMakeFiles/template.dir/main.cpp.o: ../template/./Core/Vector3.inl
 template/CMakeFiles/template.dir/main.cpp.o: ../template/./Graphics/Shader.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../template/./Graphics/VAO.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../template/./Graphics/VBO.hpp
+template/CMakeFiles/template.dir/main.cpp.o: ../template/./Utility/LogManager.hpp
+template/CMakeFiles/template.dir/main.cpp.o: ../template/./Utility/Tools.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../third-party/SFML-2.1/include/SFML/Config.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/BlendMode.hpp

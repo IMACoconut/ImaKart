@@ -166,7 +166,7 @@ winsock2.h
 ws2tcpip.h
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Ftp.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Ftp.cpp
 SFML/Network/Ftp.hpp
 -
 SFML/Network/IpAddress.hpp
@@ -180,7 +180,7 @@ iterator
 sstream
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Http.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Http.cpp
 SFML/Network/Http.hpp
 -
 cctype
@@ -192,7 +192,7 @@ iterator
 sstream
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/IpAddress.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/IpAddress.cpp
 SFML/Network/IpAddress.hpp
 -
 SFML/Network/Http.hpp
@@ -202,7 +202,7 @@ SFML/Network/SocketImpl.hpp
 cstring
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Packet.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Packet.cpp
 SFML/Network/Packet.hpp
 -
 SFML/Network/SocketImpl.hpp
@@ -214,7 +214,7 @@ cstring
 cwchar
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Socket.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Socket.cpp
 SFML/Network/Socket.hpp
 -
 SFML/Network/SocketImpl.hpp
@@ -222,7 +222,7 @@ SFML/Network/SocketImpl.hpp
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/SocketSelector.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/SocketSelector.cpp
 SFML/Network/SocketSelector.hpp
 -
 SFML/Network/Socket.hpp
@@ -234,7 +234,7 @@ SFML/System/Err.hpp
 utility
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpListener.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpListener.cpp
 SFML/Network/TcpListener.hpp
 -
 SFML/Network/TcpSocket.hpp
@@ -244,7 +244,7 @@ SFML/Network/SocketImpl.hpp
 SFML/System/Err.hpp
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpSocket.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/TcpSocket.cpp
 SFML/Network/TcpSocket.hpp
 -
 SFML/Network/IpAddress.hpp
@@ -260,7 +260,7 @@ algorithm
 cstring
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/UdpSocket.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/UdpSocket.cpp
 SFML/Network/UdpSocket.hpp
 -
 SFML/Network/IpAddress.hpp
@@ -274,7 +274,7 @@ SFML/System/Err.hpp
 algorithm
 -
 
-/home/andre/Documents/Cours/2A/OpenGL/ImaKart/third-party/SFML-2.1/src/SFML/Network/Unix/SocketImpl.cpp
+/home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Network/Unix/SocketImpl.cpp
 SFML/Network/Unix/SocketImpl.hpp
 -
 errno.h

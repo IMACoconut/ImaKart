@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace util {
+namespace Util {
 	class LogManager {
 	public:
 		static void error(const std::string& msg);
