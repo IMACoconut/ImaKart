@@ -63,8 +63,6 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o: 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o: ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o: ../third-party/SFML-2.1/src/SFML/Graphics/Font.cpp
-third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o: /usr/local/include/freetype2/freetype/config/ftheader.h
-third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o: /usr/local/include/ft2build.h
 
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o: ../third-party/SFML-2.1/include/SFML/Config.hpp
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o: ../third-party/SFML-2.1/include/SFML/System/Err.hpp

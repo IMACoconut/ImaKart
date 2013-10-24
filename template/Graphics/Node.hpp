@@ -1,24 +1,33 @@
 #pragma once
 
-#include <Core/Vector3.hpp>
+#include <SFML/Graphics.hpp>
 
-namespace {
+namespace Graph {
 	class Node {
 	public:
-		Node();
+		Node(Node* parent = nullptr);
 		Node(const Node& other) = delete;
 		virtual ~Node();
 
-		void SetPosition(const core::Vector3d& position);
-		core::Vector3d GetPosition() const;
+		void addChild(Node* child);
+		void removeChild(Node* child);
 
-		void SetRotation(const core::Vector3d& rotation);
-		core::Vector3d GetRotation() const;
+		void setPosition(const sf::Vector3f& position);
+		sf::Vector3f getPosition() const;
 
-		void SetScale(const core::Vector3d& scale);
-		core::Vector3d GetScale() const;
+		void setRotation(const sf::Vector3f& rotation);
+		sf::Vector3f getRotation() const;
+
+		void setScale(const sf::Vector3f& scale);
+		sf::Vector3f getScale() const;
+
+		void render();
+
+		virtual void draw() = 0;
 
 	protected:
-		core::Vector3d position, rotation, scale;
+		sf::Vector3f position, rotation, scale;
+		Node* parent;
+		std::vector<Node*> children;
 	};
 }

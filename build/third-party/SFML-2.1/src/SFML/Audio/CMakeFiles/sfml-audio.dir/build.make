@@ -31,6 +31,9 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
+# Escaping for special characters.
+EQUALS = =
+
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
@@ -327,10 +330,10 @@ third-party/SFML-2.1/lib/libsfml-audio.so.2.1: third-party/SFML-2.1/src/SFML/Aud
 third-party/SFML-2.1/lib/libsfml-audio.so.2.1: third-party/SFML-2.1/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundRecorder.cpp.o
 third-party/SFML-2.1/lib/libsfml-audio.so.2.1: third-party/SFML-2.1/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundSource.cpp.o
 third-party/SFML-2.1/lib/libsfml-audio.so.2.1: third-party/SFML-2.1/src/SFML/Audio/CMakeFiles/sfml-audio.dir/SoundStream.cpp.o
-third-party/SFML-2.1/lib/libsfml-audio.so.2.1: third-party/SFML-2.1/lib/libsfml-system.so.2.1
-third-party/SFML-2.1/lib/libsfml-audio.so.2.1: /usr/lib/i386-linux-gnu/libopenal.so
-third-party/SFML-2.1/lib/libsfml-audio.so.2.1: /usr/lib/i386-linux-gnu/libsndfile.so
 third-party/SFML-2.1/lib/libsfml-audio.so.2.1: third-party/SFML-2.1/src/SFML/Audio/CMakeFiles/sfml-audio.dir/build.make
+third-party/SFML-2.1/lib/libsfml-audio.so.2.1: third-party/SFML-2.1/lib/libsfml-system.so.2.1
+third-party/SFML-2.1/lib/libsfml-audio.so.2.1: /usr/lib/x86_64-linux-gnu/libopenal.so
+third-party/SFML-2.1/lib/libsfml-audio.so.2.1: /usr/lib/x86_64-linux-gnu/libsndfile.so
 third-party/SFML-2.1/lib/libsfml-audio.so.2.1: third-party/SFML-2.1/src/SFML/Audio/CMakeFiles/sfml-audio.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library ../../../lib/libsfml-audio.so"
 	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Audio && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sfml-audio.dir/link.txt --verbose=$(VERBOSE)

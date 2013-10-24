@@ -1,12 +1,13 @@
-#include <Core/Vector3.hpp>
 #include <Graphics/Shader.hpp>
-#include <Graphics/VAO.hpp>
-#include <Graphics/VBO.hpp>
+#include <Graphics/Scene.hpp>
+#include <Graphics/Camera.hpp>
+#include <Graphics/Mesh.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
+#include <Core/Matrix4.hpp>
 #include <SFML/Graphics.hpp>
 
-#include <GL/glew.h>
+
 #include <iostream>
 #include <vector>
 
@@ -15,30 +16,9 @@ static const unsigned int FPS = 30;
 static const unsigned int WINDOW_WIDTH = 800;
 static const unsigned int WINDOW_HEIGHT = 600;
 
-struct Vertex2DRGB {
-	GLfloat x, y;
-	GLfloat r, g, b;
-
-	Vertex2DRGB(GLfloat x, GLfloat y, GLfloat r, GLfloat g, GLfloat b):
-		x(x), y(y), r(r), g(g), b(b) {
-	}
-};
-
-std::vector<Vertex2DRGB> square() {
-	std::vector<Vertex2DRGB> v;
-
-	v.push_back(Vertex2DRGB(-.5,-.5,1,1,1));
-	v.push_back(Vertex2DRGB(-.5,.5,1,1,1));
-	v.push_back(Vertex2DRGB(.5,.5,1,1,1));
-
-	v.push_back(Vertex2DRGB(-.5,-.5,1,1,1));
-	v.push_back(Vertex2DRGB(.5,-.5,1,1,1));
-	v.push_back(Vertex2DRGB(.5,.5,1,1,1));
-	return v;
-}
 
 int main(void) {
-	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
 	window.setFramerateLimit(FPS);
 
 	GLenum glewCode = glewInit();
@@ -55,31 +35,31 @@ int main(void) {
 	}
 	glClearColor(0,0,0,0);
 	
-	Graph::VBO posVBO;
-	posVBO.bind();
-	auto v = square();
-	glBufferData(GL_ARRAY_BUFFER, v.size()*sizeof(Vertex2DRGB), v.data(), GL_STATIC_DRAW);
-	posVBO.unbind();
-
-	Graph::VAO vao;
-	vao.bind();
-	glEnableVertexAttribArray(0);
-	glEnableVertexAttribArray(1);
-	posVBO.bind();
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_TRUE, sizeof(Vertex2DRGB), (const GLvoid*) (0 * sizeof(GLfloat)));
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_TRUE, sizeof(Vertex2DRGB), (const GLvoid*) (2 * sizeof(GLfloat)));
-	posVBO.unbind();
-	vao.unbind();
+	Graph::Mesh mesh;
+	Graph::VertexBuffer buff;
+	buff.addVertex(Graph::Vertex3D(sf::Vector3f(0,0,0), sf::Vector3f(0,0,0), sf::Vector2f(0,0), sf::Color(255,0,0,255)));
+	buff.addVertex(Graph::Vertex3D(sf::Vector3f(1,0,0), sf::Vector3f(0,0,0), sf::Vector2f(0,0), sf::Color(0,255,0,255)));
+	buff.addVertex(Graph::Vertex3D(sf::Vector3f(1,1,0), sf::Vector3f(0,0,0), sf::Vector2f(0,0), sf::Color(0,0,255,255)));
+	buff.addVertex(Graph::Vertex3D(sf::Vector3f(-1,1,0), sf::Vector3f(0,0,0), sf::Vector2f(0,0), sf::Color(0,0,255,255)));
+	buff.addTriangle(sf::Vector3ui(0,1,2));
+	buff.addTriangle(sf::Vector3ui(0,2,3));
+	if(!mesh.loadFromMemory(buff))
+	{
+		std::cerr << "Error" << std::endl;
+	}
+	/*if(!mesh.loadFromFile("resources/models/cube.3DS")) {
+		std::cerr << "Error" << std::endl;
+	}*/
+	
 	s.bind();
+	Graph::Scene scene;
+	Graph::Camera cam;
+	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
+	scene.setCamera(&cam);
+
 	Util::LogManager::notice("Running");
 	while(window.isOpen()) {
-		// Rendering code goes here
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		// Application code goes here
-
-		vao.bind();
-		glDrawArrays(GL_TRIANGLES, 0, v.size());
-		vao.unbind();
+		
 
 		sf::Event e;
 		while(window.pollEvent(e)) {
@@ -92,6 +72,22 @@ int main(void) {
 			}
 		}
 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+			cam.move(sf::Vector3f(-1,0,0));
+		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+			cam.move(sf::Vector3f(1,0,0));
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+			cam.move(sf::Vector3f(0,1,0));
+		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			cam.move(sf::Vector3f(0,-1,0));
+
+		// Rendering code goes here
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		// Application code goes here
+		scene.render();
+		mesh.render();
+		
 		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
 		window.display();
 	}

@@ -35,6 +35,9 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
+# Escaping for special characters.
+EQUALS = =
+
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
@@ -136,44 +139,6 @@ depend:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-lib/CMakeFiles/glimac.dir/rule:
-	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/glimac.dir/rule
-.PHONY : lib/CMakeFiles/glimac.dir/rule
-
-# Convenience name for target.
-glimac: lib/CMakeFiles/glimac.dir/rule
-.PHONY : glimac
-
-# fast build rule for target.
-glimac/fast:
-	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/build
-.PHONY : glimac/fast
-
-src/hello.o: src/hello.cpp.o
-.PHONY : src/hello.o
-
-# target to build an object file
-src/hello.cpp.o:
-	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/src/hello.cpp.o
-.PHONY : src/hello.cpp.o
-
-src/hello.i: src/hello.cpp.i
-.PHONY : src/hello.i
-
-# target to preprocess a source file
-src/hello.cpp.i:
-	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/src/hello.cpp.i
-.PHONY : src/hello.cpp.i
-
-src/hello.s: src/hello.cpp.s
-.PHONY : src/hello.s
-
-# target to generate assembly for a file
-src/hello.cpp.s:
-	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/src/hello.cpp.s
-.PHONY : src/hello.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -181,15 +146,11 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... glimac"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... src/hello.o"
-	@echo "... src/hello.i"
-	@echo "... src/hello.s"
 .PHONY : help
 
 

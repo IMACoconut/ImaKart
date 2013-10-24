@@ -35,6 +35,7 @@ ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   INCLUDE("/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/cmake_install.cmake")
+  INCLUDE("/home/andre/Documents/Projects/ImaKart/build/third-party/glew-1.10.0/cmake_install.cmake")
   INCLUDE("/home/andre/Documents/Projects/ImaKart/build/lib/cmake_install.cmake")
   INCLUDE("/home/andre/Documents/Projects/ImaKart/build/template/cmake_install.cmake")
 

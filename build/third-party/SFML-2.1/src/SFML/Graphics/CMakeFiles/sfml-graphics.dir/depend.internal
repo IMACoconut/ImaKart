@@ -64,8 +64,6 @@ third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/Font.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/GlResource.hpp
  ../third-party/SFML-2.1/src/SFML/Graphics/GLCheck.hpp
  /home/andre/Documents/Projects/ImaKart/third-party/SFML-2.1/src/SFML/Graphics/Font.cpp
- /usr/local/include/freetype2/freetype/config/ftheader.h
- /usr/local/include/ft2build.h
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/GLCheck.cpp.o
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/System/Err.hpp

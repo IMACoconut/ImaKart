@@ -24,6 +24,8 @@ namespace Graph {
 			void bind();
 			void unbind();
 
+			GLuint getProgram() const;
+
 		private:
 			GLuint m_vertex, m_fragment, m_program;
 			bool m_vertexLoaded, m_fragmentLoaded, m_programLoaded;

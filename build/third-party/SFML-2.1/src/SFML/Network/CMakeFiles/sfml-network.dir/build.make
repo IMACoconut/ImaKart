@@ -31,6 +31,9 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
+# Escaping for special characters.
+EQUALS = =
+
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
@@ -302,8 +305,8 @@ third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/src/SFML/N
 third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/TcpSocket.cpp.o
 third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/UdpSocket.cpp.o
 third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/Unix/SocketImpl.cpp.o
-third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/lib/libsfml-system.so.2.1
 third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/build.make
+third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/lib/libsfml-system.so.2.1
 third-party/SFML-2.1/lib/libsfml-network.so.2.1: third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library ../../../lib/libsfml-network.so"
 	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sfml-network.dir/link.txt --verbose=$(VERBOSE)

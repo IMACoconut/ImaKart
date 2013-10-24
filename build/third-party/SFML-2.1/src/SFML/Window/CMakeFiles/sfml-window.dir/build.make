@@ -31,6 +31,9 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
+# Escaping for special characters.
+EQUALS = =
+
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
@@ -452,11 +455,11 @@ third-party/SFML-2.1/lib/libsfml-window.so.2.1: third-party/SFML-2.1/src/SFML/Wi
 third-party/SFML-2.1/lib/libsfml-window.so.2.1: third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/JoystickImpl.cpp.o
 third-party/SFML-2.1/lib/libsfml-window.so.2.1: third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/VideoModeImpl.cpp.o
 third-party/SFML-2.1/lib/libsfml-window.so.2.1: third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/Linux/WindowImplX11.cpp.o
-third-party/SFML-2.1/lib/libsfml-window.so.2.1: third-party/SFML-2.1/lib/libsfml-system.so.2.1
-third-party/SFML-2.1/lib/libsfml-window.so.2.1: /usr/lib/i386-linux-gnu/libGL.so
-third-party/SFML-2.1/lib/libsfml-window.so.2.1: /usr/lib/i386-linux-gnu/libX11.so
-third-party/SFML-2.1/lib/libsfml-window.so.2.1: /usr/lib/i386-linux-gnu/libXrandr.so
 third-party/SFML-2.1/lib/libsfml-window.so.2.1: third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/build.make
+third-party/SFML-2.1/lib/libsfml-window.so.2.1: third-party/SFML-2.1/lib/libsfml-system.so.2.1
+third-party/SFML-2.1/lib/libsfml-window.so.2.1: /usr/lib/x86_64-linux-gnu/libGL.so
+third-party/SFML-2.1/lib/libsfml-window.so.2.1: /usr/lib/x86_64-linux-gnu/libX11.so
+third-party/SFML-2.1/lib/libsfml-window.so.2.1: /usr/lib/x86_64-linux-gnu/libXrandr.so
 third-party/SFML-2.1/lib/libsfml-window.so.2.1: third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX shared library ../../../lib/libsfml-window.so"
 	cd /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Window && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sfml-window.dir/link.txt --verbose=$(VERBOSE)

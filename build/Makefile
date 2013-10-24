@@ -35,6 +35,9 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
+# Escaping for special characters.
+EQUALS = =
+
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
@@ -202,17 +205,17 @@ sfml-audio/fast:
 .PHONY : sfml-audio/fast
 
 #=============================================================================
-# Target rules for targets named glimac
+# Target rules for targets named glew
 
 # Build rule for target.
-glimac: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 glimac
-.PHONY : glimac
+glew: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 glew
+.PHONY : glew
 
 # fast build rule for target.
-glimac/fast:
-	$(MAKE) -f lib/CMakeFiles/glimac.dir/build.make lib/CMakeFiles/glimac.dir/build
-.PHONY : glimac/fast
+glew/fast:
+	$(MAKE) -f third-party/glew-1.10.0/CMakeFiles/glew.dir/build.make third-party/glew-1.10.0/CMakeFiles/glew.dir/build
+.PHONY : glew/fast
 
 #=============================================================================
 # Target rules for targets named template
@@ -244,7 +247,7 @@ help:
 	@echo "... sfml-network"
 	@echo "... sfml-graphics"
 	@echo "... sfml-audio"
-	@echo "... glimac"
+	@echo "... glew"
 	@echo "... template"
 .PHONY : help
 

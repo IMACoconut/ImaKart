@@ -35,6 +35,9 @@ CMAKE_COMMAND = /usr/bin/cmake
 # The command to remove a file.
 RM = /usr/bin/cmake -E remove -f
 
+# Escaping for special characters.
+EQUALS = =
+
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/andre/Documents/Projects/ImaKart
 
@@ -150,6 +153,54 @@ template/fast:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/build
 .PHONY : template/fast
 
+Core/Math.o: Core/Math.cpp.o
+.PHONY : Core/Math.o
+
+# target to build an object file
+Core/Math.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Core/Math.cpp.o
+.PHONY : Core/Math.cpp.o
+
+Core/Math.i: Core/Math.cpp.i
+.PHONY : Core/Math.i
+
+# target to preprocess a source file
+Core/Math.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Core/Math.cpp.i
+.PHONY : Core/Math.cpp.i
+
+Core/Math.s: Core/Math.cpp.s
+.PHONY : Core/Math.s
+
+# target to generate assembly for a file
+Core/Math.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Core/Math.cpp.s
+.PHONY : Core/Math.cpp.s
+
+Graphics/Camera.o: Graphics/Camera.cpp.o
+.PHONY : Graphics/Camera.o
+
+# target to build an object file
+Graphics/Camera.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Camera.cpp.o
+.PHONY : Graphics/Camera.cpp.o
+
+Graphics/Camera.i: Graphics/Camera.cpp.i
+.PHONY : Graphics/Camera.i
+
+# target to preprocess a source file
+Graphics/Camera.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Camera.cpp.i
+.PHONY : Graphics/Camera.cpp.i
+
+Graphics/Camera.s: Graphics/Camera.cpp.s
+.PHONY : Graphics/Camera.s
+
+# target to generate assembly for a file
+Graphics/Camera.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Camera.cpp.s
+.PHONY : Graphics/Camera.cpp.s
+
 Graphics/Heightmap.o: Graphics/Heightmap.cpp.o
 .PHONY : Graphics/Heightmap.o
 
@@ -198,6 +249,30 @@ Graphics/Mesh.cpp.s:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Mesh.cpp.s
 .PHONY : Graphics/Mesh.cpp.s
 
+Graphics/MeshLoader.o: Graphics/MeshLoader.cpp.o
+.PHONY : Graphics/MeshLoader.o
+
+# target to build an object file
+Graphics/MeshLoader.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/MeshLoader.cpp.o
+.PHONY : Graphics/MeshLoader.cpp.o
+
+Graphics/MeshLoader.i: Graphics/MeshLoader.cpp.i
+.PHONY : Graphics/MeshLoader.i
+
+# target to preprocess a source file
+Graphics/MeshLoader.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/MeshLoader.cpp.i
+.PHONY : Graphics/MeshLoader.cpp.i
+
+Graphics/MeshLoader.s: Graphics/MeshLoader.cpp.s
+.PHONY : Graphics/MeshLoader.s
+
+# target to generate assembly for a file
+Graphics/MeshLoader.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/MeshLoader.cpp.s
+.PHONY : Graphics/MeshLoader.cpp.s
+
 Graphics/Node.o: Graphics/Node.cpp.o
 .PHONY : Graphics/Node.o
 
@@ -221,6 +296,30 @@ Graphics/Node.s: Graphics/Node.cpp.s
 Graphics/Node.cpp.s:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Node.cpp.s
 .PHONY : Graphics/Node.cpp.s
+
+Graphics/Render.o: Graphics/Render.cpp.o
+.PHONY : Graphics/Render.o
+
+# target to build an object file
+Graphics/Render.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Render.cpp.o
+.PHONY : Graphics/Render.cpp.o
+
+Graphics/Render.i: Graphics/Render.cpp.i
+.PHONY : Graphics/Render.i
+
+# target to preprocess a source file
+Graphics/Render.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Render.cpp.i
+.PHONY : Graphics/Render.cpp.i
+
+Graphics/Render.s: Graphics/Render.cpp.s
+.PHONY : Graphics/Render.s
+
+# target to generate assembly for a file
+Graphics/Render.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Render.cpp.s
+.PHONY : Graphics/Render.cpp.s
 
 Graphics/Shader.o: Graphics/Shader.cpp.o
 .PHONY : Graphics/Shader.o
@@ -307,15 +406,27 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... template"
+	@echo "... Core/Math.o"
+	@echo "... Core/Math.i"
+	@echo "... Core/Math.s"
+	@echo "... Graphics/Camera.o"
+	@echo "... Graphics/Camera.i"
+	@echo "... Graphics/Camera.s"
 	@echo "... Graphics/Heightmap.o"
 	@echo "... Graphics/Heightmap.i"
 	@echo "... Graphics/Heightmap.s"
 	@echo "... Graphics/Mesh.o"
 	@echo "... Graphics/Mesh.i"
 	@echo "... Graphics/Mesh.s"
+	@echo "... Graphics/MeshLoader.o"
+	@echo "... Graphics/MeshLoader.i"
+	@echo "... Graphics/MeshLoader.s"
 	@echo "... Graphics/Node.o"
 	@echo "... Graphics/Node.i"
 	@echo "... Graphics/Node.s"
+	@echo "... Graphics/Render.o"
+	@echo "... Graphics/Render.i"
+	@echo "... Graphics/Render.s"
 	@echo "... Graphics/Shader.o"
 	@echo "... Graphics/Shader.i"
 	@echo "... Graphics/Shader.s"

@@ -690,9 +690,3 @@ SFML/Graphics/View.hpp
 cmath
 -
 
-/usr/local/include/freetype2/freetype/config/ftheader.h
-
-/usr/local/include/ft2build.h
-freetype/config/ftheader.h
--
-

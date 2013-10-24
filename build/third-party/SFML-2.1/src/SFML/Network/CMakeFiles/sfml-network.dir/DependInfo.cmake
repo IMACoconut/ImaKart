@@ -28,3 +28,12 @@ SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
 SET(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/DependInfo.cmake"
   )
+
+# The include file search paths:
+SET(CMAKE_C_TARGET_INCLUDE_PATH
+  "../third-party/SFML-2.1/include"
+  "../third-party/SFML-2.1/src"
+  )
+SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
+SET(CMAKE_ASM_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

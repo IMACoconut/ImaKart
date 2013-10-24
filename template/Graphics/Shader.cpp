@@ -1,4 +1,5 @@
 #include <Graphics/Shader.hpp>
+#include <Graphics/Render.hpp>
 #include <Utility/LogManager.hpp>
 #include <exception>
 #include <iostream>
@@ -82,12 +83,19 @@ namespace Graph {
 		return true;
 	}
 
+	GLuint Shader::getProgram() const
+	{
+		return m_program;
+	}
+
 	void Shader::bind()
 	{
 		if(!m_programLoaded)
 			Util::LogManager::error("Shader not compiled!");
-		else
+		else {
 			glUseProgram(m_program);
+			Render::setShader(this);
+		}
 	}
 	void Shader::unbind()
 	{
