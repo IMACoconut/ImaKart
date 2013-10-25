@@ -54,38 +54,16 @@ namespace Graph {
 
 	void Camera::rotate(float horizontal, float vertical) {
 		m_horizontalAngle -= horizontal*0.01f;
-
-		/*if(m_horizontalAngle > 180.f)
-			m_horizontalAngle -= 360.f;
-		else if(m_horizontalAngle < -180.f)
-			m_horizontalAngle += 360.f;
-	*/
 		m_verticalAngle -= vertical*0.01f;
-	/*	if(m_verticalAngle > 89.f)
-			m_verticalAngle = 89.f;
-		else if(m_verticalAngle < -89.f)
-			m_verticalAngle = -89.f;*/
-
-		//std::cout << horizontal*0.0001f << " " << vertical*0.0001f << std::endl << m_horizontalAngle << " " << m_verticalAngle << std::endl;
+		
 		glm::mat4 rot;
 		rot = glm::rotate(rot, m_horizontalAngle, m_up);
 		rot = glm::rotate(rot, m_verticalAngle, m_left);
 		m_forward = glm::vec3(rot*glm::vec4(m_forward, 1.f));
 		m_left = glm::vec3(rot*glm::vec4(m_left, 1.f));
-		//std::cout << m_forward.x << " " << m_forward.y << " " << m_forward.z << std::endl;
+
 		m_viewDirty = true;
-		//m_left = glm::vec3(rot*glm::vec4(m_left, 0.f));
-		//m_forward = glm::vec3(rot*glm::vec4(m_forward, 0.f));
-		/*auto tmp = rot*glm::vec4(m_forward,0);
-		m_forward = glm::vec3(tmp.x, tmp.y, tmp.z);
-		tmp = rot*glm::vec4(m_left,0);
-		m_left = glm::vec3(tmp,0);
-		rot = glm::rotate(id, m_verticalAngle, m_left); 
-		tmp = rot*glm::vec4(m_forward,0);
-		m_forward = glm::vec3(tmp.x, tmp.y, tmp.z);*/
-		//m_forward = fromGLM(glm::rotate_vector::rotateY(m_forward, m_horizontalAngle)));
-		//m_left = fromGLM(glm::rotate_vector::rotateY(m_left, m_horizontalAngle));
-		//m_forward = fromGLM(glm::rotate_vector::rotate(m_forward, m_verticalAngle, m_left));
+
 	}
 
 	glm::vec3 Camera::forward() {

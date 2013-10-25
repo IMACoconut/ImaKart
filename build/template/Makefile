@@ -153,30 +153,6 @@ template/fast:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/build
 .PHONY : template/fast
 
-Core/Math.o: Core/Math.cpp.o
-.PHONY : Core/Math.o
-
-# target to build an object file
-Core/Math.cpp.o:
-	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Core/Math.cpp.o
-.PHONY : Core/Math.cpp.o
-
-Core/Math.i: Core/Math.cpp.i
-.PHONY : Core/Math.i
-
-# target to preprocess a source file
-Core/Math.cpp.i:
-	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Core/Math.cpp.i
-.PHONY : Core/Math.cpp.i
-
-Core/Math.s: Core/Math.cpp.s
-.PHONY : Core/Math.s
-
-# target to generate assembly for a file
-Core/Math.cpp.s:
-	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Core/Math.cpp.s
-.PHONY : Core/Math.cpp.s
-
 Graphics/Camera.o: Graphics/Camera.cpp.o
 .PHONY : Graphics/Camera.o
 
@@ -248,6 +224,30 @@ Graphics/Mesh.s: Graphics/Mesh.cpp.s
 Graphics/Mesh.cpp.s:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Mesh.cpp.s
 .PHONY : Graphics/Mesh.cpp.s
+
+Graphics/MeshBuffer.o: Graphics/MeshBuffer.cpp.o
+.PHONY : Graphics/MeshBuffer.o
+
+# target to build an object file
+Graphics/MeshBuffer.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/MeshBuffer.cpp.o
+.PHONY : Graphics/MeshBuffer.cpp.o
+
+Graphics/MeshBuffer.i: Graphics/MeshBuffer.cpp.i
+.PHONY : Graphics/MeshBuffer.i
+
+# target to preprocess a source file
+Graphics/MeshBuffer.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/MeshBuffer.cpp.i
+.PHONY : Graphics/MeshBuffer.cpp.i
+
+Graphics/MeshBuffer.s: Graphics/MeshBuffer.cpp.s
+.PHONY : Graphics/MeshBuffer.s
+
+# target to generate assembly for a file
+Graphics/MeshBuffer.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/MeshBuffer.cpp.s
+.PHONY : Graphics/MeshBuffer.cpp.s
 
 Graphics/MeshLoader.o: Graphics/MeshLoader.cpp.o
 .PHONY : Graphics/MeshLoader.o
@@ -406,9 +406,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... template"
-	@echo "... Core/Math.o"
-	@echo "... Core/Math.i"
-	@echo "... Core/Math.s"
 	@echo "... Graphics/Camera.o"
 	@echo "... Graphics/Camera.i"
 	@echo "... Graphics/Camera.s"
@@ -418,6 +415,9 @@ help:
 	@echo "... Graphics/Mesh.o"
 	@echo "... Graphics/Mesh.i"
 	@echo "... Graphics/Mesh.s"
+	@echo "... Graphics/MeshBuffer.o"
+	@echo "... Graphics/MeshBuffer.i"
+	@echo "... Graphics/MeshBuffer.s"
 	@echo "... Graphics/MeshLoader.o"
 	@echo "... Graphics/MeshLoader.i"
 	@echo "... Graphics/MeshLoader.s"

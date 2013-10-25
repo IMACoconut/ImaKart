@@ -1,6 +1,7 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
+#include <glm/glm.hpp>
+#include <vector>
 
 namespace Graph {
 	class Node {
@@ -12,22 +13,26 @@ namespace Graph {
 		void addChild(Node* child);
 		void removeChild(Node* child);
 
-		void setPosition(const sf::Vector3f& position);
-		sf::Vector3f getPosition() const;
+		void setPosition(const glm::vec3& position);
+		glm::vec3 getPosition() const;
 
-		void setRotation(const sf::Vector3f& rotation);
-		sf::Vector3f getRotation() const;
+		void setRotation(const glm::vec3& rotation);
+		glm::vec3 getRotation() const;
 
-		void setScale(const sf::Vector3f& scale);
-		sf::Vector3f getScale() const;
+		void setScale(const glm::vec3& scale);
+		glm::vec3 getScale() const;
 
 		void render();
 
 		virtual void draw() = 0;
 
 	protected:
-		sf::Vector3f position, rotation, scale;
+		void updateModelMatrix();
+
+		glm::vec3 position, rotation, scale;
 		Node* parent;
 		std::vector<Node*> children;
+		glm::mat4 modelMatrix;
+		bool modelDirty;
 	};
 }

@@ -5,9 +5,10 @@ layout(location = 2) in vec2 uv;
 layout(location = 3) in vec4 color;
 uniform mat4 viewMatrix;
 uniform mat4 projMatrix;
+uniform mat4 modelMatrix;
 
 out vec4 outColor;
 void main() {
-	gl_Position = projMatrix*viewMatrix*vec4(position, 1.f);
+	gl_Position = projMatrix*viewMatrix*modelMatrix*vec4(position, 1.f);
 	outColor = color;
 }

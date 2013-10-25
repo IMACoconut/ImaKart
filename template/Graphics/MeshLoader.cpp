@@ -1,5 +1,6 @@
 #include <Graphics/MeshLoader.hpp>
 #include <Graphics/Mesh.hpp>
+#include <Graphics/MeshBuffer.hpp>
 #include <fstream>
 #include <iostream>
 
@@ -18,9 +19,7 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 	int filelength = file.tellg();
 	file.seekg(0, std::ios_base::beg);
 
-	Mesh* mesh = new Mesh(parent);
-	Mesh* curr = 0;
-	VertexBuffer* buff = nullptr;
+	VertexBuffer buff;
 	while(!file.eof() && file.tellg() < filelength) {
 
 		file.read((char*)&id, sizeof(unsigned short));
@@ -42,9 +41,8 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					if(c == '\0')
 						break;
 				}
-				curr = new Mesh(parent);
-				buff = curr->getMeshBuffer(0);
-				mesh->addChild(curr);
+				parent->loadFromMemory(buff);
+				buff.clear();
 				std::cerr << "object block " << std::dec << name << std::endl;
 				break;
 			case 0x4100:
@@ -60,8 +58,8 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					file.read((char*)&y, sizeof(float));
 					file.read((char*)&z, sizeof(float));
 					auto vert = glm::vec3(x,y,z);
-					buff->addVertex(Vertex3D(vert));
-					//std::cerr << "vert: " << x << "," << y << "," << z << std::endl;
+					buff.addVertex(Vertex3D(vert));
+					std::cerr << "vert: " << x << "," << y << "," << z << std::endl;
 				}
 				break;
 			case 0x4120:
@@ -76,8 +74,8 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					file.read((char*)&c, sizeof(unsigned short));
 					file.read((char*)&f, sizeof(unsigned short));
 					auto face = sf::Vector3i(a,b,c);
-					buff->addTriangle(face);
-					//std::cerr << "poly: " << a << "," << b << "," << c << " flag: " << f << std::endl;
+					buff.addTriangle(face);
+					std::cerr << "poly: " << a << "," << b << "," << c << " flag: " << f << std::endl;
 				}
 
 			break;
@@ -92,7 +90,7 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					file.read((char*)&v, sizeof(float));
 					//std::cerr << "coord: " << u << "," << v << std::endl;
 					auto tex = glm::vec2(u,v);
-					buff->getVertex(i).uv = tex;
+					buff.getVertex(i).uv = tex;
 				}
 			break;
 			default:

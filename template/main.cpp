@@ -1,10 +1,9 @@
 #include <Graphics/Shader.hpp>
 #include <Graphics/Scene.hpp>
 #include <Graphics/Camera.hpp>
-#include <Graphics/Mesh.hpp>
+#include <Graphics/Heightmap.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
-#include <Core/Matrix4.hpp>
 #include <SFML/Graphics.hpp>
 
 
@@ -35,8 +34,8 @@ int main(void) {
 	}
 	glClearColor(0,0,0,0);
 	
-	Graph::Mesh mesh;
-	Graph::VertexBuffer buff;
+	//Graph::Mesh mesh;
+	/*Graph::VertexBuffer buff;
 	buff.addVertex(Graph::Vertex3D(glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
 	buff.addVertex(Graph::Vertex3D(glm::vec3(1,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,255,0,255)));
 	buff.addVertex(Graph::Vertex3D(glm::vec3(1,1,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,255,255)));
@@ -46,10 +45,17 @@ int main(void) {
 	if(!mesh.loadFromMemory(buff))
 	{
 		std::cerr << "Error" << std::endl;
-	}
+	}*/
+	
 	/*if(!mesh.loadFromFile("resources/models/cube.3DS")) {
 		std::cerr << "Error" << std::endl;
-	}*/
+	}
+	mesh.setScale(glm::vec3(2,10,1));
+	mesh.setRotation(glm::vec3(45,45,0));*/
+	Graph::Heightmap mesh;
+	if(!mesh.loadFromFile("resources/images/heightmap.png")) {
+		std::cerr << "Error" << std::endl;
+	}
 	
 	s.bind();
 	Graph::Scene scene;
@@ -78,6 +84,14 @@ int main(void) {
 					old_x = e.mouseMove.x;
 					old_y = e.mouseMove.y;
 					break;
+				case sf::Event::KeyPressed:
+					switch(e.key.code) {
+						case sf::Keyboard::Key::Escape:
+							window.close();
+							break;
+						default:
+							break;
+					}
 				default:
 					break;
 			}

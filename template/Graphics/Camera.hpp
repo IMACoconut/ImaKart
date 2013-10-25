@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Graphics/Node.hpp>
-#include <Core/Math.hpp>
+#include <glm/glm.hpp>
 
 namespace Graph {
 	class Camera : public Node {

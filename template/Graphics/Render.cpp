@@ -5,6 +5,7 @@
 namespace Graph {
 	glm::mat4 Render::projMatrix = glm::mat4();
 	glm::mat4 Render::viewMatrix = glm::mat4();
+	glm::mat4 Render::modelMatrix = glm::mat4();
 	Shader* Render::shader = nullptr;
 	bool Render::shaderChanged = false;
 
@@ -15,6 +16,7 @@ namespace Graph {
 		shader = s;
 		setMatrix(ProjectionMatrix, projMatrix);
 		setMatrix(ViewMatrix, viewMatrix);
+		setMatrix(ModelMatrix, modelMatrix);
 	}
 
 
@@ -32,10 +34,14 @@ namespace Graph {
 			case ViewMatrix:
 				loc = glGetUniformLocation(shaderProgram, "viewMatrix");
 				viewMatrix = mat;
-				break;	
+				break;
+			case ModelMatrix:
+				loc = glGetUniformLocation(shaderProgram, "modelMatrix");
+				modelMatrix = mat;
+				break;
 		}
 
-		if(loc != -1) { 
+		if(loc != -1) {
 			glUniformMatrix4fv(loc, 1, GL_FALSE, (const GLfloat*)&mat);
 		}
 	}

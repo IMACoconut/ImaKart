@@ -6,11 +6,11 @@
 namespace Graph {
 	class Heightmap : public Mesh {
 	public:
-		Heightmap();
-		~Heightmap();
+		Heightmap()= default;
+		virtual ~Heightmap();
 
 		bool loadFromFile(const std::string& image);
 	protected:
-		sf::Image height;
+		sf::Image heightmap;
 	};
 }

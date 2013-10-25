@@ -10,7 +10,8 @@ namespace Graph {
 	public:
 		typedef enum {
 			ProjectionMatrix,
-			ViewMatrix
+			ViewMatrix,
+			ModelMatrix
 		} MatrixType;
 
 		static void setShader(Shader* shader);
@@ -18,6 +19,7 @@ namespace Graph {
 
 		static glm::mat4 projMatrix;
 		static glm::mat4 viewMatrix;
+		static glm::mat4 modelMatrix;
 		static Shader* shader;
 		static bool shaderChanged;
 	};

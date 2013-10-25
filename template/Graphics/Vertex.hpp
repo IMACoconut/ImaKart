@@ -24,6 +24,10 @@ namespace Graph {
 	public:
 		VertexBuffer() = default;
 
+		void clear() {
+			m_vertices.clear();
+			m_indices.clear();
+		}
 		void addVertex(const Vertex3D& v) { 
 			m_vertices.push_back(v); 
 		}
