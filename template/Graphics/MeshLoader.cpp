@@ -59,7 +59,7 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					file.read((char*)&x, sizeof(float));
 					file.read((char*)&y, sizeof(float));
 					file.read((char*)&z, sizeof(float));
-					auto vert = sf::Vector3f(x,y,z);
+					auto vert = glm::vec3(x,y,z);
 					buff->addVertex(Vertex3D(vert));
 					//std::cerr << "vert: " << x << "," << y << "," << z << std::endl;
 				}
@@ -75,7 +75,7 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					file.read((char*)&b, sizeof(unsigned short));
 					file.read((char*)&c, sizeof(unsigned short));
 					file.read((char*)&f, sizeof(unsigned short));
-					auto face = sf::Vector3ui(a,b,c);
+					auto face = sf::Vector3i(a,b,c);
 					buff->addTriangle(face);
 					//std::cerr << "poly: " << a << "," << b << "," << c << " flag: " << f << std::endl;
 				}
@@ -91,7 +91,7 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					file.read((char*)&u, sizeof(float));
 					file.read((char*)&v, sizeof(float));
 					//std::cerr << "coord: " << u << "," << v << std::endl;
-					auto tex = sf::Vector2f(u,v);
+					auto tex = glm::vec2(u,v);
 					buff->getVertex(i).uv = tex;
 				}
 			break;

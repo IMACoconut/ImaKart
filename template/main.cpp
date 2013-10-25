@@ -18,7 +18,7 @@ static const unsigned int WINDOW_HEIGHT = 600;
 
 
 int main(void) {
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
+	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
 	window.setFramerateLimit(FPS);
 
 	GLenum glewCode = glewInit();
@@ -37,12 +37,12 @@ int main(void) {
 	
 	Graph::Mesh mesh;
 	Graph::VertexBuffer buff;
-	buff.addVertex(Graph::Vertex3D(sf::Vector3f(0,0,0), sf::Vector3f(0,0,0), sf::Vector2f(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(sf::Vector3f(1,0,0), sf::Vector3f(0,0,0), sf::Vector2f(0,0), sf::Color(0,255,0,255)));
-	buff.addVertex(Graph::Vertex3D(sf::Vector3f(1,1,0), sf::Vector3f(0,0,0), sf::Vector2f(0,0), sf::Color(0,0,255,255)));
-	buff.addVertex(Graph::Vertex3D(sf::Vector3f(-1,1,0), sf::Vector3f(0,0,0), sf::Vector2f(0,0), sf::Color(0,0,255,255)));
-	buff.addTriangle(sf::Vector3ui(0,1,2));
-	buff.addTriangle(sf::Vector3ui(0,2,3));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(1,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,255,0,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(1,1,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,255,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(-1,1,1), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,255,255)));
+	buff.addTriangle(sf::Vector3i(0,1,2));
+	buff.addTriangle(sf::Vector3i(0,2,3));
 	if(!mesh.loadFromMemory(buff))
 	{
 		std::cerr << "Error" << std::endl;
@@ -57,6 +57,11 @@ int main(void) {
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
 	scene.setCamera(&cam);
 
+	int old_x = WINDOW_WIDTH/2;
+	int old_y = WINDOW_HEIGHT/2;
+
+	window.setMouseCursorVisible(false);
+
 	Util::LogManager::notice("Running");
 	while(window.isOpen()) {
 		
@@ -64,24 +69,31 @@ int main(void) {
 		sf::Event e;
 		while(window.pollEvent(e)) {
 			switch(e.type) {
-				default:
-					break;
+				
 				case sf::Event::Closed:
 					window.close();
+					break;
+				case sf::Event::MouseMoved:
+					cam.rotate(e.mouseMove.x - old_x,old_y-e.mouseMove.y);
+					old_x = e.mouseMove.x;
+					old_y = e.mouseMove.y;
+					break;
+				default:
 					break;
 			}
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			cam.move(sf::Vector3f(-1,0,0));
+			cam.move(cam.left());
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			cam.move(sf::Vector3f(1,0,0));
+			cam.move(cam.right());
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			cam.move(sf::Vector3f(0,1,0));
+			cam.move(cam.forward());
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-			cam.move(sf::Vector3f(0,-1,0));
+			cam.move(cam.backward());
 
+		sf::Mouse::setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2), window);
 		// Rendering code goes here
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here

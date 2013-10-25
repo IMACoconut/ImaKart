@@ -14,7 +14,15 @@ namespace Graph {
 
 		void draw();
 
-		void move(const sf::Vector3f& m);
+		void move(const glm::vec3& m);
+		void rotate(float horizontal, float vertical);
+
+		glm::vec3 forward();
+		glm::vec3 backward();
+		glm::vec3 left();
+		glm::vec3 right();
+		glm::vec3 up();
+		glm::vec3 down();
 
 	private:
 		void updateProjectionMatrix();
@@ -25,6 +33,10 @@ namespace Graph {
 		bool m_projDirty, m_viewDirty;
 		float m_fov;
 		float m_near, m_far, m_width, m_height;
-		sf::Vector3f m_pos;
+		glm::vec3 m_pos;
+		glm::vec3 m_forward;
+		glm::vec3 m_left;
+		glm::vec3 m_up;
+		float m_horizontalAngle, m_verticalAngle;
 	};
 }
