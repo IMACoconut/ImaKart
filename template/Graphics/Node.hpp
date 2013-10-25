@@ -4,6 +4,8 @@
 #include <vector>
 
 namespace Graph {
+	class Material;
+
 	class Node {
 	public:
 		Node(Node* parent = nullptr);
@@ -25,6 +27,7 @@ namespace Graph {
 		void render();
 
 		virtual void draw() = 0;
+		void setMaterial(Material* m);
 
 	protected:
 		void updateModelMatrix();
@@ -32,6 +35,7 @@ namespace Graph {
 		glm::vec3 position, rotation, scale;
 		Node* parent;
 		std::vector<Node*> children;
+		Material* material;
 		glm::mat4 modelMatrix;
 		bool modelDirty;
 	};

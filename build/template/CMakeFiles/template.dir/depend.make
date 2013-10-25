@@ -204,6 +204,19 @@ template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o: ../third-party/SFML-2
 template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o: ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
 template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o: ../template/Graphics/Heightmap.cpp
 
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../template/./Graphics/Material.hpp
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../template/./Utility/LogManager.hpp
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../third-party/SFML-2.1/include/SFML/Config.hpp
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Image.hpp
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Rect.hpp
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Rect.inl
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../third-party/glew-1.10.0/include/GL/glew.h
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o: ../template/Graphics/Material.cpp
+
 template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o: ../lib/glm/glm/./core/_detail.hpp
 template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o: ../lib/glm/glm/./core/_fixes.hpp
 template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o: ../lib/glm/glm/./core/_swizzle.hpp
@@ -677,8 +690,17 @@ template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../lib/glm/glm/glm.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../lib/glm/glm/gtc/../glm.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../lib/glm/glm/gtc/matrix_transform.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../lib/glm/glm/gtc/matrix_transform.inl
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/./Graphics/Material.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/./Graphics/Node.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/./Graphics/Render.hpp
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/Config.hpp
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Image.hpp
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Rect.hpp
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Rect.inl
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/glew-1.10.0/include/GL/glew.h
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/Graphics/Node.cpp
 
@@ -744,8 +766,17 @@ template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../lib/glm/glm/./core/ty
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../lib/glm/glm/core/_fixes.hpp
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../lib/glm/glm/core/setup.hpp
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../lib/glm/glm/glm.hpp
+template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../template/./Graphics/Material.hpp
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../template/./Graphics/Render.hpp
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../template/./Graphics/Shader.hpp
+template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../third-party/SFML-2.1/include/SFML/Config.hpp
+template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
+template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
+template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Image.hpp
+template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Rect.hpp
+template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Rect.inl
+template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
+template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../third-party/glew-1.10.0/include/GL/glew.h
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../template/Graphics/Render.cpp
 
@@ -885,6 +916,7 @@ template/CMakeFiles/template.dir/main.cpp.o: ../lib/glm/glm/core/setup.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../lib/glm/glm/glm.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../template/./Graphics/Camera.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../template/./Graphics/Heightmap.hpp
+template/CMakeFiles/template.dir/main.cpp.o: ../template/./Graphics/Material.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../template/./Graphics/Mesh.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../template/./Graphics/Node.hpp
 template/CMakeFiles/template.dir/main.cpp.o: ../template/./Graphics/Render.hpp

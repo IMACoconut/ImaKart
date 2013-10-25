@@ -14,7 +14,7 @@ bool Heightmap::loadFromFile(const std::string& image) {
 	auto size = heightmap.getSize();
 	for(size_t x = 0; x<size.x; ++x)
 		for(size_t y = 0; y<size.y; ++y)
-			buffer.addVertex(Vertex3D(glm::vec3(x*10,heightmap.getPixel(x,y).r,y*10), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,255,255,255)));
+			buffer.addVertex(Vertex3D(glm::vec3(x,heightmap.getPixel(x,y).r,y), glm::vec3(0,0,0), glm::vec2(x/64.f,y/64.f), sf::Color(255,255,255,255)));
 
 	for(size_t x = 0; x<size.x-1; ++x)
 		for(size_t y = 0; y<size.y-1; ++y) {
@@ -24,6 +24,25 @@ bool Heightmap::loadFromFile(const std::string& image) {
 
 	loadFromMemory(buffer);
 	return true;
+}
+
+float Heightmap::offsetHeight(float x, float y) {
+	int offx = static_cast<int>(x);
+	int offy = static_cast<int>(y);
+	auto size = heightmap.getSize();
+	if(offx < 0 || offx >= static_cast<int>(size.x) || offy < 0 || offy >= static_cast<int>(size.y))
+		return -1;
+
+	float px = heightmap.getPixel(offx, offy).r;
+	float px2 = heightmap.getPixel(offx+1, offy).r;
+	float px3 = heightmap.getPixel(offx, offy+1).r;
+	float px4 = heightmap.getPixel(offx+1, offy+1).r;
+
+	return (px+px2+px3+px4)/4.f;
+}
+
+float Heightmap::realHeight(float x, float y) {
+	return offsetHeight(x,y)+position.y;
 }
 
 }

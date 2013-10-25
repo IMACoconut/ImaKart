@@ -55,16 +55,28 @@ namespace Graph {
 		glGetShaderiv(m_vertex, GL_COMPILE_STATUS, &status);
 		if(status != GL_TRUE)
 		{
-			Util::LogManager::error("Error while compiling vertex shader");
+			GLint length;
+			glGetShaderiv(m_vertex, GL_INFO_LOG_LENGTH, &length);
+			char* log = new char[length];
+			glGetShaderInfoLog(m_vertex, length, 0, log);
+			std::string logString(log);
+			delete [] log;
+			Util::LogManager::error("Error while compiling vertex shader: "+logString);
 			return false;
 		} else
 			m_vertexLoaded = true;
 
 		glCompileShader(m_fragment);
-		glGetShaderiv(m_vertex, GL_COMPILE_STATUS, &status);
+		glGetShaderiv(m_fragment, GL_COMPILE_STATUS, &status);
 		if(status != GL_TRUE)
 		{
-			Util::LogManager::error("Error while compiling fragment shader");
+			GLint length;
+			glGetShaderiv(m_fragment, GL_INFO_LOG_LENGTH, &length);
+			char* log = new char[length];
+			glGetShaderInfoLog(m_fragment, length, 0, log);
+			std::string logString(log);
+			delete [] log;
+			Util::LogManager::error("Error while compiling vertex shader: "+logString);
 			return false;
 		} else
 			m_fragmentLoaded = true;

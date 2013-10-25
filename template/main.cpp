@@ -2,6 +2,7 @@
 #include <Graphics/Scene.hpp>
 #include <Graphics/Camera.hpp>
 #include <Graphics/Heightmap.hpp>
+#include <Graphics/Material.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
 #include <SFML/Graphics.hpp>
@@ -27,12 +28,18 @@ int main(void) {
 	}
 
 	Graph::Shader s;
-	s.loadFromFile("resources/shaders/basic.vert", Graph::Shader::ShaderType_Vertex);
-	s.loadFromFile("resources/shaders/basic.frag", Graph::Shader::ShaderType_Fragment);
+	s.loadFromFile("resources/shaders/textured.vert", Graph::Shader::ShaderType_Vertex);
+	s.loadFromFile("resources/shaders/textured.frag", Graph::Shader::ShaderType_Fragment);
 	if(!s.compile()) {
 		std::cerr << "Error" << std::endl;
 	}
-	glClearColor(0,0,0,0);
+	Graph::Shader s2;
+	s2.loadFromFile("resources/shaders/basic.vert", Graph::Shader::ShaderType_Vertex);
+	s2.loadFromFile("resources/shaders/basic.frag", Graph::Shader::ShaderType_Fragment);
+	if(!s2.compile()) {
+		std::cerr << "Error" << std::endl;
+	}
+	glClearColor(0.2,0.2,0.2,0);
 	
 	//Graph::Mesh mesh;
 	/*Graph::VertexBuffer buff;
@@ -56,7 +63,12 @@ int main(void) {
 	if(!mesh.loadFromFile("resources/images/heightmap.png")) {
 		std::cerr << "Error" << std::endl;
 	}
-	
+	mesh.setScale(glm::vec3(16,1,16));
+	Graph::Material mat;
+	if(!mat.loadFromFile("resources/images/heightmap.png")) {
+		std::cerr << "error" << std::endl;
+	}
+	mesh.setMaterial(&mat);
 	s.bind();
 	Graph::Scene scene;
 	Graph::Camera cam;
@@ -67,6 +79,7 @@ int main(void) {
 	int old_y = WINDOW_HEIGHT/2;
 
 	window.setMouseCursorVisible(false);
+	glEnable(GL_DEPTH_TEST);
 
 	Util::LogManager::notice("Running");
 	while(window.isOpen()) {
@@ -112,7 +125,10 @@ int main(void) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here
 		scene.render();
+		s.bind();
 		mesh.render();
+		/*s2.bind();
+		mesh2.render();*/
 		
 		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
 		window.display();

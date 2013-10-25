@@ -1,11 +1,13 @@
 #include <Graphics/Node.hpp>
 #include <Graphics/Render.hpp>
+#include <Graphics/Material.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Graph {
 
 Node::Node(Node* parent) :
-	position(0,0,0), rotation(0,0,0), scale(1,1,1), parent(parent), 
+	position(0,0,0), rotation(0,0,0), scale(1,1,1), parent(parent),
+	material(nullptr), 
 	modelMatrix(), modelDirty(true)
 {
 	
@@ -16,6 +18,11 @@ Node::~Node() {
 		delete children.back();
 		children.pop_back();
 	}
+}
+
+void Node::setPosition(const glm::vec3& p) {
+	position = p;
+	modelDirty = true;
 }
 
 void Node::setScale(const glm::vec3& s) {
@@ -38,12 +45,19 @@ void Node::render() {
 		updateModelMatrix();
 
 	Render::setMatrix(Render::ModelMatrix, modelMatrix);
+	if(material != nullptr)
+		Render::setTexture(Render::TextureChannel_1, material);
+
 	draw();
 	for(auto it = children.begin(); it != children.end(); ++it) {
 		(*it)->render();
 	}
 }
 
+void Node::setMaterial(Material* m)
+{
+	material = m;
+}
 void Node::updateModelMatrix() {
 	glm::mat4 rot, scaleM, trans;
 	rot = glm::rotate(rot, rotation.x, glm::vec3(1,0,0));

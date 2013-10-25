@@ -10,6 +10,10 @@ namespace Graph {
 		virtual ~Heightmap();
 
 		bool loadFromFile(const std::string& image);
+
+		float offsetHeight(float x, float y);
+		float realHeight(float x, float y);
+		
 	protected:
 		sf::Image heightmap;
 	};

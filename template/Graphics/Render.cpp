@@ -1,5 +1,6 @@
 #include <Graphics/Render.hpp>
 #include <Graphics/Shader.hpp>
+#include <Graphics/Material.hpp>
 #include <iostream>
 
 namespace Graph {
@@ -8,6 +9,7 @@ namespace Graph {
 	glm::mat4 Render::modelMatrix = glm::mat4();
 	Shader* Render::shader = nullptr;
 	bool Render::shaderChanged = false;
+	Material* Render::materials[TextureChannel_Max];
 
 	void Render::setShader(Shader* s) {
 		if(s == shader)
@@ -17,6 +19,8 @@ namespace Graph {
 		setMatrix(ProjectionMatrix, projMatrix);
 		setMatrix(ViewMatrix, viewMatrix);
 		setMatrix(ModelMatrix, modelMatrix);
+		for(int i = TextureChannel_1; i < TextureChannel_Max; ++i)
+			setTexture(static_cast<TextureChannel>(i), materials[i]);
 	}
 
 
@@ -43,6 +47,33 @@ namespace Graph {
 
 		if(loc != -1) {
 			glUniformMatrix4fv(loc, 1, GL_FALSE, (const GLfloat*)&mat);
+		}
+	}
+
+	void Render::setTexture(TextureChannel t, Material* m) {
+		if(m == nullptr) {
+			materials[t]->unbind();
+			materials[t] = nullptr;
+			return;
+		}
+
+		if(materials[t] == m || shader == nullptr)
+			return;
+
+		materials[t] = m;
+		
+		GLint loc = -1;
+		GLuint shaderProgram = shader->getProgram();
+		switch(t) {
+			case TextureChannel_1:
+				loc = glGetUniformLocation(shaderProgram, "textureChannel1");
+				break;
+			default:
+				break;
+		}
+		if(loc != -1) {
+			glUniform1i(loc, 0);
+			m->bind();
 		}
 	}
 }

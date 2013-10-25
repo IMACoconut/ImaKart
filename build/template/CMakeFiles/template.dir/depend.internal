@@ -204,6 +204,19 @@ template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/WindowHandle.hpp
  ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
  /home/andre/Documents/Projects/ImaKart/template/Graphics/Heightmap.cpp
+template/CMakeFiles/template.dir/Graphics/Material.cpp.o
+ ../template/./Graphics/Material.hpp
+ ../template/./Utility/LogManager.hpp
+ ../third-party/SFML-2.1/include/SFML/Config.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Image.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Rect.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Rect.inl
+ ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
+ ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
+ ../third-party/glew-1.10.0/include/GL/glew.h
+ /home/andre/Documents/Projects/ImaKart/template/Graphics/Material.cpp
 template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o
  ../lib/glm/glm/./core/_detail.hpp
  ../lib/glm/glm/./core/_fixes.hpp
@@ -678,8 +691,17 @@ template/CMakeFiles/template.dir/Graphics/Node.cpp.o
  ../lib/glm/glm/gtc/../glm.hpp
  ../lib/glm/glm/gtc/matrix_transform.hpp
  ../lib/glm/glm/gtc/matrix_transform.inl
+ ../template/./Graphics/Material.hpp
  ../template/./Graphics/Node.hpp
  ../template/./Graphics/Render.hpp
+ ../third-party/SFML-2.1/include/SFML/Config.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Image.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Rect.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Rect.inl
+ ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
+ ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
  ../third-party/glew-1.10.0/include/GL/glew.h
  /home/andre/Documents/Projects/ImaKart/template/Graphics/Node.cpp
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o
@@ -745,8 +767,17 @@ template/CMakeFiles/template.dir/Graphics/Render.cpp.o
  ../lib/glm/glm/core/_fixes.hpp
  ../lib/glm/glm/core/setup.hpp
  ../lib/glm/glm/glm.hpp
+ ../template/./Graphics/Material.hpp
  ../template/./Graphics/Render.hpp
  ../template/./Graphics/Shader.hpp
+ ../third-party/SFML-2.1/include/SFML/Config.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Image.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Rect.hpp
+ ../third-party/SFML-2.1/include/SFML/Graphics/Rect.inl
+ ../third-party/SFML-2.1/include/SFML/System/Vector2.hpp
+ ../third-party/SFML-2.1/include/SFML/System/Vector2.inl
  ../third-party/glew-1.10.0/include/GL/glew.h
  /home/andre/Documents/Projects/ImaKart/template/Graphics/Render.cpp
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.o
@@ -886,6 +917,7 @@ template/CMakeFiles/template.dir/main.cpp.o
  ../lib/glm/glm/glm.hpp
  ../template/./Graphics/Camera.hpp
  ../template/./Graphics/Heightmap.hpp
+ ../template/./Graphics/Material.hpp
  ../template/./Graphics/Mesh.hpp
  ../template/./Graphics/Node.hpp
  ../template/./Graphics/Render.hpp

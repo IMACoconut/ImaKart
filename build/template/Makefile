@@ -201,6 +201,30 @@ Graphics/Heightmap.cpp.s:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Heightmap.cpp.s
 .PHONY : Graphics/Heightmap.cpp.s
 
+Graphics/Material.o: Graphics/Material.cpp.o
+.PHONY : Graphics/Material.o
+
+# target to build an object file
+Graphics/Material.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Material.cpp.o
+.PHONY : Graphics/Material.cpp.o
+
+Graphics/Material.i: Graphics/Material.cpp.i
+.PHONY : Graphics/Material.i
+
+# target to preprocess a source file
+Graphics/Material.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Material.cpp.i
+.PHONY : Graphics/Material.cpp.i
+
+Graphics/Material.s: Graphics/Material.cpp.s
+.PHONY : Graphics/Material.s
+
+# target to generate assembly for a file
+Graphics/Material.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Material.cpp.s
+.PHONY : Graphics/Material.cpp.s
+
 Graphics/Mesh.o: Graphics/Mesh.cpp.o
 .PHONY : Graphics/Mesh.o
 
@@ -412,6 +436,9 @@ help:
 	@echo "... Graphics/Heightmap.o"
 	@echo "... Graphics/Heightmap.i"
 	@echo "... Graphics/Heightmap.s"
+	@echo "... Graphics/Material.o"
+	@echo "... Graphics/Material.i"
+	@echo "... Graphics/Material.s"
 	@echo "... Graphics/Mesh.o"
 	@echo "... Graphics/Mesh.i"
 	@echo "... Graphics/Mesh.s"
