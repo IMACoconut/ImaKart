@@ -20,8 +20,8 @@ bool Material::loadFromFile(const std::string& name)
 		return false;
 	}
 
-	m_image.flipHorizontally();
-	m_image.flipVertically();
+	//m_image.flipHorizontally();
+	//m_image.flipVertically();
 	glBindTexture(GL_TEXTURE_2D, m_texID);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);

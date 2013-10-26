@@ -14,7 +14,7 @@ bool Heightmap::loadFromFile(const std::string& image) {
 	auto size = heightmap.getSize();
 	for(size_t x = 0; x<size.x; ++x)
 		for(size_t y = 0; y<size.y; ++y)
-			buffer.addVertex(Vertex3D(glm::vec3(x,heightmap.getPixel(x,y).r,y), glm::vec3(0,0,0), glm::vec2(x/64.f,y/64.f), sf::Color(255,255,255,255)));
+			buffer.addVertex(Vertex3D(glm::vec3(x,heightmap.getPixel(x,y).r,y), glm::vec3(0,0,0), glm::vec2((1.f*x)/size.x,(1.f*y)/size.y), sf::Color(255,255,255,255)));
 
 	for(size_t x = 0; x<size.x-1; ++x)
 		for(size_t y = 0; y<size.y-1; ++y) {

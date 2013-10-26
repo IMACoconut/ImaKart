@@ -19,7 +19,7 @@ static const unsigned int WINDOW_HEIGHT = 600;
 
 int main(void) {
 	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
-	window.setFramerateLimit(FPS);
+	//window.setFramerateLimit(FPS);
 
 	GLenum glewCode = glewInit();
 	if(GLEW_OK != glewCode) {
@@ -82,6 +82,9 @@ int main(void) {
 	glEnable(GL_DEPTH_TEST);
 
 	Util::LogManager::notice("Running");
+
+	sf::Clock frameTime;
+	int fps = 0;
 	while(window.isOpen()) {
 		
 
@@ -120,6 +123,12 @@ int main(void) {
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			cam.move(cam.backward());
 
+		if(frameTime.getElapsedTime().asSeconds() >= 1) {
+			frameTime.restart();
+			window.setTitle("ImaKart "+Util::ToString(fps)+"FPS");
+			fps = 0;
+		}
+
 		sf::Mouse::setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2), window);
 		// Rendering code goes here
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -132,6 +141,7 @@ int main(void) {
 		
 		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
 		window.display();
+		fps++;
 	}
 
 	return EXIT_SUCCESS;

@@ -10,7 +10,7 @@ namespace Graph {
 		m_view(), m_proj(),
 		m_projDirty(true), m_viewDirty(true),
 		m_fov(60),
-		m_near(.1f), m_far(1000.f),
+		m_near(.1f), m_far(100000.f),
 		m_width(1), m_height(1),
 		m_pos(3.1,0,0), m_forward(-1,0,0), m_left(0,0,1), m_up(0,1,0),
 		m_horizontalAngle(0), m_verticalAngle(0)

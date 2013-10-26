@@ -7,4 +7,4 @@ uniform sampler2D textureChannel1;
 
 void main() {
 	finalColor = texture2D(textureChannel1, uvCoord)*outColor;
-}	
+}
