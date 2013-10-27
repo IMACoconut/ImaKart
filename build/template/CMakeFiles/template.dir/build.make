@@ -210,9 +210,32 @@ template/CMakeFiles/template.dir/Graphics/Material.cpp.o.provides: template/CMak
 
 template/CMakeFiles/template.dir/Graphics/Material.cpp.o.provides.build: template/CMakeFiles/template.dir/Graphics/Material.cpp.o
 
+template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o: template/CMakeFiles/template.dir/flags.make
+template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o: ../template/Graphics/Skydome.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o"
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Skydome.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Graphics/Skydome.cpp
+
+template/CMakeFiles/template.dir/Graphics/Skydome.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/template.dir/Graphics/Skydome.cpp.i"
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Projects/ImaKart/template/Graphics/Skydome.cpp > CMakeFiles/template.dir/Graphics/Skydome.cpp.i
+
+template/CMakeFiles/template.dir/Graphics/Skydome.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/template.dir/Graphics/Skydome.cpp.s"
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Projects/ImaKart/template/Graphics/Skydome.cpp -o CMakeFiles/template.dir/Graphics/Skydome.cpp.s
+
+template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o.requires:
+.PHONY : template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o.requires
+
+template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o.provides: template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o.requires
+	$(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o.provides.build
+.PHONY : template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o.provides
+
+template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o.provides.build: template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o
+
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/Graphics/Render.cpp.o: ../template/Graphics/Render.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Graphics/Render.cpp.o"
 	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Render.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Graphics/Render.cpp
 
@@ -235,7 +258,7 @@ template/CMakeFiles/template.dir/Graphics/Render.cpp.o.provides.build: template/
 
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/Graphics/Shader.cpp.o: ../template/Graphics/Shader.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Graphics/Shader.cpp.o"
 	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/Shader.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Graphics/Shader.cpp
 
@@ -258,7 +281,7 @@ template/CMakeFiles/template.dir/Graphics/Shader.cpp.o.provides.build: template/
 
 template/CMakeFiles/template.dir/Graphics/MeshLoader.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/Graphics/MeshLoader.cpp.o: ../template/Graphics/MeshLoader.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Graphics/MeshLoader.cpp.o"
 	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Graphics/MeshLoader.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Graphics/MeshLoader.cpp
 
@@ -281,7 +304,7 @@ template/CMakeFiles/template.dir/Graphics/MeshLoader.cpp.o.provides.build: templ
 
 template/CMakeFiles/template.dir/Utility/LogManager.cpp.o: template/CMakeFiles/template.dir/flags.make
 template/CMakeFiles/template.dir/Utility/LogManager.cpp.o: ../template/Utility/LogManager.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Utility/LogManager.cpp.o"
 	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Utility/LogManager.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Utility/LogManager.cpp
 
@@ -311,6 +334,7 @@ template_OBJECTS = \
 "CMakeFiles/template.dir/Graphics/MeshBuffer.cpp.o" \
 "CMakeFiles/template.dir/Graphics/Node.cpp.o" \
 "CMakeFiles/template.dir/Graphics/Material.cpp.o" \
+"CMakeFiles/template.dir/Graphics/Skydome.cpp.o" \
 "CMakeFiles/template.dir/Graphics/Render.cpp.o" \
 "CMakeFiles/template.dir/Graphics/Shader.cpp.o" \
 "CMakeFiles/template.dir/Graphics/MeshLoader.cpp.o" \
@@ -326,6 +350,7 @@ template/template: template/CMakeFiles/template.dir/Graphics/Mesh.cpp.o
 template/template: template/CMakeFiles/template.dir/Graphics/MeshBuffer.cpp.o
 template/template: template/CMakeFiles/template.dir/Graphics/Node.cpp.o
 template/template: template/CMakeFiles/template.dir/Graphics/Material.cpp.o
+template/template: template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o
 template/template: template/CMakeFiles/template.dir/Graphics/Render.cpp.o
 template/template: template/CMakeFiles/template.dir/Graphics/Shader.cpp.o
 template/template: template/CMakeFiles/template.dir/Graphics/MeshLoader.cpp.o
@@ -361,6 +386,7 @@ template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Grap
 template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Graphics/MeshBuffer.cpp.o.requires
 template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Graphics/Node.cpp.o.requires
 template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Graphics/Material.cpp.o.requires
+template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o.requires
 template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Graphics/Render.cpp.o.requires
 template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Graphics/Shader.cpp.o.requires
 template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Graphics/MeshLoader.cpp.o.requires

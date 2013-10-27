@@ -18,7 +18,8 @@ namespace Graph {
 
 		typedef enum {
 			TextureChannel_1 = 0,
-			TextureChannel_Max = TextureChannel_1 +1
+			TextureChannel_2 = 1,
+			TextureChannel_Max = TextureChannel_2 +1
 		} TextureChannel;
 
 		static void setShader(Shader* shader);

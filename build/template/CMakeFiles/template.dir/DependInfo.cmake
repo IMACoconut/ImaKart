@@ -13,6 +13,7 @@ SET(CMAKE_DEPENDS_CHECK_CXX
   "/home/andre/Documents/Projects/ImaKart/template/Graphics/Node.cpp" "/home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir/Graphics/Node.cpp.o"
   "/home/andre/Documents/Projects/ImaKart/template/Graphics/Render.cpp" "/home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir/Graphics/Render.cpp.o"
   "/home/andre/Documents/Projects/ImaKart/template/Graphics/Shader.cpp" "/home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir/Graphics/Shader.cpp.o"
+  "/home/andre/Documents/Projects/ImaKart/template/Graphics/Skydome.cpp" "/home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o"
   "/home/andre/Documents/Projects/ImaKart/template/Utility/LogManager.cpp" "/home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir/Utility/LogManager.cpp.o"
   "/home/andre/Documents/Projects/ImaKart/template/main.cpp" "/home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir/main.cpp.o"
   )

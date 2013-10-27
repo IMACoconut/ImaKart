@@ -2,6 +2,7 @@
 
 #include <glm/glm.hpp>
 #include <vector>
+#include <Graphics/Render.hpp>
 
 namespace Graph {
 	class Material;
@@ -27,7 +28,7 @@ namespace Graph {
 		void render();
 
 		virtual void draw() = 0;
-		void setMaterial(Material* m);
+		void setMaterial(int pos, Material* m);
 
 	protected:
 		void updateModelMatrix();
@@ -35,7 +36,7 @@ namespace Graph {
 		glm::vec3 position, rotation, scale;
 		Node* parent;
 		std::vector<Node*> children;
-		Material* material;
+		Material* material[Render::TextureChannel_Max];
 		glm::mat4 modelMatrix;
 		bool modelDirty;
 	};

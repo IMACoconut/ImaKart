@@ -369,6 +369,30 @@ Graphics/Shader.cpp.s:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Shader.cpp.s
 .PHONY : Graphics/Shader.cpp.s
 
+Graphics/Skydome.o: Graphics/Skydome.cpp.o
+.PHONY : Graphics/Skydome.o
+
+# target to build an object file
+Graphics/Skydome.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Skydome.cpp.o
+.PHONY : Graphics/Skydome.cpp.o
+
+Graphics/Skydome.i: Graphics/Skydome.cpp.i
+.PHONY : Graphics/Skydome.i
+
+# target to preprocess a source file
+Graphics/Skydome.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Skydome.cpp.i
+.PHONY : Graphics/Skydome.cpp.i
+
+Graphics/Skydome.s: Graphics/Skydome.cpp.s
+.PHONY : Graphics/Skydome.s
+
+# target to generate assembly for a file
+Graphics/Skydome.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Graphics/Skydome.cpp.s
+.PHONY : Graphics/Skydome.cpp.s
+
 Utility/LogManager.o: Utility/LogManager.cpp.o
 .PHONY : Utility/LogManager.o
 
@@ -457,6 +481,9 @@ help:
 	@echo "... Graphics/Shader.o"
 	@echo "... Graphics/Shader.i"
 	@echo "... Graphics/Shader.s"
+	@echo "... Graphics/Skydome.o"
+	@echo "... Graphics/Skydome.i"
+	@echo "... Graphics/Skydome.s"
 	@echo "... Utility/LogManager.o"
 	@echo "... Utility/LogManager.i"
 	@echo "... Utility/LogManager.s"

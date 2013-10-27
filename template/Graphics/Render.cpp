@@ -70,10 +70,14 @@ namespace Graph {
 			case TextureChannel_1:
 				loc = glGetUniformLocation(shaderProgram, "textureChannel1");
 				break;
+			case TextureChannel_2:
+				loc = glGetUniformLocation(shaderProgram, "textureChannel2");
+				break;
 			default:
 				break;
 		}
 		if(loc != -1) {
+			glActiveTexture(GL_TEXTURE0 + static_cast<int>(t));
 			glUniform1i(loc, 0);
 			m->bind();
 		}

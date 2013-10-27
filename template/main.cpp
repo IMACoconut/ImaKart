@@ -2,7 +2,7 @@
 #include <Graphics/Scene.hpp>
 #include <Graphics/Camera.hpp>
 #include <Graphics/Heightmap.hpp>
-#include <Graphics/Material.hpp>
+#include <Graphics/Skydome.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
 #include <SFML/Graphics.hpp>
@@ -34,9 +34,15 @@ int main(void) {
 		std::cerr << "Error" << std::endl;
 	}
 	Graph::Shader s2;
-	s2.loadFromFile("resources/shaders/basic.vert", Graph::Shader::ShaderType_Vertex);
-	s2.loadFromFile("resources/shaders/basic.frag", Graph::Shader::ShaderType_Fragment);
+	s2.loadFromFile("resources/shaders/skybox.vert", Graph::Shader::ShaderType_Vertex);
+	s2.loadFromFile("resources/shaders/skybox.frag", Graph::Shader::ShaderType_Fragment);
 	if(!s2.compile()) {
+		std::cerr << "Error" << std::endl;
+	}
+	Graph::Shader s3;
+	s3.loadFromFile("resources/shaders/basic.vert", Graph::Shader::ShaderType_Vertex);
+	s3.loadFromFile("resources/shaders/basic.frag", Graph::Shader::ShaderType_Fragment);
+	if(!s3.compile()) {
 		std::cerr << "Error" << std::endl;
 	}
 	glClearColor(0.2,0.2,0.2,0);
@@ -52,7 +58,8 @@ int main(void) {
 	if(!mesh.loadFromMemory(buff))
 	{
 		std::cerr << "Error" << std::endl;
-	}*/
+	}
+	*/
 	
 	/*if(!mesh.loadFromFile("resources/models/cube.3DS")) {
 		std::cerr << "Error" << std::endl;
@@ -64,11 +71,43 @@ int main(void) {
 		std::cerr << "Error" << std::endl;
 	}
 	mesh.setScale(glm::vec3(16,1,16));
-	Graph::Material mat;
-	if(!mat.loadFromFile("resources/images/heightmap.png")) {
-		std::cerr << "error" << std::endl;
+
+	Graph::Skydome sky;
+	sky.loadSkyMaterial("resources/images/sky.png");
+	sky.loadGlowMaterial("resources/images/glow.png");
+
+	Graph::Mesh mesh3;
+	Graph::VertexBuffer buff;
+	buff.addVertex(Graph::Vertex3D(glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(100,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(100,100,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(0,100,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(0,0,100), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(100,0,100), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(100,100,100), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
+	buff.addVertex(Graph::Vertex3D(glm::vec3(0,100,100), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
+	buff.addTriangle(sf::Vector3i(0,1,2));
+	buff.addTriangle(sf::Vector3i(0,2,3));
+	buff.addTriangle(sf::Vector3i(4,5,6));
+	buff.addTriangle(sf::Vector3i(4,6,7));
+
+	buff.addTriangle(sf::Vector3i(0,3,7));
+	buff.addTriangle(sf::Vector3i(0,7,4));
+
+	buff.addTriangle(sf::Vector3i(1,2,6));
+	buff.addTriangle(sf::Vector3i(1,6,5));
+
+	buff.addTriangle(sf::Vector3i(0,1,5));
+	buff.addTriangle(sf::Vector3i(0,5,4));
+
+	buff.addTriangle(sf::Vector3i(3,4,7));
+	buff.addTriangle(sf::Vector3i(3,7,6));
+
+	if(!mesh3.loadFromMemory(buff))
+	{
+		std::cerr << "Error" << std::endl;
 	}
-	mesh.setMaterial(&mat);
+
 	s.bind();
 	Graph::Scene scene;
 	Graph::Camera cam;
@@ -80,6 +119,7 @@ int main(void) {
 
 	window.setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
 
 	Util::LogManager::notice("Running");
 
@@ -134,13 +174,20 @@ int main(void) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here
 
-		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.001f;
-		glm::vec3 l = glm::normalize(glm::vec3(sin(elapsed),cos(elapsed),1));
-		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
-
+		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
+		glm::vec3 l = glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0);
+		//glm::vec3 l2 = glm::normalize(l);
+		//glm::vec3 l(-1,-1,0);
 		scene.render();
+		s2.bind();
+		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
+		sky.render();
 		s.bind();
+		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
 		mesh.render();
+		//s3.bind();
+		//mesh3.setPosition(l);
+		//mesh3.render();
 		/*s2.bind();
 		mesh2.render();*/
 		

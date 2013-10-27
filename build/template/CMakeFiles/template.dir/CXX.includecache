@@ -370,18 +370,6 @@ core/setup.hpp
 ./core/_swizzle.hpp
 ../lib/glm/glm/./core/_swizzle.hpp
 
-../template/./Graphics/Camera.hpp
-Graphics/Node.hpp
--
-glm/glm.hpp
--
-
-../template/./Graphics/Heightmap.hpp
-Graphics/Mesh.hpp
--
-SFML/Graphics/Image.hpp
--
-
 ../template/./Graphics/Material.hpp
 GL/glew.h
 -
@@ -405,6 +393,8 @@ glm/glm.hpp
 -
 vector
 -
+Graphics/Render.hpp
+-
 
 ../template/./Graphics/Render.hpp
 GL/glew.h
@@ -414,18 +404,10 @@ glm/glm.hpp
 SFML/System.hpp
 -
 
-../template/./Graphics/Scene.hpp
-Graphics/Camera.hpp
--
-Graphics/Render.hpp
--
-
-../template/./Graphics/Shader.hpp
+../template/./Graphics/Skydome.hpp
 string
 -
-GL/glew.h
--
-GL/gl.h
+Graphics/Mesh.hpp
 -
 
 ../template/./Graphics/Vertex.hpp
@@ -434,16 +416,6 @@ SFML/Graphics.hpp
 glm/glm.hpp
 -
 vector
--
-
-../template/./Utility/LogManager.hpp
-string
--
-
-../template/./Utility/Tools.hpp
-string
--
-sstream
 -
 
 ../third-party/SFML-2.1/include/SFML/Config.hpp
@@ -1000,25 +972,11 @@ OpenGL/glu.h
 GL/glu.h
 -
 
-/home/andre/Documents/Projects/ImaKart/template/main.cpp
-Graphics/Shader.hpp
--
-Graphics/Scene.hpp
--
-Graphics/Camera.hpp
--
-Graphics/Heightmap.hpp
+/home/andre/Documents/Projects/ImaKart/template/Graphics/Skydome.cpp
+Graphics/Skydome.hpp
 -
 Graphics/Material.hpp
 -
-Utility/LogManager.hpp
--
-Utility/Tools.hpp
--
-SFML/Graphics.hpp
--
-iostream
--
-vector
+Graphics/Vertex.hpp
 -
 

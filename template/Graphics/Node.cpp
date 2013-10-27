@@ -1,16 +1,15 @@
 #include <Graphics/Node.hpp>
-#include <Graphics/Render.hpp>
 #include <Graphics/Material.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Graph {
 
 Node::Node(Node* parent) :
-	position(0,0,0), rotation(0,0,0), scale(1,1,1), parent(parent),
-	material(nullptr), 
+	position(0,0,0), rotation(0,0,0), scale(1,1,1), parent(parent), 
 	modelMatrix(), modelDirty(true)
 {
-	
+	for(int i = 0; i<Render::TextureChannel_Max; ++i)
+		material[i] = nullptr;
 };
 
 Node::~Node() {
@@ -43,10 +42,11 @@ void Node::addChild(Node* child)
 void Node::render() {
 	if(modelDirty)
 		updateModelMatrix();
-
+	
 	Render::setMatrix(Render::ModelMatrix, modelMatrix);
-	if(material != nullptr)
-		Render::setTexture(Render::TextureChannel_1, material);
+	for(int i = 0; i< Render::TextureChannel_Max; ++i)
+		if(material[i] != nullptr)
+			Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
 
 	draw();
 	for(auto it = children.begin(); it != children.end(); ++it) {
@@ -54,9 +54,9 @@ void Node::render() {
 	}
 }
 
-void Node::setMaterial(Material* m)
+void Node::setMaterial(int pos, Material* m)
 {
-	material = m;
+	material[pos] = m;
 }
 void Node::updateModelMatrix() {
 	glm::mat4 rot, scaleM, trans;

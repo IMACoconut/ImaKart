@@ -9,7 +9,5 @@ uniform vec3 lightPos;
 
 void main() {
 	float coeff = dot(outNormal,lightPos);
-	if(coeff < 0)
-		coeff = 0;
-	finalColor = /*texture2D(textureChannel1, uvCoord)*/outColor*coeff;;
+	finalColor = /*texture2D(textureChannel1, uvCoord)*/outColor*coeff;
 }
