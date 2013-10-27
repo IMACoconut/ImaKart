@@ -100,6 +100,13 @@ namespace Graph {
 		return m_program;
 	}
 
+	void Shader::sendVector(float x, float y, float z, const std::string& to) {
+		GLint loc = glGetUniformLocation(m_program, to.c_str());
+		if(loc != -1) {
+			glUniform3f(loc, x,y,z);
+		}
+	}
+
 	void Shader::bind()
 	{
 		if(!m_programLoaded)

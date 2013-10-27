@@ -2,6 +2,7 @@
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
+#include <SFML/System.hpp>
 
 namespace Graph {
 	class Shader;

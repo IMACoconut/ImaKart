@@ -83,7 +83,7 @@ int main(void) {
 
 	Util::LogManager::notice("Running");
 
-	sf::Clock frameTime;
+	sf::Clock frameTime, clock;
 	int fps = 0;
 	while(window.isOpen()) {
 		
@@ -133,6 +133,11 @@ int main(void) {
 		// Rendering code goes here
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here
+
+		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.001f;
+		glm::vec3 l = glm::normalize(glm::vec3(sin(elapsed),cos(elapsed),1));
+		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
+
 		scene.render();
 		s.bind();
 		mesh.render();

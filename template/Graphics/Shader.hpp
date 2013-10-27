@@ -24,6 +24,8 @@ namespace Graph {
 			void bind();
 			void unbind();
 
+			void sendVector(float x, float y, float z, const std::string& loc);
+
 			GLuint getProgram() const;
 
 		private:

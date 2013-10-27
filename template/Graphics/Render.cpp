@@ -21,6 +21,8 @@ namespace Graph {
 		setMatrix(ModelMatrix, modelMatrix);
 		for(int i = TextureChannel_1; i < TextureChannel_Max; ++i)
 			setTexture(static_cast<TextureChannel>(i), materials[i]);
+
+		
 	}
 
 

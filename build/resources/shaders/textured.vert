@@ -8,8 +8,11 @@ uniform mat4 projMatrix;
 uniform mat4 modelMatrix;
 out vec2 uvCoord;
 out vec4 outColor;
+out vec3 outNormal;
+
 void main() {
 	gl_Position = projMatrix*viewMatrix*modelMatrix*vec4(position, 1.f);
+	outNormal = normal;
 	outColor = color;
 	uvCoord = uv;
 }

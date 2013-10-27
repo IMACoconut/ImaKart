@@ -1,67 +1,25 @@
-26/10/2013 - 00:26:27: ERROR: Error while compiling vertex shader: Fragment shader failed to compile with the following errors:
-ERROR: 0:10: error(#132) Syntax error: "}" parse error
-ERROR: error(#273) 1 compilation errors.  No code generated
-
-
-26/10/2013 - 00:26:27: ERROR: Shader not compiled!
-26/10/2013 - 00:26:27: NOTICE: Running
-26/10/2013 - 00:26:36: ERROR: Error while compiling vertex shader: Fragment shader failed to compile with the following errors:
-ERROR: 0:10: error(#132) Syntax error: "}" parse error
-ERROR: error(#273) 1 compilation errors.  No code generated
-
-
-26/10/2013 - 00:26:36: ERROR: Shader not compiled!
-26/10/2013 - 00:26:36: NOTICE: Running
-26/10/2013 - 00:26:59: NOTICE: Running
-26/10/2013 - 00:30:00: NOTICE: Running
-26/10/2013 - 00:31:31: NOTICE: Running
-26/10/2013 - 00:32:22: NOTICE: Running
-26/10/2013 - 00:32:55: NOTICE: Running
-26/10/2013 - 00:33:15: NOTICE: Running
-26/10/2013 - 00:33:24: NOTICE: Running
-26/10/2013 - 00:33:36: NOTICE: Running
-26/10/2013 - 00:34:10: NOTICE: Running
-26/10/2013 - 00:34:25: NOTICE: Running
-26/10/2013 - 00:34:37: NOTICE: Running
-26/10/2013 - 00:35:12: NOTICE: Running
-26/10/2013 - 00:35:52: NOTICE: Running
-26/10/2013 - 00:36:28: NOTICE: Running
-26/10/2013 - 00:38:50: NOTICE: Running
-26/10/2013 - 00:45:14: NOTICE: Running
-26/10/2013 - 00:46:06: NOTICE: Running
-26/10/2013 - 00:46:32: NOTICE: Running
-26/10/2013 - 00:47:54: NOTICE: Running
-26/10/2013 - 00:48:09: NOTICE: Running
-26/10/2013 - 00:49:21: NOTICE: Running
-26/10/2013 - 00:49:44: NOTICE: Running
-26/10/2013 - 00:52:04: NOTICE: Running
-26/10/2013 - 00:52:32: NOTICE: Running
-26/10/2013 - 00:53:09: NOTICE: Running
-26/10/2013 - 00:54:12: NOTICE: Running
-26/10/2013 - 00:54:34: NOTICE: Running
-26/10/2013 - 00:54:53: NOTICE: Running
-26/10/2013 - 00:55:38: NOTICE: Running
-26/10/2013 - 00:56:11: NOTICE: Running
-26/10/2013 - 00:56:39: NOTICE: Running
-26/10/2013 - 00:57:35: NOTICE: Running
-26/10/2013 - 00:57:56: NOTICE: Running
-26/10/2013 - 00:58:29: NOTICE: Running
-26/10/2013 - 00:59:56: NOTICE: Running
-26/10/2013 - 01:00:14: NOTICE: Running
-26/10/2013 - 01:01:51: NOTICE: Running
-26/10/2013 - 01:02:29: NOTICE: Running
-26/10/2013 - 10:25:23: NOTICE: Running
-26/10/2013 - 10:26:35: NOTICE: Running
-26/10/2013 - 10:28:01: NOTICE: Running
-26/10/2013 - 10:28:43: NOTICE: Running
-26/10/2013 - 10:29:19: NOTICE: Running
-26/10/2013 - 10:29:31: NOTICE: Running
-26/10/2013 - 10:33:59: NOTICE: Running
-26/10/2013 - 10:34:57: NOTICE: Running
-26/10/2013 - 10:35:49: NOTICE: Running
-26/10/2013 - 10:39:48: NOTICE: Running
-26/10/2013 - 10:41:53: NOTICE: Running
-26/10/2013 - 10:51:18: NOTICE: Running
-26/10/2013 - 10:53:02: NOTICE: Running
-26/10/2013 - 10:55:01: NOTICE: Running
-26/10/2013 - 10:56:12: NOTICE: Running
+27/10/2013 - 00:57:33: NOTICE: Running
+27/10/2013 - 00:58:07: NOTICE: Running
+27/10/2013 - 00:59:54: NOTICE: Running
+27/10/2013 - 01:00:16: NOTICE: Running
+27/10/2013 - 01:00:47: NOTICE: Running
+27/10/2013 - 01:14:49: NOTICE: Running
+27/10/2013 - 01:17:45: NOTICE: Running
+27/10/2013 - 01:28:50: NOTICE: Running
+27/10/2013 - 01:29:17: NOTICE: Running
+27/10/2013 - 01:34:45: NOTICE: Running
+27/10/2013 - 01:44:08: NOTICE: Running
+27/10/2013 - 01:44:59: NOTICE: Running
+27/10/2013 - 01:47:32: NOTICE: Running
+27/10/2013 - 01:49:03: NOTICE: Running
+27/10/2013 - 01:49:50: NOTICE: Running
+27/10/2013 - 01:56:35: NOTICE: Running
+27/10/2013 - 02:00:47: NOTICE: Running
+27/10/2013 - 02:05:40: NOTICE: Running
+27/10/2013 - 02:06:14: NOTICE: Running
+27/10/2013 - 02:07:00: NOTICE: Running
+27/10/2013 - 02:12:42: NOTICE: Running
+27/10/2013 - 02:13:30: NOTICE: Running
+27/10/2013 - 02:14:46: NOTICE: Running
+27/10/2013 - 02:15:13: NOTICE: Running
+27/10/2013 - 02:17:40: NOTICE: Running
