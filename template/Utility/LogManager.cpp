@@ -8,6 +8,9 @@
 #include <fstream>
 
 namespace Util {
+	void LogManager::init() {
+		std::ofstream file("LOGFILE", std::ios_base::out);
+	}
 	void LogManager::error(const std::string& msg)
 	{
 		write("ERROR: "+msg);

@@ -54,14 +54,18 @@ namespace Graph {
 
 	void Camera::rotate(float horizontal, float vertical) {
 		m_horizontalAngle -= horizontal*0.01f;
-		m_verticalAngle -= vertical*0.01f;
-		
+
+		m_verticalAngle += vertical*0.01f;
+		if(m_verticalAngle < -89.f)
+			m_verticalAngle = 89.f;
+		else if(m_verticalAngle > 89.f)
+			m_verticalAngle = 89.f;
+
 		glm::mat4 rot;
 		rot = glm::rotate(rot, m_horizontalAngle, m_up);
 		rot = glm::rotate(rot, m_verticalAngle, m_left);
 		m_forward = glm::vec3(rot*glm::vec4(m_forward, 1.f));
 		m_left = glm::vec3(rot*glm::vec4(m_left, 1.f));
-
 		m_viewDirty = true;
 
 	}

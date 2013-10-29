@@ -8,7 +8,10 @@ uniform mat4 projMatrix;
 uniform mat4 modelMatrix;
 
 out vec3 vertexPos;
+out vec3 vertexNorm;
+
 void main() {
 	gl_Position = projMatrix*viewMatrix*vec4(position*10000, 1.f);
-	vertexPos = normal;
+	vertexPos = position;
+	vertexNorm = normal;
 }

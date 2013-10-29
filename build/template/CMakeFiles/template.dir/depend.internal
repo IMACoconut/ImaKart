@@ -721,6 +721,7 @@ template/CMakeFiles/template.dir/Graphics/Node.cpp.o
  ../template/./Graphics/Material.hpp
  ../template/./Graphics/Node.hpp
  ../template/./Graphics/Render.hpp
+ ../template/./Graphics/Shader.hpp
  ../third-party/SFML-2.1/include/SFML/Config.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
  ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp

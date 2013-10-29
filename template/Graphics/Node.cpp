@@ -1,22 +1,25 @@
 #include <Graphics/Node.hpp>
 #include <Graphics/Material.hpp>
+#include <Graphics/Shader.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Graph {
 
 Node::Node(Node* parent) :
 	position(0,0,0), rotation(0,0,0), scale(1,1,1), parent(parent), 
-	modelMatrix(), modelDirty(true)
+	shader(nullptr), modelMatrix(), modelDirty(true)
 {
 	for(int i = 0; i<Render::TextureChannel_Max; ++i)
 		material[i] = nullptr;
+
+	if(parent)
+		setParent(parent);
 };
 
 Node::~Node() {
-	while(children.size()) {
-		delete children.back();
-		children.pop_back();
-	}
+	for(Node* c : children)
+		c->setParent(nullptr);
+	setParent(nullptr);
 }
 
 void Node::setPosition(const glm::vec3& p) {
@@ -34,15 +37,37 @@ void Node::setRotation(const glm::vec3& r) {
 	modelDirty = true;
 }
 
+void Node::setParent(Node* p) 
+{
+	if(p == this || p == parent)
+		return;
+
+	if(parent)
+		parent->removeChild(this);
+	parent = p;
+
+	if(parent)
+		parent->addChild(this);
+}
+
 void Node::addChild(Node* child)
 {
-	children.push_back(child);
+	if(std::find(children.begin(), children.end(), child) == children.end()) // On teste si child n'est pas dans la liste
+		children.push_back(child);
+}
+
+void Node::removeChild(Node* child)
+{
+	auto it = std::find(children.begin(), children.end(), child); // On recherche le child dans la liste
+	if(it != children.end())
+		children.erase(it);
 }
 
 void Node::render() {
 	if(modelDirty)
 		updateModelMatrix();
 	
+	//Render::setShader(shader);
 	Render::setMatrix(Render::ModelMatrix, modelMatrix);
 	for(int i = 0; i< Render::TextureChannel_Max; ++i)
 		if(material[i] != nullptr)
@@ -67,6 +92,11 @@ void Node::updateModelMatrix() {
 	trans = glm::translate(trans,position);
 	modelMatrix = rot*scaleM*trans;
 	modelDirty = false;
+}
+
+void Node::setShader(Shader* s)
+{
+	shader = s;
 }
 
 }

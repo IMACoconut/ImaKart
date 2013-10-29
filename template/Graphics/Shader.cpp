@@ -27,6 +27,7 @@ namespace Graph {
 				c = file.get();
 				data += c;
 			}
+			data.resize(data.size()-1);
 			const char* s = data.c_str();
 			if(t == ShaderType_Vertex) {
 				m_vertex = glCreateShader(GL_VERTEX_SHADER);

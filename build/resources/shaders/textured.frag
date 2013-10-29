@@ -8,6 +8,6 @@ uniform sampler2D textureChannel1;
 uniform vec3 lightPos;
 
 void main() {
-	float coeff = dot(outNormal,lightPos);
+	float coeff = dot(lightPos,outNormal);
 	finalColor = /*texture2D(textureChannel1, uvCoord)*/outColor*coeff;
 }

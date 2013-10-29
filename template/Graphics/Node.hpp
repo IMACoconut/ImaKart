@@ -1,11 +1,17 @@
 #pragma once
 
+/*
+	Class Node
+	Représente un 
+*/
+
 #include <glm/glm.hpp>
 #include <vector>
 #include <Graphics/Render.hpp>
 
 namespace Graph {
 	class Material;
+	class Shader;
 
 	class Node {
 	public:
@@ -13,6 +19,7 @@ namespace Graph {
 		Node(const Node& other) = delete;
 		virtual ~Node();
 
+		void setParent(Node* parent);
 		void addChild(Node* child);
 		void removeChild(Node* child);
 
@@ -29,6 +36,7 @@ namespace Graph {
 
 		virtual void draw() = 0;
 		void setMaterial(int pos, Material* m);
+		void setShader(Shader* s);
 
 	protected:
 		void updateModelMatrix();
@@ -37,6 +45,7 @@ namespace Graph {
 		Node* parent;
 		std::vector<Node*> children;
 		Material* material[Render::TextureChannel_Max];
+		Shader* shader;
 		glm::mat4 modelMatrix;
 		bool modelDirty;
 	};

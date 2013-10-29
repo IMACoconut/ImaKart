@@ -15,7 +15,7 @@ namespace Graph {
 				float x = cos(2*M_PI*j*R)*sin(M_PI*i*R);
 				float y = sin(-M_PI_2+M_PI*i*R);
 				float z = sin(2*M_PI*j*R)*sin(M_PI*i*R);
-				buff.addVertex(Vertex3D(glm::vec3(x,y,z), glm::vec3(x,y,z), glm::vec2(0,0), sf::Color(255,255,255,255)));
+				buff.addVertex(Vertex3D(glm::vec3(x,y,z), glm::vec3(-x,-y,-z), glm::vec2(0,0), sf::Color(255,255,255,255)));
 
 			}
 		}

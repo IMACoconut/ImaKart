@@ -720,6 +720,7 @@ template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../lib/glm/glm/gtc/matrix_
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/./Graphics/Material.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/./Graphics/Node.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/./Graphics/Render.hpp
+template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../template/./Graphics/Shader.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/Config.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Color.hpp
 template/CMakeFiles/template.dir/Graphics/Node.cpp.o: ../third-party/SFML-2.1/include/SFML/Graphics/Export.hpp

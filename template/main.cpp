@@ -7,6 +7,7 @@
 #include <Utility/Tools.hpp>
 #include <SFML/Graphics.hpp>
 
+#include <unistd.h>
 
 #include <iostream>
 #include <vector>
@@ -18,6 +19,7 @@ static const unsigned int WINDOW_HEIGHT = 600;
 
 
 int main(void) {
+	Util::LogManager::init();
 	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
 	//window.setFramerateLimit(FPS);
 
@@ -71,10 +73,12 @@ int main(void) {
 		std::cerr << "Error" << std::endl;
 	}
 	mesh.setScale(glm::vec3(16,1,16));
+	mesh.setShader(&s);
 
 	Graph::Skydome sky;
 	sky.loadSkyMaterial("resources/images/sky.png");
 	sky.loadGlowMaterial("resources/images/glow.png");
+	sky.setShader(&s2);
 
 	Graph::Mesh mesh3;
 	Graph::VertexBuffer buff;
@@ -113,7 +117,8 @@ int main(void) {
 	Graph::Camera cam;
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
 	scene.setCamera(&cam);
-
+	/*sky.setParent(&scene);
+	mesh.setParent(&scene);*/
 	int old_x = WINDOW_WIDTH/2;
 	int old_y = WINDOW_HEIGHT/2;
 
@@ -126,7 +131,6 @@ int main(void) {
 	sf::Clock frameTime, clock;
 	int fps = 0;
 	while(window.isOpen()) {
-		
 
 		sf::Event e;
 		while(window.pollEvent(e)) {
@@ -136,7 +140,7 @@ int main(void) {
 					window.close();
 					break;
 				case sf::Event::MouseMoved:
-					cam.rotate(e.mouseMove.x - old_x,old_y-e.mouseMove.y);
+					cam.rotate(e.mouseMove.x - old_x,e.mouseMove.y-old_y);
 					old_x = e.mouseMove.x;
 					old_y = e.mouseMove.y;
 					break;
@@ -148,6 +152,7 @@ int main(void) {
 						default:
 							break;
 					}
+					break;
 				default:
 					break;
 			}
@@ -174,7 +179,7 @@ int main(void) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here
 
-		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
+		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.001f;
 		glm::vec3 l = glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0);
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);
@@ -185,9 +190,10 @@ int main(void) {
 		s.bind();
 		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
 		mesh.render();
-		//s3.bind();
-		//mesh3.setPosition(l);
-		//mesh3.render();
+		s3.bind();
+		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
+		mesh3.setPosition(-l);
+		mesh3.render();
 		/*s2.bind();
 		mesh2.render();*/
 		
