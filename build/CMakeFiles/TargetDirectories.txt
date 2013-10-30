@@ -1,4 +1,5 @@
 /home/andre/Documents/Projects/ImaKart/build/third-party/glew-1.10.0/CMakeFiles/glew.dir
+/home/andre/Documents/Projects/ImaKart/build/lib/CMakeFiles/imacoconut.dir
 /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Audio/CMakeFiles/sfml-audio.dir
 /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir
 /home/andre/Documents/Projects/ImaKart/build/third-party/SFML-2.1/src/SFML/Network/CMakeFiles/sfml-network.dir

@@ -218,6 +218,19 @@ glew/fast:
 .PHONY : glew/fast
 
 #=============================================================================
+# Target rules for targets named imacoconut
+
+# Build rule for target.
+imacoconut: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 imacoconut
+.PHONY : imacoconut
+
+# fast build rule for target.
+imacoconut/fast:
+	$(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/build
+.PHONY : imacoconut/fast
+
+#=============================================================================
 # Target rules for targets named template
 
 # Build rule for target.
@@ -248,6 +261,7 @@ help:
 	@echo "... sfml-graphics"
 	@echo "... sfml-audio"
 	@echo "... glew"
+	@echo "... imacoconut"
 	@echo "... template"
 .PHONY : help
 

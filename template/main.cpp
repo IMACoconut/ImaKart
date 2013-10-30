@@ -3,6 +3,7 @@
 #include <Graphics/Camera.hpp>
 #include <Graphics/Heightmap.hpp>
 #include <Graphics/Skydome.hpp>
+#include <Graphics/Material.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
 #include <SFML/Graphics.hpp>
@@ -69,48 +70,21 @@ int main(void) {
 	mesh.setScale(glm::vec3(2,10,1));
 	mesh.setRotation(glm::vec3(45,45,0));*/
 	Graph::Heightmap mesh;
-	if(!mesh.loadFromFile("resources/images/heightmap.png")) {
+	if(!mesh.loadFromFile("resources/maps/dummy2/heightmap.png")) {
 		std::cerr << "Error" << std::endl;
 	}
-	mesh.setScale(glm::vec3(16,1,16));
+	Graph::Material hmtex;
+	if(!hmtex.loadFromFile("resources/maps/dummy2/detail.png")) {
+		std::cerr << "Error while loading material" << std::endl;
+	}
+	mesh.setMaterial(0, &hmtex);
+	mesh.setScale(glm::vec3(16,16,16));
 	mesh.setShader(&s);
 
 	Graph::Skydome sky;
 	sky.loadSkyMaterial("resources/images/sky.png");
 	sky.loadGlowMaterial("resources/images/glow.png");
 	sky.setShader(&s2);
-
-	Graph::Mesh mesh3;
-	Graph::VertexBuffer buff;
-	buff.addVertex(Graph::Vertex3D(glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(100,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(100,100,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(0,100,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(0,0,100), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(100,0,100), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(100,100,100), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(0,100,100), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addTriangle(sf::Vector3i(0,1,2));
-	buff.addTriangle(sf::Vector3i(0,2,3));
-	buff.addTriangle(sf::Vector3i(4,5,6));
-	buff.addTriangle(sf::Vector3i(4,6,7));
-
-	buff.addTriangle(sf::Vector3i(0,3,7));
-	buff.addTriangle(sf::Vector3i(0,7,4));
-
-	buff.addTriangle(sf::Vector3i(1,2,6));
-	buff.addTriangle(sf::Vector3i(1,6,5));
-
-	buff.addTriangle(sf::Vector3i(0,1,5));
-	buff.addTriangle(sf::Vector3i(0,5,4));
-
-	buff.addTriangle(sf::Vector3i(3,4,7));
-	buff.addTriangle(sf::Vector3i(3,7,6));
-
-	if(!mesh3.loadFromMemory(buff))
-	{
-		std::cerr << "Error" << std::endl;
-	}
 
 	s.bind();
 	Graph::Scene scene;
@@ -179,7 +153,7 @@ int main(void) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here
 
-		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.001f;
+		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.00001f;
 		glm::vec3 l = glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0);
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);
@@ -190,10 +164,6 @@ int main(void) {
 		s.bind();
 		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
 		mesh.render();
-		s3.bind();
-		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
-		mesh3.setPosition(-l);
-		mesh3.render();
 		/*s2.bind();
 		mesh2.render();*/
 		

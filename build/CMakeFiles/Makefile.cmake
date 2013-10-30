@@ -86,5 +86,6 @@ SET(CMAKE_DEPEND_INFO_FILES
   "third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/DependInfo.cmake"
   "third-party/SFML-2.1/src/SFML/Audio/CMakeFiles/sfml-audio.dir/DependInfo.cmake"
   "third-party/glew-1.10.0/CMakeFiles/glew.dir/DependInfo.cmake"
+  "lib/CMakeFiles/imacoconut.dir/DependInfo.cmake"
   "template/CMakeFiles/template.dir/DependInfo.cmake"
   )

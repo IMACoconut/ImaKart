@@ -502,6 +502,9 @@ glm_BINARY_DIR:STATIC=/home/andre/Documents/Projects/ImaKart/build/lib/glm
 //Value Computed by CMake
 glm_SOURCE_DIR:STATIC=/home/andre/Documents/Projects/ImaKart/lib/glm
 
+//Dependencies for target
+imacoconut_LIB_DEPENDS:STATIC=
+
 //Dependencies for the target
 sfml-audio_LIB_DEPENDS:STATIC=general;sfml-system;general;/usr/lib/x86_64-linux-gnu/libopenal.so;general;/usr/lib/x86_64-linux-gnu/libsndfile.so;
 

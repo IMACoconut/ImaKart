@@ -139,6 +139,284 @@ depend:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+lib/CMakeFiles/imacoconut.dir/rule:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/imacoconut.dir/rule
+.PHONY : lib/CMakeFiles/imacoconut.dir/rule
+
+# Convenience name for target.
+imacoconut: lib/CMakeFiles/imacoconut.dir/rule
+.PHONY : imacoconut
+
+# fast build rule for target.
+imacoconut/fast:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/build
+.PHONY : imacoconut/fast
+
+src/Graphics/Camera.o: src/Graphics/Camera.cpp.o
+.PHONY : src/Graphics/Camera.o
+
+# target to build an object file
+src/Graphics/Camera.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Camera.cpp.o
+.PHONY : src/Graphics/Camera.cpp.o
+
+src/Graphics/Camera.i: src/Graphics/Camera.cpp.i
+.PHONY : src/Graphics/Camera.i
+
+# target to preprocess a source file
+src/Graphics/Camera.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Camera.cpp.i
+.PHONY : src/Graphics/Camera.cpp.i
+
+src/Graphics/Camera.s: src/Graphics/Camera.cpp.s
+.PHONY : src/Graphics/Camera.s
+
+# target to generate assembly for a file
+src/Graphics/Camera.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Camera.cpp.s
+.PHONY : src/Graphics/Camera.cpp.s
+
+src/Graphics/Heightmap.o: src/Graphics/Heightmap.cpp.o
+.PHONY : src/Graphics/Heightmap.o
+
+# target to build an object file
+src/Graphics/Heightmap.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Heightmap.cpp.o
+.PHONY : src/Graphics/Heightmap.cpp.o
+
+src/Graphics/Heightmap.i: src/Graphics/Heightmap.cpp.i
+.PHONY : src/Graphics/Heightmap.i
+
+# target to preprocess a source file
+src/Graphics/Heightmap.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Heightmap.cpp.i
+.PHONY : src/Graphics/Heightmap.cpp.i
+
+src/Graphics/Heightmap.s: src/Graphics/Heightmap.cpp.s
+.PHONY : src/Graphics/Heightmap.s
+
+# target to generate assembly for a file
+src/Graphics/Heightmap.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Heightmap.cpp.s
+.PHONY : src/Graphics/Heightmap.cpp.s
+
+src/Graphics/Material.o: src/Graphics/Material.cpp.o
+.PHONY : src/Graphics/Material.o
+
+# target to build an object file
+src/Graphics/Material.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Material.cpp.o
+.PHONY : src/Graphics/Material.cpp.o
+
+src/Graphics/Material.i: src/Graphics/Material.cpp.i
+.PHONY : src/Graphics/Material.i
+
+# target to preprocess a source file
+src/Graphics/Material.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Material.cpp.i
+.PHONY : src/Graphics/Material.cpp.i
+
+src/Graphics/Material.s: src/Graphics/Material.cpp.s
+.PHONY : src/Graphics/Material.s
+
+# target to generate assembly for a file
+src/Graphics/Material.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Material.cpp.s
+.PHONY : src/Graphics/Material.cpp.s
+
+src/Graphics/Mesh.o: src/Graphics/Mesh.cpp.o
+.PHONY : src/Graphics/Mesh.o
+
+# target to build an object file
+src/Graphics/Mesh.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Mesh.cpp.o
+.PHONY : src/Graphics/Mesh.cpp.o
+
+src/Graphics/Mesh.i: src/Graphics/Mesh.cpp.i
+.PHONY : src/Graphics/Mesh.i
+
+# target to preprocess a source file
+src/Graphics/Mesh.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Mesh.cpp.i
+.PHONY : src/Graphics/Mesh.cpp.i
+
+src/Graphics/Mesh.s: src/Graphics/Mesh.cpp.s
+.PHONY : src/Graphics/Mesh.s
+
+# target to generate assembly for a file
+src/Graphics/Mesh.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Mesh.cpp.s
+.PHONY : src/Graphics/Mesh.cpp.s
+
+src/Graphics/MeshBuffer.o: src/Graphics/MeshBuffer.cpp.o
+.PHONY : src/Graphics/MeshBuffer.o
+
+# target to build an object file
+src/Graphics/MeshBuffer.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshBuffer.cpp.o
+.PHONY : src/Graphics/MeshBuffer.cpp.o
+
+src/Graphics/MeshBuffer.i: src/Graphics/MeshBuffer.cpp.i
+.PHONY : src/Graphics/MeshBuffer.i
+
+# target to preprocess a source file
+src/Graphics/MeshBuffer.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshBuffer.cpp.i
+.PHONY : src/Graphics/MeshBuffer.cpp.i
+
+src/Graphics/MeshBuffer.s: src/Graphics/MeshBuffer.cpp.s
+.PHONY : src/Graphics/MeshBuffer.s
+
+# target to generate assembly for a file
+src/Graphics/MeshBuffer.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshBuffer.cpp.s
+.PHONY : src/Graphics/MeshBuffer.cpp.s
+
+src/Graphics/MeshLoader.o: src/Graphics/MeshLoader.cpp.o
+.PHONY : src/Graphics/MeshLoader.o
+
+# target to build an object file
+src/Graphics/MeshLoader.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshLoader.cpp.o
+.PHONY : src/Graphics/MeshLoader.cpp.o
+
+src/Graphics/MeshLoader.i: src/Graphics/MeshLoader.cpp.i
+.PHONY : src/Graphics/MeshLoader.i
+
+# target to preprocess a source file
+src/Graphics/MeshLoader.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshLoader.cpp.i
+.PHONY : src/Graphics/MeshLoader.cpp.i
+
+src/Graphics/MeshLoader.s: src/Graphics/MeshLoader.cpp.s
+.PHONY : src/Graphics/MeshLoader.s
+
+# target to generate assembly for a file
+src/Graphics/MeshLoader.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshLoader.cpp.s
+.PHONY : src/Graphics/MeshLoader.cpp.s
+
+src/Graphics/Node.o: src/Graphics/Node.cpp.o
+.PHONY : src/Graphics/Node.o
+
+# target to build an object file
+src/Graphics/Node.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Node.cpp.o
+.PHONY : src/Graphics/Node.cpp.o
+
+src/Graphics/Node.i: src/Graphics/Node.cpp.i
+.PHONY : src/Graphics/Node.i
+
+# target to preprocess a source file
+src/Graphics/Node.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Node.cpp.i
+.PHONY : src/Graphics/Node.cpp.i
+
+src/Graphics/Node.s: src/Graphics/Node.cpp.s
+.PHONY : src/Graphics/Node.s
+
+# target to generate assembly for a file
+src/Graphics/Node.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Node.cpp.s
+.PHONY : src/Graphics/Node.cpp.s
+
+src/Graphics/Render.o: src/Graphics/Render.cpp.o
+.PHONY : src/Graphics/Render.o
+
+# target to build an object file
+src/Graphics/Render.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Render.cpp.o
+.PHONY : src/Graphics/Render.cpp.o
+
+src/Graphics/Render.i: src/Graphics/Render.cpp.i
+.PHONY : src/Graphics/Render.i
+
+# target to preprocess a source file
+src/Graphics/Render.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Render.cpp.i
+.PHONY : src/Graphics/Render.cpp.i
+
+src/Graphics/Render.s: src/Graphics/Render.cpp.s
+.PHONY : src/Graphics/Render.s
+
+# target to generate assembly for a file
+src/Graphics/Render.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Render.cpp.s
+.PHONY : src/Graphics/Render.cpp.s
+
+src/Graphics/Shader.o: src/Graphics/Shader.cpp.o
+.PHONY : src/Graphics/Shader.o
+
+# target to build an object file
+src/Graphics/Shader.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Shader.cpp.o
+.PHONY : src/Graphics/Shader.cpp.o
+
+src/Graphics/Shader.i: src/Graphics/Shader.cpp.i
+.PHONY : src/Graphics/Shader.i
+
+# target to preprocess a source file
+src/Graphics/Shader.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Shader.cpp.i
+.PHONY : src/Graphics/Shader.cpp.i
+
+src/Graphics/Shader.s: src/Graphics/Shader.cpp.s
+.PHONY : src/Graphics/Shader.s
+
+# target to generate assembly for a file
+src/Graphics/Shader.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Shader.cpp.s
+.PHONY : src/Graphics/Shader.cpp.s
+
+src/Graphics/Skydome.o: src/Graphics/Skydome.cpp.o
+.PHONY : src/Graphics/Skydome.o
+
+# target to build an object file
+src/Graphics/Skydome.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Skydome.cpp.o
+.PHONY : src/Graphics/Skydome.cpp.o
+
+src/Graphics/Skydome.i: src/Graphics/Skydome.cpp.i
+.PHONY : src/Graphics/Skydome.i
+
+# target to preprocess a source file
+src/Graphics/Skydome.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Skydome.cpp.i
+.PHONY : src/Graphics/Skydome.cpp.i
+
+src/Graphics/Skydome.s: src/Graphics/Skydome.cpp.s
+.PHONY : src/Graphics/Skydome.s
+
+# target to generate assembly for a file
+src/Graphics/Skydome.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Graphics/Skydome.cpp.s
+.PHONY : src/Graphics/Skydome.cpp.s
+
+src/Utility/LogManager.o: src/Utility/LogManager.cpp.o
+.PHONY : src/Utility/LogManager.o
+
+# target to build an object file
+src/Utility/LogManager.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Utility/LogManager.cpp.o
+.PHONY : src/Utility/LogManager.cpp.o
+
+src/Utility/LogManager.i: src/Utility/LogManager.cpp.i
+.PHONY : src/Utility/LogManager.i
+
+# target to preprocess a source file
+src/Utility/LogManager.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Utility/LogManager.cpp.i
+.PHONY : src/Utility/LogManager.cpp.i
+
+src/Utility/LogManager.s: src/Utility/LogManager.cpp.s
+.PHONY : src/Utility/LogManager.s
+
+# target to generate assembly for a file
+src/Utility/LogManager.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f lib/CMakeFiles/imacoconut.dir/build.make lib/CMakeFiles/imacoconut.dir/src/Utility/LogManager.cpp.s
+.PHONY : src/Utility/LogManager.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -146,11 +424,45 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... imacoconut"
 	@echo "... install"
 	@echo "... install/local"
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
+	@echo "... src/Graphics/Camera.o"
+	@echo "... src/Graphics/Camera.i"
+	@echo "... src/Graphics/Camera.s"
+	@echo "... src/Graphics/Heightmap.o"
+	@echo "... src/Graphics/Heightmap.i"
+	@echo "... src/Graphics/Heightmap.s"
+	@echo "... src/Graphics/Material.o"
+	@echo "... src/Graphics/Material.i"
+	@echo "... src/Graphics/Material.s"
+	@echo "... src/Graphics/Mesh.o"
+	@echo "... src/Graphics/Mesh.i"
+	@echo "... src/Graphics/Mesh.s"
+	@echo "... src/Graphics/MeshBuffer.o"
+	@echo "... src/Graphics/MeshBuffer.i"
+	@echo "... src/Graphics/MeshBuffer.s"
+	@echo "... src/Graphics/MeshLoader.o"
+	@echo "... src/Graphics/MeshLoader.i"
+	@echo "... src/Graphics/MeshLoader.s"
+	@echo "... src/Graphics/Node.o"
+	@echo "... src/Graphics/Node.i"
+	@echo "... src/Graphics/Node.s"
+	@echo "... src/Graphics/Render.o"
+	@echo "... src/Graphics/Render.i"
+	@echo "... src/Graphics/Render.s"
+	@echo "... src/Graphics/Shader.o"
+	@echo "... src/Graphics/Shader.i"
+	@echo "... src/Graphics/Shader.s"
+	@echo "... src/Graphics/Skydome.o"
+	@echo "... src/Graphics/Skydome.i"
+	@echo "... src/Graphics/Skydome.s"
+	@echo "... src/Utility/LogManager.o"
+	@echo "... src/Utility/LogManager.i"
+	@echo "... src/Utility/LogManager.s"
 .PHONY : help
 
 

@@ -10,9 +10,10 @@ include_directories(third-party/glew-1.10.0/include)
 add_definitions(-DGLEW_STATIC=1)
 add_subdirectory(third-party/glew-1.10.0)
 
+include_directories(third-party/glm)
 include_directories(lib/include)
 add_subdirectory(lib)
-include_directories(lib/glm)
-set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} sfml-graphics sfml-window sfml-system)
+
+set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} sfml-graphics sfml-window sfml-system imacoconut)
 
 add_subdirectory(template)

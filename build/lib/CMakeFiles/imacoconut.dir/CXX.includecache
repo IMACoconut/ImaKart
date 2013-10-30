@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../lib/include/Utility/LogManager.hpp
+string
+-
+
+/home/andre/Documents/Projects/ImaKart/lib/src/Utility/LogManager.cpp
+Utility/LogManager.hpp
+-
+chrono
+-
+iostream
+-
+iomanip
+-
+ctime
+-
+fstream
+-
+
