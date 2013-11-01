@@ -35,20 +35,20 @@ int main(void) {
 	}
 
 	Graph::Shader s;
-	s.loadFromFile("resources/shaders/textured.vert", Graph::Shader::ShaderType_Vertex);
-	s.loadFromFile("resources/shaders/textured.frag", Graph::Shader::ShaderType_Fragment);
+	s.loadFromFile("../resources/shaders/textured.vert", Graph::Shader::ShaderType_Vertex);
+	s.loadFromFile("../resources/shaders/textured.frag", Graph::Shader::ShaderType_Fragment);
 	if(!s.compile()) {
 		std::cerr << "Error" << std::endl;
 	}
 	Graph::Shader s2;
-	s2.loadFromFile("resources/shaders/skybox.vert", Graph::Shader::ShaderType_Vertex);
-	s2.loadFromFile("resources/shaders/skybox.frag", Graph::Shader::ShaderType_Fragment);
+	s2.loadFromFile("../resources/shaders/skybox.vert", Graph::Shader::ShaderType_Vertex);
+	s2.loadFromFile("../resources/shaders/skybox.frag", Graph::Shader::ShaderType_Fragment);
 	if(!s2.compile()) {
 		std::cerr << "Error" << std::endl;
 	}
 	Graph::Shader s3;
-	s3.loadFromFile("resources/shaders/basic.vert", Graph::Shader::ShaderType_Vertex);
-	s3.loadFromFile("resources/shaders/basic.frag", Graph::Shader::ShaderType_Fragment);
+	s3.loadFromFile("../resources/shaders/basic.vert", Graph::Shader::ShaderType_Vertex);
+	s3.loadFromFile("../resources/shaders/basic.frag", Graph::Shader::ShaderType_Fragment);
 	if(!s3.compile()) {
 		std::cerr << "Error" << std::endl;
 	}
@@ -68,18 +68,18 @@ int main(void) {
 	}
 	*/
 	
-	/*if(!mesh.loadFromFile("resources/models/cube.3DS")) {
+	/*if(!mesh.loadFromFile("../resources/models/cube.3DS")) {
 		std::cerr << "Error" << std::endl;
 	}
 	mesh.setScale(glm::vec3(2,10,1));
 	mesh.setRotation(glm::vec3(45,45,0));*/
-	return 0;
+
 	Graph::Heightmap mesh;
-	if(!mesh.loadFromFile("resources/maps/dummy2/heightmap.png")) {
+	if(!mesh.loadFromFile("../resources/maps/dummy2/heightmap.png")) {
 		std::cerr << "Error" << std::endl;
 	}
 	Graph::Material hmtex;
-	if(!hmtex.loadFromFile("resources/maps/dummy2/detail.png")) {
+	if(!hmtex.loadFromFile("../resources/maps/dummy2/detail.png")) {
 		std::cerr << "Error while loading material" << std::endl;
 	}
 	mesh.setMaterial(0, &hmtex);
@@ -87,8 +87,8 @@ int main(void) {
 	mesh.setShader(&s);
 
 	Graph::Skydome sky;
-	sky.loadSkyMaterial("resources/images/sky.png");
-	sky.loadGlowMaterial("resources/images/glow.png");
+	sky.loadSkyMaterial("../resources/images/sky.png");
+	sky.loadGlowMaterial("../resources/images/glow.png");
 	sky.setShader(&s2);
 
 	s.bind();
