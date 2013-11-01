@@ -72,14 +72,39 @@ template/CMakeFiles/template.dir/main.cpp.o.provides: template/CMakeFiles/templa
 
 template/CMakeFiles/template.dir/main.cpp.o.provides.build: template/CMakeFiles/template.dir/main.cpp.o
 
+template/CMakeFiles/template.dir/Game/Entity.cpp.o: template/CMakeFiles/template.dir/flags.make
+template/CMakeFiles/template.dir/Game/Entity.cpp.o: ../template/Game/Entity.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object template/CMakeFiles/template.dir/Game/Entity.cpp.o"
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/template.dir/Game/Entity.cpp.o -c /home/andre/Documents/Projects/ImaKart/template/Game/Entity.cpp
+
+template/CMakeFiles/template.dir/Game/Entity.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/template.dir/Game/Entity.cpp.i"
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/andre/Documents/Projects/ImaKart/template/Game/Entity.cpp > CMakeFiles/template.dir/Game/Entity.cpp.i
+
+template/CMakeFiles/template.dir/Game/Entity.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/template.dir/Game/Entity.cpp.s"
+	cd /home/andre/Documents/Projects/ImaKart/build/template && /usr/bin/g++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/andre/Documents/Projects/ImaKart/template/Game/Entity.cpp -o CMakeFiles/template.dir/Game/Entity.cpp.s
+
+template/CMakeFiles/template.dir/Game/Entity.cpp.o.requires:
+.PHONY : template/CMakeFiles/template.dir/Game/Entity.cpp.o.requires
+
+template/CMakeFiles/template.dir/Game/Entity.cpp.o.provides: template/CMakeFiles/template.dir/Game/Entity.cpp.o.requires
+	$(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Game/Entity.cpp.o.provides.build
+.PHONY : template/CMakeFiles/template.dir/Game/Entity.cpp.o.provides
+
+template/CMakeFiles/template.dir/Game/Entity.cpp.o.provides.build: template/CMakeFiles/template.dir/Game/Entity.cpp.o
+
 # Object files for target template
 template_OBJECTS = \
-"CMakeFiles/template.dir/main.cpp.o"
+"CMakeFiles/template.dir/main.cpp.o" \
+"CMakeFiles/template.dir/Game/Entity.cpp.o"
 
 # External object files for target template
 template_EXTERNAL_OBJECTS =
 
 template/template: template/CMakeFiles/template.dir/main.cpp.o
+template/template: template/CMakeFiles/template.dir/Game/Entity.cpp.o
 template/template: template/CMakeFiles/template.dir/build.make
 template/template: third-party/glew-1.10.0/libglew.a
 template/template: /usr/lib/x86_64-linux-gnu/libGLU.so
@@ -106,6 +131,7 @@ template/CMakeFiles/template.dir/build: template/template
 .PHONY : template/CMakeFiles/template.dir/build
 
 template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/main.cpp.o.requires
+template/CMakeFiles/template.dir/requires: template/CMakeFiles/template.dir/Game/Entity.cpp.o.requires
 .PHONY : template/CMakeFiles/template.dir/requires
 
 template/CMakeFiles/template.dir/clean:

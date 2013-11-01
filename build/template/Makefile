@@ -153,6 +153,30 @@ template/fast:
 	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/build
 .PHONY : template/fast
 
+Game/Entity.o: Game/Entity.cpp.o
+.PHONY : Game/Entity.o
+
+# target to build an object file
+Game/Entity.cpp.o:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Game/Entity.cpp.o
+.PHONY : Game/Entity.cpp.o
+
+Game/Entity.i: Game/Entity.cpp.i
+.PHONY : Game/Entity.i
+
+# target to preprocess a source file
+Game/Entity.cpp.i:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Game/Entity.cpp.i
+.PHONY : Game/Entity.cpp.i
+
+Game/Entity.s: Game/Entity.cpp.s
+.PHONY : Game/Entity.s
+
+# target to generate assembly for a file
+Game/Entity.cpp.s:
+	cd /home/andre/Documents/Projects/ImaKart/build && $(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/Game/Entity.cpp.s
+.PHONY : Game/Entity.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -190,6 +214,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... template"
+	@echo "... Game/Entity.o"
+	@echo "... Game/Entity.i"
+	@echo "... Game/Entity.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

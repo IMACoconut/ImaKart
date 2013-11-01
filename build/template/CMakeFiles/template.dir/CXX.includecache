@@ -90,6 +90,26 @@ string
 sstream
 -
 
+../template/./Game/BaseComponent.hpp
+string
+-
+Game/BaseComponent.inl
+-
+
+../template/./Game/BaseComponent.inl
+
+../template/./Game/Component.hpp
+Game/BaseComponent.hpp
+-
+
+../template/./Game/Entity.hpp
+Game/BaseComponent.hpp
+-
+Game/Component.hpp
+-
+map
+-
+
 ../third-party/SFML-2.1/include/SFML/Config.hpp
 
 ../third-party/SFML-2.1/include/SFML/Graphics.hpp
@@ -1008,6 +1028,10 @@ core/setup.hpp
 ./core/_swizzle.hpp
 ../third-party/glm/glm/./core/_swizzle.hpp
 
+/home/andre/Documents/Projects/ImaKart/template/Game/Entity.cpp
+Game/Entity.hpp
+-
+
 /home/andre/Documents/Projects/ImaKart/template/main.cpp
 Graphics/Shader.hpp
 -
@@ -1026,6 +1050,10 @@ Utility/LogManager.hpp
 Utility/Tools.hpp
 -
 SFML/Graphics.hpp
+-
+Game/Entity.hpp
+-
+Game/Component.hpp
 -
 unistd.h
 -

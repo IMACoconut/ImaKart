@@ -263,8 +263,8 @@ third-party/SFML-2.1/src/SFML/Graphics/preinstall:
 # Target rules for target third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir
 
 # All Build rule for target.
-third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/all: third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/all
 third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/all: third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/all
+third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/all: third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/all
 	$(MAKE) -f third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/build.make third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/depend
 	$(MAKE) -f third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/build.make third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles  25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
@@ -464,14 +464,14 @@ template/preinstall:
 # Target rules for target template/CMakeFiles/template.dir
 
 # All Build rule for target.
+template/CMakeFiles/template.dir/all: third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/all
+template/CMakeFiles/template.dir/all: third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/all
+template/CMakeFiles/template.dir/all: third-party/glew-1.10.0/CMakeFiles/glew.dir/all
 template/CMakeFiles/template.dir/all: lib/CMakeFiles/imacoconut.dir/all
 template/CMakeFiles/template.dir/all: third-party/SFML-2.1/src/SFML/Graphics/CMakeFiles/sfml-graphics.dir/all
-template/CMakeFiles/template.dir/all: third-party/SFML-2.1/src/SFML/System/CMakeFiles/sfml-system.dir/all
-template/CMakeFiles/template.dir/all: third-party/SFML-2.1/src/SFML/Window/CMakeFiles/sfml-window.dir/all
-template/CMakeFiles/template.dir/all: third-party/glew-1.10.0/CMakeFiles/glew.dir/all
 	$(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/depend
 	$(MAKE) -f template/CMakeFiles/template.dir/build.make template/CMakeFiles/template.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles  91
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/andre/Documents/Projects/ImaKart/build/CMakeFiles  91 92
 	@echo "Built target template"
 .PHONY : template/CMakeFiles/template.dir/all
 
@@ -481,7 +481,7 @@ all: template/CMakeFiles/template.dir/all
 
 # Build rule for subdir invocation for target.
 template/CMakeFiles/template.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles 70
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles 71
 	$(MAKE) -f CMakeFiles/Makefile2 template/CMakeFiles/template.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/andre/Documents/Projects/ImaKart/build/CMakeFiles 0
 .PHONY : template/CMakeFiles/template.dir/rule

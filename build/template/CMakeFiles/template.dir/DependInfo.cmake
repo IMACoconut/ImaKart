@@ -4,6 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
+  "/home/andre/Documents/Projects/ImaKart/template/Game/Entity.cpp" "/home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir/Game/Entity.cpp.o"
   "/home/andre/Documents/Projects/ImaKart/template/main.cpp" "/home/andre/Documents/Projects/ImaKart/build/template/CMakeFiles/template.dir/main.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")

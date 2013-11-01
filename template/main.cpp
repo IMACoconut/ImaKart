@@ -6,7 +6,11 @@
 #include <Graphics/Material.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
+
 #include <SFML/Graphics.hpp>
+
+#include <Game/Entity.hpp>
+#include <Game/Component.hpp>
 
 #include <unistd.h>
 
@@ -69,6 +73,7 @@ int main(void) {
 	}
 	mesh.setScale(glm::vec3(2,10,1));
 	mesh.setRotation(glm::vec3(45,45,0));*/
+	
 	Graph::Heightmap mesh;
 	if(!mesh.loadFromFile("resources/maps/dummy2/heightmap.png")) {
 		std::cerr << "Error" << std::endl;
@@ -153,7 +158,7 @@ int main(void) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here
 
-		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.00001f;
+		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
 		glm::vec3 l = glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0);
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);

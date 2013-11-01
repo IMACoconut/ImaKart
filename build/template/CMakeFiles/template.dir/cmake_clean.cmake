@@ -1,5 +1,6 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/template.dir/main.cpp.o"
+  "CMakeFiles/template.dir/Game/Entity.cpp.o"
   "template.pdb"
   "template"
 )

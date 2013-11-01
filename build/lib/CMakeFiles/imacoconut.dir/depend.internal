@@ -29,6 +29,71 @@ lib/CMakeFiles/imacoconut.dir/src/Graphics/Camera.cpp.o
  ../third-party/SFML-2.1/include/SFML/System/Vector3.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector3.inl
  ../third-party/glew-1.10.0/include/GL/glew.h
+ ../third-party/glm/glm/./core/_detail.hpp
+ ../third-party/glm/glm/./core/_fixes.hpp
+ ../third-party/glm/glm/./core/_swizzle.hpp
+ ../third-party/glm/glm/./core/_swizzle_func.hpp
+ ../third-party/glm/glm/./core/_vectorize.hpp
+ ../third-party/glm/glm/./core/func_common.hpp
+ ../third-party/glm/glm/./core/func_common.inl
+ ../third-party/glm/glm/./core/func_exponential.hpp
+ ../third-party/glm/glm/./core/func_exponential.inl
+ ../third-party/glm/glm/./core/func_geometric.hpp
+ ../third-party/glm/glm/./core/func_geometric.inl
+ ../third-party/glm/glm/./core/func_integer.hpp
+ ../third-party/glm/glm/./core/func_integer.inl
+ ../third-party/glm/glm/./core/func_matrix.hpp
+ ../third-party/glm/glm/./core/func_matrix.inl
+ ../third-party/glm/glm/./core/func_noise.hpp
+ ../third-party/glm/glm/./core/func_noise.inl
+ ../third-party/glm/glm/./core/func_packing.hpp
+ ../third-party/glm/glm/./core/func_packing.inl
+ ../third-party/glm/glm/./core/func_trigonometric.hpp
+ ../third-party/glm/glm/./core/func_trigonometric.inl
+ ../third-party/glm/glm/./core/func_vector_relational.hpp
+ ../third-party/glm/glm/./core/func_vector_relational.inl
+ ../third-party/glm/glm/./core/setup.hpp
+ ../third-party/glm/glm/./core/type.hpp
+ ../third-party/glm/glm/./core/type_float.hpp
+ ../third-party/glm/glm/./core/type_gentype.hpp
+ ../third-party/glm/glm/./core/type_half.hpp
+ ../third-party/glm/glm/./core/type_half.inl
+ ../third-party/glm/glm/./core/type_int.hpp
+ ../third-party/glm/glm/./core/type_mat.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.inl
+ ../third-party/glm/glm/./core/type_mat2x3.hpp
+ ../third-party/glm/glm/./core/type_mat2x3.inl
+ ../third-party/glm/glm/./core/type_mat2x4.hpp
+ ../third-party/glm/glm/./core/type_mat2x4.inl
+ ../third-party/glm/glm/./core/type_mat3x2.hpp
+ ../third-party/glm/glm/./core/type_mat3x2.inl
+ ../third-party/glm/glm/./core/type_mat3x3.hpp
+ ../third-party/glm/glm/./core/type_mat3x3.inl
+ ../third-party/glm/glm/./core/type_mat3x4.hpp
+ ../third-party/glm/glm/./core/type_mat3x4.inl
+ ../third-party/glm/glm/./core/type_mat4x2.hpp
+ ../third-party/glm/glm/./core/type_mat4x2.inl
+ ../third-party/glm/glm/./core/type_mat4x3.hpp
+ ../third-party/glm/glm/./core/type_mat4x3.inl
+ ../third-party/glm/glm/./core/type_mat4x4.hpp
+ ../third-party/glm/glm/./core/type_mat4x4.inl
+ ../third-party/glm/glm/./core/type_size.hpp
+ ../third-party/glm/glm/./core/type_vec.hpp
+ ../third-party/glm/glm/./core/type_vec1.hpp
+ ../third-party/glm/glm/./core/type_vec1.inl
+ ../third-party/glm/glm/./core/type_vec2.hpp
+ ../third-party/glm/glm/./core/type_vec2.inl
+ ../third-party/glm/glm/./core/type_vec3.hpp
+ ../third-party/glm/glm/./core/type_vec3.inl
+ ../third-party/glm/glm/./core/type_vec4.hpp
+ ../third-party/glm/glm/./core/type_vec4.inl
+ ../third-party/glm/glm/core/_fixes.hpp
+ ../third-party/glm/glm/core/setup.hpp
+ ../third-party/glm/glm/glm.hpp
+ ../third-party/glm/glm/gtc/../glm.hpp
+ ../third-party/glm/glm/gtc/matrix_transform.hpp
+ ../third-party/glm/glm/gtc/matrix_transform.inl
  /home/andre/Documents/Projects/ImaKart/lib/src/Graphics/Camera.cpp
 lib/CMakeFiles/imacoconut.dir/src/Graphics/Heightmap.cpp.o
  ../lib/include/Graphics/Heightmap.hpp
@@ -101,6 +166,68 @@ lib/CMakeFiles/imacoconut.dir/src/Graphics/Heightmap.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/WindowHandle.hpp
  ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
  ../third-party/glew-1.10.0/include/GL/glew.h
+ ../third-party/glm/glm/./core/_detail.hpp
+ ../third-party/glm/glm/./core/_fixes.hpp
+ ../third-party/glm/glm/./core/_swizzle.hpp
+ ../third-party/glm/glm/./core/_swizzle_func.hpp
+ ../third-party/glm/glm/./core/_vectorize.hpp
+ ../third-party/glm/glm/./core/func_common.hpp
+ ../third-party/glm/glm/./core/func_common.inl
+ ../third-party/glm/glm/./core/func_exponential.hpp
+ ../third-party/glm/glm/./core/func_exponential.inl
+ ../third-party/glm/glm/./core/func_geometric.hpp
+ ../third-party/glm/glm/./core/func_geometric.inl
+ ../third-party/glm/glm/./core/func_integer.hpp
+ ../third-party/glm/glm/./core/func_integer.inl
+ ../third-party/glm/glm/./core/func_matrix.hpp
+ ../third-party/glm/glm/./core/func_matrix.inl
+ ../third-party/glm/glm/./core/func_noise.hpp
+ ../third-party/glm/glm/./core/func_noise.inl
+ ../third-party/glm/glm/./core/func_packing.hpp
+ ../third-party/glm/glm/./core/func_packing.inl
+ ../third-party/glm/glm/./core/func_trigonometric.hpp
+ ../third-party/glm/glm/./core/func_trigonometric.inl
+ ../third-party/glm/glm/./core/func_vector_relational.hpp
+ ../third-party/glm/glm/./core/func_vector_relational.inl
+ ../third-party/glm/glm/./core/setup.hpp
+ ../third-party/glm/glm/./core/type.hpp
+ ../third-party/glm/glm/./core/type_float.hpp
+ ../third-party/glm/glm/./core/type_gentype.hpp
+ ../third-party/glm/glm/./core/type_half.hpp
+ ../third-party/glm/glm/./core/type_half.inl
+ ../third-party/glm/glm/./core/type_int.hpp
+ ../third-party/glm/glm/./core/type_mat.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.inl
+ ../third-party/glm/glm/./core/type_mat2x3.hpp
+ ../third-party/glm/glm/./core/type_mat2x3.inl
+ ../third-party/glm/glm/./core/type_mat2x4.hpp
+ ../third-party/glm/glm/./core/type_mat2x4.inl
+ ../third-party/glm/glm/./core/type_mat3x2.hpp
+ ../third-party/glm/glm/./core/type_mat3x2.inl
+ ../third-party/glm/glm/./core/type_mat3x3.hpp
+ ../third-party/glm/glm/./core/type_mat3x3.inl
+ ../third-party/glm/glm/./core/type_mat3x4.hpp
+ ../third-party/glm/glm/./core/type_mat3x4.inl
+ ../third-party/glm/glm/./core/type_mat4x2.hpp
+ ../third-party/glm/glm/./core/type_mat4x2.inl
+ ../third-party/glm/glm/./core/type_mat4x3.hpp
+ ../third-party/glm/glm/./core/type_mat4x3.inl
+ ../third-party/glm/glm/./core/type_mat4x4.hpp
+ ../third-party/glm/glm/./core/type_mat4x4.inl
+ ../third-party/glm/glm/./core/type_size.hpp
+ ../third-party/glm/glm/./core/type_vec.hpp
+ ../third-party/glm/glm/./core/type_vec1.hpp
+ ../third-party/glm/glm/./core/type_vec1.inl
+ ../third-party/glm/glm/./core/type_vec2.hpp
+ ../third-party/glm/glm/./core/type_vec2.inl
+ ../third-party/glm/glm/./core/type_vec3.hpp
+ ../third-party/glm/glm/./core/type_vec3.inl
+ ../third-party/glm/glm/./core/type_vec4.hpp
+ ../third-party/glm/glm/./core/type_vec4.inl
+ ../third-party/glm/glm/core/_fixes.hpp
+ ../third-party/glm/glm/core/setup.hpp
+ ../third-party/glm/glm/glm.hpp
  /home/andre/Documents/Projects/ImaKart/lib/src/Graphics/Heightmap.cpp
 lib/CMakeFiles/imacoconut.dir/src/Graphics/Material.cpp.o
  ../lib/include/Graphics/Material.hpp
@@ -190,6 +317,68 @@ lib/CMakeFiles/imacoconut.dir/src/Graphics/Mesh.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/WindowHandle.hpp
  ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
  ../third-party/glew-1.10.0/include/GL/glew.h
+ ../third-party/glm/glm/./core/_detail.hpp
+ ../third-party/glm/glm/./core/_fixes.hpp
+ ../third-party/glm/glm/./core/_swizzle.hpp
+ ../third-party/glm/glm/./core/_swizzle_func.hpp
+ ../third-party/glm/glm/./core/_vectorize.hpp
+ ../third-party/glm/glm/./core/func_common.hpp
+ ../third-party/glm/glm/./core/func_common.inl
+ ../third-party/glm/glm/./core/func_exponential.hpp
+ ../third-party/glm/glm/./core/func_exponential.inl
+ ../third-party/glm/glm/./core/func_geometric.hpp
+ ../third-party/glm/glm/./core/func_geometric.inl
+ ../third-party/glm/glm/./core/func_integer.hpp
+ ../third-party/glm/glm/./core/func_integer.inl
+ ../third-party/glm/glm/./core/func_matrix.hpp
+ ../third-party/glm/glm/./core/func_matrix.inl
+ ../third-party/glm/glm/./core/func_noise.hpp
+ ../third-party/glm/glm/./core/func_noise.inl
+ ../third-party/glm/glm/./core/func_packing.hpp
+ ../third-party/glm/glm/./core/func_packing.inl
+ ../third-party/glm/glm/./core/func_trigonometric.hpp
+ ../third-party/glm/glm/./core/func_trigonometric.inl
+ ../third-party/glm/glm/./core/func_vector_relational.hpp
+ ../third-party/glm/glm/./core/func_vector_relational.inl
+ ../third-party/glm/glm/./core/setup.hpp
+ ../third-party/glm/glm/./core/type.hpp
+ ../third-party/glm/glm/./core/type_float.hpp
+ ../third-party/glm/glm/./core/type_gentype.hpp
+ ../third-party/glm/glm/./core/type_half.hpp
+ ../third-party/glm/glm/./core/type_half.inl
+ ../third-party/glm/glm/./core/type_int.hpp
+ ../third-party/glm/glm/./core/type_mat.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.inl
+ ../third-party/glm/glm/./core/type_mat2x3.hpp
+ ../third-party/glm/glm/./core/type_mat2x3.inl
+ ../third-party/glm/glm/./core/type_mat2x4.hpp
+ ../third-party/glm/glm/./core/type_mat2x4.inl
+ ../third-party/glm/glm/./core/type_mat3x2.hpp
+ ../third-party/glm/glm/./core/type_mat3x2.inl
+ ../third-party/glm/glm/./core/type_mat3x3.hpp
+ ../third-party/glm/glm/./core/type_mat3x3.inl
+ ../third-party/glm/glm/./core/type_mat3x4.hpp
+ ../third-party/glm/glm/./core/type_mat3x4.inl
+ ../third-party/glm/glm/./core/type_mat4x2.hpp
+ ../third-party/glm/glm/./core/type_mat4x2.inl
+ ../third-party/glm/glm/./core/type_mat4x3.hpp
+ ../third-party/glm/glm/./core/type_mat4x3.inl
+ ../third-party/glm/glm/./core/type_mat4x4.hpp
+ ../third-party/glm/glm/./core/type_mat4x4.inl
+ ../third-party/glm/glm/./core/type_size.hpp
+ ../third-party/glm/glm/./core/type_vec.hpp
+ ../third-party/glm/glm/./core/type_vec1.hpp
+ ../third-party/glm/glm/./core/type_vec1.inl
+ ../third-party/glm/glm/./core/type_vec2.hpp
+ ../third-party/glm/glm/./core/type_vec2.inl
+ ../third-party/glm/glm/./core/type_vec3.hpp
+ ../third-party/glm/glm/./core/type_vec3.inl
+ ../third-party/glm/glm/./core/type_vec4.hpp
+ ../third-party/glm/glm/./core/type_vec4.inl
+ ../third-party/glm/glm/core/_fixes.hpp
+ ../third-party/glm/glm/core/setup.hpp
+ ../third-party/glm/glm/glm.hpp
  /home/andre/Documents/Projects/ImaKart/lib/src/Graphics/Mesh.cpp
 lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshBuffer.cpp.o
  ../lib/include/Graphics/IBO.hpp
@@ -262,6 +451,68 @@ lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshBuffer.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/WindowHandle.hpp
  ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
  ../third-party/glew-1.10.0/include/GL/glew.h
+ ../third-party/glm/glm/./core/_detail.hpp
+ ../third-party/glm/glm/./core/_fixes.hpp
+ ../third-party/glm/glm/./core/_swizzle.hpp
+ ../third-party/glm/glm/./core/_swizzle_func.hpp
+ ../third-party/glm/glm/./core/_vectorize.hpp
+ ../third-party/glm/glm/./core/func_common.hpp
+ ../third-party/glm/glm/./core/func_common.inl
+ ../third-party/glm/glm/./core/func_exponential.hpp
+ ../third-party/glm/glm/./core/func_exponential.inl
+ ../third-party/glm/glm/./core/func_geometric.hpp
+ ../third-party/glm/glm/./core/func_geometric.inl
+ ../third-party/glm/glm/./core/func_integer.hpp
+ ../third-party/glm/glm/./core/func_integer.inl
+ ../third-party/glm/glm/./core/func_matrix.hpp
+ ../third-party/glm/glm/./core/func_matrix.inl
+ ../third-party/glm/glm/./core/func_noise.hpp
+ ../third-party/glm/glm/./core/func_noise.inl
+ ../third-party/glm/glm/./core/func_packing.hpp
+ ../third-party/glm/glm/./core/func_packing.inl
+ ../third-party/glm/glm/./core/func_trigonometric.hpp
+ ../third-party/glm/glm/./core/func_trigonometric.inl
+ ../third-party/glm/glm/./core/func_vector_relational.hpp
+ ../third-party/glm/glm/./core/func_vector_relational.inl
+ ../third-party/glm/glm/./core/setup.hpp
+ ../third-party/glm/glm/./core/type.hpp
+ ../third-party/glm/glm/./core/type_float.hpp
+ ../third-party/glm/glm/./core/type_gentype.hpp
+ ../third-party/glm/glm/./core/type_half.hpp
+ ../third-party/glm/glm/./core/type_half.inl
+ ../third-party/glm/glm/./core/type_int.hpp
+ ../third-party/glm/glm/./core/type_mat.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.inl
+ ../third-party/glm/glm/./core/type_mat2x3.hpp
+ ../third-party/glm/glm/./core/type_mat2x3.inl
+ ../third-party/glm/glm/./core/type_mat2x4.hpp
+ ../third-party/glm/glm/./core/type_mat2x4.inl
+ ../third-party/glm/glm/./core/type_mat3x2.hpp
+ ../third-party/glm/glm/./core/type_mat3x2.inl
+ ../third-party/glm/glm/./core/type_mat3x3.hpp
+ ../third-party/glm/glm/./core/type_mat3x3.inl
+ ../third-party/glm/glm/./core/type_mat3x4.hpp
+ ../third-party/glm/glm/./core/type_mat3x4.inl
+ ../third-party/glm/glm/./core/type_mat4x2.hpp
+ ../third-party/glm/glm/./core/type_mat4x2.inl
+ ../third-party/glm/glm/./core/type_mat4x3.hpp
+ ../third-party/glm/glm/./core/type_mat4x3.inl
+ ../third-party/glm/glm/./core/type_mat4x4.hpp
+ ../third-party/glm/glm/./core/type_mat4x4.inl
+ ../third-party/glm/glm/./core/type_size.hpp
+ ../third-party/glm/glm/./core/type_vec.hpp
+ ../third-party/glm/glm/./core/type_vec1.hpp
+ ../third-party/glm/glm/./core/type_vec1.inl
+ ../third-party/glm/glm/./core/type_vec2.hpp
+ ../third-party/glm/glm/./core/type_vec2.inl
+ ../third-party/glm/glm/./core/type_vec3.hpp
+ ../third-party/glm/glm/./core/type_vec3.inl
+ ../third-party/glm/glm/./core/type_vec4.hpp
+ ../third-party/glm/glm/./core/type_vec4.inl
+ ../third-party/glm/glm/core/_fixes.hpp
+ ../third-party/glm/glm/core/setup.hpp
+ ../third-party/glm/glm/glm.hpp
  /home/andre/Documents/Projects/ImaKart/lib/src/Graphics/MeshBuffer.cpp
 lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshLoader.cpp.o
  ../lib/include/Graphics/IBO.hpp
@@ -338,6 +589,68 @@ lib/CMakeFiles/imacoconut.dir/src/Graphics/MeshLoader.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/WindowHandle.hpp
  ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
  ../third-party/glew-1.10.0/include/GL/glew.h
+ ../third-party/glm/glm/./core/_detail.hpp
+ ../third-party/glm/glm/./core/_fixes.hpp
+ ../third-party/glm/glm/./core/_swizzle.hpp
+ ../third-party/glm/glm/./core/_swizzle_func.hpp
+ ../third-party/glm/glm/./core/_vectorize.hpp
+ ../third-party/glm/glm/./core/func_common.hpp
+ ../third-party/glm/glm/./core/func_common.inl
+ ../third-party/glm/glm/./core/func_exponential.hpp
+ ../third-party/glm/glm/./core/func_exponential.inl
+ ../third-party/glm/glm/./core/func_geometric.hpp
+ ../third-party/glm/glm/./core/func_geometric.inl
+ ../third-party/glm/glm/./core/func_integer.hpp
+ ../third-party/glm/glm/./core/func_integer.inl
+ ../third-party/glm/glm/./core/func_matrix.hpp
+ ../third-party/glm/glm/./core/func_matrix.inl
+ ../third-party/glm/glm/./core/func_noise.hpp
+ ../third-party/glm/glm/./core/func_noise.inl
+ ../third-party/glm/glm/./core/func_packing.hpp
+ ../third-party/glm/glm/./core/func_packing.inl
+ ../third-party/glm/glm/./core/func_trigonometric.hpp
+ ../third-party/glm/glm/./core/func_trigonometric.inl
+ ../third-party/glm/glm/./core/func_vector_relational.hpp
+ ../third-party/glm/glm/./core/func_vector_relational.inl
+ ../third-party/glm/glm/./core/setup.hpp
+ ../third-party/glm/glm/./core/type.hpp
+ ../third-party/glm/glm/./core/type_float.hpp
+ ../third-party/glm/glm/./core/type_gentype.hpp
+ ../third-party/glm/glm/./core/type_half.hpp
+ ../third-party/glm/glm/./core/type_half.inl
+ ../third-party/glm/glm/./core/type_int.hpp
+ ../third-party/glm/glm/./core/type_mat.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.inl
+ ../third-party/glm/glm/./core/type_mat2x3.hpp
+ ../third-party/glm/glm/./core/type_mat2x3.inl
+ ../third-party/glm/glm/./core/type_mat2x4.hpp
+ ../third-party/glm/glm/./core/type_mat2x4.inl
+ ../third-party/glm/glm/./core/type_mat3x2.hpp
+ ../third-party/glm/glm/./core/type_mat3x2.inl
+ ../third-party/glm/glm/./core/type_mat3x3.hpp
+ ../third-party/glm/glm/./core/type_mat3x3.inl
+ ../third-party/glm/glm/./core/type_mat3x4.hpp
+ ../third-party/glm/glm/./core/type_mat3x4.inl
+ ../third-party/glm/glm/./core/type_mat4x2.hpp
+ ../third-party/glm/glm/./core/type_mat4x2.inl
+ ../third-party/glm/glm/./core/type_mat4x3.hpp
+ ../third-party/glm/glm/./core/type_mat4x3.inl
+ ../third-party/glm/glm/./core/type_mat4x4.hpp
+ ../third-party/glm/glm/./core/type_mat4x4.inl
+ ../third-party/glm/glm/./core/type_size.hpp
+ ../third-party/glm/glm/./core/type_vec.hpp
+ ../third-party/glm/glm/./core/type_vec1.hpp
+ ../third-party/glm/glm/./core/type_vec1.inl
+ ../third-party/glm/glm/./core/type_vec2.hpp
+ ../third-party/glm/glm/./core/type_vec2.inl
+ ../third-party/glm/glm/./core/type_vec3.hpp
+ ../third-party/glm/glm/./core/type_vec3.inl
+ ../third-party/glm/glm/./core/type_vec4.hpp
+ ../third-party/glm/glm/./core/type_vec4.inl
+ ../third-party/glm/glm/core/_fixes.hpp
+ ../third-party/glm/glm/core/setup.hpp
+ ../third-party/glm/glm/glm.hpp
  /home/andre/Documents/Projects/ImaKart/lib/src/Graphics/MeshLoader.cpp
 lib/CMakeFiles/imacoconut.dir/src/Graphics/Node.cpp.o
  ../lib/include/Graphics/Material.hpp
@@ -373,6 +686,71 @@ lib/CMakeFiles/imacoconut.dir/src/Graphics/Node.cpp.o
  ../third-party/SFML-2.1/include/SFML/System/Vector3.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector3.inl
  ../third-party/glew-1.10.0/include/GL/glew.h
+ ../third-party/glm/glm/./core/_detail.hpp
+ ../third-party/glm/glm/./core/_fixes.hpp
+ ../third-party/glm/glm/./core/_swizzle.hpp
+ ../third-party/glm/glm/./core/_swizzle_func.hpp
+ ../third-party/glm/glm/./core/_vectorize.hpp
+ ../third-party/glm/glm/./core/func_common.hpp
+ ../third-party/glm/glm/./core/func_common.inl
+ ../third-party/glm/glm/./core/func_exponential.hpp
+ ../third-party/glm/glm/./core/func_exponential.inl
+ ../third-party/glm/glm/./core/func_geometric.hpp
+ ../third-party/glm/glm/./core/func_geometric.inl
+ ../third-party/glm/glm/./core/func_integer.hpp
+ ../third-party/glm/glm/./core/func_integer.inl
+ ../third-party/glm/glm/./core/func_matrix.hpp
+ ../third-party/glm/glm/./core/func_matrix.inl
+ ../third-party/glm/glm/./core/func_noise.hpp
+ ../third-party/glm/glm/./core/func_noise.inl
+ ../third-party/glm/glm/./core/func_packing.hpp
+ ../third-party/glm/glm/./core/func_packing.inl
+ ../third-party/glm/glm/./core/func_trigonometric.hpp
+ ../third-party/glm/glm/./core/func_trigonometric.inl
+ ../third-party/glm/glm/./core/func_vector_relational.hpp
+ ../third-party/glm/glm/./core/func_vector_relational.inl
+ ../third-party/glm/glm/./core/setup.hpp
+ ../third-party/glm/glm/./core/type.hpp
+ ../third-party/glm/glm/./core/type_float.hpp
+ ../third-party/glm/glm/./core/type_gentype.hpp
+ ../third-party/glm/glm/./core/type_half.hpp
+ ../third-party/glm/glm/./core/type_half.inl
+ ../third-party/glm/glm/./core/type_int.hpp
+ ../third-party/glm/glm/./core/type_mat.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.inl
+ ../third-party/glm/glm/./core/type_mat2x3.hpp
+ ../third-party/glm/glm/./core/type_mat2x3.inl
+ ../third-party/glm/glm/./core/type_mat2x4.hpp
+ ../third-party/glm/glm/./core/type_mat2x4.inl
+ ../third-party/glm/glm/./core/type_mat3x2.hpp
+ ../third-party/glm/glm/./core/type_mat3x2.inl
+ ../third-party/glm/glm/./core/type_mat3x3.hpp
+ ../third-party/glm/glm/./core/type_mat3x3.inl
+ ../third-party/glm/glm/./core/type_mat3x4.hpp
+ ../third-party/glm/glm/./core/type_mat3x4.inl
+ ../third-party/glm/glm/./core/type_mat4x2.hpp
+ ../third-party/glm/glm/./core/type_mat4x2.inl
+ ../third-party/glm/glm/./core/type_mat4x3.hpp
+ ../third-party/glm/glm/./core/type_mat4x3.inl
+ ../third-party/glm/glm/./core/type_mat4x4.hpp
+ ../third-party/glm/glm/./core/type_mat4x4.inl
+ ../third-party/glm/glm/./core/type_size.hpp
+ ../third-party/glm/glm/./core/type_vec.hpp
+ ../third-party/glm/glm/./core/type_vec1.hpp
+ ../third-party/glm/glm/./core/type_vec1.inl
+ ../third-party/glm/glm/./core/type_vec2.hpp
+ ../third-party/glm/glm/./core/type_vec2.inl
+ ../third-party/glm/glm/./core/type_vec3.hpp
+ ../third-party/glm/glm/./core/type_vec3.inl
+ ../third-party/glm/glm/./core/type_vec4.hpp
+ ../third-party/glm/glm/./core/type_vec4.inl
+ ../third-party/glm/glm/core/_fixes.hpp
+ ../third-party/glm/glm/core/setup.hpp
+ ../third-party/glm/glm/glm.hpp
+ ../third-party/glm/glm/gtc/../glm.hpp
+ ../third-party/glm/glm/gtc/matrix_transform.hpp
+ ../third-party/glm/glm/gtc/matrix_transform.inl
  /home/andre/Documents/Projects/ImaKart/lib/src/Graphics/Node.cpp
 lib/CMakeFiles/imacoconut.dir/src/Graphics/Render.cpp.o
  ../lib/include/Graphics/Material.hpp
@@ -407,6 +785,68 @@ lib/CMakeFiles/imacoconut.dir/src/Graphics/Render.cpp.o
  ../third-party/SFML-2.1/include/SFML/System/Vector3.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector3.inl
  ../third-party/glew-1.10.0/include/GL/glew.h
+ ../third-party/glm/glm/./core/_detail.hpp
+ ../third-party/glm/glm/./core/_fixes.hpp
+ ../third-party/glm/glm/./core/_swizzle.hpp
+ ../third-party/glm/glm/./core/_swizzle_func.hpp
+ ../third-party/glm/glm/./core/_vectorize.hpp
+ ../third-party/glm/glm/./core/func_common.hpp
+ ../third-party/glm/glm/./core/func_common.inl
+ ../third-party/glm/glm/./core/func_exponential.hpp
+ ../third-party/glm/glm/./core/func_exponential.inl
+ ../third-party/glm/glm/./core/func_geometric.hpp
+ ../third-party/glm/glm/./core/func_geometric.inl
+ ../third-party/glm/glm/./core/func_integer.hpp
+ ../third-party/glm/glm/./core/func_integer.inl
+ ../third-party/glm/glm/./core/func_matrix.hpp
+ ../third-party/glm/glm/./core/func_matrix.inl
+ ../third-party/glm/glm/./core/func_noise.hpp
+ ../third-party/glm/glm/./core/func_noise.inl
+ ../third-party/glm/glm/./core/func_packing.hpp
+ ../third-party/glm/glm/./core/func_packing.inl
+ ../third-party/glm/glm/./core/func_trigonometric.hpp
+ ../third-party/glm/glm/./core/func_trigonometric.inl
+ ../third-party/glm/glm/./core/func_vector_relational.hpp
+ ../third-party/glm/glm/./core/func_vector_relational.inl
+ ../third-party/glm/glm/./core/setup.hpp
+ ../third-party/glm/glm/./core/type.hpp
+ ../third-party/glm/glm/./core/type_float.hpp
+ ../third-party/glm/glm/./core/type_gentype.hpp
+ ../third-party/glm/glm/./core/type_half.hpp
+ ../third-party/glm/glm/./core/type_half.inl
+ ../third-party/glm/glm/./core/type_int.hpp
+ ../third-party/glm/glm/./core/type_mat.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.inl
+ ../third-party/glm/glm/./core/type_mat2x3.hpp
+ ../third-party/glm/glm/./core/type_mat2x3.inl
+ ../third-party/glm/glm/./core/type_mat2x4.hpp
+ ../third-party/glm/glm/./core/type_mat2x4.inl
+ ../third-party/glm/glm/./core/type_mat3x2.hpp
+ ../third-party/glm/glm/./core/type_mat3x2.inl
+ ../third-party/glm/glm/./core/type_mat3x3.hpp
+ ../third-party/glm/glm/./core/type_mat3x3.inl
+ ../third-party/glm/glm/./core/type_mat3x4.hpp
+ ../third-party/glm/glm/./core/type_mat3x4.inl
+ ../third-party/glm/glm/./core/type_mat4x2.hpp
+ ../third-party/glm/glm/./core/type_mat4x2.inl
+ ../third-party/glm/glm/./core/type_mat4x3.hpp
+ ../third-party/glm/glm/./core/type_mat4x3.inl
+ ../third-party/glm/glm/./core/type_mat4x4.hpp
+ ../third-party/glm/glm/./core/type_mat4x4.inl
+ ../third-party/glm/glm/./core/type_size.hpp
+ ../third-party/glm/glm/./core/type_vec.hpp
+ ../third-party/glm/glm/./core/type_vec1.hpp
+ ../third-party/glm/glm/./core/type_vec1.inl
+ ../third-party/glm/glm/./core/type_vec2.hpp
+ ../third-party/glm/glm/./core/type_vec2.inl
+ ../third-party/glm/glm/./core/type_vec3.hpp
+ ../third-party/glm/glm/./core/type_vec3.inl
+ ../third-party/glm/glm/./core/type_vec4.hpp
+ ../third-party/glm/glm/./core/type_vec4.inl
+ ../third-party/glm/glm/core/_fixes.hpp
+ ../third-party/glm/glm/core/setup.hpp
+ ../third-party/glm/glm/glm.hpp
  /home/andre/Documents/Projects/ImaKart/lib/src/Graphics/Render.cpp
 lib/CMakeFiles/imacoconut.dir/src/Graphics/Shader.cpp.o
  ../lib/include/Graphics/Render.hpp
@@ -436,6 +876,68 @@ lib/CMakeFiles/imacoconut.dir/src/Graphics/Shader.cpp.o
  ../third-party/SFML-2.1/include/SFML/System/Vector3.hpp
  ../third-party/SFML-2.1/include/SFML/System/Vector3.inl
  ../third-party/glew-1.10.0/include/GL/glew.h
+ ../third-party/glm/glm/./core/_detail.hpp
+ ../third-party/glm/glm/./core/_fixes.hpp
+ ../third-party/glm/glm/./core/_swizzle.hpp
+ ../third-party/glm/glm/./core/_swizzle_func.hpp
+ ../third-party/glm/glm/./core/_vectorize.hpp
+ ../third-party/glm/glm/./core/func_common.hpp
+ ../third-party/glm/glm/./core/func_common.inl
+ ../third-party/glm/glm/./core/func_exponential.hpp
+ ../third-party/glm/glm/./core/func_exponential.inl
+ ../third-party/glm/glm/./core/func_geometric.hpp
+ ../third-party/glm/glm/./core/func_geometric.inl
+ ../third-party/glm/glm/./core/func_integer.hpp
+ ../third-party/glm/glm/./core/func_integer.inl
+ ../third-party/glm/glm/./core/func_matrix.hpp
+ ../third-party/glm/glm/./core/func_matrix.inl
+ ../third-party/glm/glm/./core/func_noise.hpp
+ ../third-party/glm/glm/./core/func_noise.inl
+ ../third-party/glm/glm/./core/func_packing.hpp
+ ../third-party/glm/glm/./core/func_packing.inl
+ ../third-party/glm/glm/./core/func_trigonometric.hpp
+ ../third-party/glm/glm/./core/func_trigonometric.inl
+ ../third-party/glm/glm/./core/func_vector_relational.hpp
+ ../third-party/glm/glm/./core/func_vector_relational.inl
+ ../third-party/glm/glm/./core/setup.hpp
+ ../third-party/glm/glm/./core/type.hpp
+ ../third-party/glm/glm/./core/type_float.hpp
+ ../third-party/glm/glm/./core/type_gentype.hpp
+ ../third-party/glm/glm/./core/type_half.hpp
+ ../third-party/glm/glm/./core/type_half.inl
+ ../third-party/glm/glm/./core/type_int.hpp
+ ../third-party/glm/glm/./core/type_mat.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.inl
+ ../third-party/glm/glm/./core/type_mat2x3.hpp
+ ../third-party/glm/glm/./core/type_mat2x3.inl
+ ../third-party/glm/glm/./core/type_mat2x4.hpp
+ ../third-party/glm/glm/./core/type_mat2x4.inl
+ ../third-party/glm/glm/./core/type_mat3x2.hpp
+ ../third-party/glm/glm/./core/type_mat3x2.inl
+ ../third-party/glm/glm/./core/type_mat3x3.hpp
+ ../third-party/glm/glm/./core/type_mat3x3.inl
+ ../third-party/glm/glm/./core/type_mat3x4.hpp
+ ../third-party/glm/glm/./core/type_mat3x4.inl
+ ../third-party/glm/glm/./core/type_mat4x2.hpp
+ ../third-party/glm/glm/./core/type_mat4x2.inl
+ ../third-party/glm/glm/./core/type_mat4x3.hpp
+ ../third-party/glm/glm/./core/type_mat4x3.inl
+ ../third-party/glm/glm/./core/type_mat4x4.hpp
+ ../third-party/glm/glm/./core/type_mat4x4.inl
+ ../third-party/glm/glm/./core/type_size.hpp
+ ../third-party/glm/glm/./core/type_vec.hpp
+ ../third-party/glm/glm/./core/type_vec1.hpp
+ ../third-party/glm/glm/./core/type_vec1.inl
+ ../third-party/glm/glm/./core/type_vec2.hpp
+ ../third-party/glm/glm/./core/type_vec2.inl
+ ../third-party/glm/glm/./core/type_vec3.hpp
+ ../third-party/glm/glm/./core/type_vec3.inl
+ ../third-party/glm/glm/./core/type_vec4.hpp
+ ../third-party/glm/glm/./core/type_vec4.inl
+ ../third-party/glm/glm/core/_fixes.hpp
+ ../third-party/glm/glm/core/setup.hpp
+ ../third-party/glm/glm/glm.hpp
  /home/andre/Documents/Projects/ImaKart/lib/src/Graphics/Shader.cpp
 lib/CMakeFiles/imacoconut.dir/src/Graphics/Skydome.cpp.o
  ../lib/include/Graphics/Material.hpp
@@ -509,6 +1011,68 @@ lib/CMakeFiles/imacoconut.dir/src/Graphics/Skydome.cpp.o
  ../third-party/SFML-2.1/include/SFML/Window/WindowHandle.hpp
  ../third-party/SFML-2.1/include/SFML/Window/WindowStyle.hpp
  ../third-party/glew-1.10.0/include/GL/glew.h
+ ../third-party/glm/glm/./core/_detail.hpp
+ ../third-party/glm/glm/./core/_fixes.hpp
+ ../third-party/glm/glm/./core/_swizzle.hpp
+ ../third-party/glm/glm/./core/_swizzle_func.hpp
+ ../third-party/glm/glm/./core/_vectorize.hpp
+ ../third-party/glm/glm/./core/func_common.hpp
+ ../third-party/glm/glm/./core/func_common.inl
+ ../third-party/glm/glm/./core/func_exponential.hpp
+ ../third-party/glm/glm/./core/func_exponential.inl
+ ../third-party/glm/glm/./core/func_geometric.hpp
+ ../third-party/glm/glm/./core/func_geometric.inl
+ ../third-party/glm/glm/./core/func_integer.hpp
+ ../third-party/glm/glm/./core/func_integer.inl
+ ../third-party/glm/glm/./core/func_matrix.hpp
+ ../third-party/glm/glm/./core/func_matrix.inl
+ ../third-party/glm/glm/./core/func_noise.hpp
+ ../third-party/glm/glm/./core/func_noise.inl
+ ../third-party/glm/glm/./core/func_packing.hpp
+ ../third-party/glm/glm/./core/func_packing.inl
+ ../third-party/glm/glm/./core/func_trigonometric.hpp
+ ../third-party/glm/glm/./core/func_trigonometric.inl
+ ../third-party/glm/glm/./core/func_vector_relational.hpp
+ ../third-party/glm/glm/./core/func_vector_relational.inl
+ ../third-party/glm/glm/./core/setup.hpp
+ ../third-party/glm/glm/./core/type.hpp
+ ../third-party/glm/glm/./core/type_float.hpp
+ ../third-party/glm/glm/./core/type_gentype.hpp
+ ../third-party/glm/glm/./core/type_half.hpp
+ ../third-party/glm/glm/./core/type_half.inl
+ ../third-party/glm/glm/./core/type_int.hpp
+ ../third-party/glm/glm/./core/type_mat.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.hpp
+ ../third-party/glm/glm/./core/type_mat2x2.inl
+ ../third-party/glm/glm/./core/type_mat2x3.hpp
+ ../third-party/glm/glm/./core/type_mat2x3.inl
+ ../third-party/glm/glm/./core/type_mat2x4.hpp
+ ../third-party/glm/glm/./core/type_mat2x4.inl
+ ../third-party/glm/glm/./core/type_mat3x2.hpp
+ ../third-party/glm/glm/./core/type_mat3x2.inl
+ ../third-party/glm/glm/./core/type_mat3x3.hpp
+ ../third-party/glm/glm/./core/type_mat3x3.inl
+ ../third-party/glm/glm/./core/type_mat3x4.hpp
+ ../third-party/glm/glm/./core/type_mat3x4.inl
+ ../third-party/glm/glm/./core/type_mat4x2.hpp
+ ../third-party/glm/glm/./core/type_mat4x2.inl
+ ../third-party/glm/glm/./core/type_mat4x3.hpp
+ ../third-party/glm/glm/./core/type_mat4x3.inl
+ ../third-party/glm/glm/./core/type_mat4x4.hpp
+ ../third-party/glm/glm/./core/type_mat4x4.inl
+ ../third-party/glm/glm/./core/type_size.hpp
+ ../third-party/glm/glm/./core/type_vec.hpp
+ ../third-party/glm/glm/./core/type_vec1.hpp
+ ../third-party/glm/glm/./core/type_vec1.inl
+ ../third-party/glm/glm/./core/type_vec2.hpp
+ ../third-party/glm/glm/./core/type_vec2.inl
+ ../third-party/glm/glm/./core/type_vec3.hpp
+ ../third-party/glm/glm/./core/type_vec3.inl
+ ../third-party/glm/glm/./core/type_vec4.hpp
+ ../third-party/glm/glm/./core/type_vec4.inl
+ ../third-party/glm/glm/core/_fixes.hpp
+ ../third-party/glm/glm/core/setup.hpp
+ ../third-party/glm/glm/glm.hpp
  /home/andre/Documents/Projects/ImaKart/lib/src/Graphics/Skydome.cpp
 lib/CMakeFiles/imacoconut.dir/src/Utility/LogManager.cpp.o
  ../lib/include/Utility/LogManager.hpp
