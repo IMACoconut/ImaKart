@@ -7,7 +7,7 @@ void EntitySystem::registerForUpdate(Entity* e) {
 
 void EntitySystemManager::update() {
 	for(auto es : m_systems)
-		es;//es.update();
+		es->update();
 }
 
 void EntitySystemManager::registerEntitySystem(EntitySystem* system) {

@@ -19,5 +19,3 @@ class BaseComponent {
 	private:
 		int type;
 };
-
-#include <Game/BaseComponent.inl>

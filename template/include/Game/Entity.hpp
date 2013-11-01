@@ -20,6 +20,14 @@ public:
 		throw -1;
 	}
 
+	template <typename T>
+	void set(const std::string& name, T val) {
+		if(m_components.find(name) != m_components.end())
+			static_cast<Component<T>*>(m_components[name])->setValue(val);
+		else
+			throw -1;
+	}
+
 private:
 	std::map<std::string, BaseComponent*> m_components;
 };
