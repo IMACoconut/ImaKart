@@ -73,7 +73,7 @@ int main(void) {
 	}
 	mesh.setScale(glm::vec3(2,10,1));
 	mesh.setRotation(glm::vec3(45,45,0));*/
-	
+	return 0;
 	Graph::Heightmap mesh;
 	if(!mesh.loadFromFile("resources/maps/dummy2/heightmap.png")) {
 		std::cerr << "Error" << std::endl;

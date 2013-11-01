@@ -16,6 +16,8 @@ public:
 		return value;
 	}
 
+	void update() {};
+
 private:
 	T value;
 };

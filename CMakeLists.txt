@@ -14,6 +14,6 @@ include_directories(third-party/glm)
 include_directories(lib/include)
 add_subdirectory(lib)
 
-set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} sfml-graphics sfml-window sfml-system imacoconut)
+set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} imacoconut sfml-graphics sfml-window sfml-system)
 
 add_subdirectory(template)

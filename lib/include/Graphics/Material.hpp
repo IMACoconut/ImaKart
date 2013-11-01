@@ -1,7 +1,7 @@
 #pragma once 
 
 #include <GL/glew.h>
-#include <SFML/Graphics/Image.hpp>
+#include <SFML/Graphics.hpp>
 #include <string>
 
 namespace Graph {

@@ -8,9 +8,13 @@ class BaseComponent {
 			type(type)
 		{}
 
+		virtual ~BaseComponent();
+
 		int getType() const {
 			return type;
 		}
+
+		virtual void update() = 0;
 
 	private:
 		int type;
