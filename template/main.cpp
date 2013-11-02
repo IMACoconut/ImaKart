@@ -86,6 +86,11 @@ int main(void) {
 	mesh.setScale(glm::vec3(16,16,16));
 	mesh.setShader(&s);
 
+	Graph::Mesh mesh3;
+	if(!mesh3.loadFromFile("../resources/models/cube.3DS"))
+		std::cerr << "error while loading cube.3DS" << std::endl;
+	mesh3.setScale(glm::vec3(100,100,100));
+
 	Graph::Skydome sky;
 	sky.loadSkyMaterial("../resources/images/sky.png");
 	sky.loadGlowMaterial("../resources/images/glow.png");
@@ -169,6 +174,8 @@ int main(void) {
 		s.bind();
 		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
 		mesh.render();
+		s3.bind();
+		mesh3.render();
 		/*s2.bind();
 		mesh2.render();*/
 		

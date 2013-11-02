@@ -41,9 +41,15 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					if(c == '\0')
 						break;
 				}
-				parent->loadFromMemory(buff);
+				if(buff.getVerticesCount() > 0)
+				{
+					parent->loadFromMemory(buff);
+					buff.clear();
+				}
+				//std::cout << buff.getVerticesCount() << std::endl;
 				buff.clear();
-				std::cerr << "object block " << std::dec << name << std::endl;
+				//std::cerr << "object block " << std::dec << name << std::endl;
+
 				break;
 			case 0x4100:
 				//std::cerr << "vertice list" << std::endl;
@@ -51,7 +57,7 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 			case 0x4110:
 				unsigned short nbvert;
 				file.read((char*)&nbvert, sizeof(unsigned short));
-				std::cerr << nbvert << " vertices" << std::endl;
+				//std::cerr << nbvert << " vertices" << std::endl;
 				for(int i = 0; i<nbvert; i++) {
 					float x,y,z;
 					file.read((char*)&x, sizeof(float));
@@ -59,13 +65,13 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					file.read((char*)&z, sizeof(float));
 					auto vert = glm::vec3(x,y,z);
 					buff.addVertex(Vertex3D(vert));
-					std::cerr << "vert: " << x << "," << y << "," << z << std::endl;
+					//std::cerr << "vert: " << x << "," << y << "," << z << std::endl;
 				}
 				break;
 			case 0x4120:
 				unsigned short nbpoly;
 				file.read((char*)&nbpoly, sizeof(unsigned short));
-				std::cerr << nbpoly << " polys" << std::endl;
+				//std::cerr << nbpoly << " polys" << std::endl;
 				for (int i=0; i<nbpoly; i++)
 				{
 					unsigned short a,b,c,f;
@@ -75,7 +81,7 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 					file.read((char*)&f, sizeof(unsigned short));
 					auto face = sf::Vector3i(a,b,c);
 					buff.addTriangle(face);
-					std::cerr << "poly: " << a << "," << b << "," << c << " flag: " << f << std::endl;
+					//std::cerr << "poly: " << a << "," << b << "," << c << " flag: " << f << std::endl;
 				}
 
 			break;
@@ -99,6 +105,10 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 				break;
 		}
 	}
+
+	if(buff.getVerticesCount() > 0)
+		parent->loadFromMemory(buff);
+
 	return true;
 }
 
