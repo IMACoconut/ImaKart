@@ -12,8 +12,8 @@ namespace Graph {
 		m_fov(60),
 		m_near(.1f), m_far(100000.f),
 		m_width(1), m_height(1),
-		m_pos(3.1,0,0), m_forward(-1,0,0), m_left(0,0,1), m_up(0,1,0),
-		m_horizontalAngle(0), m_verticalAngle(0)
+		m_pos(3.1,0,0), m_forward(absoluteForward()), m_left(absoluteLeft()), m_up(absoluteUp()),
+		m_rotations(0,0,0)
 	{
 
 	}
@@ -53,19 +53,19 @@ namespace Graph {
 	}
 
 	void Camera::rotate(float horizontal, float vertical) {
-		m_horizontalAngle -= horizontal*0.01f;
+		m_rotations.y -= horizontal*0.005f;
+		m_rotations.x += vertical*0.005f;
 
-		m_verticalAngle += vertical*0.01f;
-		if(m_verticalAngle < -89.f)
-			m_verticalAngle = 89.f;
-		else if(m_verticalAngle > 89.f)
-			m_verticalAngle = 89.f;
+		if(m_rotations.x < -89.f)
+			m_rotations.x = -89.f;
+		else if(m_rotations.x > 89.f)
+			m_rotations.x = 89.f;
 
 		glm::mat4 rot;
-		rot = glm::rotate(rot, m_horizontalAngle, m_up);
-		rot = glm::rotate(rot, m_verticalAngle, m_left);
-		m_forward = glm::vec3(rot*glm::vec4(m_forward, 1.f));
-		m_left = glm::vec3(rot*glm::vec4(m_left, 1.f));
+		rot = glm::rotate(rot, m_rotations.y, absoluteUp());
+		rot = glm::rotate(rot, m_rotations.x, absoluteLeft());
+		m_forward = glm::vec3(rot*glm::vec4(absoluteForward(), 1.f));
+		m_left = -glm::cross(m_forward, absoluteUp());
 		m_viewDirty = true;
 
 	}
@@ -92,5 +92,17 @@ namespace Graph {
 
 	glm::vec3 Camera::down() {
 		return -m_up;
+	}
+
+	glm::vec3 Camera::absoluteForward() {
+		return glm::vec3(-1,0,0);
+	}
+
+	glm::vec3 Camera::absoluteLeft() {
+		return glm::vec3(0,0,1);
+	}
+
+	glm::vec3 Camera::absoluteUp() {
+		return glm::vec3(0,1,0);
 	}
 }

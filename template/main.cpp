@@ -8,6 +8,7 @@
 #include <Utility/Tools.hpp>
 
 #include <SFML/Graphics.hpp>
+#include <tinyxml2/tinyxml2.h>
 
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
@@ -19,13 +20,17 @@
 
 static const unsigned int FPS = 30;
 
-static const unsigned int WINDOW_WIDTH = 800;
-static const unsigned int WINDOW_HEIGHT = 600;
-
 
 int main(void) {
+
+	tinyxml2::XMLDocument doc;
+	doc.LoadFile("../resources/data/config.xml");
+
+	uint32_t WINDOW_WIDTH = Util::FromString<uint32_t>(std::string(doc.FirstChildElement("window")->FirstChildElement("width")->GetText()));
+	uint32_t WINDOW_HEIGHT = Util::FromString<uint32_t>(std::string(doc.FirstChildElement("window")->FirstChildElement("height")->GetText()));
+
 	Util::LogManager::init();
-	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
+	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "ImaKart");
 	//window.setFramerateLimit(FPS);
 
 	GLenum glewCode = glewInit();
@@ -33,6 +38,8 @@ int main(void) {
 		Util::LogManager::error("Unable to initialize GLEW : "+Util::ToString(glewGetErrorString(glewCode)));
 		return EXIT_FAILURE;
 	}
+
+	
 
 	Graph::Shader s;
 	s.loadFromFile("../resources/shaders/textured.vert", Graph::Shader::ShaderType_Vertex);
@@ -53,26 +60,6 @@ int main(void) {
 		std::cerr << "Error" << std::endl;
 	}
 	glClearColor(0.2,0.2,0.2,0);
-	
-	//Graph::Mesh mesh;
-	/*Graph::VertexBuffer buff;
-	buff.addVertex(Graph::Vertex3D(glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(1,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,255,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(1,1,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,255,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(-1,1,1), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,255,255)));
-	buff.addTriangle(sf::Vector3i(0,1,2));
-	buff.addTriangle(sf::Vector3i(0,2,3));
-	if(!mesh.loadFromMemory(buff))
-	{
-		std::cerr << "Error" << std::endl;
-	}
-	*/
-	
-	/*if(!mesh.loadFromFile("../resources/models/cube.3DS")) {
-		std::cerr << "Error" << std::endl;
-	}
-	mesh.setScale(glm::vec3(2,10,1));
-	mesh.setRotation(glm::vec3(45,45,0));*/
 
 	Graph::Heightmap mesh;
 	if(!mesh.loadFromFile("../resources/maps/dummy2/heightmap.png")) {
@@ -92,8 +79,6 @@ int main(void) {
 	mesh3.setScale(glm::vec3(100,100,100));
 
 	Graph::Skydome sky;
-	sky.loadSkyMaterial("../resources/images/sky.png");
-	sky.loadGlowMaterial("../resources/images/glow.png");
 	sky.setShader(&s2);
 
 	s.bind();
@@ -124,14 +109,29 @@ int main(void) {
 					window.close();
 					break;
 				case sf::Event::MouseMoved:
+					if(e.mouseMove.x < 0.001f && e.mouseMove.y < 0.001f)
+						break;
+					
 					cam.rotate(e.mouseMove.x - old_x,e.mouseMove.y-old_y);
-					old_x = e.mouseMove.x;
-					old_y = e.mouseMove.y;
+					//old_x = e.mouseMove.x;
+					//old_y = e.mouseMove.y;
 					break;
 				case sf::Event::KeyPressed:
 					switch(e.key.code) {
 						case sf::Keyboard::Key::Escape:
 							window.close();
+							break;
+						case sf::Keyboard::Key::A:
+							cam.rotate(1,0);
+							break;
+						case sf::Keyboard::Key::Z:
+							cam.rotate(-1,0);
+							break;
+						case sf::Keyboard::Key::E:
+							cam.rotate(0,1);
+							break;
+						case sf::Keyboard::Key::R:
+							cam.rotate(0,-1);
 							break;
 						default:
 							break;

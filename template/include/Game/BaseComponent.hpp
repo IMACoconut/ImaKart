@@ -8,7 +8,7 @@ class BaseComponent {
 			type(type)
 		{}
 
-		virtual ~BaseComponent();
+		virtual ~BaseComponent() {}
 
 		int getType() const {
 			return type;

@@ -12,8 +12,14 @@ public:
 
 	}
 
+	~Component() {}
+
 	T getValue() const {
 		return value;
+	}
+
+	void setValue(T v) {
+		value = v;
 	}
 
 	void update() {};
