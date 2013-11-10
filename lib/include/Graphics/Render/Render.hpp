@@ -17,9 +17,10 @@ namespace Graph {
 		} MatrixType;
 
 		typedef enum {
-			TextureChannel_1 = 0,
-			TextureChannel_2 = 1,
-			TextureChannel_Max = TextureChannel_2 +1
+			DiffuseTexture = 0,
+			AmbiantTexture = 1,
+			NormalTexture = 2,
+			TextureChannel_Max = NormalTexture +1
 		} TextureChannel;
 
 		static void setShader(Shader* shader);

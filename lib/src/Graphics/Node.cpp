@@ -2,7 +2,6 @@
 #include <Graphics/Material.hpp>
 #include <Graphics/Shader.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <Graphics/Render/Render.hpp>
 
 namespace Graph {
 
@@ -112,4 +111,9 @@ Shader* Node::getShader() const {
 glm::mat4 Node::getModelMatrix() const {
 	return modelMatrix;
 }
+
+Material* const* Node::getMaterials() const {
+	return material;
+}
+
 }

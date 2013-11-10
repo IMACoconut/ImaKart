@@ -6,7 +6,7 @@
 #include <GL/gl.h>
 
 namespace Graph {
-
+	class ShaderManager;
 	class Shader {
 		public:
 			typedef enum {
@@ -24,6 +24,7 @@ namespace Graph {
 			Shader(const Shader& other) = delete;
 
 			bool loadFromFile(const std::string& src, ShaderType t);
+			bool loadFromMemory(const std::string& vert, const std::string& frag);
 			bool compile();
 
 			void bind();
@@ -50,5 +51,8 @@ namespace Graph {
 		private:
 			GLuint m_vertex, m_fragment, m_program;
 			bool m_vertexLoaded, m_fragmentLoaded, m_programLoaded;
+	
+		friend class ShaderManager;
+
 	};
 }

@@ -4,7 +4,7 @@ out vec4 finalColor;
 in vec2 uvCoord;
 in vec3 outNormal;
 
-uniform sampler2D textureChannel1;
+uniform sampler2D diffuseTex;
 uniform vec3 lightPos;
 uniform vec3 eyeDir;
 
@@ -13,7 +13,7 @@ void main() {
 
 	float t = coeff;
 	
-// Uncomment for cell-shading
+// Uncomment for cel-shading
 //*
 	if(coeff >= 0.5)
 		t = 1;
@@ -24,5 +24,5 @@ void main() {
 	else
 		t = 0.1;
 //*/
-	finalColor = texture2D(textureChannel1, uvCoord)*outColor*t;
+	finalColor = texture2D(diffuseTex, uvCoord)*outColor*t;
 }

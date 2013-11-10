@@ -65,11 +65,14 @@ namespace Graph {
 		GLint loc = -1;
 		GLuint shaderProgram = shader->getProgram();
 		switch(t) {
-			case TextureChannel_1:
-				loc = glGetUniformLocation(shaderProgram, "textureChannel1");
+			case DiffuseTexture:
+				loc = glGetUniformLocation(shaderProgram, "diffuseTex");
 				break;
-			case TextureChannel_2:
-				loc = glGetUniformLocation(shaderProgram, "textureChannel2");
+			case AmbiantTexture:
+				loc = glGetUniformLocation(shaderProgram, "ambiantTex");
+				break;
+			case NormalTexture:
+				loc = glGetUniformLocation(shaderProgram, "normalTex");
 				break;
 			default:
 				break;

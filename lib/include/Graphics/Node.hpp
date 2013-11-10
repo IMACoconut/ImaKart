@@ -41,6 +41,8 @@ namespace Graph {
 
 		glm::mat4 getModelMatrix() const;
 
+		Material* const* getMaterials() const;
+
 	protected:
 		void updateModelMatrix();
 

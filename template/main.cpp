@@ -1,4 +1,5 @@
 #include <Graphics/Shader.hpp>
+#include <Graphics/ShaderManager.hpp>
 #include <Graphics/Scene.hpp>
 #include <Graphics/Camera.hpp>
 #include <Graphics/Heightmap.hpp>
@@ -40,25 +41,10 @@ int main(void) {
 	}
 
 	
-
-	Graph::Shader s;
-	s.loadFromFile("../resources/shaders/textured.vert", Graph::Shader::ShaderType_Vertex);
-	s.loadFromFile("../resources/shaders/textured.frag", Graph::Shader::ShaderType_Fragment);
-	if(!s.compile()) {
-		std::cerr << "Error" << std::endl;
-	}
-	Graph::Shader s2;
-	s2.loadFromFile("../resources/shaders/skybox.vert", Graph::Shader::ShaderType_Vertex);
-	s2.loadFromFile("../resources/shaders/skybox.frag", Graph::Shader::ShaderType_Fragment);
-	if(!s2.compile()) {
-		std::cerr << "Error" << std::endl;
-	}
-	Graph::Shader s3;
-	s3.loadFromFile("../resources/shaders/basic.vert", Graph::Shader::ShaderType_Vertex);
-	s3.loadFromFile("../resources/shaders/basic.frag", Graph::Shader::ShaderType_Fragment);
-	if(!s3.compile()) {
-		std::cerr << "Error" << std::endl;
-	}
+	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().loadShaderFromFile(
+		"skybox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
+	Graph::Shader* celShad = Graph::ShaderManager::getInstance().loadShaderFromFile(
+		"cel", "../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
 	glClearColor(0.2,0.2,0.2,0);
 
 	Graph::Heightmap mesh;
@@ -71,18 +57,16 @@ int main(void) {
 	}
 	mesh.setMaterial(0, &hmtex);
 	mesh.setScale(glm::vec3(16,16,16));
-	mesh.setShader(&s);
-
+	mesh.setShader(celShad);
 	Graph::Mesh mesh3;
 	if(!mesh3.loadFromFile("../resources/models/cube.3DS"))
 		std::cerr << "error while loading cube.3DS" << std::endl;
 	mesh3.setScale(glm::vec3(100,100,100));
-	mesh3.setShader(&s3);
-
+	
 	Graph::Skydome sky;
 	sky.loadSkyMaterial("../resources/images/sky.png");
 	sky.loadGlowMaterial("../resources/images/glow.png");
-	sky.setShader(&s2);
+	sky.setShader(skyShader);
 
 	Graph::Light light;
 	light.setPosition(glm::vec3(sin(0)*9000,cos(1)*9000,0));
