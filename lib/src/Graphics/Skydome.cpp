@@ -30,23 +30,4 @@ namespace Graph {
 
 		loadFromMemory(buff);
 	}
-	bool Skydome::loadSkyMaterial(const std::string& mat) {
-		Material* m = new Material;
-		if(!m->loadFromFile(mat)) {
-			delete m;
-			return false;
-		}
-		setMaterial(0, m);
-		return true;
-	}
-
-	bool Skydome::loadGlowMaterial(const std::string& mat) {
-		Material* m = new Material;
-		if(!m->loadFromFile(mat)) {
-			delete m;
-			return false;
-		}
-		setMaterial(1, m);
-		return true;
-	}
 }

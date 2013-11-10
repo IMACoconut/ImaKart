@@ -42,9 +42,9 @@ int main(void) {
 
 	
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().loadShaderFromFile(
-		"skybox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
+		"../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
 	Graph::Shader* celShad = Graph::ShaderManager::getInstance().loadShaderFromFile(
-		"cel", "../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
+		"../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
 	glClearColor(0.2,0.2,0.2,0);
 
 	Graph::Heightmap mesh;
@@ -64,13 +64,11 @@ int main(void) {
 	mesh3.setScale(glm::vec3(100,100,100));
 	
 	Graph::Skydome sky;
-	sky.loadSkyMaterial("../resources/images/sky.png");
-	sky.loadGlowMaterial("../resources/images/glow.png");
 	sky.setShader(skyShader);
-
+	
 	Graph::Light light;
 	light.setPosition(glm::vec3(sin(0)*9000,cos(1)*9000,0));
-	//s.bind();
+	//s.bind();*/
 	Graph::Scene scene;
 	Graph::Camera cam;
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -105,25 +103,12 @@ int main(void) {
 						break;
 					
 					cam.rotate(e.mouseMove.x - old_x,e.mouseMove.y-old_y);
-					//old_x = e.mouseMove.x;
-					//old_y = e.mouseMove.y;
+
 					break;
 				case sf::Event::KeyPressed:
 					switch(e.key.code) {
 						case sf::Keyboard::Key::Escape:
 							window.close();
-							break;
-						case sf::Keyboard::Key::A:
-							cam.rotate(1,0);
-							break;
-						case sf::Keyboard::Key::Z:
-							cam.rotate(-1,0);
-							break;
-						case sf::Keyboard::Key::E:
-							cam.rotate(0,1);
-							break;
-						case sf::Keyboard::Key::R:
-							cam.rotate(0,-1);
 							break;
 						default:
 							break;

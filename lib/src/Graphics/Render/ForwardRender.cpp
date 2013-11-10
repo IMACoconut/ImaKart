@@ -5,7 +5,7 @@
 #include <Graphics/Render/Render.hpp>
 #include <Graphics/Shader.hpp>
 #include <Graphics/ShaderManager.hpp>
-#include <iostream>
+
 #include <glm/gtc/type_ptr.hpp>
 
 namespace Graph {
@@ -25,6 +25,8 @@ void ForwardRender::doRender() {
 	m_camera->draw();
 
 	for(auto it: m_meshs) {
+		if(it == nullptr)
+			continue;
 		if(it->getShader() == nullptr) {
 			it->setShader(ShaderManager::getInstance().buildShader(it));
 		}

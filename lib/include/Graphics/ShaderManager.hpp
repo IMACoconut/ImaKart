@@ -1,6 +1,7 @@
 #pragma once
 
 #include <map>
+#include <iostream>
 #include <string>
 
 namespace Graph {
@@ -12,17 +13,23 @@ public:
 	~ShaderManager();
 
 	Shader* buildShader(Node* n);
-	Shader* loadShaderFromFile(const std::string& name, const std::string& vert, const std::string& frag);
+	Shader* loadShaderFromFile(const std::string& vert, const std::string& frag);
 
 	static ShaderManager& getInstance() {
 		static ShaderManager s;
 		return s;
 	}
-private:
+protected:
+	enum ShaderDetail {
+		Has_Diffuse = 1,
+		Has_Ambiant = 2,
+		Has_Normal = 4
+	};
+
 	ShaderManager() = default;
 	ShaderManager(const ShaderManager& other) = default;
 
-	std::map<std::string, Shader*> m_shaders;
+	std::map<int64_t, Shader*> m_shaders;
 };
 
 }
