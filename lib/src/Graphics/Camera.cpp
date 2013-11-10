@@ -1,6 +1,4 @@
 #include <Graphics/Camera.hpp>
-#include <Graphics/Render.hpp>
-
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 
@@ -31,9 +29,18 @@ namespace Graph {
 		if(m_viewDirty)
 			updateViewMatrix();
 
-		Render::setMatrix(Render::ProjectionMatrix, m_proj);
-		Render::setMatrix(Render::ViewMatrix, m_view);
+		//Render::setMatrix(Render::ProjectionMatrix, m_proj);
+		//Render::setMatrix(Render::ViewMatrix, m_view);
 	}
+
+	glm::mat4 Camera::getProjMatrix() const {
+		return m_proj;
+	}
+
+	glm::mat4 Camera::getViewMatrix() const {
+		return m_view;
+	}
+
 
 	void Camera::updateProjectionMatrix()
 	{
@@ -53,8 +60,8 @@ namespace Graph {
 	}
 
 	void Camera::rotate(float horizontal, float vertical) {
-		m_rotations.y -= horizontal*0.005f;
-		m_rotations.x += vertical*0.005f;
+		m_rotations.y -= horizontal*0.005f*5;
+		m_rotations.x += vertical*0.005f*5;
 
 		if(m_rotations.x < -89.f)
 			m_rotations.x = -89.f;

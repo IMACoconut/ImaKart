@@ -1,4 +1,4 @@
-#include <Graphics/Render.hpp>
+#include <Graphics/Render/Render.hpp>
 #include <Graphics/Shader.hpp>
 #include <Graphics/Material.hpp>
 #include <iostream>
@@ -16,11 +16,11 @@ namespace Graph {
 			return;
 
 		shader = s;
-		setMatrix(ProjectionMatrix, projMatrix);
+		/*setMatrix(ProjectionMatrix, projMatrix);
 		setMatrix(ViewMatrix, viewMatrix);
 		setMatrix(ModelMatrix, modelMatrix);
 		for(int i = TextureChannel_1; i < TextureChannel_Max; ++i)
-			setTexture(static_cast<TextureChannel>(i), materials[i]);		
+			setTexture(static_cast<TextureChannel>(i), materials[i]);	*/	
 	}
 
 

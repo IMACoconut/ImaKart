@@ -14,6 +14,11 @@ namespace Graph {
 				ShaderType_Fragment
 			} ShaderType;
 
+			typedef enum {
+				Uniform_Matrix4f,
+				Uniform_Vector3f
+			} UniformType;
+
 			Shader();
 			~Shader();
 			Shader(const Shader& other) = delete;
@@ -24,7 +29,21 @@ namespace Graph {
 			void bind();
 			void unbind();
 
-			void sendVector(float x, float y, float z, const std::string& loc);
+			template <typename T> void send(UniformType t, const std::string& to, const T& val) {
+				GLint loc = glGetUniformLocation(m_program, to.c_str());
+				if(loc != -1) {
+					switch(t) {
+						case Uniform_Matrix4f:
+							glUniformMatrix4fv(loc, 1,  GL_FALSE, val);
+							break;
+						case Uniform_Vector3f:
+							glUniform3fv(loc, 1, val);
+							break;
+						default:
+							break;
+					}
+				}
+			}
 
 			GLuint getProgram() const;
 

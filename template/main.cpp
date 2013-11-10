@@ -30,7 +30,7 @@ int main(void) {
 	uint32_t WINDOW_HEIGHT = Util::FromString<uint32_t>(std::string(doc.FirstChildElement("window")->FirstChildElement("height")->GetText()));
 
 	Util::LogManager::init();
-	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "ImaKart");
+	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
 	//window.setFramerateLimit(FPS);
 
 	GLenum glewCode = glewInit();
@@ -77,17 +77,25 @@ int main(void) {
 	if(!mesh3.loadFromFile("../resources/models/cube.3DS"))
 		std::cerr << "error while loading cube.3DS" << std::endl;
 	mesh3.setScale(glm::vec3(100,100,100));
+	mesh3.setShader(&s3);
 
 	Graph::Skydome sky;
+	sky.loadSkyMaterial("../resources/images/sky.png");
+	sky.loadGlowMaterial("../resources/images/glow.png");
 	sky.setShader(&s2);
 
-	s.bind();
+	Graph::Light light;
+	light.setPosition(glm::vec3(sin(0)*9000,cos(1)*9000,0));
+	//s.bind();
 	Graph::Scene scene;
 	Graph::Camera cam;
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
 	scene.setCamera(&cam);
-	/*sky.setParent(&scene);
-	mesh.setParent(&scene);*/
+	scene.addMesh(&sky);
+	scene.addMesh(&mesh);
+	scene.addMesh(&mesh3);
+	scene.addLight(&light);
+
 	int old_x = WINDOW_WIDTH/2;
 	int old_y = WINDOW_HEIGHT/2;
 
@@ -164,18 +172,18 @@ int main(void) {
 		// Application code goes here
 
 		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
-		glm::vec3 l = glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0);
+		light.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);
 		scene.render();
-		s2.bind();
-		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
+		/*s2.bind();
+		//Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
 		sky.render();
 		s.bind();
-		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
+		//Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
 		mesh.render();
 		s3.bind();
-		mesh3.render();
+		mesh3.render();*/
 		/*s2.bind();
 		mesh2.render();*/
 		

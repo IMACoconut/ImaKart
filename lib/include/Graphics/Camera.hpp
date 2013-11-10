@@ -15,6 +15,9 @@ namespace Graph {
 
 		void draw();
 
+		glm::mat4 getProjMatrix() const;
+		glm::mat4 getViewMatrix() const;
+
 		void move(const glm::vec3& m);
 		void rotate(float horizontal, float vertical);
 
