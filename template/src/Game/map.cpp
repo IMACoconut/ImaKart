@@ -2,11 +2,15 @@
 #include <tinyxml2/tinyxml2.h>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
-#include <Graphics/Heightmap.hpp>
-#include <Graphics/Material.hpp>
 #include <vector>
 #include <iostream>
 
+Map::~Map() {
+	while(meshCheckpoint.size()) {
+		delete meshCheckpoint.back();
+		meshCheckpoint.pop_back();
+	}
+}
 bool Map::loadFromFile(const std::string& file){
 	tinyxml2::XMLDocument doc;
 	int res = doc.LoadFile(file.c_str());
@@ -82,7 +86,7 @@ bool Map::loadFromFile(const std::string& file){
 	return true;
 }
 
-bool Map::loadIntoScene(Graph::Shader* s){
+bool Map::loadIntoScene(Graph::Shader* s, Graph::Scene& scene){
 	if(!this->mesh.loadFromFile(this->get<std::string>("heightmap"))) {
 		Util::LogManager::notice("Erreur au chargement de la heightmap");
 		return false;
@@ -98,25 +102,31 @@ bool Map::loadIntoScene(Graph::Shader* s){
 	this->mesh.setMaterial(0, &this->hmtex);
 	this->mesh.setScale(glm::vec3(16,16,16));
 	this->mesh.setShader(s);
+	scene.addMesh(&mesh);
+	
 
-	if(!this->meshCheckpoint.loadFromFile("../resources/models/cube.3DS")){
-		Util::LogManager::notice("Erreur au chargement des checkpoints");
-		return false;
+	auto c = this->get<std::vector<Checkpoint>>("check");
+	for(size_t i = 0; i < c.size(); ++i){
+		Graph::Mesh* tmp = new Graph::Mesh;
+		if(!tmp->loadFromFile("../resources/models/cube.3DS")){
+			Util::LogManager::notice("Erreur au chargement des checkpoints");
+			return false;
+		}
+
+		tmp->setPosition(glm::vec3(c[i].x*16, this->mesh.offsetHeight(c[i].x,c[i].y)*16, c[i].y*16));
+		tmp->setScale(glm::vec3(50,50,50));
+		scene.addMesh(tmp);
+		meshCheckpoint.push_back(tmp);
 	}
-	this->meshCheckpoint.setScale(glm::vec3(16,16,16));
-
+	
 	return true;
 }
 
 void Map::draw(){
-	this->mesh.render();
-	this->drawCheckpoint();
+	//this->mesh.render();
+//	this->drawCheckpoint();
 }
 
 void Map::drawCheckpoint(){
-	auto c = this->get<std::vector<Checkpoint>>("check");
-	for(size_t i = 0; i < c.size(); ++i){
-		meshCheckpoint.setPosition(glm::vec3(c[i].x, this->mesh.offsetHeight(c[i].x,c[i].y), c[i].y));
-		meshCheckpoint.render();
-	}
+	
 }

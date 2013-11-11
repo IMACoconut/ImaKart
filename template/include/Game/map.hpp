@@ -1,8 +1,8 @@
 #pragma once
 #include <Game/Entity.hpp>
-#include <Graphics/Heightmap.hpp>
-#include <Graphics/Material.hpp>
+#include <Graphics.hpp>
 #include <string>
+#include <vector>
 
 struct Checkpoint
 {
@@ -10,22 +10,20 @@ struct Checkpoint
 	int y;
 };
 
-class Map : public Entity{
+class Map : public Entity, public Graph::Node{
 public:
 	Map() = default;
-	~Map() = default;
+	~Map();
 
 	bool loadFromFile(const std::string& file);
 
-	bool loadIntoScene(Graph::Shader* s);
+	bool loadIntoScene(Graph::Shader* s, Graph::Scene& scene);
 	void draw();
 	void drawCheckpoint();
 
 private:
 	Graph::Heightmap mesh;
 	Graph::Material hmtex;
-	Graph::Mesh meshCheckpoint; 
-
-
+	std::vector<Graph::Mesh*> meshCheckpoint; 
 
 };

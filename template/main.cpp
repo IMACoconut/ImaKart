@@ -7,6 +7,9 @@
 
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
+#include <Game/map.hpp>
+
+#include <Physics/AABB3D.hpp>
 
 #include <unistd.h>
 
@@ -41,17 +44,6 @@ int main(void) {
 		"celShad", "../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
 	glClearColor(0.2,0.2,0.2,0);
 
-	Graph::Heightmap mesh;
-	if(!mesh.loadFromFile("../resources/maps/dummy2/heightmap.png")) {
-		std::cerr << "Error" << std::endl;
-	}
-	Graph::Material hmtex;
-	if(!hmtex.loadFromFile("../resources/maps/dummy2/detail.png")) {
-		std::cerr << "Error while loading material" << std::endl;
-	}
-	mesh.setMaterial(0, &hmtex);
-	mesh.setScale(glm::vec3(16,16,16));
-	mesh.setShader(celShad);
 	Graph::Mesh mesh3;
 	if(!mesh3.loadFromFile("../resources/models/cube.3DS"))
 		std::cerr << "error while loading cube.3DS" << std::endl;
@@ -61,16 +53,20 @@ int main(void) {
 	sky.setShader(skyShader);
 	
 	Graph::Light light;
-	light.setPosition(glm::vec3(sin(0)*9000,cos(1)*9000,0));
+	light.setPosition(glm::vec3(sin(1)*9000,cos(0)*9000,0));
 	//s.bind();*/
 	Graph::Scene scene;
 	Graph::Camera cam;
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
 	scene.setCamera(&cam);
 	scene.addMesh(&sky);
-	scene.addMesh(&mesh);
-	scene.addMesh(&mesh3);
+	//scene.addMesh(&mesh3);
 	scene.addLight(&light);
+
+	Map m;
+	m.loadFromFile("../resources/maps/dummy2/map.xml");
+	m.loadIntoScene(celShad, scene);
+
 
 	int old_x = WINDOW_WIDTH/2;
 	int old_y = WINDOW_HEIGHT/2;
@@ -134,8 +130,8 @@ int main(void) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here
 
-		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
-		light.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
+		//auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
+		//light.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);
 		scene.render();

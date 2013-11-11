@@ -95,7 +95,7 @@ void Node::updateModelMatrix() {
 	rot = glm::rotate(rot, rotation.z, glm::vec3(0,0,1));
 	scaleM = glm::scale(scaleM, scale);
 	trans = glm::translate(trans,position);
-	modelMatrix = rot*trans*scaleM;
+	modelMatrix = rot*scaleM*trans;
 	modelDirty = false;
 }
 

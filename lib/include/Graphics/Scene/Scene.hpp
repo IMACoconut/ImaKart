@@ -32,11 +32,10 @@ namespace Graph {
 			m_nodes.push_back(l);
 		}
 
-		void addMesh(Mesh* m) {
-			m_method->registerMesh(m);
-			m_nodes.push_back(m);
+		void addMesh(Node* n) {
+			m_method->registerNode(n);
+			m_nodes.push_back(n);
 		}
-		
 
 	private:
 		Camera* m_camera;

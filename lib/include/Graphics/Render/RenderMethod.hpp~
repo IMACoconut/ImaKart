@@ -4,7 +4,7 @@
 
 namespace Graph {
 	class Light;
-	class Node;
+	class Mesh;
 	class Camera;
 	class RenderMethod {
 		public:

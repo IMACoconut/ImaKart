@@ -40,13 +40,13 @@ void ForwardRender::doRender() {
 				Render::shader->send(Shader::Uniform_Vector3f, "eyeDir", glm::value_ptr(m_camera->forward()));
 				//std::cout << "send matrix" << std::endl;
 			}
-			Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
 			if(m_lights.size()) {
 				Render::shader->send(Shader::Uniform_Vector3f, "lightPos", glm::value_ptr(m_lights[0]->getPosition()));
 				//std::cout << "send light" << std::endl;
 			}
 		}
+		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
 		it->render();
 		//std::cout << "render " << it << std::endl;
