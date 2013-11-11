@@ -16,28 +16,52 @@ void GameEngine::Init(){
 
 void GameEngine::PopState()
 {
-    if ( !states.empty() )
-    {
+
+        // cleanup the current state
+    if ( !states.empty() ) {
         states.top()->Release();
         states.pop();
-        std::cout << "Pop" << std::endl;
+    }
+
+    // resume previous state
+    if ( !states.empty() ) {
+        states.top()->Resume();
     }
 }
 
 void GameEngine::PushState( GameState& state )
 {
-    // set current state
+   /*  // set current state
     states.push( &state );
-    states.top()->Initialize();
+    states.top()->Initialize(); */
+
+    // pause current state
+    if ( !states.empty() ) {
+        states.top()->Pause();
+    }
+
+    // store and init the new state
+    states.push(&state);
+    states.top()->Init();
 }
 
 void GameEngine::SetState( GameState& state )
 { 
-    // Delete the actual current state (if any)
+    /* // Delete the actual current state (if any)
     PopState ();
  
     // Add the new state
-    PushState( state );
+    PushState( state ); */
+
+    // cleanup the current state
+    if ( !states.empty() ) {
+        states.top()->Release();
+        states.pop();
+    }
+
+    // store and init the new state
+    states.push(&state);
+    states.top()->Init();
 }
 
 void GameEngine::HandleEvents() 

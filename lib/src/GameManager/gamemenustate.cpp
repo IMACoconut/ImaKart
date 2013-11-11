@@ -1,49 +1,49 @@
+#include <GameManager/gamemenustate.hpp>
 #include <GameManager/menustate.hpp>
-#include <GameManager/playstate.hpp>
 #include <GameManager/gameengine.hpp>
 #include <iostream>
 #include <GL/glew.h>
 
 
-MenuState::MenuState() {
+GameMenuState::GameMenuState() {
 
 }
 
-void MenuState::Init()
+void GameMenuState::Init()
 {
 	
 
 }
 
-void MenuState::Initialize()
+void GameMenuState::Initialize()
 {
 	
 
 }
 
-void MenuState::Release()
+void GameMenuState::Release()
 {
 	
 
 }
 
-void MenuState::Cleanup()
+void GameMenuState::Cleanup()
 {
 	
 
 }
 
-void MenuState::Pause()
+void GameMenuState::Pause()
 {
 	std::cout << "Pause" << std::endl;
 }
 
-void MenuState::Resume()
+void GameMenuState::Resume()
 {
 	std::cout << "Resume" << std::endl;
 }
 
-void MenuState::HandleEvents(GameEngine* game)
+void GameMenuState::HandleEvents(GameEngine* game)
 {
 	sf::Event e;
 	sf::Window& window = game->getWindow();
@@ -59,17 +59,17 @@ void MenuState::HandleEvents(GameEngine* game)
 				case sf::Event::KeyPressed:
 					switch(e.key.code) {
 						case sf::Keyboard::Key::Escape:
-							game->Quit();
+							game->SetState(MenuState::getInstance());
 							break;
 						case sf::Keyboard::Key::Space:
-							std::cout << "Menu State -> Play State" << std::endl;	
+							std::cout << "Menu in-game" << std::endl;	
 							
-							game->PushState(PlayState::getInstance());
+							game->PopState();
 
 
 						break;
 						case sf::Keyboard::Key::A:
-							std::cout << "Menu State" << std::endl;	
+							std::cout << "Menu in-game" << std::endl;	
 						break;
 						default:
 							break;
@@ -81,12 +81,12 @@ void MenuState::HandleEvents(GameEngine* game)
 		}
 }
 
-void MenuState::Update(GameEngine* game) 
+void GameMenuState::Update(GameEngine* game) 
 {
 
 }
 
-void MenuState::Draw(GameEngine* game) 
+void GameMenuState::Draw(GameEngine* game) 
 {
 	// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
 	sf::Window& window = game->getWindow();

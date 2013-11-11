@@ -1,4 +1,7 @@
 #include <GameManager/playstate.hpp>
+#include <GameManager/gamemenustate.hpp>
+#include <GameManager/menustate.hpp>
+
 #include <GameManager/gameengine.hpp>
 #include <iostream>
 #include <GL/glew.h>
@@ -94,6 +97,13 @@ void PlayState::HandleEvents(GameEngine* game)
 						case sf::Keyboard::Key::Escape:
 							game->PopState();
 							break;
+						case sf::Keyboard::Key::Space:
+							std::cout << "Pausing game" << std::endl;	
+							
+							game->PushState(GameMenuState::getInstance());
+
+
+						break;	
 						default:
 							break;
 					}

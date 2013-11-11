@@ -1,7 +1,6 @@
 #include <Graphics.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
-
 #include <SFML/Graphics.hpp>
 #include <tinyxml2/tinyxml2.h>
 
