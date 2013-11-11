@@ -1,6 +1,6 @@
-#include <Graphics/Skydome.hpp>
-#include <Graphics/Material.hpp>
-#include <Graphics/Vertex.hpp>
+#include <Graphics/Scene/Skydome.hpp>
+#include <Graphics/Tools/Material.hpp>
+#include <Graphics/Geometry/Vertex.hpp>
 
 namespace Graph {
 	Skydome::Skydome() {

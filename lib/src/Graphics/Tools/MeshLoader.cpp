@@ -1,6 +1,6 @@
-#include <Graphics/MeshLoader.hpp>
-#include <Graphics/Mesh.hpp>
-#include <Graphics/MeshBuffer.hpp>
+#include <Graphics/Tools/MeshLoader.hpp>
+#include <Graphics/Tools/Mesh.hpp>
+#include <Graphics/Geometry/MeshBuffer.hpp>
 #include <fstream>
 #include <iostream>
 

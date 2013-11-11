@@ -1,10 +1,4 @@
-#include <Graphics/Shader.hpp>
-#include <Graphics/ShaderManager.hpp>
-#include <Graphics/Scene.hpp>
-#include <Graphics/Camera.hpp>
-#include <Graphics/Heightmap.hpp>
-#include <Graphics/Skydome.hpp>
-#include <Graphics/Material.hpp>
+#include <Graphics.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
 
@@ -42,9 +36,9 @@ int main(void) {
 
 	
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().loadShaderFromFile(
-		"../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
+		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
 	Graph::Shader* celShad = Graph::ShaderManager::getInstance().loadShaderFromFile(
-		"../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
+		"celShad", "../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
 	glClearColor(0.2,0.2,0.2,0);
 
 	Graph::Heightmap mesh;

@@ -6,7 +6,7 @@
 */
 
 #include <string>
-#include <Graphics/Mesh.hpp>
+#include <Graphics/Tools/Mesh.hpp>
 
 namespace Graph {
 	class Skydome : public Mesh {

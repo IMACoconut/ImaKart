@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Graphics/Node.hpp>
+#include <Graphics/Tools/Node.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtx/quaternion.hpp>
 

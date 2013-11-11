@@ -1,6 +1,6 @@
-#include <Graphics/Node.hpp>
-#include <Graphics/Material.hpp>
-#include <Graphics/Shader.hpp>
+#include <Graphics/Tools/Node.hpp>
+#include <Graphics/Tools/Material.hpp>
+#include <Graphics/Tools/Shader.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Graph {

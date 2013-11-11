@@ -1,7 +1,7 @@
-#include <Graphics/ShaderManager.hpp>
+#include <Graphics/Tools/ShaderManager.hpp>
 #include <Graphics/Render/Render.hpp>
-#include <Graphics/Shader.hpp>
-#include <Graphics/Node.hpp>
+#include <Graphics/Tools/Shader.hpp>
+#include <Graphics/Tools/Node.hpp>
 
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
@@ -10,7 +10,7 @@ namespace Graph {
 
 ShaderManager::~ShaderManager() {
 	for(auto it : m_shaders)
-		delete (it).second;
+		delete std::get<2>(it);
 	m_shaders.clear();
 }
 
@@ -29,9 +29,9 @@ Shader* ShaderManager::buildShader(Node* n) {
 	if(mat[Render::NormalTexture])
 		flags |= ShaderDetail::Has_Normal;
 
-	auto it = m_shaders.find(flags);
-	if(it != m_shaders.end())
-		return (*it).second;
+	for(auto it = m_shaders.begin(); it != m_shaders.end(); ++it)
+		if(std::get<0>(*it) == flags)
+			return std::get<2>(*it);
 
 	frag += "in vec2 vertUV;\n";
 	frag += "in vec4 vertColor;\n";
@@ -96,15 +96,22 @@ Shader* ShaderManager::buildShader(Node* n) {
 	}
 	s->compile();
 
-	//std::string newEntry = "build-"+Util::ToString(reinterpret_cast<uint64_t>(n));
-	m_shaders[flags] = s;
-	Util::LogManager::notice("Built shader "+Util::ToString(flags));
+	std::string newEntry = "build-"+Util::ToString(reinterpret_cast<uint64_t>(n));
+	m_shaders.push_back(std::make_tuple(flags, newEntry, s));
+	Util::LogManager::notice("Built shader "+newEntry);
 	/*Util::LogManager::notice("Vertex:\n"+vert);
 	Util::LogManager::notice("Fragment:\n"+frag);*/
 	return s;
 }
 
-Shader* ShaderManager::loadShaderFromFile(const std::string& vert, const std::string& frag) {
+Shader* ShaderManager::loadShaderFromFile(const std::string& name, const std::string& vert, const std::string& frag) {
+	for(auto it = m_shaders.begin(); it != m_shaders.end(); ++it)
+		if(std::get<1>(*it) == name)
+		{
+			Util::LogManager::warning("A shader with the name "+name+" already exists");
+			return nullptr;
+		}
+
 	Shader* s = new Shader();
 	if(!s->loadFromFile(vert, Shader::ShaderType_Vertex) || !s->loadFromFile(frag, Shader::ShaderType_Fragment))
 	{
@@ -112,7 +119,7 @@ Shader* ShaderManager::loadShaderFromFile(const std::string& vert, const std::st
 		return nullptr;
 	}
 	s->compile();
-	m_shaders[reinterpret_cast<int64_t>(s)] = s;
+	m_shaders.push_back(std::make_tuple(reinterpret_cast<int64_t>(s), name, s));
 	return s;
 }
 

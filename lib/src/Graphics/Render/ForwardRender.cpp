@@ -1,10 +1,12 @@
 #include <Graphics/Render/ForwardRender.hpp>
-#include <Graphics/Mesh.hpp>
-#include <Graphics/Camera.hpp>
-#include <Graphics/Light.hpp>
 #include <Graphics/Render/Render.hpp>
-#include <Graphics/Shader.hpp>
-#include <Graphics/ShaderManager.hpp>
+
+#include <Graphics/Tools/Mesh.hpp>
+#include <Graphics/Tools/Shader.hpp>
+#include <Graphics/Tools/ShaderManager.hpp>
+
+#include <Graphics/Scene/Camera.hpp>
+#include <Graphics/Scene/Light.hpp>
 
 #include <glm/gtc/type_ptr.hpp>
 

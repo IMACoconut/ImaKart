@@ -1,10 +1,11 @@
 #pragma once
 
-#include <Graphics/Camera.hpp>
 #include <Graphics/Render/ForwardRender.hpp>
 
-#include <Graphics/Light.hpp>
-#include <Graphics/Mesh.hpp>
+#include <Graphics/Scene/Camera.hpp>
+#include <Graphics/Scene/Light.hpp>
+
+#include <Graphics/Tools/Mesh.hpp>
 
 namespace Graph {
 	

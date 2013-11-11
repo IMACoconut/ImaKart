@@ -1,9 +1,8 @@
 #pragma once 
 
-#include <Graphics/Vertex.hpp>
-#include <Graphics/VBO.hpp>
-#include <Graphics/VAO.hpp>
-#include <Graphics/IBO.hpp>
+#include <Graphics/Geometry/Vertex.hpp>
+#include <Graphics/Geometry/VBO.hpp>
+#include <Graphics/Geometry/VAO.hpp>
 
 namespace Graph {
 	class MeshBuffer {

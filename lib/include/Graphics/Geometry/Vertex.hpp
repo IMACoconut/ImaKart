@@ -37,7 +37,7 @@ namespace Graph {
 		}
 
 		Vertex3D& getVertex(size_t i) {
-			return m_vertices[i];
+			return m_vertices.at(i);
 		}
 
 		std::size_t getVerticesCount() const {

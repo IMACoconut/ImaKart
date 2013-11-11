@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Graphics/Node.hpp>
+#include <Graphics/Tools/Node.hpp>
 
 namespace Graph {
 	class Light : public Node {

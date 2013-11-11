@@ -1,4 +1,4 @@
-#include <Graphics/MeshBuffer.hpp>
+#include <Graphics/Geometry/MeshBuffer.hpp>
 
 namespace Graph {
 

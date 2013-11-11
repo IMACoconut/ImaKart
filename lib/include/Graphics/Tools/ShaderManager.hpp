@@ -1,7 +1,7 @@
 #pragma once
 
-#include <map>
-#include <iostream>
+#include <vector>
+#include <tuple>
 #include <string>
 
 namespace Graph {
@@ -13,13 +13,15 @@ public:
 	~ShaderManager();
 
 	Shader* buildShader(Node* n);
-	Shader* loadShaderFromFile(const std::string& vert, const std::string& frag);
+	Shader* loadShaderFromFile(const std::string& name, const std::string& vert, const std::string& frag);
+	Shader* getShader(const std::string& name) const;
 
 	static ShaderManager& getInstance() {
 		static ShaderManager s;
 		return s;
 	}
 protected:
+	typedef std::tuple<int64_t, std::string, Shader*> ShaderImpl;
 	enum ShaderDetail {
 		Has_Diffuse = 1,
 		Has_Ambiant = 2,
@@ -29,7 +31,7 @@ protected:
 	ShaderManager() = default;
 	ShaderManager(const ShaderManager& other) = default;
 
-	std::map<int64_t, Shader*> m_shaders;
+	std::vector<ShaderImpl> m_shaders;
 };
 
 }

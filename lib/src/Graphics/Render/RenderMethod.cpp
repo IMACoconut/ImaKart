@@ -1,7 +1,7 @@
 #include <Graphics/Render/RenderMethod.hpp>
-#include <Graphics/Light.hpp>
-#include <Graphics/Mesh.hpp>
-#include <Graphics/Camera.hpp>
+#include <Graphics/Scene/Light.hpp>
+#include <Graphics/Tools/Mesh.hpp>
+#include <Graphics/Scene/Camera.hpp>
 
 namespace Graph {
 

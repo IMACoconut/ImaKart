@@ -1,6 +1,6 @@
 #include <Graphics/Render/Render.hpp>
-#include <Graphics/Shader.hpp>
-#include <Graphics/Material.hpp>
+#include <Graphics/Tools/Shader.hpp>
+#include <Graphics/Tools/Material.hpp>
 #include <iostream>
 
 namespace Graph {

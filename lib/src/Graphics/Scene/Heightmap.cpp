@@ -1,4 +1,4 @@
-#include <Graphics/Heightmap.hpp>
+#include <Graphics/Scene/Heightmap.hpp>
 #include <iostream>
 
 namespace Graph {
@@ -91,7 +91,7 @@ bool Heightmap::loadFromFile(const std::string& image) {
 	// Cinquième passe: on normalise le vecteur normal -> On ne la fait pas car le shader s'en occupe
 	/*for(size_t x = 0; x<size.x-1; ++x)
 		for(size_t y = 0; y<size.y-1; ++y)
-			buffer2.getVertex(x*(size.x-1)+y-1).normal = glm::normalize(buffer2.getVertex(x*(size.x-1)+y).normal);
+			buffer2.getVertex(x*(size.x-1)+y-1).normal = glm::normalize(buffer2.getVertex(x*(size.x-1)+y-1).normal);
 	*/
 
 	loadFromMemory(buffer2);

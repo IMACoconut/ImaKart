@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Graphics/Node.hpp>
-#include <Graphics/Vertex.hpp>
+#include <Graphics/Tools/Node.hpp>
+#include <Graphics/Geometry/Vertex.hpp>
 
 #include <string>
 #include <vector>
