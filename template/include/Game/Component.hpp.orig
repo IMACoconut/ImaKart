@@ -18,8 +18,13 @@ public:
 		return value;
 	}
 
+<<<<<<< HEAD
 	void setValue(const T& val) {
 		value = val;
+=======
+	void setValue(T v) {
+		value = v;
+>>>>>>> origin/master
 	}
 
 	void update() {};
