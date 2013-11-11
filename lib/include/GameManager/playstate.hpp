@@ -26,11 +26,19 @@ public:
 		static PlayState s;
 		return s;
 	}
-	Graph::Shader s1, s2, s3;
 	Graph::Heightmap mesh;
 	Graph::Material hmtex;
+	Graph::Mesh mesh3;
+	Graph::Skydome sky;	
+	Graph::Light light;
 	Graph::Scene scene;
 	Graph::Camera cam;
+	Graph::Shader* skyShader;
+	Graph::Shader* celShad ;
+	
+
+	sf::Clock frameTime, clock;
+	int fps = 0;
 
 
 

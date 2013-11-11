@@ -5,11 +5,12 @@
 #include <GL/glew.h>
 
 
-MenuState::MenuState() {}
+MenuState::MenuState() {
+
+}
 
 void MenuState::Init()
 {
-	std::cout << "Bla bla" << std::endl;
 	
 
 }
@@ -87,6 +88,7 @@ void MenuState::Draw(GameEngine* game)
 {
 	// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
 	sf::Window& window = game->getWindow();
+
 	window.display();
 	
 }

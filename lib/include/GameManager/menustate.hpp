@@ -23,6 +23,8 @@ public:
 		static MenuState s;
 		return s;
 	}
+
+
 private:
 	
 
