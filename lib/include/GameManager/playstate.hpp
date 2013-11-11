@@ -1,11 +1,6 @@
 #pragma once
 #include <GameManager/gamestate.hpp>
-#include <Graphics/Shader.hpp>
-#include <Graphics/Scene.hpp>
-#include <Graphics/Camera.hpp>
-#include <Graphics/Heightmap.hpp>
-#include <Graphics/Skydome.hpp>
-#include <Graphics/Material.hpp>
+#include <Graphics.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
 #include <SFML/Graphics.hpp>
