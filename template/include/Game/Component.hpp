@@ -22,6 +22,10 @@ public:
 		value = v;
 	}
 
+	void setValue(const T& val) {
+		value = val;
+	}
+
 	void update() {};
 
 private:
