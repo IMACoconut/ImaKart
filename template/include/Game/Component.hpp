@@ -16,6 +16,10 @@ public:
 		return value;
 	}
 
+	void setValue(const T& val) {
+		value = val;
+	}
+
 	void update() {};
 
 private:
