@@ -11,6 +11,8 @@
 
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
+#include <Game/map.hpp>
+
 
 #include <unistd.h>
 
@@ -52,6 +54,8 @@ int main(void) {
 	if(!s3.compile()) {
 		std::cerr << "Error" << std::endl;
 	}
+
+	
 	glClearColor(0.2,0.2,0.2,0);
 	
 	//Graph::Mesh mesh;
@@ -74,17 +78,12 @@ int main(void) {
 	mesh.setScale(glm::vec3(2,10,1));
 	mesh.setRotation(glm::vec3(45,45,0));*/
 
-	Graph::Heightmap mesh;
-	if(!mesh.loadFromFile("../resources/maps/dummy2/heightmap.png")) {
-		std::cerr << "Error" << std::endl;
-	}
-	Graph::Material hmtex;
-	if(!hmtex.loadFromFile("../resources/maps/dummy2/detail.png")) {
-		std::cerr << "Error while loading material" << std::endl;
-	}
-	mesh.setMaterial(0, &hmtex);
-	mesh.setScale(glm::vec3(16,16,16));
-	mesh.setShader(&s);
+	Map m;
+	m.loadFromFile("../resources/maps/dummy2/map.xml");
+	m.loadIntoScene(&s);
+
+	
+	//mesh.setShader(&s);
 
 	Graph::Skydome sky;
 	sky.loadSkyMaterial("../resources/images/sky.png");
@@ -168,7 +167,7 @@ int main(void) {
 		sky.render();
 		s.bind();
 		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
-		mesh.render();
+		m.draw();
 		/*s2.bind();
 		mesh2.render();*/
 		

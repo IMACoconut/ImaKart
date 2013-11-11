@@ -9,4 +9,11 @@ namespace Util {
 		oss << val;
 		return oss.str();
 	}
+
+	template <class T> inline T FromString(const std::string& str) { 
+		std::istringstream iss(str); 
+		T t; 
+		iss >> t; 
+		return t; 
+	}
 }
