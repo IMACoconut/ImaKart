@@ -1,4 +1,4 @@
-#include <Graphics/Material.hpp>
+#include <Graphics/Tools/Material.hpp>
 #include <Utility/LogManager.hpp>
 
 namespace Graph {

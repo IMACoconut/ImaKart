@@ -1,6 +1,6 @@
-#include <Graphics/Skydome.hpp>
-#include <Graphics/Material.hpp>
-#include <Graphics/Vertex.hpp>
+#include <Graphics/Scene/Skydome.hpp>
+#include <Graphics/Tools/Material.hpp>
+#include <Graphics/Geometry/Vertex.hpp>
 
 namespace Graph {
 	Skydome::Skydome() {
@@ -29,24 +29,5 @@ namespace Graph {
 		}
 
 		loadFromMemory(buff);
-	}
-	bool Skydome::loadSkyMaterial(const std::string& mat) {
-		Material* m = new Material;
-		if(!m->loadFromFile(mat)) {
-			delete m;
-			return false;
-		}
-		setMaterial(0, m);
-		return true;
-	}
-
-	bool Skydome::loadGlowMaterial(const std::string& mat) {
-		Material* m = new Material;
-		if(!m->loadFromFile(mat)) {
-			delete m;
-			return false;
-		}
-		setMaterial(1, m);
-		return true;
 	}
 }

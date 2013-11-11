@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Graphics/Mesh.hpp>
+#include <Graphics/Tools/Mesh.hpp>
 #include <SFML/Graphics/Image.hpp>
 
 namespace Graph {

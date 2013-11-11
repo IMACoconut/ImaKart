@@ -1,7 +1,8 @@
 #pragma once
 
-#include <Graphics/Node.hpp>
+#include <Graphics/Tools/Node.hpp>
 #include <glm/glm.hpp>
+#include <glm/gtx/quaternion.hpp>
 
 namespace Graph {
 	class Camera : public Node {
@@ -14,6 +15,9 @@ namespace Graph {
 
 		void draw();
 
+		glm::mat4 getProjMatrix() const;
+		glm::mat4 getViewMatrix() const;
+
 		void move(const glm::vec3& m);
 		void rotate(float horizontal, float vertical);
 
@@ -23,6 +27,10 @@ namespace Graph {
 		glm::vec3 right();
 		glm::vec3 up();
 		glm::vec3 down();
+
+		static glm::vec3 absoluteForward();
+		static glm::vec3 absoluteLeft();
+		static glm::vec3 absoluteUp();
 
 	private:
 		void updateProjectionMatrix();
@@ -37,6 +45,6 @@ namespace Graph {
 		glm::vec3 m_forward;
 		glm::vec3 m_left;
 		glm::vec3 m_up;
-		float m_horizontalAngle, m_verticalAngle;
+		glm::vec3 m_rotations;
 	};
 }

@@ -1,18 +1,12 @@
-#include <Graphics/Shader.hpp>
-#include <Graphics/Scene.hpp>
-#include <Graphics/Camera.hpp>
-#include <Graphics/Heightmap.hpp>
-#include <Graphics/Skydome.hpp>
-#include <Graphics/Material.hpp>
+#include <Graphics.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
 
 #include <SFML/Graphics.hpp>
+#include <tinyxml2/tinyxml2.h>
 
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
-#include <Game/map.hpp>
-
 
 #include <unistd.h>
 
@@ -21,11 +15,15 @@
 
 static const unsigned int FPS = 30;
 
-static const unsigned int WINDOW_WIDTH = 800;
-static const unsigned int WINDOW_HEIGHT = 600;
-
 
 int main(void) {
+
+	tinyxml2::XMLDocument doc;
+	doc.LoadFile("../resources/data/config.xml");
+
+	uint32_t WINDOW_WIDTH = Util::FromString<uint32_t>(std::string(doc.FirstChildElement("window")->FirstChildElement("width")->GetText()));
+	uint32_t WINDOW_HEIGHT = Util::FromString<uint32_t>(std::string(doc.FirstChildElement("window")->FirstChildElement("height")->GetText()));
+
 	Util::LogManager::init();
 	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
 	//window.setFramerateLimit(FPS);
@@ -36,67 +34,44 @@ int main(void) {
 		return EXIT_FAILURE;
 	}
 
-	Graph::Shader s;
-	s.loadFromFile("../resources/shaders/textured.vert", Graph::Shader::ShaderType_Vertex);
-	s.loadFromFile("../resources/shaders/textured.frag", Graph::Shader::ShaderType_Fragment);
-	if(!s.compile()) {
-		std::cerr << "Error" << std::endl;
-	}
-	Graph::Shader s2;
-	s2.loadFromFile("../resources/shaders/skybox.vert", Graph::Shader::ShaderType_Vertex);
-	s2.loadFromFile("../resources/shaders/skybox.frag", Graph::Shader::ShaderType_Fragment);
-	if(!s2.compile()) {
-		std::cerr << "Error" << std::endl;
-	}
-	Graph::Shader s3;
-	s3.loadFromFile("../resources/shaders/basic.vert", Graph::Shader::ShaderType_Vertex);
-	s3.loadFromFile("../resources/shaders/basic.frag", Graph::Shader::ShaderType_Fragment);
-	if(!s3.compile()) {
-		std::cerr << "Error" << std::endl;
-	}
-
 	
+	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().loadShaderFromFile(
+		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
+	Graph::Shader* celShad = Graph::ShaderManager::getInstance().loadShaderFromFile(
+		"celShad", "../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
 	glClearColor(0.2,0.2,0.2,0);
-	
-	//Graph::Mesh mesh;
-	/*Graph::VertexBuffer buff;
-	buff.addVertex(Graph::Vertex3D(glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,0,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(1,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,255,0,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(1,1,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,255,255)));
-	buff.addVertex(Graph::Vertex3D(glm::vec3(-1,1,1), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,255,255)));
-	buff.addTriangle(sf::Vector3i(0,1,2));
-	buff.addTriangle(sf::Vector3i(0,2,3));
-	if(!mesh.loadFromMemory(buff))
-	{
+
+	Graph::Heightmap mesh;
+	if(!mesh.loadFromFile("../resources/maps/dummy2/heightmap.png")) {
 		std::cerr << "Error" << std::endl;
 	}
-	*/
-	
-	/*if(!mesh.loadFromFile("../resources/models/cube.3DS")) {
-		std::cerr << "Error" << std::endl;
+	Graph::Material hmtex;
+	if(!hmtex.loadFromFile("../resources/maps/dummy2/detail.png")) {
+		std::cerr << "Error while loading material" << std::endl;
 	}
-	mesh.setScale(glm::vec3(2,10,1));
-	mesh.setRotation(glm::vec3(45,45,0));*/
-
-	Map m;
-	m.loadFromFile("../resources/maps/dummy2/map.xml");
-	m.loadIntoScene(&s);
-
+	mesh.setMaterial(0, &hmtex);
+	mesh.setScale(glm::vec3(16,16,16));
+	mesh.setShader(celShad);
+	Graph::Mesh mesh3;
+	if(!mesh3.loadFromFile("../resources/models/cube.3DS"))
+		std::cerr << "error while loading cube.3DS" << std::endl;
+	mesh3.setScale(glm::vec3(100,100,100));
 	
-	//mesh.setShader(&s);
-
 	Graph::Skydome sky;
-	sky.loadSkyMaterial("../resources/images/sky.png");
-	sky.loadGlowMaterial("../resources/images/glow.png");
-	sky.setShader(&s2);
-
-	s.bind();
+	sky.setShader(skyShader);
+	
+	Graph::Light light;
+	light.setPosition(glm::vec3(sin(0)*9000,cos(1)*9000,0));
+	//s.bind();*/
 	Graph::Scene scene;
 	Graph::Camera cam;
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
 	scene.setCamera(&cam);
-	/*sky.setParent(&scene);
-	mesh.setParent(&scene);*/
+	scene.addMesh(&sky);
+	scene.addMesh(&mesh);
+	scene.addMesh(&mesh3);
+	scene.addLight(&light);
+
 	int old_x = WINDOW_WIDTH/2;
 	int old_y = WINDOW_HEIGHT/2;
 
@@ -118,9 +93,11 @@ int main(void) {
 					window.close();
 					break;
 				case sf::Event::MouseMoved:
+					if(e.mouseMove.x < 0.001f && e.mouseMove.y < 0.001f)
+						break;
+					
 					cam.rotate(e.mouseMove.x - old_x,e.mouseMove.y-old_y);
-					old_x = e.mouseMove.x;
-					old_y = e.mouseMove.y;
+
 					break;
 				case sf::Event::KeyPressed:
 					switch(e.key.code) {
@@ -158,16 +135,18 @@ int main(void) {
 		// Application code goes here
 
 		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
-		glm::vec3 l = glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0);
+		light.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);
 		scene.render();
-		s2.bind();
-		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
+		/*s2.bind();
+		//Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
 		sky.render();
 		s.bind();
-		Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
-		m.draw();
+		//Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
+		mesh.render();
+		s3.bind();
+		mesh3.render();*/
 		/*s2.bind();
 		mesh2.render();*/
 		

@@ -1,5 +1,5 @@
-#include <Graphics/Shader.hpp>
-#include <Graphics/Render.hpp>
+#include <Graphics/Tools/Shader.hpp>
+#include <Graphics/Render/Render.hpp>
 #include <Utility/LogManager.hpp>
 #include <exception>
 #include <iostream>
@@ -44,8 +44,17 @@ namespace Graph {
 			Util::LogManager::error(e.what());
 			return false;
 		}
+	}
 
-		
+	bool Shader::loadFromMemory(const std::string& vert, const std::string& frag) {
+		const char* v = vert.c_str();
+		const char* f = frag.c_str();
+		m_vertex = glCreateShader(GL_VERTEX_SHADER);
+		glShaderSource(m_vertex, 1, &v, 0);
+		m_fragment = glCreateShader(GL_FRAGMENT_SHADER);
+		glShaderSource(m_fragment, 1, &f, 0);
+
+		return true;
 	}
 
 	bool Shader::compile()
@@ -100,14 +109,7 @@ namespace Graph {
 	{
 		return m_program;
 	}
-
-	void Shader::sendVector(float x, float y, float z, const std::string& to) {
-		GLint loc = glGetUniformLocation(m_program, to.c_str());
-		if(loc != -1) {
-			glUniform3f(loc, x,y,z);
-		}
-	}
-
+	
 	void Shader::bind()
 	{
 		if(!m_programLoaded)

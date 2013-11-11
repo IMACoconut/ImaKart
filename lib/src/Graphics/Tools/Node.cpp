@@ -1,6 +1,6 @@
-#include <Graphics/Node.hpp>
-#include <Graphics/Material.hpp>
-#include <Graphics/Shader.hpp>
+#include <Graphics/Tools/Node.hpp>
+#include <Graphics/Tools/Material.hpp>
+#include <Graphics/Tools/Shader.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Graph {
@@ -25,6 +25,10 @@ Node::~Node() {
 void Node::setPosition(const glm::vec3& p) {
 	position = p;
 	modelDirty = true;
+}
+
+glm::vec3 Node::getPosition() const {
+	return position;
 }
 
 void Node::setScale(const glm::vec3& s) {
@@ -68,11 +72,12 @@ void Node::render() {
 		updateModelMatrix();
 	
 	//Render::setShader(shader);
-	Render::setMatrix(Render::ModelMatrix, modelMatrix);
+	/*Render::setMatrix(Render::ModelMatrix, modelMatrix);*/
+	
 	for(int i = 0; i< Render::TextureChannel_Max; ++i)
 		if(material[i] != nullptr)
 			Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
-
+	
 	draw();
 	for(auto it = children.begin(); it != children.end(); ++it) {
 		(*it)->render();
@@ -97,6 +102,18 @@ void Node::updateModelMatrix() {
 void Node::setShader(Shader* s)
 {
 	shader = s;
+}
+
+Shader* Node::getShader() const {
+	return shader;
+}
+
+glm::mat4 Node::getModelMatrix() const {
+	return modelMatrix;
+}
+
+Material* const* Node::getMaterials() const {
+	return material;
 }
 
 }

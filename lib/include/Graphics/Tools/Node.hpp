@@ -7,7 +7,7 @@
 
 #include <glm/glm.hpp>
 #include <vector>
-#include <Graphics/Render.hpp>
+#include <Graphics/Render/Render.hpp>
 
 namespace Graph {
 	class Material;
@@ -32,11 +32,16 @@ namespace Graph {
 		void setScale(const glm::vec3& scale);
 		glm::vec3 getScale() const;
 
-		void render();
+		virtual void render();
 
 		virtual void draw() = 0;
 		void setMaterial(int pos, Material* m);
 		void setShader(Shader* s);
+		Shader* getShader() const;
+
+		glm::mat4 getModelMatrix() const;
+
+		Material* const* getMaterials() const;
 
 	protected:
 		void updateModelMatrix();

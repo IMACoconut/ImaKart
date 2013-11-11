@@ -1,4 +1,4 @@
-#include <Graphics/Heightmap.hpp>
+#include <Graphics/Scene/Heightmap.hpp>
 #include <iostream>
 
 namespace Graph {
@@ -11,6 +11,8 @@ bool Heightmap::loadFromFile(const std::string& image) {
 		return false;
 	}
 
+	//std::cout << "hstart" << std::endl;
+
 	VertexBuffer buffer;
 	auto size = heightmap.getSize();// - sf::Vector2<unsigned int>(1,1);
 	size.x -= 1;
@@ -21,7 +23,7 @@ bool Heightmap::loadFromFile(const std::string& image) {
 		for(size_t y = 0; y<size.y; ++y)
 			buffer.addVertex(Vertex3D(glm::vec3(x,heightmap.getPixel(x,y).r,y), glm::vec3(0,0,0), glm::vec2((1.f*x)/size.x,(1.f*y)/size.y), sf::Color(255,255,255,255)));
 
-
+	//std::cout << "1" << std::endl;
 	// Deuxième passe: on créé les triangles.
 	std::vector<glm::vec3> normals;
 	for(size_t x = 0; x<size.x-1; ++x)
@@ -31,7 +33,7 @@ bool Heightmap::loadFromFile(const std::string& image) {
 		}
 
 	VertexBuffer buffer2 = buffer;
-
+	//std::cout << "2" << std::endl;
 	// Troisième passe: on lisse le terrain pour éviter l'effet escalier.
 	for(size_t x = 0; x < size.x; ++x)
 		for(size_t y = 0; y < size.y; ++y) {
@@ -56,7 +58,7 @@ bool Heightmap::loadFromFile(const std::string& image) {
 
 			buffer2.getVertex(x*size.x+y).position.y = sum/9.f;
 		}
-
+	//std::cout << "3" << std::endl;
 	// Quatrième passe: on génère les normales en chaque point (pour l'éclairage)
 	for(size_t x = 0; x<size.x-1; ++x)
 		for(size_t y = 0; y<size.y-1; ++y) {
@@ -86,12 +88,15 @@ bool Heightmap::loadFromFile(const std::string& image) {
 			buffer2.getVertex(v[0]).normal += tmp;
 		}
 
-	// Cinquième passe: on normalise le vecteur normal.
-	for(size_t x = 0; x<size.x-1; ++x)
+	// Cinquième passe: on normalise le vecteur normal -> On ne la fait pas car le shader s'en occupe
+	/*for(size_t x = 0; x<size.x-1; ++x)
 		for(size_t y = 0; y<size.y-1; ++y)
-			buffer2.getVertex(x*size.x+y-1).normal = glm::normalize(buffer2.getVertex(x*size.x+y).normal);
-	
+			buffer2.getVertex(x*(size.x-1)+y-1).normal = glm::normalize(buffer2.getVertex(x*(size.x-1)+y-1).normal);
+	*/
+
 	loadFromMemory(buffer2);
+
+	//std::cout << "hend" << std::endl;
 	return true;
 }
 

@@ -1,6 +1,6 @@
-#include <Graphics/Render.hpp>
-#include <Graphics/Shader.hpp>
-#include <Graphics/Material.hpp>
+#include <Graphics/Render/Render.hpp>
+#include <Graphics/Tools/Shader.hpp>
+#include <Graphics/Tools/Material.hpp>
 #include <iostream>
 
 namespace Graph {
@@ -16,11 +16,11 @@ namespace Graph {
 			return;
 
 		shader = s;
-		setMatrix(ProjectionMatrix, projMatrix);
+		/*setMatrix(ProjectionMatrix, projMatrix);
 		setMatrix(ViewMatrix, viewMatrix);
 		setMatrix(ModelMatrix, modelMatrix);
 		for(int i = TextureChannel_1; i < TextureChannel_Max; ++i)
-			setTexture(static_cast<TextureChannel>(i), materials[i]);		
+			setTexture(static_cast<TextureChannel>(i), materials[i]);	*/	
 	}
 
 
@@ -65,11 +65,14 @@ namespace Graph {
 		GLint loc = -1;
 		GLuint shaderProgram = shader->getProgram();
 		switch(t) {
-			case TextureChannel_1:
-				loc = glGetUniformLocation(shaderProgram, "textureChannel1");
+			case DiffuseTexture:
+				loc = glGetUniformLocation(shaderProgram, "diffuseTex");
 				break;
-			case TextureChannel_2:
-				loc = glGetUniformLocation(shaderProgram, "textureChannel2");
+			case AmbiantTexture:
+				loc = glGetUniformLocation(shaderProgram, "ambiantTex");
+				break;
+			case NormalTexture:
+				loc = glGetUniformLocation(shaderProgram, "normalTex");
 				break;
 			default:
 				break;
