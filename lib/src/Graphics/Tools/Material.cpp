@@ -1,6 +1,8 @@
 #include <Graphics/Tools/Material.hpp>
 #include <Utility/LogManager.hpp>
 
+#include <iostream>
+
 namespace Graph {
 
 Material::Material() : m_texID(-1) 
@@ -15,7 +17,8 @@ Material::~Material()
 
 bool Material::loadFromFile(const std::string& name)
 {
-	if(!m_image.loadFromFile(name)) {
+	sf::Image image;
+	if(!image.loadFromFile(name)) {
 		Util::LogManager::error("Unable to load texture \"" + name+"\"");
 		return false;
 	}
@@ -28,7 +31,18 @@ bool Material::loadFromFile(const std::string& name)
 
 	GLenum format = GL_RGBA;
 
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, m_image.getSize().x, m_image.getSize().y, 0, format, GL_UNSIGNED_BYTE, m_image.getPixelsPtr());
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, image.getSize().x, image.getSize().y, 0, format, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+
+	glBindTexture(GL_TEXTURE_2D, 0);
+	return true;
+}
+
+bool Material::create(uint32_t width, uint32_t height, uint32_t bits, GLint format, GLint internalFormat) {
+	glBindTexture(GL_TEXTURE_2D, m_texID);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_FLOAT, nullptr);
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	return true;
@@ -38,7 +52,8 @@ GLint Material::getID() const {
 	return m_texID;
 }
 
-void Material::bind() {
+void Material::bind(uint8_t unit) {
+	glActiveTexture(GL_TEXTURE+unit);
 	glBindTexture(GL_TEXTURE_2D, m_texID);
 }
 

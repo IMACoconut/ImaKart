@@ -26,6 +26,8 @@ int main(void) {
 
 	Util::LogManager::init();
 	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
+	sf::Window& a = window;
+
 	//window.setFramerateLimit(FPS);
 
 	GLenum glewCode = glewInit();
@@ -39,7 +41,7 @@ int main(void) {
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
 	Graph::Shader* celShad = Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"celShad", "../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
-	glClearColor(0.2,0.2,0.2,0);
+	glClearColor(0,0,0,0);
 
 	Graph::Heightmap mesh;
 	if(!mesh.loadFromFile("../resources/maps/dummy2/heightmap.png")) {
@@ -67,7 +69,7 @@ int main(void) {
 	Graph::Camera cam;
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
 	scene.setCamera(&cam);
-	scene.addMesh(&sky);
+	scene.setBackground(&sky);
 	scene.addMesh(&mesh);
 	scene.addMesh(&mesh3);
 	scene.addLight(&light);
@@ -113,15 +115,17 @@ int main(void) {
 			}
 		}
 
+		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
+
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			cam.move(cam.left());
+			cam.move(cam.left()*(elapsed));
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			cam.move(cam.right());
+			cam.move(cam.right()*(elapsed));
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			cam.move(cam.forward());
+			cam.move(cam.forward()*(elapsed));
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-			cam.move(cam.backward());
+			cam.move(cam.backward()*(elapsed));
 
 		if(frameTime.getElapsedTime().asSeconds() >= 1) {
 			frameTime.restart();
@@ -134,7 +138,7 @@ int main(void) {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here
 
-		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
+		
 		light.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);

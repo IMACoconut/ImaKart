@@ -12,6 +12,8 @@ namespace Graph {
 		void setFrustum(float near, float far);
 		void setAspect(float width, float height);
 		void setFov(float fov);
+		glm::vec2 getAspect() const;
+		glm::vec2 getFrustum() const;
 
 		void draw();
 

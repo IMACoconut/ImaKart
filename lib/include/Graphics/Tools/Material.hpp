@@ -12,13 +12,13 @@ namespace Graph {
 		~Material();
 
 		bool loadFromFile(const std::string& name);
+		bool create(uint32_t width, uint32_t height, uint32_t bits, GLint format, GLint internalFormat);
 		GLint getID() const;
 
-		void bind();
+		void bind(uint8_t unit = 0);
 		void unbind();
 
 	private:
 		GLint m_texID;
-		sf::Image m_image;
 	};
 }

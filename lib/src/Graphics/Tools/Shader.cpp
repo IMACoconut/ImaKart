@@ -97,7 +97,13 @@ namespace Graph {
 		glGetProgramiv(m_program, GL_LINK_STATUS, &status);
 		if(status != GL_TRUE)
 		{
-			Util::LogManager::error("Error while linking shader");
+			GLint length;
+			glGetProgramiv(m_program, GL_INFO_LOG_LENGTH, &length);
+			char* log = new char[length];
+			glGetProgramInfoLog(m_program, length, 0, log);
+			std::string logString(log);
+			delete [] log;
+			Util::LogManager::error("Error while linking shader: "+logString);
 			return false;
 		} else
 			m_programLoaded = true;

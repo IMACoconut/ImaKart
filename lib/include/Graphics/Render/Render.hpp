@@ -17,15 +17,16 @@ namespace Graph {
 		} MatrixType;
 
 		typedef enum {
-			DiffuseTexture = 0,
-			AmbiantTexture = 1,
-			NormalTexture = 2,
-			TextureChannel_Max = NormalTexture +1
+			DiffuseTexture,
+			AmbiantTexture,
+			NormalTexture,
+			DepthTexture,
+			TextureChannel_Max
 		} TextureChannel;
 
 		static void setShader(Shader* shader);
 		static void setMatrix(MatrixType t, const glm::mat4& mat);
-		static void setTexture(TextureChannel t, Material* mat);
+		static void setTexture(TextureChannel t, Material* mat, uint8_t unit);
 
 		static glm::mat4 projMatrix;
 		static glm::mat4 viewMatrix;

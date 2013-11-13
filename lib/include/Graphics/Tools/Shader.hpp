@@ -16,7 +16,9 @@ namespace Graph {
 
 			typedef enum {
 				Uniform_Matrix4f,
-				Uniform_Vector3f
+				Uniform_Vector3f,
+				Uniform_Float,
+				Uniform_Integer
 			} UniformType;
 
 			Shader();
@@ -39,6 +41,9 @@ namespace Graph {
 							break;
 						case Uniform_Vector3f:
 							glUniform3fv(loc, 1, val);
+							break;
+						case Uniform_Float:
+							glUniform1f(loc, *val);
 							break;
 						default:
 							break;

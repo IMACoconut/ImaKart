@@ -5,7 +5,6 @@
 #include <Graphics/Render/Render.hpp>
 #include <Graphics/Render/RenderMethod.hpp>
 #include <Graphics/Render/ForwardRender.hpp>
-#include <Graphics/Render/DeferredRender.hpp>
 
 #include <Graphics/Geometry/MeshBuffer.hpp>
 #include <Graphics/Geometry/VAO.hpp>

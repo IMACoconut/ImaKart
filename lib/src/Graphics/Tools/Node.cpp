@@ -76,7 +76,7 @@ void Node::render() {
 	
 	for(int i = 0; i< Render::TextureChannel_Max; ++i)
 		if(material[i] != nullptr)
-			Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
+			Render::setTexture(static_cast<Render::TextureChannel>(i), material[i], i);
 	
 	draw();
 	for(auto it = children.begin(); it != children.end(); ++it) {

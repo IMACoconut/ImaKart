@@ -50,7 +50,7 @@ namespace Graph {
 		}
 	}
 
-	void Render::setTexture(TextureChannel t, Material* m) {
+	void Render::setTexture(TextureChannel t, Material* m, uint8_t unit) {
 		if(m == nullptr) {
 			materials[t]->unbind();
 			materials[t] = nullptr;
@@ -74,13 +74,16 @@ namespace Graph {
 			case NormalTexture:
 				loc = glGetUniformLocation(shaderProgram, "normalTex");
 				break;
+			case DepthTexture:
+				loc = glGetUniformLocation(shaderProgram, "depthTex");
+				break;
 			default:
 				break;
 		}
 		if(loc != -1) {
 			glActiveTexture(GL_TEXTURE0 + static_cast<int>(t));
 			glUniform1i(loc, static_cast<int>(t));
-			m->bind();
+			m->bind(unit);
 		}
 	}
 }
