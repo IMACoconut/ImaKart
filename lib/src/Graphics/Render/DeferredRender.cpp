@@ -107,7 +107,7 @@ void DeferredRender::lightPass() {
 	glBlendFunc(GL_ONE, GL_ONE);
 
 
-	m_gbuffer2.bind(GL_DRAW_FRAMEBUFFER,1);
+	m_gbuffer2.bind(GL_DRAW_FRAMEBUFFER);
 	glClearColor(.1,.1,.1,0);
     glClear(GL_COLOR_BUFFER_BIT);
     //m_gbuffer2.bind(GL_DRAW_FRAMEBUFFER);
@@ -129,7 +129,12 @@ void DeferredRender::lightPass() {
 			Render::setTexture(Render::DiffuseTexture, tex);
 			Material* tex1 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Normal);
 			Render::setTexture(Render::NormalTexture, tex1);
-			m_camera->draw();
+			if(it->getType() == Light::LightType_Directional) {
+				glm::mat4 id;
+				Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(id));
+				Render::shader->send(Shader::Uniform_Matrix4f, "viewMatrix", glm::value_ptr(id));
+				Render::shader->send(Shader::Uniform_Matrix4f, "projMatrix", glm::value_ptr(id));
+			}
 		}
 
 		//Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
@@ -179,12 +184,9 @@ void DeferredRender::renderScreen() {
 		m_currentBuffer->save();
 		save = true;
 	}
-
-	int WINDOW_WIDTH = m_camera->getAspect().x;
-    int WINDOW_HEIGHT = m_camera->getAspect().y;
     m_screen.render();
  
- 	m_gbuffer2.bind(GL_READ_FRAMEBUFFER);
+ 	/*m_gbuffer2.bind(GL_READ_FRAMEBUFFER);
 	m_gbuffer2.setBufferTarget(GBuffer::GBufferTarget_Depth);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
@@ -193,7 +195,7 @@ void DeferredRender::renderScreen() {
     m_gbuffer1.bind(GL_READ_FRAMEBUFFER);
     m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Albedo);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
-                    WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+                    WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);*/
     /*m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Depth);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);

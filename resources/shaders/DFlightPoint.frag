@@ -27,15 +27,22 @@ float attenuation(vec3 from, vec3 to) {
 	return tmp;
 }
 
+float scal(vec3 N, vec3 dir) {
+	float tmp = dot(N, dir);
+	if(tmp > 0)
+		return tmp;
+	else 
+		return 0.f;
+}
+
 void main() {
 	vec2 coord = vec2(gl_FragCoord.x/screenW, gl_FragCoord.y/screenH);
 	vec3 pos = texture2D(diffuseTex,coord).xyz;
 	vec3 N = normalize(texture2D(normalTex,coord).xyz);
-	vec3 L = normalize(lightPos);
 	vec3 dir = normalize(lightPos-pos);
-	float scal = dot(N,L);
+	float scalaire = scal(N,dir);
 	if(isLightened(lightPos, pos)) {
-		finalData[0] = lightColor*lightIntensity*dot(N,dir)*attenuation(lightPos, pos);
+		finalData[0] = lightColor*lightIntensity*scalaire*attenuation(lightPos, pos);
 	} else {
 		finalData[0] = vec3(0,0,0);
 	}

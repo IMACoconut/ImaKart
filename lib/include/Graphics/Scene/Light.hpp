@@ -8,6 +8,13 @@
 namespace Graph {
 	class Light : public Node {
 	public:
+		typedef enum {
+			LightType_Point,
+			LightType_Spot,
+			LightType_Directional
+		} LightType;
+
+		Light(LightType t) : m_type(t), m_color(1,1,1), m_intensity(1) {}
 		virtual void draw() = 0;
 
 		void setColor(const glm::vec3& color) {
@@ -17,7 +24,12 @@ namespace Graph {
 			m_intensity = intensity;
 		}
 
+		LightType getType() const {
+			return m_type;
+		}
+
 	protected:
+		LightType m_type;
 		glm::vec3 m_color;
 		float m_intensity;
 

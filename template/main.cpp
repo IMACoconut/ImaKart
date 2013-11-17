@@ -65,14 +65,14 @@ int main(void) {
 	sky.setShader(skyShader);
 	
 	Graph::PointLight light;
-	light.setColor(glm::vec3(1,0,0));
+	light.setColor(glm::vec3(1,1, 0.419f));
 	light.setIntensity(3.f);
 	light.setRadius(1000.f);
 	light.setPosition(glm::vec3(128*16,100.f*16,128*16));
 	light.setShader(lightPoint);
 
 	Graph::PointLight light2;
-	light2.setColor(glm::vec3(0,1,0));
+	light2.setColor(glm::vec3(1,1, 0.419f));
 	light2.setIntensity(3.f);
 	light2.setRadius(1000.f);
 	light2.setPosition(glm::vec3(128*16,100.f*16,128*14));
@@ -136,7 +136,7 @@ int main(void) {
 			}
 		}
 
-		auto elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
+		float elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 			cam.move(cam.left()*(elapsed));
@@ -162,7 +162,9 @@ int main(void) {
 		// Application code goes here
 
 		
-		//light.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
+		light3.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
+		light.setPosition(glm::vec3(128*16+sin(elapsed*3)*128*3,100*16,128*16+cos(elapsed*3)*128*3));
+		light2.setPosition(glm::vec3(128*16,100*16+sin(elapsed*5),128*14+cos(elapsed*5)*128*3));
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);
 		scene.render();

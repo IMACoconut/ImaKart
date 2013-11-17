@@ -91,7 +91,7 @@ namespace Graph {
 			m->bind(static_cast<int>(t));
 			glUniform1i(loc, static_cast<int>(t));
 		} else {
-			Util::LogManager::error(str+" not found");
+			//Util::LogManager::error(str+" not found");
 		}
 	}
 
