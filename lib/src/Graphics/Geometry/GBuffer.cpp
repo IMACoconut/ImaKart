@@ -7,38 +7,74 @@
 
 namespace Graph {
 GBuffer::GBuffer() :
-	m_created(false)
+	m_created(false), m_depthTexture(nullptr)
 {
-	for(int i = 0; i<3; ++i) {
-        m_textures[i] = new Material;
-        //glActiveTexture(GL_TEXTURE0 +i);
-    }
-    m_depthTexture = new Material;
+	glGenFramebuffers(1, &m_fbo);
 }
 GBuffer::~GBuffer() {
 	clear();
+    glDeleteFramebuffers(1, &m_fbo);
+}
+
+void GBuffer::init(uint32_t width, uint32_t height) 
+{
+    clear();
+    
+    m_width = width;
+    m_height = height;
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);
+    m_depthTexture = new Material;
+    m_depthTexture->create(width, height, 32, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT32F);
+    glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthTexture->getID(), 0);
+    
+    checkErrors();
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 }
 
 void GBuffer::clear() {
-	if(!m_created)
-		return;
 
-	glDeleteFramebuffers(1, &m_fbo);
-    for(int i = 0; i<3; ++i)
-        delete m_textures[i];
     delete m_depthTexture;
+    m_depthTexture = nullptr;
+    for(auto it = m_materials.begin(); it != m_materials.end(); ++it)
+       (*it).second->drop();
+   m_materials.clear();
 }
 
+void GBuffer::createTexture(GBufferTarget target) 
+{
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);
+    Material* mat = new Material;
+    mat->create(m_width, m_height, 32, GL_RGB, GL_RGB32F);
+    glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + m_materials.size(), GL_TEXTURE_2D, mat->getID(), 0);
+    
+    m_materials[target] = mat;
+
+    checkErrors();
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+}
+
+
+void GBuffer::setTexture(GBufferTarget target, Material* mat) 
+{
+    mat->grab();
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);
+    glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + m_materials.size(), GL_TEXTURE_2D, mat->getID(), 0);
+    
+    m_materials[target] = mat;
+
+    checkErrors();
+
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+}/*
 bool GBuffer::create(uint32_t width, uint32_t height) {
-	glGenFramebuffers(1, &m_fbo);
+	
     m_created = true;
-    m_width = width;
-    m_height = height;
+    
 
 	glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);
     // Create the gbuffer textures
 
-    for (unsigned int i = 0 ; i < 3 ; i++) {
+    for (unsigned int i = 0 ; i < 4 ; i++) {
         m_textures[i]->create(width, height, 32, GL_RGB, GL_RGB32F);
         glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i, GL_TEXTURE_2D, m_textures[i]->getID(), 0);
     }
@@ -46,8 +82,8 @@ bool GBuffer::create(uint32_t width, uint32_t height) {
     m_depthTexture->create(width, height, 32, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT32F);
     glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthTexture->getID(), 0);
 
-    GLenum DrawBuffers[] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 };
-    glDrawBuffers(3, DrawBuffers);
+    GLenum DrawBuffers[] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3 };
+    glDrawBuffers(4, DrawBuffers);
 
     GLenum Status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 
@@ -60,12 +96,15 @@ bool GBuffer::create(uint32_t width, uint32_t height) {
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
     return true;
 }
-
-void GBuffer::bind(GLuint method)
+*/
+void GBuffer::bind(GLuint method, int t)
 {
     glBindFramebuffer(method, m_fbo);
-    GLenum DrawBuffers[] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2 };
-    glDrawBuffers(3, DrawBuffers);
+    if(t == 0)
+        t = m_materials.size();
+
+    GLenum DrawBuffers[] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3, GL_COLOR_ATTACHMENT4 };
+    glDrawBuffers(t, DrawBuffers);
 }
 
 void GBuffer::unbind(GLuint method)
@@ -91,11 +130,51 @@ void GBuffer::save()
 
 void GBuffer::setBufferTarget(GBufferTarget target)
 {
-    glReadBuffer(GL_COLOR_ATTACHMENT0 + target);
+    int pos = 0;
+    for(auto p: m_materials) {
+        if(p.first == target)
+        {
+            glReadBuffer(GL_COLOR_ATTACHMENT0 + pos);
+            break;
+        }
+        pos++;
+    }
 } 
 
-Material* GBuffer::getTexture(GBufferTarget target) const
+Material* GBuffer::getTexture(GBufferTarget target)
 {
-    return m_textures[target];
+    return m_materials[target];
+}
+
+void GBuffer::checkErrors() {
+    GLenum Status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+    std::string str;
+    if (Status != GL_FRAMEBUFFER_COMPLETE) {
+        switch(Status) {
+            case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
+                str = "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT";
+                break;
+            case GL_FRAMEBUFFER_UNDEFINED:
+                str = "GL_FRAMEBUFFER_UNDEFINED";
+                break;
+            case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
+                str = "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT";
+                break;
+            case GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER:
+                str = "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER";
+                break;
+            case GL_FRAMEBUFFER_UNSUPPORTED:
+                str = "GL_FRAMEBUFFER_UNSUPPORTED";
+                break;
+            case GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER:
+                str = "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER";
+                break;
+            default:
+                str = "other";
+                break;
+        }
+        Util::LogManager::error("FB error, status: "+str);
+    }
+
 }
 }

@@ -10,14 +10,11 @@ out vec2 outUV;
 out vec4 outColor;
 out vec3 outNormal;
 out vec3 outPosition;
-out float outDepth;
-uniform float zFar;
 
 void main() {
 	gl_Position = projMatrix*viewMatrix*modelMatrix*vec4(position, 1.f);
-	outNormal = normal;
+	outNormal = vec3(modelMatrix*vec4(normal,1.f));
 	outColor = color;
 	outUV = uv;
-	outPosition  = position;
-	outDepth = -(viewMatrix*modelMatrix*vec4(position,1.f)).z / zFar;
+	outPosition  = vec3(modelMatrix*vec4(position,1.f));
 }

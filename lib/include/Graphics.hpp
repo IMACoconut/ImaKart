@@ -15,6 +15,7 @@
 #include <Graphics/Scene/Camera.hpp>
 #include <Graphics/Scene/Heightmap.hpp>
 #include <Graphics/Scene/Light.hpp>
+#include <Graphics/Scene/PointLight.hpp>
 #include <Graphics/Scene/Scene.hpp>
 #include <Graphics/Scene/Skydome.hpp>
 

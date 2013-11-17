@@ -56,6 +56,7 @@ namespace Graph {
 		private:
 			GLuint m_vertex, m_fragment, m_program;
 			bool m_vertexLoaded, m_fragmentLoaded, m_programLoaded;
+			std::string m_vertFile, m_fragFile;
 	
 		friend class ShaderManager;
 

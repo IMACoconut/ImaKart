@@ -3,9 +3,10 @@
 #include <GL/glew.h>
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <Utility/Resource.hpp>
 
 namespace Graph {
-	class Material {
+	class Material : public Util::Resource{
 
 	public:
 		Material();
@@ -16,7 +17,7 @@ namespace Graph {
 		GLint getID() const;
 
 		void bind(uint8_t unit = 0);
-		void unbind();
+		void unbind(uint8_t unit = 0);
 
 	private:
 		GLint m_texID;

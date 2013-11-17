@@ -43,7 +43,6 @@ namespace Graph {
 		bool m_projDirty, m_viewDirty;
 		float m_fov;
 		float m_near, m_far, m_width, m_height;
-		glm::vec3 m_pos;
 		glm::vec3 m_forward;
 		glm::vec3 m_left;
 		glm::vec3 m_up;

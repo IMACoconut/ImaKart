@@ -1,11 +1,10 @@
 #version 330
 
-out vec3 finalData[3];
+out vec3 finalData[4];
 in vec2 outUV;
 in vec4 outColor;
 in vec3 outNormal;
 in vec3 outPosition;
-in float outDepth;
 uniform sampler2D diffuseTex;
 uniform sampler2D normalTex;
 uniform sampler2D depthTex;
@@ -25,8 +24,8 @@ vec3 depth() {
 	return vec3(tmp,tmp,tmp);
 }
 void main() {
-	finalData[0] = texture2D(diffuseTex, outUV).rgb;
-	finalData[1] = vec3(normalize(outNormal));//, outDepth);
-	//float depth = LinearizeDepth(outUV);
-	finalData[2] = depth();//texture2D(depthTex, outUV);//vec3(depth, depth, depth);
+	finalData[0] = outPosition;
+	finalData[1] = texture2D(diffuseTex, outUV).rgb;
+	finalData[2] = vec3(normalize(outNormal));
+	finalData[3] = depth();//texture2D(depthTex, outUV);//vec3(depth, depth, depth);
 }

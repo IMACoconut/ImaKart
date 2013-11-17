@@ -43,7 +43,6 @@ bool Material::create(uint32_t width, uint32_t height, uint32_t bits, GLint form
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, GL_FLOAT, nullptr);
-
 	glBindTexture(GL_TEXTURE_2D, 0);
 	return true;
 }
@@ -53,11 +52,16 @@ GLint Material::getID() const {
 }
 
 void Material::bind(uint8_t unit) {
-	glActiveTexture(GL_TEXTURE+unit);
+	glActiveTexture(GL_TEXTURE0+unit);
 	glBindTexture(GL_TEXTURE_2D, m_texID);
+	grab();
+	glActiveTexture(GL_TEXTURE0);
 }
 
-void Material::unbind() {
+void Material::unbind(uint8_t unit) {
+	glActiveTexture(GL_TEXTURE0+unit);
 	glBindTexture(GL_TEXTURE_2D, 0);
+	drop();
+	glActiveTexture(GL_TEXTURE0);
 }
 }

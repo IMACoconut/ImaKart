@@ -1,4 +1,6 @@
 #include <Graphics.hpp>
+
+#include <Graphics/Scene/DirectionalLight.hpp>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
 
@@ -26,7 +28,6 @@ int main(void) {
 
 	Util::LogManager::init();
 	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
-	sf::Window& a = window;
 
 	//window.setFramerateLimit(FPS);
 
@@ -41,6 +42,12 @@ int main(void) {
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
 	Graph::Shader* celShad = Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"celShad", "../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
+
+	Graph::Shader* lightPoint = Graph::ShaderManager::getInstance().loadShaderFromFile(
+		"DFlightPoint", "../resources/shaders/DFbase.vert", "../resources/shaders/DFlightPoint.frag");
+	Graph::Shader* lightDirectional = Graph::ShaderManager::getInstance().loadShaderFromFile(
+		"DFlightDirectional", "../resources/shaders/DFbase.vert", "../resources/shaders/DFlightDirectional.frag");
+
 	glClearColor(0,0,0,0);
 
 	Graph::Heightmap mesh;
@@ -54,16 +61,28 @@ int main(void) {
 	mesh.setMaterial(0, &hmtex);
 	mesh.setScale(glm::vec3(16,16,16));
 	mesh.setShader(celShad);
-	Graph::Mesh mesh3;
-	if(!mesh3.loadFromFile("../resources/models/cube.3DS"))
-		std::cerr << "error while loading cube.3DS" << std::endl;
-	mesh3.setScale(glm::vec3(100,100,100));
-	
 	Graph::Skydome sky;
 	sky.setShader(skyShader);
 	
-	Graph::Light light;
-	light.setPosition(glm::vec3(sin(0)*9000,cos(1)*9000,0));
+	Graph::PointLight light;
+	light.setColor(glm::vec3(1,0,0));
+	light.setIntensity(3.f);
+	light.setRadius(1000.f);
+	light.setPosition(glm::vec3(128*16,100.f*16,128*16));
+	light.setShader(lightPoint);
+
+	Graph::PointLight light2;
+	light2.setColor(glm::vec3(0,1,0));
+	light2.setIntensity(3.f);
+	light2.setRadius(1000.f);
+	light2.setPosition(glm::vec3(128*16,100.f*16,128*14));
+	light2.setShader(lightPoint);
+
+	Graph::DirectionalLight light3;
+	light3.setColor(glm::vec3(1,1,1));
+	light3.setIntensity(.4f);
+	light3.setPosition(glm::vec3(0,-1,0));
+	light3.setShader(lightDirectional);
 	//s.bind();*/
 	Graph::Scene scene;
 	Graph::Camera cam;
@@ -71,8 +90,9 @@ int main(void) {
 	scene.setCamera(&cam);
 	scene.setBackground(&sky);
 	scene.addMesh(&mesh);
-	scene.addMesh(&mesh3);
 	scene.addLight(&light);
+	scene.addLight(&light2);
+	scene.addLight(&light3);
 
 	int old_x = WINDOW_WIDTH/2;
 	int old_y = WINDOW_HEIGHT/2;
@@ -84,6 +104,7 @@ int main(void) {
 	Util::LogManager::notice("Running");
 
 	sf::Clock frameTime, clock;
+	std::string fpsStr = "0 FPS";
 	int fps = 0;
 	while(window.isOpen()) {
 
@@ -129,17 +150,19 @@ int main(void) {
 
 		if(frameTime.getElapsedTime().asSeconds() >= 1) {
 			frameTime.restart();
-			window.setTitle("ImaKart "+Util::ToString(fps)+"FPS");
+			fpsStr = Util::ToString(fps)+"FPS";
+			window.setTitle("ImaKart "+fpsStr);
+			
 			fps = 0;
 		}
-
+		//window.setTitle("ImaKart "+fpsStr+ " "+Util::ToString(cam.getPosition().x)+"X " + Util::ToString(cam.getPosition().y)+"Y "+Util::ToString(cam.getPosition().z)+"Z");
 		sf::Mouse::setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2), window);
 		// Rendering code goes here
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Application code goes here
 
 		
-		light.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
+		//light.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);
 		scene.render();

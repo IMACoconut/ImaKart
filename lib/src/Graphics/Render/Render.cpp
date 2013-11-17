@@ -1,6 +1,8 @@
 #include <Graphics/Render/Render.hpp>
 #include <Graphics/Tools/Shader.hpp>
 #include <Graphics/Tools/Material.hpp>
+#include <Utility/LogManager.hpp>
+#include <Utility/Tools.hpp>
 #include <iostream>
 
 namespace Graph {
@@ -50,7 +52,7 @@ namespace Graph {
 		}
 	}
 
-	void Render::setTexture(TextureChannel t, Material* m, uint8_t unit) {
+	void Render::setTexture(TextureChannel t, Material* m) {
 		if(m == nullptr) {
 			materials[t]->unbind();
 			materials[t] = nullptr;
@@ -64,26 +66,40 @@ namespace Graph {
 		
 		GLint loc = -1;
 		GLuint shaderProgram = shader->getProgram();
+		std::string str = "";
 		switch(t) {
 			case DiffuseTexture:
 				loc = glGetUniformLocation(shaderProgram, "diffuseTex");
+				str = "diffuseTex";
 				break;
 			case AmbiantTexture:
 				loc = glGetUniformLocation(shaderProgram, "ambiantTex");
+				str = "ambiantTex";
 				break;
 			case NormalTexture:
 				loc = glGetUniformLocation(shaderProgram, "normalTex");
+				str = "normalTex";
 				break;
 			case DepthTexture:
 				loc = glGetUniformLocation(shaderProgram, "depthTex");
+				str = "depthTex";
 				break;
 			default:
 				break;
 		}
 		if(loc != -1) {
-			glActiveTexture(GL_TEXTURE0 + static_cast<int>(t));
+			m->bind(static_cast<int>(t));
 			glUniform1i(loc, static_cast<int>(t));
-			m->bind(unit);
+		} else {
+			Util::LogManager::error(str+" not found");
+		}
+	}
+
+	void Render::unbindTextures() {
+		for(int i = 0; i<4; ++i) {
+			auto t = materials[static_cast<TextureChannel>(i)];
+			if(t)
+				t->unbind(i);
 		}
 	}
 }

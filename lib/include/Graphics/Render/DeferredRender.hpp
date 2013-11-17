@@ -22,7 +22,7 @@ protected:
 	bool save, loaded;
 	GBuffer m_gbuffer1, m_gbuffer2;
 	GBuffer* m_currentBuffer;
-	Graph::Shader* m_geometry;
+	Graph::Shader *m_geometry, *m_final;
 	Graph::Mesh m_screen;
 };
 

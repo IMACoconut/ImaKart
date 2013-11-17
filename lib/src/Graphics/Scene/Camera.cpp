@@ -10,10 +10,10 @@ namespace Graph {
 		m_fov(60),
 		m_near(.1f), m_far(10000.f),
 		m_width(1), m_height(1),
-		m_pos(3.1,0,0), m_forward(absoluteForward()), m_left(absoluteLeft()), m_up(absoluteUp()),
+		m_forward(absoluteForward()), m_left(absoluteLeft()), m_up(absoluteUp()),
 		m_rotations(0,0,0)
 	{
-
+		move(glm::vec3(3.1,0,0));
 	}
 
 	void Camera::setAspect(float width, float height)
@@ -58,12 +58,12 @@ namespace Graph {
 	}
 
 	void Camera::updateViewMatrix() {
-		m_view = glm::lookAt(m_pos, m_pos+m_forward, m_up);
+		m_view = glm::lookAt(position, position+m_forward, m_up);
 		m_viewDirty = false;
 	}
 
 	void Camera::move(const glm::vec3& m) {
-		m_pos += m;
+		position += m;
 		m_viewDirty = true;
 	}
 
