@@ -12,9 +12,24 @@ Mesh::Mesh(Node* parent) :
 
 Mesh::~Mesh() {
 	for(auto b: m_buffers)
-		delete b;
+		b->drop();
 
 	m_buffers.clear();
+}
+
+Mesh::Mesh(const Mesh& other) : Node(nullptr) {
+	*this = other;
+}
+
+Mesh& Mesh::operator=(const Mesh& other) {
+	position = other.position;
+	scale = other.scale;
+	rotation = other.rotation;
+	for(auto b: other.m_buffers) {
+		b->grab();
+		m_buffers.push_back(b);
+	}
+	return *this;
 }
 
 bool Mesh::loadFromFile(const std::string& file)
@@ -36,4 +51,76 @@ void Mesh::draw() {
 		b->draw();
 }
 
+Mesh Mesh::CreateSphere() {
+	VertexBuffer buff;
+	const int seg = 16;
+	const float R = 1.f/(seg-1);
+	//buff.addVertex(Vertex3D(glm::vec3(0,-1,0), glm::vec3(0,-1,0), glm::vec2(0,0), sf::Color(0,0,0)));
+	for(int i = 0; i<seg; ++i) {
+		for(int j = 0; j<seg; ++j) {
+			float x = cos(2*M_PI*j*R)*sin(M_PI*i*R);
+			float y = sin(-M_PI_2+M_PI*i*R);
+			float z = sin(2*M_PI*j*R)*sin(M_PI*i*R);
+			buff.addVertex(Vertex3D(glm::vec3(x,y,z), glm::vec3(x,y,z), glm::vec2(0,0), sf::Color(255,0,0)));
+		}
+	}
+	//buff.addVertex(Vertex3D(glm::vec3(0,1,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color(0,0,0)));
+	
+	/*for(int i = 1; i<seg+1; ++i) {
+		buff.addTriangle(sf::Vector3i(0,i,i+1));
+	}*/
+	for(int i = 0; i<seg; ++i)
+		for(int j = 0; j<seg; ++j) {
+			buff.addTriangle(sf::Vector3i(i*seg+j,i*seg+j+1,(i+1)*seg+j));
+			buff.addTriangle(sf::Vector3i(i*seg+j+1,(i+1)*seg+j+1, (i+1)*seg+j));
+		}
+
+	
+	/*for(int i = 0; i<seg; ++i) {
+		buff.addTriangle(sf::Vector3i(toppoint,toppoint-i-1,toppoint-i-2));
+	}*/
+
+	Mesh m;
+	m.loadFromMemory(buff);
+	return m;
+}
+
+Mesh Mesh::CreateQuad() {
+	VertexBuffer buff;
+	buff.addVertex(Vertex3D(glm::vec3(-1,-1,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,0)));
+	buff.addVertex(Vertex3D(glm::vec3(1,-1,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,0)));
+	buff.addVertex(Vertex3D(glm::vec3(1,1,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,0)));
+	buff.addVertex(Vertex3D(glm::vec3(-1,1,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,0)));
+	buff.addTriangle(sf::Vector3i(0,1,2));
+	buff.addTriangle(sf::Vector3i(0,2,3));
+	Mesh m;
+	m.loadFromMemory(buff);
+	return m;
+}
+
+Mesh Mesh::createCone() {
+	VertexBuffer buff;
+	buff.addVertex(Vertex3D(glm::vec3(0,0,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,0)));
+	const int seg = 32;
+	const float R = 1.f/(seg-1);
+	//buff.addVertex(Vertex3D(glm::vec3(0,-1,0), glm::vec3(0,-1,0), glm::vec2(0,0), sf::Color(0,0,0)));
+	for(int i = 0; i<seg; ++i) {
+		float x = cos(2*M_PI*i*R);
+		float y = 1;
+		float z = sin(2*M_PI*i*R);
+		buff.addVertex(Vertex3D(glm::vec3(x,y,z), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,0)));
+	}
+	int tp = buff.getVerticesCount();
+	buff.addVertex(Vertex3D(glm::vec3(0,1,0), glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(0,0,0)));
+
+	for(int i = 0; i<seg; ++i)
+		buff.addTriangle(sf::Vector3i(0,i,i+1));
+
+	for(int i = 1; i<seg; ++i)
+		buff.addTriangle(sf::Vector3i(tp,tp-i,tp-i-1));
+
+	Mesh m;
+	m.loadFromMemory(buff);
+	return m;
+}
 }

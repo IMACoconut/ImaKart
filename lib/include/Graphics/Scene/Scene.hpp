@@ -1,17 +1,18 @@
 #pragma once
 
 #include <Graphics/Render/ForwardRender.hpp>
+#include <Graphics/Render/DeferredRender.hpp>
 
 #include <Graphics/Scene/Camera.hpp>
 #include <Graphics/Scene/Light.hpp>
+#include <Graphics/Scene/Skydome.hpp>
 
 #include <Graphics/Tools/Mesh.hpp>
 
 namespace Graph {
-	
 	class Scene {
 	public:
-		Scene() : m_camera(nullptr), m_method(new ForwardRender())
+		Scene() : m_camera(nullptr), m_method(new DeferredRender())
 		{}
 
 		~Scene() {
@@ -37,8 +38,14 @@ namespace Graph {
 			m_nodes.push_back(n);
 		}
 
+		void setBackground(Skydome* d) {
+			m_method->setBackground(d);
+			m_background = d;
+		}
+		
 	private:
 		Camera* m_camera;
+		Skydome* m_background;
 		RenderMethod* m_method;
 		std::vector<Node*> m_nodes;
 	};

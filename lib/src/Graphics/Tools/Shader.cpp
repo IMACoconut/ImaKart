@@ -31,9 +31,11 @@ namespace Graph {
 			const char* s = data.c_str();
 			if(t == ShaderType_Vertex) {
 				m_vertex = glCreateShader(GL_VERTEX_SHADER);
+				m_vertFile = src;
 				glShaderSource(m_vertex, 1, &s, 0);
 			} else if(t == ShaderType_Fragment) {
 				m_fragment = glCreateShader(GL_FRAGMENT_SHADER);
+				m_fragFile = src;
 				glShaderSource(m_fragment, 1, &s, 0);
 			} else {
 				Util::LogManager::error("Unknown ShaderType");
@@ -71,7 +73,7 @@ namespace Graph {
 			glGetShaderInfoLog(m_vertex, length, 0, log);
 			std::string logString(log);
 			delete [] log;
-			Util::LogManager::error("Error while compiling vertex shader: "+logString);
+			Util::LogManager::error("Error while compiling vertex shader "+ m_vertFile +": "+logString);
 			return false;
 		} else
 			m_vertexLoaded = true;
@@ -86,7 +88,7 @@ namespace Graph {
 			glGetShaderInfoLog(m_fragment, length, 0, log);
 			std::string logString(log);
 			delete [] log;
-			Util::LogManager::error("Error while compiling vertex shader: "+logString);
+			Util::LogManager::error("Error while compiling vertex shader "+ m_fragFile +": "+logString);
 			return false;
 		} else
 			m_fragmentLoaded = true;
@@ -97,7 +99,13 @@ namespace Graph {
 		glGetProgramiv(m_program, GL_LINK_STATUS, &status);
 		if(status != GL_TRUE)
 		{
-			Util::LogManager::error("Error while linking shader");
+			GLint length;
+			glGetProgramiv(m_program, GL_INFO_LOG_LENGTH, &length);
+			char* log = new char[length];
+			glGetProgramInfoLog(m_program, length, 0, log);
+			std::string logString(log);
+			delete [] log;
+			Util::LogManager::error("Error while linking shader: "+logString);
 			return false;
 		} else
 			m_programLoaded = true;

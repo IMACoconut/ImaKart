@@ -67,9 +67,13 @@ void Node::removeChild(Node* child)
 		children.erase(it);
 }
 
-void Node::render() {
+void Node::update() {
 	if(modelDirty)
 		updateModelMatrix();
+}
+
+void Node::render() {
+	update();
 	
 	//Render::setShader(shader);
 	/*Render::setMatrix(Render::ModelMatrix, modelMatrix);*/
