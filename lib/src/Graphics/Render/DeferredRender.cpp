@@ -46,8 +46,21 @@ void DeferredRender::setCamera(Camera* c) {
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Normal);
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Depth);
 
+	m_gbuffer1light.init(c->getAspect().x, c->getAspect().y);
+	m_gbuffer1light.createTexture(GBuffer::GBufferTarget_Light);
+
+	// Double buffering
 	m_gbuffer2.init(c->getAspect().x, c->getAspect().y);
-	m_gbuffer2.createTexture(GBuffer::GBufferTarget_Light);
+	m_gbuffer2.createTexture(GBuffer::GBufferTarget_Position);
+	m_gbuffer2.createTexture(GBuffer::GBufferTarget_Albedo);
+	m_gbuffer2.createTexture(GBuffer::GBufferTarget_Normal);
+	m_gbuffer2.createTexture(GBuffer::GBufferTarget_Depth);
+
+	m_gbuffer2light.init(c->getAspect().x, c->getAspect().y);
+	m_gbuffer2light.createTexture(GBuffer::GBufferTarget_Light);
+
+	m_currentBuffer = &m_gbuffer1;
+	m_currentLightBuffer = &m_gbuffer1light;
 	//m_gbuffer2.setTexture(GBuffer::GBufferTarget_Depth, m_gbuffer1.getTexture(GBuffer::GBufferTarget_Depth));
 	loaded = true;
 }
@@ -58,18 +71,28 @@ void DeferredRender::doRender() {
 	
 	geometryPass();
 	lightPass();
-	//m_currentBuffer->unbind(GL_FRAMEBUFFER);
+
+	// TODO: ajouter pass SSAO, MXAA
+
+
 	renderScreen();
 
-	//lightPass();
+	/*// Double Buffering swap
+	if(m_currentBuffer == &m_gbuffer1) {
+		m_currentBuffer = &m_gbuffer2;
+		m_currentLightBuffer = &m_gbuffer2light;
+	} else {
+		m_currentBuffer = &m_gbuffer1;
+		m_currentLightBuffer = &m_gbuffer1light;
+	}*/
 }
 
 void DeferredRender::geometryPass() {
-	m_gbuffer1.bind(GL_DRAW_FRAMEBUFFER);
+	m_currentBuffer->bind(GL_DRAW_FRAMEBUFFER);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 	glDepthMask(GL_TRUE);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 	
     m_camera->draw();
     /*if(m_background) {
@@ -93,7 +116,7 @@ void DeferredRender::geometryPass() {
 
 	glDepthMask(GL_FALSE);
 	glDisable(GL_DEPTH_TEST);
-	m_gbuffer1.unbind(GL_DRAW_FRAMEBUFFER);
+	m_currentBuffer->unbind(GL_DRAW_FRAMEBUFFER);
 }
 
 void DeferredRender::lightPass() {
@@ -107,11 +130,9 @@ void DeferredRender::lightPass() {
 	glBlendFunc(GL_ONE, GL_ONE);
 
 
-	m_gbuffer2.bind(GL_DRAW_FRAMEBUFFER);
-	glClearColor(.1,.1,.1,0);
-    glClear(GL_COLOR_BUFFER_BIT);
+	m_currentLightBuffer->bind(GL_DRAW_FRAMEBUFFER);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //m_gbuffer2.bind(GL_DRAW_FRAMEBUFFER);
-    glClearColor(0,0,0,0);
 
     //m_gbuffer2.bind(GL_DRAW_FRAMEBUFFER);
     //m_geometry->unbind();
@@ -125,9 +146,9 @@ void DeferredRender::lightPass() {
 		if(Render::shader != it->getShader()) {
 			it->getShader()->bind();
 			sendUniforms();
-			Material* tex = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Position);
+			Material* tex = m_currentBuffer->getTexture(GBuffer::GBufferTarget_Position);
 			Render::setTexture(Render::DiffuseTexture, tex);
-			Material* tex1 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Normal);
+			Material* tex1 = m_currentBuffer->getTexture(GBuffer::GBufferTarget_Normal);
 			Render::setTexture(Render::NormalTexture, tex1);
 			if(it->getType() == Light::LightType_Directional) {
 				glm::mat4 id;
@@ -165,7 +186,7 @@ void DeferredRender::lightPass() {
 		//std::cout << "render " << it << std::endl;
 	}*/
 
-	m_gbuffer2.unbind(GL_DRAW_FRAMEBUFFER);
+	m_currentLightBuffer->unbind(GL_DRAW_FRAMEBUFFER);
 	glDisable(GL_BLEND);
 	glDisable(GL_CULL_FACE);
 	glDisable(GL_DEPTH_TEST);
@@ -173,9 +194,9 @@ void DeferredRender::lightPass() {
 
 void DeferredRender::renderScreen() {
 	m_final->bind();
-	Material* tex = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Albedo);
+	Material* tex = m_currentBuffer->getTexture(GBuffer::GBufferTarget_Albedo);
 	Render::setTexture(Render::DiffuseTexture, tex);
-	Material* tex1 = m_gbuffer2.getTexture(GBuffer::GBufferTarget_Light);
+	Material* tex1 = m_currentLightBuffer->getTexture(GBuffer::GBufferTarget_Light);
 	Render::setTexture(Render::NormalTexture, tex1);
 	/*Material* tex2 = m_currentBuffer->getTexture(GBuffer::GBUFFERTARGET_DEPTH);
 	Render::setTexture(Render::DepthTexture, tex2, 2);*/
@@ -186,12 +207,14 @@ void DeferredRender::renderScreen() {
 	}
     m_screen.render();
  
- 	/*m_gbuffer2.bind(GL_READ_FRAMEBUFFER);
+ 	/*int WINDOW_WIDTH = m_camera->getAspect().x;
+ 	int WINDOW_HEIGHT = m_camera->getAspect().y;
+ 	m_gbuffer2.bind(GL_READ_FRAMEBUFFER);
 	m_gbuffer2.setBufferTarget(GBuffer::GBufferTarget_Depth);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-    m_gbuffer2.unbind(GL_READ_FRAMEBUFFER);
-
+    m_gbuffer2.unbind(GL_READ_FRAMEBUFFER);*/
+/*
     m_gbuffer1.bind(GL_READ_FRAMEBUFFER);
     m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Albedo);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
@@ -199,8 +222,8 @@ void DeferredRender::renderScreen() {
     /*m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Depth);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-*/
-    m_gbuffer1.unbind(GL_READ_FRAMEBUFFER);
+
+    m_gbuffer1.unbind(GL_READ_FRAMEBUFFER);*/
 }
 
 void DeferredRender::sendUniforms() {
