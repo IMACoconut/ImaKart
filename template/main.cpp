@@ -8,6 +8,7 @@
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
 #include <Game/map.hpp>
+#include <Game/kart.hpp>
 
 #include <Physics/AABB3D.hpp>
 
@@ -67,6 +68,9 @@ int main(void) {
 	m.loadFromFile("../resources/maps/dummy2/map.xml");
 	m.loadIntoScene(celShad, scene);
 
+	Kart k;
+	k.loadIntoScene(scene);
+
 
 	int old_x = WINDOW_WIDTH/2;
 	int old_y = WINDOW_HEIGHT/2;
@@ -108,16 +112,20 @@ int main(void) {
 					break;
 			}
 		}
-
+		auto elapsed = clock.getElapsedTime().asMilliseconds() *0.0001f;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			cam.move(cam.left());
+			cam.move(cam.left()*elapsed);
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			cam.move(cam.right());
+			cam.move(cam.right()*elapsed);
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			cam.move(cam.forward());
+			cam.move(cam.forward()*elapsed);
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-			cam.move(cam.backward());
+			cam.move(cam.backward()*elapsed);
+
+		
+
+		k.update(elapsed);
 
 		if(frameTime.getElapsedTime().asSeconds() >= 1) {
 			frameTime.restart();

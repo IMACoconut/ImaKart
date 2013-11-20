@@ -18,10 +18,6 @@ public:
 		return value;
 	}
 
-	void setValue(T v) {
-		value = v;
-	}
-
 	void setValue(const T& val) {
 		value = val;
 	}
