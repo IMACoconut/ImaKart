@@ -27,14 +27,16 @@ void GBuffer::init(uint32_t width, uint32_t height)
     m_depthTexture->create(width, height, 32, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT32F);
     glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthTexture->getID(), 0);
     
-    checkErrors();
+    //checkErrors();
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 }
 
 void GBuffer::clear() {
 
-    delete m_depthTexture;
-    m_depthTexture = nullptr;
+    if(m_depthTexture != nullptr) {
+        m_depthTexture->drop();
+        m_depthTexture = nullptr;
+    }
     for(auto it = m_materials.begin(); it != m_materials.end(); ++it)
        (*it).second->drop();
    m_materials.clear();
@@ -49,7 +51,7 @@ void GBuffer::createTexture(GBufferTarget target)
     
     m_materials[target] = mat;
 
-    checkErrors();
+    //checkErrors();
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 }
 
@@ -100,6 +102,7 @@ bool GBuffer::create(uint32_t width, uint32_t height) {
 void GBuffer::bind(GLuint method, int t)
 {
     glBindFramebuffer(method, m_fbo);
+    //checkErrors();
     if(t == 0)
         t = m_materials.size();
 
