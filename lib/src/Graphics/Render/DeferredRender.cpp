@@ -71,7 +71,6 @@ void DeferredRender::doRender() {
 	
 	geometryPass();
 	lightPass();
-
 	// TODO: ajouter pass SSAO, MXAA
 
 
@@ -111,7 +110,6 @@ void DeferredRender::geometryPass() {
 		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
 		it->render();
-		//std::cout << "render " << it << std::endl;
 	}
 
 	glDepthMask(GL_FALSE);
@@ -120,24 +118,12 @@ void DeferredRender::geometryPass() {
 }
 
 void DeferredRender::lightPass() {
-
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
-	glEnable(GL_BLEND);
-	glEnable(GL_DEPTH_TEST);
-	glDepthFunc(GL_GEQUAL);
-	glBlendEquation(GL_FUNC_ADD);
-	glBlendFunc(GL_ONE, GL_ONE);
-
-
 	m_currentLightBuffer->bind(GL_DRAW_FRAMEBUFFER);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    //m_gbuffer2.bind(GL_DRAW_FRAMEBUFFER);
+	glClear(GL_COLOR_BUFFER_BIT);
 
-    //m_gbuffer2.bind(GL_DRAW_FRAMEBUFFER);
-    //m_geometry->unbind();
-    //Util::LogManager::error("light pass");
-	
+    glEnable(GL_BLEND);
+	glBlendEquation(GL_FUNC_ADD);
+	glBlendFunc(GL_ONE, GL_ONE);	
 
 	for(auto it: m_lights) {
 		if(it == nullptr)
@@ -158,38 +144,12 @@ void DeferredRender::lightPass() {
 			}
 		}
 
-		//Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
-		
 		it->render();
 	}
-	//Util::LogManager::error("end of light pass");
-	//PointLight* light = static_cast<PointLight*>(m_lights[0]);
-	//auto m = light->getMesh();
-	//m.setPosition(glm::vec3(128*16,128*16,128*16));
-	//m.setScale(glm::vec3(500,500,500));
-	//m.update();
-	//Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(m.getModelMatrix()));
-	//m.render();
-
-	/*
-	m_gbuffer2.bind(GL_DRAW_FRAMEBUFFER);
-	glClearColor(1,0,1,0);
-	glClear(GL_COLOR_BUFFER_BIT);
-	glClearColor(0,0,0,0);
-    m_camera->draw();
-   	m_geometry->bind();
-    sendUniforms();
- 	
-
-	for(auto it: m_lights) {		
-		it->render();
-		//std::cout << "render " << it << std::endl;
-	}*/
 
 	m_currentLightBuffer->unbind(GL_DRAW_FRAMEBUFFER);
 	glDisable(GL_BLEND);
-	glDisable(GL_CULL_FACE);
-	glDisable(GL_DEPTH_TEST);
+
 }
 
 void DeferredRender::renderScreen() {
@@ -198,8 +158,6 @@ void DeferredRender::renderScreen() {
 	Render::setTexture(Render::DiffuseTexture, tex);
 	Material* tex1 = m_currentLightBuffer->getTexture(GBuffer::GBufferTarget_Light);
 	Render::setTexture(Render::NormalTexture, tex1);
-	/*Material* tex2 = m_currentBuffer->getTexture(GBuffer::GBUFFERTARGET_DEPTH);
-	Render::setTexture(Render::DepthTexture, tex2, 2);*/
 
 	if(!save && loaded) {
 		m_currentBuffer->save();
@@ -213,17 +171,15 @@ void DeferredRender::renderScreen() {
 	m_gbuffer2.setBufferTarget(GBuffer::GBufferTarget_Depth);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-    m_gbuffer2.unbind(GL_READ_FRAMEBUFFER);*/
-/*
-    m_gbuffer1.bind(GL_READ_FRAMEBUFFER);
-    m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Albedo);
+    m_gbuffer2.unbind(GL_READ_FRAMEBUFFER);
+    m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
+    m_gbuffer1light.setBufferTarget(GBuffer::GBufferTarget_Light);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
-                    WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);*/
-    /*m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Depth);
+                    WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+    m_gbuffer2.setBufferTarget(GBuffer::GBufferTarget_Depth);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-
-    m_gbuffer1.unbind(GL_READ_FRAMEBUFFER);*/
+    m_gbuffer1light.unbind(GL_READ_FRAMEBUFFER);*/
 }
 
 void DeferredRender::sendUniforms() {
@@ -237,7 +193,6 @@ void DeferredRender::sendUniforms() {
 		auto view = m_camera->getAspect();
 		Render::shader->send(Shader::Uniform_Float, "screenW", &view.x);
 		Render::shader->send(Shader::Uniform_Float, "screenH", &view.y);
-		//std::cout << "send matrix" << std::endl;
 	}
 }
 }
