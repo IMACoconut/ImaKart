@@ -145,7 +145,6 @@ int main(void) {
 			}
 		}
 		auto elapsed = clock.getElapsedTime().asMilliseconds() *0.0001f;
-		float elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 			cam.move(cam.left()*(elapsed));

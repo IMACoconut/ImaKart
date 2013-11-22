@@ -75,6 +75,74 @@ bool Map::loadFromFile(const std::string& file){
 	}
 	add("check", new Component<std::vector<Checkpoint>>(1, std::vector<Checkpoint>(check)));
 
+	
+	/*tinyxml2::XMLElement* lights = root->FirstChildElement("lights");
+	if(lights == nullptr){
+		Util::LogManager::error("Lumière invalide : balise <lights> manquante");
+		return false;
+	}
+	add("lights", new Component<std::string>(1, std::string(lights->GetText())));
+
+	try{
+		tinyxml2::XMLElement* spotlight = lights->FirstChildElement("spotlight");
+		if(spotlight){	
+			glm::vec3 pos = Util::getVec3FromXML(spotlight, "position");
+			add("position", new Component<glm::vec3>(1, pos));
+
+			float intensity = Util::getFloatFromXML(spotlight, "intensity");
+			add("intensity", new Component<float>(1, intensity));
+
+			float radius = Util::getFloatFromXML(spotlight, "radius");
+			add("radius", new Component<float>(1, radius));
+
+			glm::vec3 dir = Util::getVec3FromXML(spotlight, "direction");
+			add("direction", new Component<glm::vec3>(1, dir));
+
+			sf::Color col = Util::getColorFromXML(spotlight, "color");
+			add("color", new Component<sf::Color>(1, col));
+		}
+	}catch(int){
+		Util::LogManager::error("Impossible de charger la spotlight");
+	}
+
+	try{
+		tinyxml2::XMLElement* directionallight = lights->FirstChildElement("directionallight");
+		if(directionallight){	
+			glm::vec3 pos = Util::getVec3FromXML(directionallight, "position");
+			add("position", new Component<glm::vec3>(1, pos));
+
+			float intensity = Util::getFloatFromXML(directionallight, "intensity");
+			add("intensity", new Component<float>(1, intensity));
+
+			sf::Color col = Util::getColorFromXML(directionallight, "color");
+			add("color", new Component<sf::Color>(1, col));
+		}
+	}catch(int){
+		Util::LogManager::error("Impossible de charger la lumière directionnelle");
+	}
+
+
+	try{
+		tinyxml2::XMLElement* pointlight = lights->FirstChildElement("pointlight");
+		if(pointlight){	
+			glm::vec3 pos = Util::getVec3FromXML(pointlight, "position");
+			add("position", new Component<glm::vec3>(1, pos));
+
+			float intensity = Util::getFloatFromXML(pointlight, "intensity");
+			add("intensity", new Component<float>(1, intensity));
+
+			float radius = Util::getFloatFromXML(pointlight, "radius");
+			add("radius", new Component<float>(1, radius));
+
+			sf::Color col = Util::getColorFromXML(pointlight, "color");
+			add("color", new Component<sf::Color>(1, col));
+		}
+	}catch(int){
+		Util::LogManager::error("Impossible de charger la pointlight");
+	}*/
+
+
+
 	//uint32_t WINDOW_WIDTH = Util::FromString<uint32_t>(std::string(doc.FirstChildElement("window")->FirstChildElement("width")->GetText()));
 	//uint32_t WINDOW_HEIGHT = Util::FromString<uint32_t>(std::string(doc.FirstChildElement("window")->FirstChildElement("height")->GetText()));
 	
