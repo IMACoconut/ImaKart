@@ -1,7 +1,7 @@
 #include <Game/kart.hpp>
-#include <SFML/System/Vector3.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
+#include <Game/VectorAlt.hpp>
 
 //std::string t = get<std::string>("skin");
 
@@ -9,21 +9,21 @@ namespace Game{
 
 	Kart::Kart() {
 		add("skin", new Component<std::string>(1, ""));
-		add("hp", new Component<int>(1, 0));
+		add("hp", new Component<int>(1, 1));
 		add("condition", new Component<KartCondition>(1, NORMAL));
 		add("speedMaxForward", new Component<float>(1, 0));
 		add("speedMaxBack", new Component<float>(1, 0));
 		add("currentSpeed", new Component<float>(1, 0));
 		add("acceleration", new Component<float>(1, 0));
-		add("maniability", new Component<float>(1, 0));
-		add("weight", new Component<float>(1, 0));
+		add("maniability", new Component<float>(1, 1));
+		add("weight", new Component<float>(1, 1));
 		add("position", new Component<glm::vec3>(1, glm::vec3(0, 0, 0)));
 		add("forward", new Component<glm::vec3>(1, glm::vec3(1, 0, 0)));
 		add("left", new Component<glm::vec3>(1, glm::vec3(0, 1, 0)));
 		add("up", new Component<glm::vec3>(1, glm::vec3(0, 0, 1)));
 		add("horizontalAngle", new Component<float>(1, 0));
 		add("verticalAngle", new Component<float>(1, 0));
-		//add("alterations", new Component<AlterationList>(1, nullptr));
+		add("alterations", new Component<VectorAlt>(1, VectorAlt()));
 		//add("items", new Component<ItemList>(1, nullptr));
 	}
 
@@ -32,19 +32,20 @@ namespace Game{
 	}
 
 	void Kart::update(){
-		// while(*alterations != NULL){
-		// 	alterations->apply(this);
-		// 	*alterations = alterations->next;
-		// }
+		VectorAlt alterations = get<VectorAlt>("alterations"); 
+		if(!alterations.isEmpty()){
+			alterations.apply(*this);
+		}
+		set<VectorAlt>("alterations", alterations);
 
-		switch(get<KartCondition>("conditon")){
+		/*switch(get<KartCondition>("conditon")){
 			case NORMAL:
 				set<glm::vec3>("position", get<glm::vec3>("position") + get<float>("currentSpeed") * get<glm::vec3>("forward"));
 			break;
 			
 			default:
 			break;
-		}
+		}*/
 	}
 
 	void Kart::moveForward(){
@@ -99,6 +100,12 @@ namespace Game{
 		left = glm::vec3(rot*glm::vec4(left, 1.f));
 		set<glm::vec3>("forward", forward);
 		set<glm::vec3>("left", left);
+	}
+
+	void Kart::addAlteration(Alteration* alteration){
+		VectorAlt alterations = get<VectorAlt>("alterations");
+		alterations.pushAlteration(alteration);
+		set<VectorAlt>("alterations", alterations);
 	}
 
 	void Kart::useItem(){}
