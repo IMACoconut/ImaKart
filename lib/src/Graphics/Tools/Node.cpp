@@ -17,6 +17,10 @@ Node::Node(Node* parent) :
 };
 
 Node::~Node() {
+	for(int i = 0; i<Render::TextureChannel_Max; ++i)
+		if(material[i] != nullptr)
+			material[i]->drop();
+
 	for(Node* c : children)
 		c->setParent(nullptr);
 	setParent(nullptr);
@@ -90,6 +94,10 @@ void Node::render() {
 
 void Node::setMaterial(int pos, Material* m)
 {
+	if(material[pos] != nullptr)
+		material[pos]->drop();
+	
+	m->grab();
 	material[pos] = m;
 }
 void Node::updateModelMatrix() {
