@@ -7,6 +7,7 @@
 #include <Graphics/Render/ForwardRender.hpp>
 #include <Graphics/Render/DeferredRender.hpp>
 
+#include <Graphics/Geometry/GBuffer.hpp>
 #include <Graphics/Geometry/MeshBuffer.hpp>
 #include <Graphics/Geometry/VAO.hpp>
 #include <Graphics/Geometry/VBO.hpp>
@@ -16,6 +17,8 @@
 #include <Graphics/Scene/Heightmap.hpp>
 #include <Graphics/Scene/Light.hpp>
 #include <Graphics/Scene/PointLight.hpp>
+#include <Graphics/Scene/DirectionalLight.hpp>
+#include <Graphics/Scene/SpotLight.hpp>
 #include <Graphics/Scene/Scene.hpp>
 #include <Graphics/Scene/Skydome.hpp>
 

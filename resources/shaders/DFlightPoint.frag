@@ -46,8 +46,4 @@ void main() {
 	} else {
 		finalData[0] = vec3(0,0,0);
 	}
-	
-	//finalData[0] = pos;
-	//finalData[0] = lightColor;
-	//finalData[1] = vec3(0,1,0);
 }
