@@ -17,6 +17,10 @@ Node::Node(Node* parent) :
 };
 
 Node::~Node() {
+	for(int i = 0; i<Render::TextureChannel_Max; ++i)
+		if(material[i] != nullptr)
+			material[i]->drop();
+
 	for(Node* c : children)
 		c->setParent(nullptr);
 	setParent(nullptr);
@@ -67,9 +71,13 @@ void Node::removeChild(Node* child)
 		children.erase(it);
 }
 
-void Node::render() {
+void Node::update() {
 	if(modelDirty)
 		updateModelMatrix();
+}
+
+void Node::render() {
+	update();
 	
 	//Render::setShader(shader);
 	/*Render::setMatrix(Render::ModelMatrix, modelMatrix);*/
@@ -86,6 +94,10 @@ void Node::render() {
 
 void Node::setMaterial(int pos, Material* m)
 {
+	if(material[pos] != nullptr)
+		material[pos]->drop();
+	
+	m->grab();
 	material[pos] = m;
 }
 void Node::updateModelMatrix() {
@@ -95,7 +107,7 @@ void Node::updateModelMatrix() {
 	rot = glm::rotate(rot, rotation.z, glm::vec3(0,0,1));
 	scaleM = glm::scale(scaleM, scale);
 	trans = glm::translate(trans,position);
-	modelMatrix = rot*scaleM*trans;
+	modelMatrix = trans*rot*scaleM;
 	modelDirty = false;
 }
 

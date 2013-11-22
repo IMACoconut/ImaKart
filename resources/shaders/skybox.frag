@@ -8,7 +8,7 @@ uniform sampler2D textureChannel2;
 in vec3 vertexPos;
 in vec3 vertexNorm;
 uniform vec3 lightPos;
-out vec4 fFragColor;
+out vec4 finalData;
 
 float saturate(float value)
 {
@@ -51,5 +51,6 @@ void main()
 
 	//vec3 sky = c2;
 
-    fFragColor = vec4((sky + moon + light), 1.f);
+    finalData = vec4((sky + moon + light), 1.f);
+    //finalData[1] = vec4(N, 1.f);
 }

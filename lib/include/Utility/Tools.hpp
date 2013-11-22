@@ -3,6 +3,8 @@
 #include <string>
 #include <sstream>
 
+#include <SFML/Graphics/Image.hpp>
+
 namespace Util {
 	template <class T> inline std::string ToString(T val) {
 		std::ostringstream oss;
@@ -15,5 +17,9 @@ namespace Util {
 		T t;
 		iss >> t;	
 		return t;
+	}
+
+	inline sf::Color FloatToColor(float r, float g, float b, float a) {
+		return sf::Color(static_cast<char>(r*255), static_cast<char>(g*255), static_cast<char>(b* 255), static_cast<char>(a *255));
 	}
 }
