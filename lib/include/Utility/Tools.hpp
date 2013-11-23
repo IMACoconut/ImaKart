@@ -25,6 +25,15 @@ namespace Util {
 		return sf::Color(static_cast<char>(r*255), static_cast<char>(g*255), static_cast<char>(b* 255), static_cast<char>(a *255));
 	}
 
+	inline std::string getStringFromXML(tinyxml2::XMLElement* xml, const std::string& name){
+		tinyxml2::XMLElement* s = xml->FirstChildElement(name.c_str());
+		if (s == nullptr){
+			Util::LogManager::error("String invalide : balise <"+name+"> manquante");
+			throw 1;
+		}
+		return std::string(s->GetText());
+	}
+
 	inline float getFloatFromXML(tinyxml2::XMLElement* xml, const std::string& name){
 		tinyxml2::XMLElement* f = xml->FirstChildElement(name.c_str());
 		if(f == nullptr){

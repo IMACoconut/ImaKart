@@ -2,6 +2,7 @@
 #include <tinyxml2/tinyxml2.h>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
+#include <Utility/FilePath.hpp>
 #include <vector>
 #include <iostream>
 
@@ -12,6 +13,8 @@ Map::~Map() {
 	}
 }
 bool Map::loadFromFile(const std::string& file){
+	Util::FilePath path(file);
+	//std::cout << path.getDirectory() << std::endl << path.getFilename() << std::endl << path.getExtension() << std::endl;
 	tinyxml2::XMLDocument doc;
 	int res = doc.LoadFile(file.c_str());
 	if(res != 0){
@@ -30,33 +33,17 @@ bool Map::loadFromFile(const std::string& file){
 		return false;
 	}
 
-	tinyxml2::XMLElement* name = info->FirstChildElement("name");
-	if(name == nullptr){
-		Util::LogManager::error("Fichier map invalide : balise <name> manquante");
-		return false;
-	}
-	add("name", new Component<std::string>(1, std::string(name->GetText())));
+	std::string name = Util::getStringFromXML(info, "name");
+	add("name", new Component<std::string>(1, name));
 
-	tinyxml2::XMLElement* scale = info->FirstChildElement("scale");
-	if(scale == nullptr){
-		Util::LogManager::error("Fichier map invalide : balise <scale> manquante");
-		return false;
-	}
-	add("scale", new Component<int>(1, Util::FromString<int>(std::string(scale->GetText()))));
+	float scale = Util::getFloatFromXML(info, "scale");
+	add("scale", new Component<float>(1, scale));
 
-	tinyxml2::XMLElement* heightmap = info->FirstChildElement("heightmap");
-	if(heightmap == nullptr){
-		Util::LogManager::error("Fichier map invalide : balise <heightmap> manquante");
-		return false;
-	}
-	add("heightmap", new Component<std::string>(1, std::string(heightmap->GetText())));
+	std::string heightmap = Util::getStringFromXML(info, "heightmap");
+	add("heightmap", new Component<std::string>(1, path.getDirectory()+heightmap));
 
-	tinyxml2::XMLElement* detailmap = info->FirstChildElement("detailmap");
-	if(detailmap == nullptr){
-		Util::LogManager::error("Fichier map invalide : balise <detailmap> manquante");
-		return false;
-	}
-	add("detailmap", new Component<std::string>(1, std::string(detailmap->GetText())));
+	std::string detailmap = Util::getStringFromXML(info, "detailmap");
+	add("detailmap", new Component<std::string>(1, path.getDirectory()+detailmap));
 
 	tinyxml2::XMLElement* checkpoints = root->FirstChildElement("checkpoints");
 	if(checkpoints == nullptr){
@@ -148,7 +135,7 @@ bool Map::loadFromFile(const std::string& file){
 	
 	Util::LogManager::notice("Map chargée");
 	Util::LogManager::notice("Nom : "+get<std::string>("name"));
-	Util::LogManager::notice("Scale : "+Util::ToString(get<int>("scale")));
+	Util::LogManager::notice("Scale : "+Util::ToString(get<float>("scale")));
 	Util::LogManager::notice("Heightmap : "+get<std::string>("heightmap"));
 	Util::LogManager::notice("Detailmap : "+get<std::string>("detailmap"));
 	return true;
@@ -168,7 +155,8 @@ bool Map::loadIntoScene(Graph::Shader* s, Graph::Scene& scene){
 
 
 	this->mesh.setMaterial(0, &this->hmtex);
-	this->mesh.setScale(glm::vec3(16,16,16));
+	float sc = get<float>("scale");
+	this->mesh.setScale(glm::vec3(sc,sc,sc));
 	this->mesh.setShader(s);
 	scene.addMesh(&mesh);
 	
@@ -181,7 +169,7 @@ bool Map::loadIntoScene(Graph::Shader* s, Graph::Scene& scene){
 			return false;
 		}
 
-		tmp->setPosition(glm::vec3(c[i].x*16, this->mesh.offsetHeight(c[i].x,c[i].y)*16, c[i].y*16));
+		tmp->setPosition(glm::vec3(c[i].x*sc, this->mesh.offsetHeight(c[i].x,c[i].y)*sc, c[i].y*sc));
 		tmp->setScale(glm::vec3(50,50,50));
 		scene.addMesh(tmp);
 		meshCheckpoint.push_back(tmp);

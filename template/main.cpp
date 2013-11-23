@@ -90,10 +90,10 @@ int main(void) {
 	scene.setCamera(&cam);
 	scene.setBackground(&sky);
 	//scene.addMesh(&mesh3);
-	//scene.addLight(&light);
+	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light3);
-	//scene.addLight(&light4);
+	scene.addLight(&light4);
 
 	Map m;
 	m.loadFromFile("../resources/maps/dummy2/map.xml");
