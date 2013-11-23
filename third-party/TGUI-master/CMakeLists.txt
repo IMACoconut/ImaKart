@@ -105,7 +105,7 @@ endif()
 if (SFML_OS_WINDOWS AND SFML_COMPILER_MSVC)
     find_package( SFML 2 COMPONENTS main graphics window system )
 else()
-    find_package( SFML 2 COMPONENTS graphics window system )
+    #find_package( SFML 2 COMPONENTS graphics window system )
 endif()
 
 # FindSFML couldn't find SFML.
