@@ -13,10 +13,15 @@ add_subdirectory(third-party/glew-1.10.0)
 include_directories(third-party/tinyxml2/include)
 add_subdirectory(third-party/tinyxml2)
 
+
+set(SFML_LIBRARIES sfml-graphics sfml-window sfml-system)
+include_directories(third-party/TGUI-master/include)
+add_subdirectory(third-party/TGUI-master)
+
 include_directories(third-party/glm)
 include_directories(lib/include)
 add_subdirectory(lib)
 
-set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} imacoconut sfml-graphics sfml-window sfml-system tinyxml2)
+set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} imacoconut ${SFML_LIBRARIES} tinyxml2 tgui)
 
 add_subdirectory(template)

@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <tinyxml2/tinyxml2.h>
+#include <TGUI/TGUI.hpp>
 
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
@@ -13,8 +14,42 @@
 #include <iostream>
 #include <vector>
 
+#define THEME_CONFIG_FILE "../resources/widgets/Black.conf"
+
 static const unsigned int FPS = 30;
 
+void loadWidgets( tgui::Gui& gui )
+{
+    // Create the username label
+    tgui::Label::Ptr labelUsername(gui);
+    labelUsername->setText("Username:");
+    labelUsername->setPosition(200, 100);
+ 
+    // Create the password label
+    tgui::Label::Ptr labelPassword(gui);
+    labelPassword->setText("Password:");
+    labelPassword->setPosition(200, 250);
+ 
+    // Create the username edit box
+    tgui::EditBox::Ptr editBoxUsername(gui, "Username");
+    editBoxUsername->load("../resources/widgets/Black.conf");
+    editBoxUsername->setSize(400, 40);
+    editBoxUsername->setPosition(200, 140);
+ 
+    // Create the password edit box (we will copy the previously created edit box)
+    tgui::EditBox::Ptr editBoxPassword = gui.copy(editBoxUsername, "Password");
+    editBoxPassword->setPosition(200, 290);
+    editBoxPassword->setPasswordCharacter('*');
+ 
+    // Create the login button
+    tgui::Button::Ptr button(gui);
+    button->load("../resources/widgets/Black.conf");
+    button->setSize(260, 60);
+    button->setPosition(270, 440);
+    button->setText("Login");
+    button->bindCallback(tgui::Button::LeftMouseClicked);
+    button->setCallbackId(1);
+}
 
 int main(void) {
 
@@ -26,9 +61,12 @@ int main(void) {
 
 	Util::LogManager::init();
 	NzNetwork::Initialize();
-	sf::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
-
-	//window.setFramerateLimit(FPS);
+	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
+	tgui::Gui gui(window);
+	if (gui.setGlobalFont("../resources/widgets/DejaVuSans.ttf") == false)
+        return 1;
+ 
+    loadWidgets(gui);
 
 	GLenum glewCode = glewInit();
 	if(GLEW_OK != glewCode) {
@@ -81,10 +119,6 @@ int main(void) {
 
 	Graph::SpotLight light2;
 	light2.setColor(glm::vec3(1,0, 0));
-	/*light2.setIntensity(3.f);
-	light2.setRadius(100.f);
-	light2.setPosition(glm::vec3(128*16,100.f*16,128*14));
-	light2.setDirection(glm::vec3(0,-100*16,-100*16));*/
 	light2.setShader(lightSpot);
 
 	Graph::DirectionalLight light3;
@@ -120,6 +154,7 @@ int main(void) {
 
 		sf::Event e;
 		while(window.pollEvent(e)) {
+			gui.handleEvent(e);
 			switch(e.type) {
 				
 				case sf::Event::Closed:
@@ -143,6 +178,7 @@ int main(void) {
 					break;
 				default:
 					break;
+
 			}
 		}
 
@@ -165,35 +201,24 @@ int main(void) {
 			
 			fps = 0;
 		}
-		//window.setTitle("ImaKart "+fpsStr+ " "+Util::ToString(cam.getPosition().x)+"X " + Util::ToString(cam.getPosition().y)+"Y "+Util::ToString(cam.getPosition().z)+"Z");
-		sf::Mouse::setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2), window);
-		// Rendering code goes here
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		// Application code goes here
-
 		
-		//light3.setPosition(glm::vec3(sin(elapsed)*9000,cos(elapsed)*9000,0));
+		sf::Mouse::setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2), window);
+		
+		light3.setPosition(glm::vec3(sin(elapsed*.5f)*9000,cos(elapsed*.5f)*9000,0));
 		light.setPosition(glm::vec3(128*16+sin(elapsed*3)*128*3,100*16,128*16+cos(elapsed*3)*128*3));
 		light2.setPosition(glm::vec3(128*16,100*16+sin(elapsed*5),128*14+cos(elapsed*5)*128*3));
 		light4.setPosition(glm::vec3(128*14+sin(elapsed*10)*128*3,100*16,128*16+cos(elapsed*10)*128*3));
-		//glm::vec3 l2 = glm::normalize(l);
-		//glm::vec3 l(-1,-1,0);
+
 		scene.render();
-		/*s2.bind();
-		//Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
-		sky.render();
-		s.bind();
-		//Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
-		mesh.render();
-		s3.bind();
-		mesh3.render();*/
-		/*s2.bind();
-		mesh2.render();*/
-		
+
+		// Dessin de la GUI
+		window.resetGLStates(); // On reset les matrices openGL avant de dessiner la gui
+		gui.draw();
+
 		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
 		window.display();
 		fps++;
 	}
 	NzNetwork::Uninitialize();
-	return EXIT_SUCCESS;
+	return EXIT_SUCCESS;	
 }
