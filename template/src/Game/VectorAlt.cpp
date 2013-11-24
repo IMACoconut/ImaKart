@@ -20,17 +20,13 @@ namespace Game{
 	void VectorAlt::apply(Kart& kart){
 		int i = 0;
 		std::vector<int> dead;
-		for(std::vector<Alteration*>::iterator it = alterations.begin(); it != alterations.end(); ++it){
+		for(std::vector<Alteration*>::iterator it = alterations.begin(); it != alterations.end();){
 			(*it)->apply(kart);
 			if((*it)->currentTime > (*it)->duration){
-				dead.push_back(i);
-			}	
+				it = alterations.erase(it);
+			} else
+				++it;
 			++i;
-		}
-
-		for (std::vector<int>::iterator it = dead.begin(); it != dead.end(); ++it)
-		{	
-			alterations.erase(alterations.begin()+(*it));
 		}
 	}
 }

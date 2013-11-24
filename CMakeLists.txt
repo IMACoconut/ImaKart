@@ -22,6 +22,6 @@ include_directories(third-party/glm)
 include_directories(lib/include)
 add_subdirectory(lib)
 
-set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} imacoconut ${SFML_LIBRARIES} tinyxml2 tgui)
+set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} imacoconut tinyxml2 tgui ${SFML_LIBRARIES})
 
 add_subdirectory(template)
