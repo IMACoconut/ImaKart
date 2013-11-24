@@ -2,6 +2,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include <Game/VectorAlt.hpp>
+#include <Game/VectorItem.hpp>
 
 //std::string t = get<std::string>("skin");
 
@@ -24,7 +25,7 @@ namespace Game{
 		add("horizontalAngle", new Component<float>(1, 0));
 		add("verticalAngle", new Component<float>(1, 0));
 		add("alterations", new Component<VectorAlt>(1, VectorAlt()));
-		//add("items", new Component<ItemList>(1, nullptr));
+		add("items", new Component<VectorItem>(1, VectorItem()));
 	}
 
 	Kart::~Kart(){

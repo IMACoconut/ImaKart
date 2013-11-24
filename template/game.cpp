@@ -56,37 +56,6 @@ void loadWidgets( tgui::Gui& gui )
 
 int main(void) {
 
-	Game::Kart kart;
-	std::vector<std::string> affectedVariable;
-	affectedVariable.push_back("maniability");
-	affectedVariable.push_back("weight");
-
-	std::vector<float> factor;
-	factor.push_back(5);
-	factor.push_back(9);
-
-	Game::FactorAlteration alt = Game::FactorAlteration("yo", affectedVariable, factor, 5);
-
-	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
-
-	kart.update();
-
-	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
-
-	kart.addAlteration(&alt);
-
-	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
-
-	for (int i = 0; i < 8; ++i)
-	{
-		kart.update();
-
-		std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
-	}
-
-	std::cout<<"lol"<<std::endl;
-	 return 0;
-
 	tinyxml2::XMLDocument doc;
 	doc.LoadFile("../resources/data/config.xml");
 
@@ -188,7 +157,7 @@ int main(void) {
 
 		sf::Event e;
 		while(window.pollEvent(e)) {
-			gui.handleEvent(e);
+			//gui.handleEvent(e);
 			switch(e.type) {
 				
 				case sf::Event::Closed:
@@ -238,7 +207,7 @@ int main(void) {
 		
 		sf::Mouse::setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2), window);
 		
-		light3.setPosition(glm::vec3(sin(elapsed*.5f)*9000,cos(elapsed*.5f)*9000,0));
+		//light3.setPosition(glm::vec3(sin(elapsed*.5f)*9000,cos(elapsed*.5f)*9000,0));
 		light.setPosition(glm::vec3(128*16+sin(elapsed*3)*128*3,100*16,128*16+cos(elapsed*3)*128*3));
 		light2.setPosition(glm::vec3(128*16,100*16+sin(elapsed*5),128*14+cos(elapsed*5)*128*3));
 		light4.setPosition(glm::vec3(128*14+sin(elapsed*10)*128*3,100*16,128*16+cos(elapsed*10)*128*3));
@@ -246,7 +215,7 @@ int main(void) {
 		scene.render();
 
 		// Dessin de la GUI
-		window.resetGLStates(); // On reset les matrices openGL avant de dessiner la gui
+		//window.resetGLStates(); // On reset les matrices openGL avant de dessiner la gui
 		gui.draw();
 
 		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)

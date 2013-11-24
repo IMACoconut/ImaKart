@@ -27,7 +27,6 @@ namespace Game{
 		void turnLeft();			//fait tourner le vecteur direction sur la gauche
 		void turnRight();			//fait tourner le vecteur direction sur la droite
 		void useItem();				//utilise un objet
-		void BonusSpeed(float modif);
 		void addAlteration(Alteration* alteration);
 	};
 }
