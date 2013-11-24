@@ -9,7 +9,7 @@ MenuState::MenuState() {
 
 }
 
-void MenuState::Init()
+void MenuState::Init(GameEngine* game)
 {
 	
 

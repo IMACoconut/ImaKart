@@ -8,7 +8,7 @@ static const unsigned int WINDOW_WIDTH = 800;
 static const unsigned int WINDOW_HEIGHT = 600;
 
 void GameEngine::Init(){
-    states.top()->Init();    
+    states.top()->Init(this);    
     
 
 }
@@ -42,7 +42,7 @@ void GameEngine::PushState( GameState& state )
 
     // store and init the new state
     states.push(&state);
-    states.top()->Init();
+    states.top()->Init(this);
 }
 
 void GameEngine::SetState( GameState& state )
@@ -61,7 +61,7 @@ void GameEngine::SetState( GameState& state )
 
     // store and init the new state
     states.push(&state);
-    states.top()->Init();
+    states.top()->Init(this);
 }
 
 void GameEngine::HandleEvents() 

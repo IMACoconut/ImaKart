@@ -131,7 +131,7 @@
 				}
 			}*/
 			if(updateRotation) {
-				std::cout << get<float>("horizontalAngle") << std::endl;
+				//std::cout << get<float>("horizontalAngle") << std::endl;
 				glm::vec3 forward = get<glm::vec3>("forward");
 				glm::vec3 left = get<glm::vec3>("left");
 

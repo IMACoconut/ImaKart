@@ -8,7 +8,7 @@ class GameMenuState: public GameState
 {
 public:
 	GameMenuState();
-	void Init();
+	void Init(GameEngine* game);
 
 	void Pause();
 	void Resume();

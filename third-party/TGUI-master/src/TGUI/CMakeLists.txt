@@ -99,7 +99,7 @@ endif()
 
 # Build the Form Builder if requested
 if (TGUI_BUILD_FORM_BUILDER)
-    add_subdirectory(FormBuilder)
+    #add_subdirectory(FormBuilder)
 endif()
 
 

@@ -11,7 +11,7 @@ class PlayState: public GameState
 {
 public:
 	PlayState();
-	void Init();
+	void Init(GameEngine* game);
 
 	void Pause();
 	void Resume();
@@ -30,7 +30,7 @@ public:
 	Graph::Material hmtex;
 	Graph::Mesh mesh3;
 	Graph::Skydome sky;	
-	Graph::Light light;
+	Graph::DirectionalLight light;
 	Graph::Scene scene;
 	Graph::Camera cam;
 	Graph::Shader* skyShader;

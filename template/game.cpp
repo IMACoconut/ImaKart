@@ -4,10 +4,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <tinyxml2/tinyxml2.h>
-#include <TGUI/TGUI.hpp>
 
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
+#include <Game/map.hpp>
+#include <Game/kart.hpp>
+#include <GameManager/gameengine.hpp>
+#include <Game/States/MainMenu.hpp>
 
 #include <unistd.h>
 
@@ -18,7 +21,7 @@
 
 static const unsigned int FPS = 30;
 
-void loadWidgets( tgui::Gui& gui )
+/*void loadWidgets( tgui::Gui& gui )
 {
     // Create the username label
     tgui::Label::Ptr labelUsername(gui);
@@ -49,7 +52,7 @@ void loadWidgets( tgui::Gui& gui )
     button->setText("Login");
     button->bindCallback(tgui::Button::LeftMouseClicked);
     button->setCallbackId(1);
-}
+}*/
 
 int main(void) {
 
@@ -62,19 +65,22 @@ int main(void) {
 	Util::LogManager::init();
 	NzNetwork::Initialize();
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
-	tgui::Gui gui(window);
-	if (gui.setGlobalFont("../resources/widgets/DejaVuSans.ttf") == false)
-        return 1;
- 
-    loadWidgets(gui);
-
+	
 	GLenum glewCode = glewInit();
 	if(GLEW_OK != glewCode) {
 		Util::LogManager::error("Unable to initialize GLEW : "+Util::ToString(glewGetErrorString(glewCode)));
 		return EXIT_FAILURE;
 	}
 
-	
+	GameEngine engine(window);
+	engine.SetState(MainMenu::getInstance());
+
+	while(engine.Running()){
+		engine.HandleEvents();
+		engine.Update();
+		engine.Draw();
+	}
+	/*
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
 	Graph::Shader* celShad = Graph::ShaderManager::getInstance().loadShaderFromFile(
@@ -126,7 +132,7 @@ int main(void) {
 	light3.setIntensity(.4f);
 	light3.setPosition(glm::vec3(0,-9000,0));
 	light3.setShader(lightDirectional);
-	//s.bind();*/
+	//s.bind();
 	Graph::Scene scene;
 	Graph::Camera cam;
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -137,6 +143,13 @@ int main(void) {
 	scene.addLight(&light2);
 	scene.addLight(&light3);
 	scene.addLight(&light4);
+
+	Map m;
+	m.loadFromFile("../resources/maps/dummy2/map.xml");
+	m.loadIntoScene(celShad, scene);
+
+	Kart k;
+	k.loadIntoScene(scene);
 
 	int old_x = WINDOW_WIDTH/2;
 	int old_y = WINDOW_HEIGHT/2;
@@ -154,7 +167,8 @@ int main(void) {
 
 		sf::Event e;
 		while(window.pollEvent(e)) {
-			gui.handleEvent(e);
+			menu.HandleEvents();
+			//gui.handleEvent(e);
 			switch(e.type) {
 				
 				case sf::Event::Closed:
@@ -212,13 +226,16 @@ int main(void) {
 		scene.render();
 
 		// Dessin de la GUI
-		window.resetGLStates(); // On reset les matrices openGL avant de dessiner la gui
-		gui.draw();
+		menu.Draw(game);
+		//window.resetGLStates(); // On reset les matrices openGL avant de dessiner la gui
+		//gui.draw();
 
 		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
-		window.display();
+		//window.display();
 		fps++;
 	}
+
+	*/
 	NzNetwork::Uninitialize();
 	return EXIT_SUCCESS;	
 }

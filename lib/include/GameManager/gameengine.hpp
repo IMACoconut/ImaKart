@@ -6,7 +6,7 @@
 class GameEngine
 {
 public:
-	GameEngine(sf::Window& w) : m_window(w) {}
+	GameEngine(sf::RenderWindow& w) : m_window(w), m_running(true) {}
 	void Init();
 	GameState* GetCurrentState() { return ( !states.empty() ) ? states.top() : nullptr; }
 	void SetState(GameState& state);
@@ -20,13 +20,13 @@ public:
 	void Update();
 	void Draw();
 
-	sf::Window& getWindow() {
+	sf::RenderWindow& getWindow() {
 		return m_window;
 	}
 
 private:
 	// the stack of states
-	sf::Window& m_window;
+	sf::RenderWindow& m_window;
 	std::stack<GameState*> states;
 	bool m_running;
 	

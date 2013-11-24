@@ -5,7 +5,7 @@ class GameEngine;
 class GameState
 {
 public:
-	virtual void Init() = 0 ;
+	virtual void Init(GameEngine* game) = 0 ;
 	virtual void Initialize () = 0;
 	virtual void Release() = 0;
 	virtual void Pause() = 0;

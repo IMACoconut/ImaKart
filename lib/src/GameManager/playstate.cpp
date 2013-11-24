@@ -41,7 +41,7 @@ PlayState::PlayState() {
 
 }
 
-void PlayState::Init()
+void PlayState::Init(GameEngine* game)
 {
 	
 
