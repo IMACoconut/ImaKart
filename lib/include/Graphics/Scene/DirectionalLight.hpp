@@ -8,7 +8,7 @@ namespace Graph {
 	
 	class DirectionalLight : public Light{
 	public:
-		DirectionalLight() : Light(LightType_Directional), m_quad(Mesh::CreateQuad()) {
+		DirectionalLight() : Light(LightType_Directional), m_quad(Mesh::CreateQuad(sf::Color(255,255,255,255))) {
 
 		}
 

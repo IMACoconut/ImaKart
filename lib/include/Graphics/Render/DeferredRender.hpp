@@ -15,14 +15,15 @@ public:
 
 protected:
 	void geometryPass();
+	void backgroundPass();
+	void alphaPass();
 	void lightPass();
 	void renderScreen();
 	void sendUniforms();
 
 	bool save, loaded;
-	GBuffer m_gbuffer1, m_gbuffer1light, m_gbuffer2, m_gbuffer2light;
-	GBuffer* m_currentBuffer, *m_currentLightBuffer;
-	Graph::Shader *m_geometry, *m_final;
+	GBuffer m_gbuffer1, m_gbuffer1light;
+	Graph::Shader *m_geometry, *m_alpha, *m_final;
 	Graph::Mesh m_screen;
 };
 

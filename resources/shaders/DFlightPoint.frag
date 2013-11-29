@@ -17,6 +17,13 @@ uniform float lightRadius;
 uniform float screenW;
 uniform float screenH;
 
+
+float DirectIllumination(vec3 P, vec3 L, float R)
+{
+	float d = length(P-L);
+	return 1/(pow(d/R +1, 2));
+}
+
 bool isLightened(vec3 light, vec3 point) {
 	return distance(light, point) < lightRadius;
 }
@@ -28,11 +35,7 @@ float attenuation(vec3 from, vec3 to) {
 }
 
 float scal(vec3 N, vec3 dir) {
-	float tmp = dot(N, dir);
-	if(tmp > 0)
-		return tmp;
-	else 
-		return 0.f;
+	return max(dot(N, dir),0);
 }
 
 void main() {
@@ -40,10 +43,11 @@ void main() {
 	vec3 pos = texture2D(diffuseTex,coord).xyz;
 	vec3 N = normalize(texture2D(normalTex,coord).xyz);
 	vec3 dir = normalize(lightPos-pos);
-	float scalaire = scal(N,dir);
-	if(isLightened(lightPos, pos)) {
+	float scalaire = max(scal(N,dir),0);
+	finalData[0] = lightColor*scalaire*DirectIllumination(pos,lightPos,lightRadius)*lightIntensity;
+	/*if(isLightened(lightPos, pos)) {
 		finalData[0] = lightColor*lightIntensity*scalaire*attenuation(lightPos, pos);
 	} else {
 		finalData[0] = vec3(0,0,0);
-	}
+	}*/
 }

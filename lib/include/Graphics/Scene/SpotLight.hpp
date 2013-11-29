@@ -10,7 +10,7 @@ namespace Graph {
 	class SpotLight : public Light{
 	public:
 		SpotLight() : 
-			Light(LightType_Spot), m_cone(Mesh::createCone()), m_dir(0,-100*18,0), m_radius(200) {
+			Light(LightType_Spot), m_cone(Mesh::createCone(sf::Color(255,255,255,255))), m_dir(0,-100*18,0), m_radius(200) {
 			setScale(glm::vec3(200,100*16,200));
 			setRotation(glm::vec3(180,0,0));
 			setIntensity(1.f);

@@ -8,7 +8,10 @@ uniform sampler2D textureChannel2;
 in vec3 vertexPos;
 in vec3 vertexNorm;
 uniform vec3 lightPos;
-out vec4 finalData;
+uniform float Near;
+uniform float Far;
+
+out vec4 finalData[4];
 
 float saturate(float value)
 {
@@ -51,6 +54,9 @@ void main()
 
 	//vec3 sky = c2;
 
-    finalData = vec4((sky + moon + light), 1.f);
+    finalData[0] = vec4(vertexPos,1.f);
+    finalData[1] = vec4((sky + moon + light), 1.f);
+    finalData[2] = vec4(normalize(vertexNorm),1.f);
+    finalData[3] = vec4(Far-1, Far-1, Far-1,1.f);
     //finalData[1] = vec4(N, 1.f);
 }

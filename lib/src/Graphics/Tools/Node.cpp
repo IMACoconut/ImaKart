@@ -74,11 +74,12 @@ void Node::removeChild(Node* child)
 void Node::update() {
 	if(modelDirty)
 		updateModelMatrix();
+
+	for(auto it: children)
+		it->update();
 }
 
 void Node::render() {
-	update();
-	
 	//Render::setShader(shader);
 	/*Render::setMatrix(Render::ModelMatrix, modelMatrix);*/
 	
@@ -87,8 +88,8 @@ void Node::render() {
 			Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
 	
 	draw();
-	for(auto it = children.begin(); it != children.end(); ++it) {
-		(*it)->render();
+	for(auto it: children) {
+		it->render();
 	}
 }
 

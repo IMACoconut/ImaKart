@@ -19,13 +19,13 @@ float LinearizeDepth()
   return (2.0 * n) / (f + n - z * (f - n));	
 }
 
-vec3 depth() {
+vec4 depth() {
 	float tmp = LinearizeDepth();//gl_FragCoord.z;//1 - texture2D(depthTex, outUV)/Far;
-	return vec3(tmp,tmp,tmp);
+	return vec4(tmp,tmp,tmp,1);
 }
 void main() {
 	finalData[0] = outPosition;
-	finalData[1] = texture2D(diffuseTex, outUV).rgb;
-	finalData[2] = vec3(normalize(outNormal));
+	finalData[1] = vec4(texture2D(diffuseTex, outUV).rgb,1.f)*outColor;
+	finalData[2] = vec4(normalize(outNormal),1.f);
 	finalData[3] = depth();//texture2D(depthTex, outUV);//vec3(depth, depth, depth);
 }

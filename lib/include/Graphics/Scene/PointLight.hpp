@@ -8,7 +8,7 @@ namespace Graph {
 	
 	class PointLight : public Light{
 	public:
-		PointLight() : Light(LightType_Point), m_radius(0.f), m_sphere(Mesh::CreateSphere()) {
+		PointLight() : Light(LightType_Point), m_radius(0.f), m_sphere(Mesh::CreateSphere(sf::Color(255,255,255,255))) {
 			setRadius(100.f);
 
 		}
@@ -28,7 +28,7 @@ namespace Graph {
 		void setRadius(float radius)
 		{
 			m_radius = radius;
-			setScale(glm::vec3(radius, radius, radius));
+			setScale(glm::vec3(radius*16, radius*16, radius*16));
 		}
 
 		Graph::Mesh& getMesh() {

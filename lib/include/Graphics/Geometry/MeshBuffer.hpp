@@ -7,13 +7,31 @@
 #include <Utility/Resource.hpp>
 
 namespace Graph {
+	typedef enum {
+		Point,
+		Wireframe,
+		Full
+	} DrawMode;
+	typedef enum {
+		Solid,
+		AlphaBlending
+	} RenderMode;
+	
 	class MeshBuffer : public Util::Resource {
 	public:
-		MeshBuffer() = default;
+
+		MeshBuffer();
 		bool loadFromMemory(const VertexBuffer& buffer);
 
 		void draw();
+		void setDrawMode(DrawMode m);
+		void setRenderMode(RenderMode m);
+
+		bool hasAlphaBlending() const;
+
 	private:
+		RenderMode m_renderMode;
+		DrawMode m_drawMode;
 		VertexBuffer m_buffer;
 		VBO m_vbo;
 		VBO m_ibo;
