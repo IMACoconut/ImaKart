@@ -1,6 +1,8 @@
 #include <Graphics.hpp>
 #include <Utility.hpp>
 #include <Network.hpp>
+#include <Game/Network/NetworkTCP.hpp>
+#include <Game/Network/NetworkUDP.hpp>
 
 #include <SFML/Graphics.hpp>
 #include <tinyxml2/tinyxml2.h>
@@ -8,6 +10,8 @@
 
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
+
+#include <Utility/Input.hpp>
 
 #include <unistd.h>
 
@@ -18,6 +22,37 @@
 
 static const unsigned int FPS = 30;
 
+/* On définit une classe message qu'on peut envoyer sur le réseau */
+class Message : public NzSerializable
+{
+public:
+    Message() {} // L'objet sérialisable doit avoir un constructeur par défaut.
+
+    Message(const std::string& msg) : m_msg(msg) {}
+
+    // Fonctions de sérialisation à redéclarer impérativement
+    virtual void Serialize(NzArchive& flux) const
+    {
+        flux << m_msg;
+    }
+    virtual void Deserialize(NzArchive& flux)
+    {
+        flux >> m_msg;
+    }
+    virtual int GetID() const
+    {
+        return 1;
+    }
+    virtual int GetVersion() const
+    {
+        return 1;
+    }
+
+    std::string getMessage() { return m_msg; }
+
+private:
+    std::string m_msg;
+};
 void loadWidgets( tgui::Gui& gui )
 {
     // Create the username label
@@ -61,6 +96,11 @@ int main(void) {
 
 	Util::LogManager::init();
 	NzNetwork::Initialize();
+	/*NetworkTCP* tcp = new NetworkTCP(NzNetAddress(30001), true);
+	NetworkUDP* udp = new NetworkUDP(NzNetAddress(30002), true);
+	udp->send(new NzPacket(Message("coucou")));
+	pause(10000);
+	return 0;*/
 	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
 	tgui::Gui gui(window);
 	if (gui.setGlobalFont("../resources/widgets/DejaVuSans.ttf") == false)
@@ -102,18 +142,29 @@ int main(void) {
 	mesh.setShader(celShad);
 	Graph::Skydome sky;
 	sky.setShader(skyShader);
+
+	Graph::Mesh mesh2(Graph::Mesh::CreateQuad(sf::Color(0,127,255, 127)));
+	mesh2.setScale(glm::vec3(5000,5000,1));
+	mesh2.setRotation(glm::vec3(90,0,0));
+	mesh2.setPosition(glm::vec3(127*16,12*1*100,127*16));
+	/*Graph::Material nmtex;
+	if(!nmtex.loadFromFile("../resources/images/normalmap.png")) {
+		std::cerr << "Error while loading material" << std::endl;
+	}
+	mesh2.setMaterial(1,&nmtex);*/
+	mesh2.getMeshBuffer(0)->setRenderMode(Graph::RenderMode::AlphaBlending);
 	
 	Graph::PointLight light;
 	light.setColor(glm::vec3(0,1,0));
 	light.setIntensity(3.f);
 	light.setRadius(1000.f);
-	light.setPosition(glm::vec3(128*16,100.f*16,128*16));
+	light.setPosition(glm::vec3(128*16,100.f*15,128*16));
 	light.setShader(lightPoint);
 
 	Graph::PointLight light4;
 	light4.setColor(glm::vec3(0,0,1));
 	light4.setIntensity(10.f);
-	light4.setRadius(1000.f);
+	light4.setRadius(100.f);
 	light4.setPosition(glm::vec3(128*16,100.f*16,128*16));
 	light4.setShader(lightPoint);
 
@@ -133,48 +184,37 @@ int main(void) {
 	scene.setCamera(&cam);
 	scene.setBackground(&sky);
 	scene.addMesh(&mesh);
+	scene.addMesh(&mesh2);
 	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light3);
 	scene.addLight(&light4);
-
-	int old_x = WINDOW_WIDTH/2;
-	int old_y = WINDOW_HEIGHT/2;
 
 	window.setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 
 	Util::LogManager::notice("Running");
-
+	
+	Util::InputManager::Keyboard.bind(sf::Keyboard::A, [&mesh](bool b) {if(b) mesh.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Point);});
+	Util::InputManager::Keyboard.bind(sf::Keyboard::Z, [&mesh](bool b) {if(b) mesh.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Wireframe);});
+	Util::InputManager::Keyboard.bind(sf::Keyboard::E, [&mesh](bool b) {if(b) mesh.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Full);});
+	Util::InputManager::Keyboard.bind(sf::Keyboard::Escape, [&window](bool b){if(b) window.close(); });
+	Util::InputManager::Mouse.bindMove([&cam](int, int, int x, int y) {cam.rotate(x,y);});
+	
 	sf::Clock frameTime, clock;
 	std::string fpsStr = "0 FPS";
 	int fps = 0;
+
 	while(window.isOpen()) {
 
 		sf::Event e;
 		while(window.pollEvent(e)) {
 			gui.handleEvent(e);
+			Util::InputManager::handleEvent(e);
 			switch(e.type) {
-				
 				case sf::Event::Closed:
 					window.close();
-					break;
-				case sf::Event::MouseMoved:
-					if(e.mouseMove.x < 0.001f && e.mouseMove.y < 0.001f)
-						break;
-					
-					cam.rotate(e.mouseMove.x - old_x,e.mouseMove.y-old_y);
-
-					break;
-				case sf::Event::KeyPressed:
-					switch(e.key.code) {
-						case sf::Keyboard::Key::Escape:
-							window.close();
-							break;
-						default:
-							break;
-					}
 					break;
 				default:
 					break;
@@ -201,19 +241,20 @@ int main(void) {
 			
 			fps = 0;
 		}
-		
+
 		sf::Mouse::setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2), window);
-		
+		Util::InputManager::Mouse.setCursorPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
+
 		light3.setPosition(glm::vec3(sin(elapsed*.5f)*9000,cos(elapsed*.5f)*9000,0));
 		light.setPosition(glm::vec3(128*16+sin(elapsed*3)*128*3,100*16,128*16+cos(elapsed*3)*128*3));
 		light2.setPosition(glm::vec3(128*16,100*16+sin(elapsed*5),128*14+cos(elapsed*5)*128*3));
 		light4.setPosition(glm::vec3(128*14+sin(elapsed*10)*128*3,100*16,128*16+cos(elapsed*10)*128*3));
-
+		scene.update();
 		scene.render();
 
 		// Dessin de la GUI
 		window.resetGLStates(); // On reset les matrices openGL avant de dessiner la gui
-		gui.draw();
+		//gui.draw();
 
 		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
 		window.display();
