@@ -38,7 +38,7 @@ Mesh& Mesh::operator=(const Mesh& other) {
 
 bool Mesh::loadFromFile(const std::string& file)
 {
-	return MeshLoader::load3Ds(file, this);
+	return MeshLoader::load(file, *this);
 }
 
 bool Mesh::loadFromMemory(const VertexBuffer& buffer)

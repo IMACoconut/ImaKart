@@ -37,7 +37,7 @@ void OrbitCamera::onUpdate(float elapsed) {
 
 	auto move = m_window.getMouse().getMouseDelta();
 	float wheel = m_window.getMouse().getWheelDelta();
-	zoom(wheel*elapsed);
+	zoom(wheel*elapsed*5.f);
 	rotate(move.x*elapsed, move.y*elapsed);
 
 	updateOrbit();
@@ -75,7 +75,7 @@ void OrbitCamera::updateOrbit() {
 	float x = m_distance*sin(m_rotations.y*M_PI/180.f)*sin(m_rotations.x*M_PI/180.f);
 	float y = m_distance*cos(m_rotations.x*M_PI/180.f);
 
-	m_target = m_targetNode->getPosition() + glm::vec3(128*16,128*16,128*16);
+	m_target = m_targetNode->getPosition();
 
 	position = m_target + glm::vec3(x,y,z);
 	m_viewDirty = true;

@@ -119,8 +119,6 @@ int main(void) {
 		std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
 	}
 
-	std::cout<<"lol"<<std::endl;
-	 return 0;
 
 	tinyxml2::XMLDocument doc;
 	doc.LoadFile("../resources/data/config.xml");
@@ -186,6 +184,13 @@ int main(void) {
 	}
 	mesh2.setMaterial(1,&nmtex);*/
 	mesh2.getMeshBuffer(0)->setRenderMode(Graph::RenderMode::AlphaBlending);
+
+	Graph::Mesh mesh3;
+	if(!mesh3.loadFromFile("../resources/models/cube.3DS")) {
+		std::cout << "Error" << std::endl;
+	}
+	mesh3.setScale(glm::vec3(100,100,100));
+	mesh3.setPosition(glm::vec3(128*16,100.f*16,128*16));
 	
 	Graph::PointLight light;
 	light.setColor(glm::vec3(0,1,0));
@@ -212,12 +217,13 @@ int main(void) {
 	light3.setShader(lightDirectional);
 	//s.bind();*/
 	Graph::Scene scene;
-	Graph::OrbitCamera cam(window, &mesh);
+	Graph::OrbitCamera cam(window, &mesh3);
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
 	scene.setCamera(&cam);
 	scene.setBackground(&sky);
 	scene.addMesh(&mesh);
 	scene.addMesh(&mesh2);
+	scene.addMesh(&mesh3);
 	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light3);
