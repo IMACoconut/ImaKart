@@ -24,7 +24,7 @@ namespace Game{
 std::cout<<"currentTime = 0"<<std::endl;
 			std::vector<std::string> affectedVariable = get<std::vector<std::string>>("affectedVariable");
 			std::vector<float> modif = get<std::vector<float>>("modif");
-			for (int i = 0; i < affectedVariable.size(); ++i)
+			for (size_t i = 0; i < affectedVariable.size(); ++i)
 			{
 std::cout<<"on applique une modif"<<std::endl;
 std::cout<<affectedVariable[i]<<std::endl;
@@ -40,7 +40,7 @@ std::cout<<modif[i]<<std::endl;
 std::cout<<"currentTime = duration"<<std::endl;
 			std::vector<std::string> affectedVariable = get<std::vector<std::string>>("affectedVariable");
 			std::vector<float> modif = get<std::vector<float>>("modif");
-			for (int i = 0; i < affectedVariable.size(); ++i)
+			for (size_t i = 0; i < affectedVariable.size(); ++i)
 			{
 std::cout<<"on annule une modif"<<std::endl;
 				float tmp = kart.get<float>(affectedVariable[i]);
@@ -61,7 +61,7 @@ std::cout<<"on annule une modif"<<std::endl;
 
 		if(currentTime == 0){
 			std::vector<std::string> affectedVariable = get<std::vector<std::string>>("affectedVariable");
-			for (int i = 0; i < affectedVariable.size(); ++i)
+			for (size_t i = 0; i < affectedVariable.size(); ++i)
 			{
 				kart.set<int>(affectedVariable[i], 1);
 			}
@@ -69,7 +69,7 @@ std::cout<<"on annule une modif"<<std::endl;
 
 		if(currentTime == duration){
 			std::vector<std::string> affectedVariable = get<std::vector<std::string>>("affectedVariable");
-			for (int i = 0; i < affectedVariable.size(); ++i)
+			for (size_t i = 0; i < affectedVariable.size(); ++i)
 			{
 				kart.set<int>(affectedVariable[i], 0);
 			}
