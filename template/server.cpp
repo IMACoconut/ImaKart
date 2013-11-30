@@ -156,7 +156,7 @@ void checkPendingClients()
 {
     NzTcpSocket* client;
     NzPacket* p = nullptr;
-    int i = 0;
+    size_t i = 0;
     while(running)
     {
         client = nullptr;
@@ -238,7 +238,7 @@ void sendAll(NzPacket* p)
 }
 void recvFunc()
 {
-    int i = 0;
+    size_t i = 0;
     Client* client;
     while(running)
     {

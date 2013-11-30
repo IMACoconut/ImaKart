@@ -18,7 +18,7 @@ namespace Graph {
 
 		void draw() 
 		{
-			m_cone.update();
+			m_cone.update(0);
 			Render::shader->send(Shader::Uniform_Vector3f, "lightPos", glm::value_ptr(position));
 			Render::shader->send(Shader::Uniform_Vector3f, "lightDir", glm::value_ptr(m_dir));
 			Render::shader->send(Shader::Uniform_Vector3f, "lightColor", glm::value_ptr(m_color));

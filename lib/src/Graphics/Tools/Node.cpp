@@ -71,12 +71,12 @@ void Node::removeChild(Node* child)
 		children.erase(it);
 }
 
-void Node::update() {
+void Node::update(float elapsed) {
 	if(modelDirty)
 		updateModelMatrix();
 
 	for(auto it: children)
-		it->update();
+		it->update(elapsed);
 }
 
 void Node::render() {

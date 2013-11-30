@@ -15,7 +15,7 @@ namespace Graph {
 
 		void draw() 
 		{
-			m_sphere.update();
+			m_sphere.update(0);
 			Render::shader->send(Shader::Uniform_Vector3f, "lightPos", glm::value_ptr(position));
 			Render::shader->send(Shader::Uniform_Vector3f, "lightColor", glm::value_ptr(m_color));
 			Render::shader->send(Shader::Uniform_Float, "lightRadius", &m_radius);

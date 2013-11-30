@@ -38,7 +38,7 @@ NzTcpBase::~NzTcpBase(void)
 NzPacket* NzTcpBase::Read()
 {
 	int32_t size = 0, finalSize = 0, byte = 0, taille = sizeof(size);
-	char* buffer;
+	char* buffer = nullptr;
 	int flags = 0;
 	if(!m_fixedBuffer)
 	{

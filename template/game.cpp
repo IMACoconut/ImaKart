@@ -11,7 +11,7 @@
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
 
-#include <Utility/Input.hpp>
+#include <Graphics/Scene/OrbitCamera.hpp>
 
 #include <unistd.h>
 
@@ -101,12 +101,11 @@ int main(void) {
 	udp->send(new NzPacket(Message("coucou")));
 	pause(10000);
 	return 0;*/
-	sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
-	tgui::Gui gui(window);
-	if (gui.setGlobalFont("../resources/widgets/DejaVuSans.ttf") == false)
+	Util::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
+	if (window.getGui().setGlobalFont("../resources/widgets/DejaVuSans.ttf") == false)
         return 1;
  
-    loadWidgets(gui);
+    loadWidgets(window.getGui());
 
 	GLenum glewCode = glewInit();
 	if(GLEW_OK != glewCode) {
@@ -179,7 +178,7 @@ int main(void) {
 	light3.setShader(lightDirectional);
 	//s.bind();*/
 	Graph::Scene scene;
-	Graph::Camera cam;
+	Graph::OrbitCamera cam(window, &mesh);
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
 	scene.setCamera(&cam);
 	scene.setBackground(&sky);
@@ -196,11 +195,11 @@ int main(void) {
 
 	Util::LogManager::notice("Running");
 	
-	Util::InputManager::Keyboard.bind(sf::Keyboard::A, [&mesh](bool b) {if(b) mesh.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Point);});
+	/*Util::InputManager::Keyboard.bind(sf::Keyboard::A, [&mesh](bool b) {if(b) mesh.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Point);});
 	Util::InputManager::Keyboard.bind(sf::Keyboard::Z, [&mesh](bool b) {if(b) mesh.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Wireframe);});
 	Util::InputManager::Keyboard.bind(sf::Keyboard::E, [&mesh](bool b) {if(b) mesh.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Full);});
-	Util::InputManager::Keyboard.bind(sf::Keyboard::Escape, [&window](bool b){if(b) window.close(); });
-	Util::InputManager::Mouse.bindMove([&cam](int, int, int x, int y) {cam.rotate(x,y);});
+	Util::InputManager::Keyboard.bind(sf::Keyboard::Escape, [&window](bool b){if(b) window.close(); });*/
+	//Util::InputManager::Mouse.bindMove([&cam](int, int, int x, int y) {cam.rotate(x,y);});
 	
 	sf::Clock frameTime, clock;
 	std::string fpsStr = "0 FPS";
@@ -210,11 +209,13 @@ int main(void) {
 
 		sf::Event e;
 		while(window.pollEvent(e)) {
-			gui.handleEvent(e);
-			Util::InputManager::handleEvent(e);
 			switch(e.type) {
 				case sf::Event::Closed:
 					window.close();
+					break;
+				case sf::Event::KeyPressed:
+					if(e.key.code == sf::Keyboard::Escape)
+						window.close();
 					break;
 				default:
 					break;
@@ -224,15 +225,6 @@ int main(void) {
 
 		float elapsed = clock.getElapsedTime().asMilliseconds() * 0.0005f;
 
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			cam.move(cam.left()*(elapsed));
-		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-			cam.move(cam.right()*(elapsed));
-
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-			cam.move(cam.forward()*(elapsed));
-		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-			cam.move(cam.backward()*(elapsed));
 
 		if(frameTime.getElapsedTime().asSeconds() >= 1) {
 			frameTime.restart();
@@ -242,14 +234,14 @@ int main(void) {
 			fps = 0;
 		}
 
-		sf::Mouse::setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2), window);
-		Util::InputManager::Mouse.setCursorPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
+		window.getMouse().setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2));
+		//Util::InputManager::Mouse.setCursorPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
 
 		light3.setPosition(glm::vec3(sin(elapsed*.5f)*9000,cos(elapsed*.5f)*9000,0));
 		light.setPosition(glm::vec3(128*16+sin(elapsed*3)*128*3,100*16,128*16+cos(elapsed*3)*128*3));
 		light2.setPosition(glm::vec3(128*16,100*16+sin(elapsed*5),128*14+cos(elapsed*5)*128*3));
 		light4.setPosition(glm::vec3(128*14+sin(elapsed*10)*128*3,100*16,128*16+cos(elapsed*10)*128*3));
-		scene.update();
+		scene.update(elapsed);
 		scene.render();
 
 		// Dessin de la GUI
