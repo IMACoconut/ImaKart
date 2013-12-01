@@ -2,11 +2,57 @@
 #include <Graphics/Tools/Mesh.hpp>
 #include <Graphics/Geometry/MeshBuffer.hpp>
 #include <fstream>
-#include <iostream>
+#include <Utility/LogManager.hpp>
+
+#include <assimp/postprocess.h>
+#include <assimp/scene.h>
 
 namespace Graph {
 
-bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
+Assimp::Importer MeshLoader::importer;
+bool MeshLoader::load(const std::string& fname, Mesh& mesh) {
+	std::ifstream file(fname.c_str());
+	if(file.fail()){
+		Util::LogManager::error("Unable to load mesh \""+fname+"\"");
+		return false;
+	}
+	else
+		file.close();
+
+	const aiScene* scene = importer.ReadFile(fname, aiProcess_Triangulate | aiProcess_CalcTangentSpace | aiProcess_GenSmoothNormals);
+
+	if(!scene)
+		return false;
+
+	for(size_t c = 0; c < scene->mNumMeshes; ++c) {
+		aiMesh* m = scene->mMeshes[c];
+		VertexBuffer buffer;
+		for(uint32_t i=0;i<m->mNumFaces;i++)
+		{
+			const aiFace& face = m->mFaces[i];
+
+			for(int j=0;j<3;j++)
+			{
+				aiVector3D uvtmp = m->mTextureCoords[0][face.mIndices[j]];
+				glm::vec2 uv(uvtmp.x, uvtmp.y);
+				 
+				aiVector3D normaltmp = m->mNormals[face.mIndices[j]];
+				glm::vec3 normal(normaltmp.x, normaltmp.y, normaltmp.z);
+				 
+				aiVector3D postmp = m->mVertices[face.mIndices[j]];
+				glm::vec3 pos(postmp.x, postmp.y, postmp.z);
+
+				buffer.addVertex(Vertex3D(pos, normal, uv, sf::Color(255,255,255)));
+			}
+			buffer.addTriangle(sf::Vector3i(face.mIndices[0], face.mIndices[1], face.mIndices[2]));
+		}
+		mesh.loadFromMemory(buffer);
+	}
+
+	return true;
+}
+
+/*bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 {
 	std::ifstream file(name.c_str(), std::ios::binary);
 	if(!file.is_open()) {
@@ -110,6 +156,6 @@ bool MeshLoader::load3Ds(const std::string &name, Mesh* parent)
 		parent->loadFromMemory(buff);
 
 	return true;
-}
+}*/
 
 }

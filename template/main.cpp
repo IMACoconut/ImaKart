@@ -7,6 +7,10 @@
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
 
+#include <Game/kart.hpp>
+#include <Game/alteration.hpp>
+#include <Game/VectorAlt.hpp>
+
 #include <unistd.h>
 
 #include <iostream>
@@ -16,6 +20,35 @@ static const unsigned int FPS = 30;
 
 
 int main(void) {
+
+	Game::Kart kart;
+	std::vector<std::string> affectedVariable;
+	affectedVariable.push_back("maniability");
+	affectedVariable.push_back("weight");
+
+	std::vector<float> factor;
+	factor.push_back(5);
+	factor.push_back(9);
+
+	Game::FactorAlteration alt = Game::FactorAlteration("yo", affectedVariable, factor, 5);
+
+	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
+
+	kart.update();
+
+	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
+
+	kart.addAlteration(&alt);
+
+	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
+
+	for (int i = 0; i < 8; ++i)
+	{
+		kart.update();
+
+		std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
+	}
+
 
 	tinyxml2::XMLDocument doc;
 	doc.LoadFile("../resources/data/config.xml");

@@ -10,13 +10,15 @@ class Shader;
 class DeferredRender : public RenderMethod {
 public:
 	DeferredRender();
-	virtual ~DeferredRender() {} ;
+	~DeferredRender() {};
 	void setCamera(Camera* c);
 	void doRender();
 
 
 protected:
 	void geometryPass();
+	void backgroundPass();
+	void alphaPass();
 	void lightPass();
 	void shadowPass();
 	void renderScreen();
@@ -24,9 +26,8 @@ protected:
 	void sendUniformsShadow();
 
 	bool save, loaded;
-	GBuffer m_gbuffer1, m_gbuffer1light, m_gbuffer2, m_gbuffer2light;
-	GBuffer* m_currentBuffer, *m_currentLightBuffer, m_currentShadowBuffer;
-	Graph::Shader *m_geometry, *m_final, *m_shadow;
+	GBuffer m_gbuffer1, m_gbuffer1light;
+	Graph::Shader *m_geometry, *m_alpha, *m_final;
 	Graph::Mesh m_screen;
 };
 

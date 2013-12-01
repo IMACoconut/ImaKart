@@ -14,6 +14,7 @@ namespace Graph {
 			Mesh(Node* parent = nullptr);
 			virtual ~Mesh();
 			Mesh(const Mesh& other);
+			Mesh(const Mesh&& other);
 			Mesh& operator=(const Mesh& other);
 
 			virtual bool loadFromFile(const std::string& name);
@@ -21,9 +22,13 @@ namespace Graph {
 
 			void draw();
 
-			static Mesh CreateSphere();
-			static Mesh CreateQuad();
-			static Mesh createCone();
+			MeshBuffer* getMeshBuffer(size_t at) const;
+			std::vector<MeshBuffer*>& getMeshBuffersArray();
+
+			static Mesh CreateSphere(const sf::Color& color);
+			static Mesh CreateQuad(const sf::Color& color);
+			static Mesh CreateSquare(const sf::Color& color);
+			static Mesh createCone(const sf::Color& color);
 		protected:
 			std::vector<MeshBuffer*> m_buffers;
 

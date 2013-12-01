@@ -17,6 +17,10 @@ Node::Node(Node* parent) :
 };
 
 Node::~Node() {
+	for(int i = 0; i<Render::TextureChannel_Max; ++i)
+		if(material[i] != nullptr)
+			material[i]->drop();
+
 	for(Node* c : children)
 		c->setParent(nullptr);
 	setParent(nullptr);
@@ -67,14 +71,15 @@ void Node::removeChild(Node* child)
 		children.erase(it);
 }
 
-void Node::update() {
+void Node::update(float elapsed) {
 	if(modelDirty)
 		updateModelMatrix();
+
+	for(auto it: children)
+		it->update(elapsed);
 }
 
 void Node::render() {
-	update();
-	
 	//Render::setShader(shader);
 	/*Render::setMatrix(Render::ModelMatrix, modelMatrix);*/
 	
@@ -83,13 +88,17 @@ void Node::render() {
 			Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
 	
 	draw();
-	for(auto it = children.begin(); it != children.end(); ++it) {
-		(*it)->render();
+	for(auto it: children) {
+		it->render();
 	}
 }
 
 void Node::setMaterial(int pos, Material* m)
 {
+	if(material[pos] != nullptr)
+		material[pos]->drop();
+	
+	m->grab();
 	material[pos] = m;
 }
 void Node::updateModelMatrix() {

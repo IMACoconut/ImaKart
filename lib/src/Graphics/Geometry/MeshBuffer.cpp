@@ -2,6 +2,12 @@
 
 namespace Graph {
 
+MeshBuffer::MeshBuffer() :
+	m_renderMode(RenderMode::Solid), m_drawMode(DrawMode::Full)
+{
+
+}
+
 bool MeshBuffer::loadFromMemory(const VertexBuffer& buffer) {
 	m_buffer = buffer;
 	
@@ -31,9 +37,34 @@ bool MeshBuffer::loadFromMemory(const VertexBuffer& buffer) {
 void MeshBuffer::draw() {
 	m_vao.bind();
 	m_ibo.bind(GL_ELEMENT_ARRAY_BUFFER);
-	glDrawElements(GL_TRIANGLES, m_buffer.getIndicesCount()*3, GL_UNSIGNED_INT, (void*)0);
+	switch(m_drawMode) {
+		
+		case DrawMode::Point:
+			glDrawArrays(GL_POINTS, 0, m_buffer.getVerticesCount());
+			break;
+		case DrawMode::Wireframe:
+			glPolygonMode( GL_FRONT_AND_BACK, GL_LINE );
+			glDrawElements(GL_TRIANGLES, m_buffer.getIndicesCount()*3, GL_UNSIGNED_INT, (void*)0);
+			glPolygonMode( GL_FRONT_AND_BACK, GL_FILL);
+			break;
+		case DrawMode::Full:
+		default:
+			glDrawElements(GL_TRIANGLES, m_buffer.getIndicesCount()*3, GL_UNSIGNED_INT, (void*)0);
+			break;
+	}
 	m_ibo.unbind(GL_ELEMENT_ARRAY_BUFFER);
 	m_vao.unbind();
+}
+
+void MeshBuffer::setDrawMode(DrawMode m) {
+	m_drawMode = m;
+}
+void MeshBuffer::setRenderMode(RenderMode m) {
+	m_renderMode = m;
+}
+
+bool MeshBuffer::hasAlphaBlending() const {
+	return m_renderMode == RenderMode::AlphaBlending;
 }
 
 }

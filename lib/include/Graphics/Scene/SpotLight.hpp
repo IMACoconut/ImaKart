@@ -9,30 +9,33 @@ namespace Graph {
 	
 	class SpotLight : public Light{
 	public:
-		SpotLight() : Light(LightType_Spot), m_cone(Mesh::createCone()), m_dir(0,0,0), m_radius(0) {
-			setScale(glm::vec3(100,100*16,100));
+		SpotLight() : 
+			Light(LightType_Spot), m_cone(Mesh::createCone(sf::Color(255,255,255,255))), m_dir(0,-100*18,0), m_radius(200) {
+			setScale(glm::vec3(200,100*16,200));
+			setRotation(glm::vec3(180,0,0));
+			setIntensity(1.f);
 		}
 
 		void draw() 
 		{
-			m_cone.update();
+			m_cone.update(0);
 			Render::shader->send(Shader::Uniform_Vector3f, "lightPos", glm::value_ptr(position));
 			Render::shader->send(Shader::Uniform_Vector3f, "lightDir", glm::value_ptr(m_dir));
 			Render::shader->send(Shader::Uniform_Vector3f, "lightColor", glm::value_ptr(m_color));
 			Render::shader->send(Shader::Uniform_Float, "lightIntensity", &m_intensity);
-			Render::shader->send(Shader::Uniform_Float, "lightRadius", &m_intensity);
+			Render::shader->send(Shader::Uniform_Float, "lightRadius", &m_radius);
 			Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(getModelMatrix()));
 			m_cone.render();
 			//std::cout << "lightPos" << position.x << " " << position.y << " " << position.z << std::endl;
 		}
 
 		void setDirection(const glm::vec3& dir) {
-			m_dir = dir;
+			m_dir = glm::normalize(dir);
 			float l = glm::length(dir);
 			setScale(glm::vec3(scale.x, l, scale.z));
 			float angle = glm::angle(glm::normalize(dir), glm::vec3(0,1,0));
-			float angle2 = 90+glm::angle(glm::normalize(dir), glm::vec3(0,0,1));
-			setRotation(glm::vec3(0,angle,angle2));
+			float angle2 = 180+glm::angle(glm::normalize(dir), glm::vec3(1,0,0));
+			setRotation(glm::vec3(angle2,angle,0));
 		}
 
 		void setRadius(float radius) {

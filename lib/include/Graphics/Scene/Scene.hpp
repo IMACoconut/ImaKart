@@ -24,6 +24,13 @@ namespace Graph {
 			m_method->setCamera(c);
 		}
 
+		void update(float elapsed) {
+			m_camera->update(elapsed);
+			m_background->update(elapsed);
+			for(Node* n : m_nodes)
+				n->update(elapsed);
+		}
+
 		void render() {
 			m_method->doRender();
 		}

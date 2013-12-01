@@ -55,6 +55,7 @@ namespace Graph {
 	void Render::setTexture(TextureChannel t, Material* m) {
 		if(m == nullptr) {
 			materials[t]->unbind();
+			materials[t]->drop();
 			materials[t] = nullptr;
 			return;
 		}
@@ -62,6 +63,7 @@ namespace Graph {
 		if(materials[t] == m || shader == nullptr)
 			return;
 
+		m->grab();
 		materials[t] = m;
 		
 		GLint loc = -1;
