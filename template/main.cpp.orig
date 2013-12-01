@@ -1,6 +1,11 @@
 #include <Graphics.hpp>
+<<<<<<< HEAD
+#include <Utility/LogManager.hpp>
+#include <Utility/Tools.hpp>
+=======
 #include <Utility.hpp>
 
+>>>>>>> origin/master
 #include <SFML/Graphics.hpp>
 #include <tinyxml2/tinyxml2.h>
 
@@ -11,6 +16,12 @@
 
 #include <iostream>
 #include <vector>
+
+
+#include <GameManager/gameengine.hpp>
+#include <GameManager/gameengine.hpp>
+#include <GameManager/menustate.hpp>
+#include <GameManager/playstate.hpp>
 
 static const unsigned int FPS = 30;
 
@@ -35,6 +46,11 @@ int main(void) {
 	}
 
 	
+<<<<<<< HEAD
+	glClearColor(0.2,0.2,0.2,0);
+
+	
+=======
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
 	Graph::Shader* celShad = Graph::ShaderManager::getInstance().loadShaderFromFile(
@@ -104,6 +120,7 @@ int main(void) {
 
 	int old_x = WINDOW_WIDTH/2;
 	int old_y = WINDOW_HEIGHT/2;
+>>>>>>> origin/master
 
 	window.setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
@@ -114,6 +131,21 @@ int main(void) {
 	sf::Clock frameTime, clock;
 	std::string fpsStr = "0 FPS";
 	int fps = 0;
+<<<<<<< HEAD
+
+
+	GameEngine game(window);
+	
+	// initialize the engine
+	//MenuState m(window);
+
+	// load the menu
+	game.SetState(MenuState::getInstance());
+	
+	// main loop
+	while ( game.Running() )
+	{
+=======
 	while(window.isOpen()) {
 
 		sf::Event e;
@@ -187,10 +219,11 @@ int main(void) {
 		mesh3.render();*/
 		/*s2.bind();
 		mesh2.render();*/
+>>>>>>> origin/master
 		
-		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
-		window.display();
-		fps++;
+		game.HandleEvents();
+		game.Update();
+		game.Draw();
 	}
 
 	return EXIT_SUCCESS;

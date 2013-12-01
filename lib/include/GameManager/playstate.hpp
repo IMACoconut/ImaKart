@@ -30,7 +30,7 @@ public:
 	Graph::Material hmtex;
 	Graph::Mesh mesh3;
 	Graph::Skydome sky;	
-	Graph::Light light;
+	Graph::PointLight light;
 	Graph::Scene scene;
 	Graph::Camera cam;
 	Graph::Shader* skyShader;

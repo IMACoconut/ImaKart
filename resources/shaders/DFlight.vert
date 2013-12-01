@@ -6,12 +6,15 @@ layout(location = 3) in vec4 color;
 uniform mat4 viewMatrix;
 uniform mat4 projMatrix;
 uniform mat4 modelMatrix;
-
-out vec3 vertexPos;
-out vec3 vertexNorm;
+out vec2 outUV;
+out vec4 outColor;
+out vec3 outNormal;
+out vec3 outPosition;
 
 void main() {
-	gl_Position = projMatrix*viewMatrix*vec4(position*10000, 1.f);
-	vertexPos = position*10000;
-	vertexNorm = normal;
+	gl_Position = projMatrix*viewMatrix*modelMatrix*vec4(position, 1.f);
+	outNormal = normal;
+	outColor = color;
+	outUV = uv;
+	outPosition  = position;
 }

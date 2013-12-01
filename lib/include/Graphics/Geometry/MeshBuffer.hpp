@@ -4,8 +4,10 @@
 #include <Graphics/Geometry/VBO.hpp>
 #include <Graphics/Geometry/VAO.hpp>
 
+#include <Utility/Resource.hpp>
+
 namespace Graph {
-	class MeshBuffer {
+	class MeshBuffer : public Util::Resource {
 	public:
 		MeshBuffer() = default;
 		bool loadFromMemory(const VertexBuffer& buffer);
