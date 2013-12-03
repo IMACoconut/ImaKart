@@ -9,7 +9,7 @@ namespace Graph {
 	public:
 		Camera(Util::Window& window, const glm::vec3& pos = glm::vec3(0,0,0));
 		virtual ~Camera();
-
+		Util::Window& getWindow(){ return m_window;}
 		void setFrustum(float near, float far);
 		void setAspect(float width, float height);
 		void setFov(float fov);
@@ -36,7 +36,7 @@ namespace Graph {
 		static glm::vec3 absoluteUp();
 
 	protected:
-		virtual void onUpdate(float elapsed) = 0;
+		virtual void onUpdate(float elapsed) {};
 
 		void updateProjectionMatrix();
 		void updateViewMatrix();

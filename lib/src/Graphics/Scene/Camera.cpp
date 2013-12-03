@@ -38,6 +38,12 @@ glm::vec2 Camera::getFrustum() const {
 	return glm::vec2(m_near, m_far);
 }
 
+void Camera::setFrustum(float near, float far) {
+	m_near = near; m_far = far;
+	m_projDirty=true;
+}
+
+
 void Camera::update(float elapsed) {
 	if(m_projDirty)
 		updateProjectionMatrix();
@@ -53,6 +59,7 @@ void Camera::draw() {
 void Camera::lookAt(const glm::vec3& pos) {
 	glm::vec3 dir = glm::normalize(pos - position);
 	m_target = dir;
+	m_viewDirty = true;
 }
 
 glm::mat4 Camera::getProjMatrix() const {
@@ -71,6 +78,7 @@ void Camera::updateProjectionMatrix()
 
 void Camera::updateViewMatrix() {
 	m_view = glm::lookAt(position, m_target, m_up);
+	m_up = -glm::cross(m_left, m_forward);
 	m_viewDirty = false;
 }
 

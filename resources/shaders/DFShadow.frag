@@ -1,10 +1,11 @@
 #version 330
 
-out vec4 finalData[4];
+out vec3 finalData;
 in vec2 outUV;
 in vec4 outColor;
 in vec3 outNormal;
 in vec3 outPosition;
+in vec4 Shadowcoord;
 uniform sampler2D diffuseTex;
 uniform sampler2D normalTex;
 uniform sampler2D depthTex;
@@ -19,13 +20,15 @@ float LinearizeDepth()
   return (2.0 * n) / (f + n - z * (f - n));	
 }
 
-vec4 depth() {
+vec3 depth() {
 	float tmp = LinearizeDepth();//gl_FragCoord.z;//1 - texture2D(depthTex, outUV)/Far;
-	return vec4(tmp,tmp,tmp,1);
+	return vec3(tmp,tmp,tmp);
 }
 void main() {
-	finalData[0] = vec4(outPosition,1);
-	finalData[1] = vec4(texture2D(diffuseTex, outUV).rgb,1.f)*outColor;
-	finalData[2] = vec4(normalize(outNormal),1.f);
-	finalData[3] = depth();//texture2D(depthTex, outUV);//vec3(depth, depth, depth);
+	
+
+	
+	vec3 LightColor = vec3(1,1,1);
+
+	finalData = depth();
 }

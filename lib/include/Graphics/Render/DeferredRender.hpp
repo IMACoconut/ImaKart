@@ -19,12 +19,13 @@ protected:
 	void backgroundPass();
 	void alphaPass();
 	void lightPass();
+	void shadowPass();
 	void renderScreen();
 	void sendUniforms();
 
 	bool save, loaded;
-	GBuffer m_gbuffer1, m_gbuffer1light;
-	Graph::Shader *m_geometry, *m_alpha, *m_final;
+	GBuffer m_gbuffer1, m_gbuffer1light, m_currentShadowBuffer;
+	Graph::Shader *m_geometry, *m_alpha, *m_final, *m_shadow;
 	Graph::Mesh m_screen;
 };
 

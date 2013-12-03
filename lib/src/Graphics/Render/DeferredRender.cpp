@@ -23,6 +23,12 @@ DeferredRender::DeferredRender() : save(false), loaded(false) {
 	m_geometry = ShaderManager::getInstance().loadShaderFromFile(
 		"DFnormal", "../resources/shaders/DFbase.vert", "../resources/shaders/DFgeometry.frag");
 
+	m_shadow = ShaderManager::getInstance().loadShaderFromFile(
+		"DFShadowMap", "../resources/shaders/DFShadow.vert", "../resources/shaders/DFShadow.frag");
+
+	m_currentShadowBuffer.init(1024,1024);
+	m_currentShadowBuffer.createTexture(GBuffer::GBufferTarget_Depth);
+
 	VertexBuffer buff;
 	buff.addVertex(Vertex3D(glm::vec3(-1,-1,0),glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,255,255,1)));
 	buff.addVertex(Vertex3D(glm::vec3(-1,1,0),glm::vec3(0,0,0), glm::vec2(0,1), sf::Color(255,255,255,1)));
@@ -49,6 +55,80 @@ void DeferredRender::setCamera(Camera* c) {
 	loaded = true;
 }
 
+
+
+void DeferredRender::shadowPass() {
+	
+	m_currentShadowBuffer.bind(GL_DRAW_FRAMEBUFFER);
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+	glDepthMask(GL_TRUE);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+	
+	m_shadow->bind();
+	Camera cam(m_camera->getWindow());
+	cam.setFrustum(3000,20000);
+	cam.setAspect(1024,1024);
+
+	for(auto it: m_lights) {
+		if(it == nullptr)
+			continue;
+
+		if(it->getType() == Light::LightType_Directional) {
+			/* glm::mat4 id;
+			Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(id));
+			Render::shader->send(Shader::Uniform_Matrix4f, "viewMatrix", glm::value_ptr(id));
+			Render::shader->send(Shader::Uniform_Matrix4f, "projMatrix", glm::value_ptr(id)); */
+			
+			
+			glm::vec3 lightPosition = it->getPosition();
+			cam.setPosition(lightPosition);
+			cam.lookAt(glm::vec3(0.,0.,0.));
+			cam.update(0);
+			break;
+			
+		}
+		
+
+		//Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
+		
+		
+	}
+
+		glm::mat4 ModelMatrix = glm::mat4(1.0);
+		glm::mat4 biasMatrix(
+			0.5, 0.0, 0.0, 0.0,
+			0.0, 0.5, 0.0, 0.0,
+			0.0, 0.0, 0.5, 0.0,
+			0.5, 0.5, 0.5, 1.0
+			);
+		Render::shader->send(Shader::Uniform_Matrix4f, "viewMatrix", glm::value_ptr(cam.getViewMatrix()));
+		Render::shader->send(Shader::Uniform_Matrix4f, "projMatrix", glm::value_ptr(cam.getProjMatrix()));
+		
+		Render::shader->send(Shader::Uniform_Matrix4f, "biasMatrix", glm::value_ptr(biasMatrix));
+		Render::shader->send(Shader::Uniform_Vector3f, "eyeDir", glm::value_ptr(cam.forward()));
+
+		auto frustum = cam.getFrustum();
+		Render::shader->send(Shader::Uniform_Float, "Near", &frustum.x);
+		Render::shader->send(Shader::Uniform_Float, "Far", &frustum.y);
+		auto view = cam.getAspect();
+		Render::shader->send(Shader::Uniform_Float, "screenW", &view.x);
+		Render::shader->send(Shader::Uniform_Float, "screenH", &view.y);
+
+	
+	for(auto it: m_meshs) {		
+		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
+		it->render();
+	}		
+
+	m_shadow->unbind();
+	m_currentShadowBuffer.unbind(GL_DRAW_FRAMEBUFFER);
+
+	glDepthMask(GL_FALSE);
+	glDisable(GL_DEPTH_TEST);
+}
+
 void DeferredRender::doRender() {
 	
 	
@@ -58,6 +138,7 @@ void DeferredRender::doRender() {
 	alphaPass();
 	lightPass();
 	// TODO: ajouter pass SSAO, MXAA
+	shadowPass();
 
 
 
@@ -157,11 +238,11 @@ void DeferredRender::renderScreen() {
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
     m_gbuffer1.unbind(GL_READ_FRAMEBUFFER);
-    m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
-    m_gbuffer1light.setBufferTarget(GBuffer::GBufferTarget_Light);
+    m_currentShadowBuffer.bind(GL_READ_FRAMEBUFFER);
+    m_currentShadowBuffer.setBufferTarget(GBuffer::GBufferTarget_Depth);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-   	m_gbuffer1light.unbind(GL_READ_FRAMEBUFFER);
+   	m_currentShadowBuffer.unbind(GL_READ_FRAMEBUFFER);
 }
 
 void DeferredRender::sendUniforms() {
