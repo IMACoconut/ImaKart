@@ -53,19 +53,20 @@ namespace Graph {
 	}
 
 	void Render::setTexture(TextureChannel t, Material* m) {
-		if(m == nullptr) {
-			materials[t]->unbind();
+		if(materials[t])
+		{
+			//std::cout << "dropping unit " << static_cast<int>(t) << " " << materials[t]->getID() << " " << materials[t]->getRefCount() << std::endl;
+			materials[t]->unbind(static_cast<int>(t));
 			materials[t]->drop();
 			materials[t] = nullptr;
-			return;
 		}
-
-		if(materials[t] == m || shader == nullptr)
+		
+		if(shader == nullptr || m == nullptr)
 			return;
 
 		m->grab();
 		materials[t] = m;
-		
+
 		GLint loc = -1;
 		GLuint shaderProgram = shader->getProgram();
 		std::string str = "";
@@ -89,8 +90,11 @@ namespace Graph {
 			default:
 				break;
 		}
+		//std::cout << "binding unit " << static_cast<int>(t) << " " << m->getID() << " " << materials[t]->getRefCount() << " on " << str << std::endl;
+
 		if(loc != -1) {
 			m->bind(static_cast<int>(t));
+			
 			glUniform1i(loc, static_cast<int>(t));
 		} else {
 			//Util::LogManager::error(str+" not found");

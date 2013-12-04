@@ -50,18 +50,22 @@ void DeferredRender::setCamera(Camera* c) {
 }
 
 void DeferredRender::doRender() {
+	if(!loaded)
+		return;
 	
-	
-	
+	//std::cout << "geometry" << std::endl;
 	geometryPass();
 	//backgroundPass();
-	alphaPass();
+	//std::cout << "light" << std::endl;
 	lightPass();
+	//std::cout << "alpha" << std::endl;
+	alphaPass();
 	// TODO: ajouter pass SSAO, MXAA
 
-
+	//std::cout << "final" << std::endl;
 
 	renderScreen();
+	//throw -1;
 }
 
 void DeferredRender::geometryPass() {
@@ -70,15 +74,16 @@ void DeferredRender::geometryPass() {
 	glDepthFunc(GL_LESS);
 	glDepthMask(GL_TRUE);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-  
-   	m_geometry->bind();
-    sendUniforms();
- 	
 
 	for(auto it: m_meshs) {
 		if(it == nullptr)
 			continue;
-
+		if(!it->getShader())
+			it->setShader(ShaderManager::getInstance().buildShader(it));
+		if(Render::shader != it->getShader()) {
+			it->getShader()->bind();
+			sendUniforms();
+		}
 		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
 		auto buffers = it->getMeshBuffersArray();
@@ -92,7 +97,6 @@ void DeferredRender::geometryPass() {
 		for(auto b: buffers)
 			if(!b->hasAlphaBlending())
 				b->draw();
-//		it->render();
 	}
 
 	glDepthMask(GL_FALSE);
@@ -106,8 +110,14 @@ void DeferredRender::lightPass() {
 
     glEnable(GL_BLEND);
 	glBlendEquation(GL_FUNC_ADD);
-	glBlendFunc(GL_ONE, GL_ONE);	
+	glBlendFunc(GL_ONE, GL_ONE);
+	glEnable(GL_CULL_FACE);
 
+	if(Render::shader)
+	{
+		Render::shader->unbind();
+		Render::shader = nullptr;
+	}
 	for(auto it: m_lights) {
 		if(it == nullptr)
 			continue;
@@ -119,8 +129,7 @@ void DeferredRender::lightPass() {
 			Render::setTexture(Render::DiffuseTexture, tex);
 			Material* tex1 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Normal);
 			Render::setTexture(Render::NormalTexture, tex1);
-			Material* tex2 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Albedo);
-			Render::setTexture(Render::AmbiantTexture, tex2);
+
 			if(it->getType() == Light::LightType_Directional) {
 				glm::mat4 id;
 				Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(id));
@@ -134,7 +143,7 @@ void DeferredRender::lightPass() {
 
 	m_gbuffer1light.unbind(GL_DRAW_FRAMEBUFFER);
 	glDisable(GL_BLEND);
-
+	glDisable(GL_CULL_FACE);
 }
 
 void DeferredRender::renderScreen() {
@@ -194,14 +203,16 @@ void DeferredRender::alphaPass() {
 	glBlendEquation(GL_FUNC_ADD);
 	glBlendFunc(GL_ONE, GL_ONE);
 
-   	m_geometry->bind();
-    sendUniforms();
- 	
+	m_geometry->bind();
+	sendUniforms();
 
 	for(auto it: m_meshs) {
 		if(it == nullptr)
 			continue;
-
+		/*if(Render::shader != it->getShader()) {
+			it->getShader()->bind();
+			sendUniforms();
+		}*/
 		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
 		auto buffers = it->getMeshBuffersArray();

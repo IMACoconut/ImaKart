@@ -1,6 +1,6 @@
 #version 330
 
-out vec3 finalData[2];
+out vec4 finalData;
 in vec2 outUV;
 in vec4 outColor;
 in vec3 outNormal;
@@ -28,10 +28,10 @@ bool isLightened(vec3 light, vec3 point) {
 	return distance(light, point) < lightRadius;
 }
 
-float attenuation(vec3 from, vec3 to) {
+float attenuation(vec3 from, vec3 to, float radius) {
 	float l = distance(from, to);
-	float tmp = (lightRadius-l)/lightRadius;
-	return tmp;
+	float tmp = (radius-l)/radius;
+	return max(tmp,0);
 }
 
 float scal(vec3 N, vec3 dir) {
@@ -41,13 +41,8 @@ float scal(vec3 N, vec3 dir) {
 void main() {
 	vec2 coord = vec2(gl_FragCoord.x/screenW, gl_FragCoord.y/screenH);
 	vec3 pos = texture2D(diffuseTex,coord).xyz;
-	vec3 N = normalize(texture2D(normalTex,coord).xyz);
-	vec3 dir = normalize(lightPos-pos);
+	vec3 N = normalize(texture2D(normalTex,coord).rgb);
+	vec3 dir = normalize(pos-lightPos);
 	float scalaire = max(scal(N,dir),0);
-	finalData[0] = lightColor*scalaire*DirectIllumination(pos,lightPos,lightRadius)*lightIntensity;
-	/*if(isLightened(lightPos, pos)) {
-		finalData[0] = lightColor*lightIntensity*scalaire*attenuation(lightPos, pos);
-	} else {
-		finalData[0] = vec3(0,0,0);
-	}*/
+	finalData = vec4(lightColor*lightIntensity*scalaire*attenuation(pos,lightPos, lightRadius),1.f);
 }

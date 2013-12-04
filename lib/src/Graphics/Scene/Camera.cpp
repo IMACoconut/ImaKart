@@ -71,6 +71,7 @@ void Camera::updateProjectionMatrix()
 
 void Camera::updateViewMatrix() {
 	m_view = glm::lookAt(position, m_target, m_up);
+	m_up = -glm::cross(m_left, m_forward);
 	m_viewDirty = false;
 }
 

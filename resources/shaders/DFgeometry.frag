@@ -20,7 +20,7 @@ float LinearizeDepth()
 }
 
 vec4 depth() {
-	float tmp = LinearizeDepth();//gl_FragCoord.z;//1 - texture2D(depthTex, outUV)/Far;
+	float tmp = LinearizeDepth();
 	return vec4(tmp,tmp,tmp,1);
 }
 void main() {

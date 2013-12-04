@@ -12,6 +12,7 @@ Material::Material() : m_texID(-1)
 
 Material::~Material() 
 {
+	//std::cout << "destroying " << m_texID << std::endl;
 	glDeleteTextures(1, (GLuint*)&m_texID);
 }
 
@@ -54,14 +55,12 @@ GLint Material::getID() const {
 void Material::bind(uint8_t unit) {
 	glActiveTexture(GL_TEXTURE0+unit);
 	glBindTexture(GL_TEXTURE_2D, m_texID);
-	grab();
 	glActiveTexture(GL_TEXTURE0);
 }
 
 void Material::unbind(uint8_t unit) {
 	glActiveTexture(GL_TEXTURE0+unit);
 	glBindTexture(GL_TEXTURE_2D, 0);
-	drop();
 	glActiveTexture(GL_TEXTURE0);
 }
 }

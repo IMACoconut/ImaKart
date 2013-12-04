@@ -25,6 +25,7 @@ void OrbitCamera::onUpdate(float elapsed) {
 		auto rsaxis = m_window.getXbox().getAxis(0, Util::XboxAxis::RStick);
 		float rtrigg = m_window.getXbox().getTrigger(0, Util::XboxTrigger::RT);
 		float ltrigg = m_window.getXbox().getTrigger(0, Util::XboxTrigger::LT);
+
 		if(!Util::eqZero(rtrigg)) {
 			zoom(elapsed*-5.f);
 		}
@@ -34,26 +35,23 @@ void OrbitCamera::onUpdate(float elapsed) {
 
 		rotate(rsaxis.x*elapsed*5, rsaxis.y*elapsed*5);
 	}
-
 	auto move = m_window.getMouse().getMouseDelta();
 	float wheel = m_window.getMouse().getWheelDelta();
 	zoom(wheel*elapsed*5.f);
 	rotate(move.x*elapsed, move.y*elapsed);
-
 	updateOrbit();
+	
 }
 
 void OrbitCamera::move(const glm::vec3& m) {}
 void OrbitCamera::rotate(float dx, float dy) {
 	m_rotations.y -= dx*0.005f*5;
 	m_rotations.x += dy*0.005f*5;
-	//std::cout << m_rotations.x << std::endl;
+
 	if(m_rotations.x < -179.f)
 		m_rotations.x = -179.f;
 	else if(m_rotations.x > -1.f)
 		m_rotations.x = -1.f;
-
-	updateOrbit();
 }
 void OrbitCamera::zoom(float delta) {
 	m_distance += delta;
@@ -61,8 +59,6 @@ void OrbitCamera::zoom(float delta) {
 		m_distance = m_maxDist;
 	else if(m_distance < m_minDist)
 		m_distance = m_minDist;
-
-	updateOrbit();
 }
 
 void OrbitCamera::setTarget(Node* target) {

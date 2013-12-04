@@ -6,6 +6,8 @@ in vec4 outColor;
 in vec3 outNormal;
 in vec3 outPosition;
 uniform sampler2D normalTex;
+uniform sampler2D diffuseTex;
+uniform sampler2D ambiantTex;
 uniform float Near;
 uniform float Far;
 
@@ -17,8 +19,8 @@ uniform float screenH;
 
 void main() {
 	vec2 coord = vec2(gl_FragCoord.x/screenW, gl_FragCoord.y/screenH);
-	vec3 N = normalize(texture2D(normalTex,coord).xyz);
+	vec3 N = normalize(texture2D(normalTex,coord).rgb);
 	vec3 L = normalize(-lightDir);
-	float scal = dot(N,L);
+	float scal = max(dot(N,L),0);
 	finalData[0] = lightColor*lightIntensity*dot(L,N);
 }
