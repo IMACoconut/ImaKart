@@ -91,7 +91,7 @@ void loadWidgets( tgui::Gui& gui )
 
 int main(void) {
 
-	Game::Kart kart;
+	Kart kart(0);
 	std::vector<std::string> affectedVariable;
 	affectedVariable.push_back("maniability");
 	affectedVariable.push_back("weight");
@@ -100,23 +100,23 @@ int main(void) {
 	factor.push_back(5);
 	factor.push_back(9);
 
-	Game::FactorAlteration alt = Game::FactorAlteration("yo", affectedVariable, factor, 5);
+	FactorAlteration alt = FactorAlteration("yo", affectedVariable, factor, 5);
 
-	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
+	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<VectorAlt>("alterations")).size()<<std::endl;
 
-	kart.update();
+	kart.update(0);
 
-	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
+	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<VectorAlt>("alterations")).size()<<std::endl;
 
 	kart.addAlteration(&alt);
 
-	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
+	std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<VectorAlt>("alterations")).size()<<std::endl;
 
 	for (int i = 0; i < 8; ++i)
 	{
-		kart.update();
+		kart.update(0);
 
-		std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<Game::VectorAlt>("alterations")).size()<<std::endl;
+		std::cout<<"maniability : "<<kart.get<float>("maniability")<<" weight : "<< kart.get<float>("weight")<<" alteration : "<<(kart.get<VectorAlt>("alterations")).size()<<std::endl;
 	}
 
 
@@ -170,7 +170,7 @@ int main(void) {
 	}
 	mesh.setMaterial(0, &hmtex);
 	mesh.setScale(glm::vec3(16,16,16));
-	mesh.setShader(celShad);
+	//mesh.setShader(celShad);
 	Graph::Skydome sky;
 	sky.setShader(skyShader);
 
@@ -178,11 +178,11 @@ int main(void) {
 	mesh2.setScale(glm::vec3(5000,5000,1));
 	mesh2.setRotation(glm::vec3(90,0,0));
 	mesh2.setPosition(glm::vec3(127*16,12*1*100,127*16));
-	/*Graph::Material nmtex;
+	Graph::Material nmtex;
 	if(!nmtex.loadFromFile("../resources/images/normalmap.png")) {
 		std::cerr << "Error while loading material" << std::endl;
 	}
-	mesh2.setMaterial(1,&nmtex);*/
+	
 	mesh2.getMeshBuffer(0)->setRenderMode(Graph::RenderMode::AlphaBlending);
 
 	Graph::Mesh mesh3;
@@ -191,6 +191,7 @@ int main(void) {
 	}
 	mesh3.setScale(glm::vec3(100,100,100));
 	mesh3.setPosition(glm::vec3(128*16,100.f*16,128*16));
+	mesh3.setMaterial(2,&nmtex);
 	
 	Graph::PointLight light;
 	light.setColor(glm::vec3(0,1,0));
@@ -224,11 +225,12 @@ int main(void) {
 	scene.addMesh(&mesh);
 	scene.addMesh(&mesh2);
 	scene.addMesh(&mesh3);
+	
 	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light3);
 	scene.addLight(&light4);
-
+	
 	window.setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
@@ -254,8 +256,22 @@ int main(void) {
 					window.close();
 					break;
 				case sf::Event::KeyPressed:
-					if(e.key.code == sf::Keyboard::Escape)
-						window.close();
+					switch(e.key.code) {
+						case sf::Keyboard::Escape:
+							window.close();
+							break;
+						case sf::Keyboard::A:
+							mesh3.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Point);
+							break;
+						case sf::Keyboard::Z:
+							mesh3.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Wireframe);
+							break;
+						case sf::Keyboard::E:
+							mesh3.getMeshBuffer(0)->setDrawMode(Graph::DrawMode::Full);
+							break;
+						default:
+							break;
+					}
 					break;
 				default:
 					break;
@@ -284,11 +300,6 @@ int main(void) {
 		scene.update(elapsed);
 		scene.render();
 
-		// Dessin de la GUI
-		window.resetGLStates(); // On reset les matrices openGL avant de dessiner la gui
-		//gui.draw();
-
-		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
 		window.display();
 		fps++;
 	}

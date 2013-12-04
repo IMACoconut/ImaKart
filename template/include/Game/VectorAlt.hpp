@@ -3,8 +3,6 @@
 #include <vector>
 #include <Game/kart.hpp>
 
-namespace Game{
-
 	class Alteration;
 
 	class VectorAlt{
@@ -16,5 +14,3 @@ namespace Game{
 		void pushAlteration(Alteration* alteration);
 		void apply(Kart& kart);
 	};
-
-}

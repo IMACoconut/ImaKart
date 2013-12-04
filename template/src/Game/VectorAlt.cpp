@@ -2,9 +2,6 @@
 #include <Game/alteration.hpp>
 #include <iostream>
 
-namespace Game{
-
-
 	bool VectorAlt::isEmpty(){
 		return alterations.empty();
 	}
@@ -29,4 +26,3 @@ namespace Game{
 			++i;
 		}
 	}
-}

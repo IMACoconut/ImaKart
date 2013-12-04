@@ -6,8 +6,6 @@
 #include <iostream>
 #include <string>
 
-namespace Game{
-
 	Alteration::Alteration(int time, std::string nameAlteration)
 			 : duration(time), currentTime(0), name(nameAlteration){}
 
@@ -76,4 +74,3 @@ std::cout<<"on annule une modif"<<std::endl;
 		}
 		++currentTime;
 	}
-}

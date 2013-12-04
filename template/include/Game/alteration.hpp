@@ -5,7 +5,6 @@
 #include <Game/kart.hpp>
 #include <vector>
 
-namespace Game{
 
 	class Alteration : public Entity{
 
@@ -35,4 +34,3 @@ namespace Game{
 		~StatutAlteration(){}
 		void apply(Kart& kart);
 	};
-}

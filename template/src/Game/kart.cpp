@@ -2,12 +2,12 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include <Game/VectorAlt.hpp>
+#include <Game/Logic/Item.hpp>
 
 //std::string t = get<std::string>("skin");
 
-namespace Game{
-
-	Kart::Kart() {
+	Kart::Kart(int id) {
+		add("id", new Component<int>(1, id));
 		add("skin", new Component<std::string>(1, ""));
 		add("hp", new Component<int>(1, 1));
 		add("condition", new Component<KartCondition>(1, NORMAL));
@@ -31,7 +31,7 @@ namespace Game{
 
 	}
 
-	void Kart::update(){
+	void Kart::update(float elapsed){
 		VectorAlt alterations = get<VectorAlt>("alterations"); 
 		if(!alterations.isEmpty()){
 			alterations.apply(*this);
@@ -109,4 +109,5 @@ namespace Game{
 	}
 
 	void Kart::useItem(){}
-}
+
+	void Kart::giveItem(Item* item) {}
