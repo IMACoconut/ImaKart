@@ -6,14 +6,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <tinyxml2/tinyxml2.h>
-#include <TGUI/TGUI.hpp>
 
 #include <Game/Entity.hpp>
 #include <Game/Component.hpp>
+#include <Game/map.hpp>
 #include <Game/kart.hpp>
-#include <Game/alteration.hpp>
-#include <Game/VectorAlt.hpp>
-
+#include <GameManager/gameengine.hpp>
+#include <Game/States/MainMenu.hpp>
 #include <Graphics/Scene/OrbitCamera.hpp>
 
 #include <unistd.h>
@@ -25,7 +24,7 @@
 
 static const unsigned int FPS = 30;
 
-/* On définit une classe message qu'on peut envoyer sur le réseau */
+/*void loadWidgets( tgui::Gui& gui )
 class Message : public NzSerializable
 {
 public:
@@ -56,7 +55,6 @@ public:
 private:
     std::string m_msg;
 };
-void loadWidgets( tgui::Gui& gui )
 {
     // Create the username label
     tgui::Label::Ptr labelUsername(gui);
@@ -87,7 +85,7 @@ void loadWidgets( tgui::Gui& gui )
     button->setText("Login");
     button->bindCallback(tgui::Button::LeftMouseClicked);
     button->setCallbackId(1);
-}
+}*/
 
 int main(void) {
 
@@ -129,23 +127,26 @@ int main(void) {
 	Util::LogManager::init();
 	NzNetwork::Initialize();
 	/*NetworkTCP* tcp = new NetworkTCP(NzNetAddress(30001), true);
-	NetworkUDP* udp = new NetworkUDP(NzNetAddress(30002), true);
-	udp->send(new NzPacket(Message("coucou")));
 	pause(10000);
 	return 0;*/
 	Util::Window window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "OpenGL4Imacs");
 	if (window.getGui().setGlobalFont("../resources/widgets/DejaVuSans.ttf") == false)
-        return 1;
- 
-    loadWidgets(window.getGui());
-
+	
 	GLenum glewCode = glewInit();
 	if(GLEW_OK != glewCode) {
 		Util::LogManager::error("Unable to initialize GLEW : "+Util::ToString(glewGetErrorString(glewCode)));
 		return EXIT_FAILURE;
 	}
 
-	
+	GameEngine engine(window);
+	engine.SetState(MainMenu::getInstance());
+
+	while(engine.Running()){
+		engine.HandleEvents();
+		engine.Update();
+		engine.Draw();
+	}
+	/*
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
 	Graph::Shader* celShad = Graph::ShaderManager::getInstance().loadShaderFromFile(
@@ -216,7 +217,7 @@ int main(void) {
 	light3.setIntensity(.4f);
 	light3.setPosition(glm::vec3(0,-9000,0));
 	light3.setShader(lightDirectional);
-	//s.bind();*/
+	//s.bind();
 	Graph::Scene scene;
 	Graph::OrbitCamera cam(window, &mesh3);
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -231,6 +232,13 @@ int main(void) {
 	scene.addLight(&light3);
 	scene.addLight(&light4);
 	
+	Map m;
+	m.loadFromFile("../resources/maps/dummy2/map.xml");
+	m.loadIntoScene(celShad, scene);
+
+	Kart k;
+	k.loadIntoScene(scene);
+
 	window.setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
@@ -251,6 +259,8 @@ int main(void) {
 
 		sf::Event e;
 		while(window.pollEvent(e)) {
+			menu.HandleEvents();
+			//gui.handleEvent(e);
 			switch(e.type) {
 				case sf::Event::Closed:
 					window.close();
@@ -300,9 +310,14 @@ int main(void) {
 		scene.update(elapsed);
 		scene.render();
 
-		window.display();
+		menu.Draw(game);
+		//window.resetGLStates(); // On reset les matrices openGL avant de dessiner la gui
+		//gui.draw();
+		//window.display();
 		fps++;
 	}
+
+	*/
 	NzNetwork::Uninitialize();
 	return EXIT_SUCCESS;	
 }

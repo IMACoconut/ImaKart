@@ -4,6 +4,8 @@
 #include <sstream>
 
 #include <SFML/Graphics/Image.hpp>
+#include <tinyxml2/tinyxml2.h>
+#include <glm/glm.hpp>
 
 #define EPSILON 0.00001f
 
@@ -27,5 +29,46 @@ namespace Util {
 
 	inline bool eqZero(float f) {
 		return std::fabs(f) < EPSILON;
+		if (s == nullptr){
+			Util::LogManager::error("String invalide : balise <"+name+"> manquante");
+			throw 1;
+		}
+		return std::string(s->GetText());
+	}
+
+	inline float getFloatFromXML(tinyxml2::XMLElement* xml, const std::string& name){
+		tinyxml2::XMLElement* f = xml->FirstChildElement(name.c_str());
+		if(f == nullptr){
+			Util::LogManager::error("Float invalide : balise <"+name+"> manquante");
+			throw 1;
+		}
+		return Util::FromString<float>(std::string(f->GetText()));
+
+	}
+
+	inline glm::vec3 getVec3FromXML(tinyxml2::XMLElement* xml, const std::string& name){
+		tinyxml2::XMLElement* vec = xml->FirstChildElement(name.c_str());
+		if(vec == nullptr){
+			Util::LogManager::error("Vec3 invalide : balise <"+name+"> manquante");
+			throw 1;
+		}
+		float x = getFloatFromXML(vec, "x");
+		float y = getFloatFromXML(vec, "y");
+		float z = getFloatFromXML(vec, "z");
+
+		return glm::vec3(x,y,z);
+	}
+
+	inline sf::Color getColorFromXML(tinyxml2::XMLElement* xml, const std::string& name){
+		tinyxml2::XMLElement* color = xml->FirstChildElement(name.c_str());
+		if(color == nullptr){
+			Util::LogManager::error("Couleur invalide : balise <"+name+"> manquante");
+			throw 1;
+		}
+		float r = getFloatFromXML(color, "r");
+		float g = getFloatFromXML(color, "g");
+		float b = getFloatFromXML(color, "b");
+
+		return FloatToColor(r,g,b, 0);
 	}
 }
