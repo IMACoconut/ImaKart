@@ -1,12 +1,16 @@
-#include <Game/kart.hpp>
+#include <Game/Kart.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include <Game/VectorAlt.hpp>
 #include <Game/Logic/Item.hpp>
+#include <Game/IA/KartBehavior.hpp>
 
 //std::string t = get<std::string>("skin");
 
-//namespace Game{
+	Kart::Kart(int id) :
+		m_behavior(nullptr),
+		m_speedfactor(0), m_rotatefactor(0)
+	{
 		add("id", new Component<int>(1, id));
 		add("skin", new Component<std::string>(1, ""));
 		add("hp", new Component<int>(1, 1));
@@ -37,23 +41,48 @@
 		mesh.setScale(glm::vec3(100,100,100));
 	}
 
+	void Kart::setBehavior(KartBehavior* behavior) {
+		m_behavior = behavior;
+	}
+
 	void Kart::update(float elapsed){
+		if(m_behavior)
+			m_behavior->update(elapsed);
 
 		bool updateRotation = true, updatePosition = true;
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
+		if(m_speedfactor > 0) {
 			float currentSpeed = get<float>("currentSpeed");
-		
-			currentSpeed += get<float>("acceleration")*elapsed;
+			currentSpeed += get<float>("acceleration")*elapsed*m_speedfactor;
 			if(currentSpeed > get<float>("speedMaxForward"))
 				currentSpeed = get<float>("speedMaxForward");
 			
 			set<float>("currentSpeed", currentSpeed);
-
-		} else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+		} else if(m_speedfactor < 0){
 			float currentSpeed = get<float>("currentSpeed");
 			if(currentSpeed > -get<float>("speedMaxBack"))
-				currentSpeed -= get<float>("acceleration")*elapsed;
-			set<float>("currentSpeed", currentSpeed);			
+				currentSpeed -= get<float>("acceleration")*elapsed*m_speedfactor;
+			set<float>("currentSpeed", currentSpeed);
+		} else 
+			updatePosition = false;
+
+		if(m_rotatefactor > 0) {
+			float horizontalAngle = get<float>("horizontalAngle");
+			horizontalAngle -= get<float>("maniability")*elapsed*m_rotatefactor;
+			set<float>("horizontalAngle", horizontalAngle);
+		} else if(m_rotatefactor < 0) {
+			float horizontalAngle = get<float>("horizontalAngle");
+			horizontalAngle += get<float>("maniability")*elapsed*m_rotatefactor;
+			set<float>("horizontalAngle", horizontalAngle);
+		} else {
+			updateRotation = false;
+		}
+
+		/*
+		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
+			
+
+		} else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+						
 		}else{
 			float currentSpeed = get<float>("currentSpeed");
 			
@@ -66,13 +95,9 @@
 
 
 		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-			float horizontalAngle = get<float>("horizontalAngle");
-			horizontalAngle -= get<float>("maniability")*elapsed;
-			set<float>("horizontalAngle", horizontalAngle);
+			
 		}else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-			float horizontalAngle = get<float>("horizontalAngle");
-			horizontalAngle += get<float>("maniability")*elapsed;
-			set<float>("horizontalAngle", horizontalAngle);
+			
 		} else {
 			updateRotation = false;
 		}
@@ -197,27 +222,18 @@
 		}*/
 	}
 
-	void Kart::moveForward(bool state){
-		rolls = state;
-		slowDown = !state;
+	void Kart::accelerate(float factor){
+		m_speedfactor = factor;
+		//std::cout << "accelerate: " << factor << std::endl;
 	}
 
-	void Kart::moveBack(bool state){
-		backtrack = state;	
-	}
-
-	void Kart::deccelerate(float lvl, bool state){
-		slowDown = state;
-	}
-
-	void Kart::turnLeft(bool state){
-		left = state;
-	}
-
-	void Kart::turnRight(bool state){
-		right = state;
+	void Kart::turn(float factor){
+		m_rotatefactor = factor;
+		//std::cout << "rotate: " << factor << std::endl;
 	}
 
 	void Kart::useItem(bool state){}
+
+	void Kart::giveItem(Item* i) {}
 
 //}

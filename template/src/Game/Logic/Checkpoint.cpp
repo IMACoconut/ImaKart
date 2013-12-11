@@ -1,5 +1,5 @@
 #include <Game/Logic/Checkpoint.hpp>
-#include <Game/kart.hpp>
+#include <Game/Kart.hpp>
 #include <Game/Map.hpp>
 
 Checkpoint::Checkpoint(Map& m, int pos) :

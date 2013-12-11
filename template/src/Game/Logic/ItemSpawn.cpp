@@ -1,5 +1,5 @@
 #include <Game/Logic/ItemSpawn.hpp>
-#include <Game/kart.hpp>
+#include <Game/Kart.hpp>
 #include <Game/Map.hpp>
 
 ItemSpawn::ItemSpawn(Map& m, float delay) :

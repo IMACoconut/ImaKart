@@ -86,17 +86,19 @@ void DeferredRender::geometryPass() {
 		}
 		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
-		auto buffers = it->getMeshBuffersArray();
+		Mesh* mesh = dynamic_cast<Mesh*>(it);
+		if(mesh) {
+			auto buffers = mesh->getMeshBuffersArray();
 
-		
-		auto material = it->getMaterials();
-		for(int i = 0; i< Render::TextureChannel_Max; ++i)
-			if(material[i] != nullptr)
-				Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
+			auto material = mesh->getMaterials();
+			for(int i = 0; i< Render::TextureChannel_Max; ++i)
+				if(material[i] != nullptr)
+					Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
 
-		for(auto b: buffers)
-			if(!b->hasAlphaBlending())
-				b->draw();
+			for(auto b: buffers)
+				if(!b->hasAlphaBlending())
+					b->draw();
+		}
 	}
 
 	glDepthMask(GL_FALSE);
@@ -166,11 +168,11 @@ void DeferredRender::renderScreen() {
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
     m_gbuffer1.unbind(GL_READ_FRAMEBUFFER);
-    m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
+    /*m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
     m_gbuffer1light.setBufferTarget(GBuffer::GBufferTarget_Light);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-   	m_gbuffer1light.unbind(GL_READ_FRAMEBUFFER);
+   	m_gbuffer1light.unbind(GL_READ_FRAMEBUFFER);*/
 }
 
 void DeferredRender::sendUniforms() {
@@ -215,17 +217,21 @@ void DeferredRender::alphaPass() {
 		}*/
 		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
-		auto buffers = it->getMeshBuffersArray();
 
-		
-		auto material = it->getMaterials();
-		for(int i = 0; i< Render::TextureChannel_Max; ++i)
-			if(material[i] != nullptr)
-				Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
+		Mesh* mesh = dynamic_cast<Mesh*>(it);
+		if(mesh) {
+			auto buffers = mesh->getMeshBuffersArray();
 
-		for(auto b: buffers)
-			if(b->hasAlphaBlending())
-				b->draw();
+			
+			auto material = mesh->getMaterials();
+			for(int i = 0; i< Render::TextureChannel_Max; ++i)
+				if(material[i] != nullptr)
+					Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
+
+			for(auto b: buffers)
+				if(b->hasAlphaBlending())
+					b->draw();
+		}
 //		it->render();
 	}
 	glDisable(GL_DEPTH_TEST);

@@ -1,4 +1,4 @@
-#include <GameManager/menustate.hpp>
+/*#include <GameManager/menustate.hpp>
 #include <GameManager/playstate.hpp>
 #include <GameManager/gameengine.hpp>
 #include <iostream>
@@ -95,3 +95,4 @@ void MenuState::Draw(GameEngine* game)
 	
 }
 
+*/

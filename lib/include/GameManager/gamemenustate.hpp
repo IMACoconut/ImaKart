@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <GameManager/gamestate.hpp>
 #include <SFML/Graphics.hpp>
 
@@ -28,4 +28,4 @@ public:
 private:
 	
 
-};
+};*/

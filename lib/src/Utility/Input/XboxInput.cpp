@@ -29,10 +29,11 @@ void XboxInput::handleEvent(const sf::Event& e) {
 					float p = e.joystickMove.position/100.f;
 					if(std::fabs(e.joystickMove.position) < 20.f)
 						p = 0.f;
+
 					if(e.joystickMove.axis % 2 == 0)
-						state[e.joystickButton.joystickId].axis[b].x = p;
+						state[e.joystickMove.joystickId].axis[b].x = p;
 					else
-						state[e.joystickButton.joystickId].axis[b].y = p;
+						state[e.joystickMove.joystickId].axis[b].y = p;
 				} else {
 					XboxTrigger::Trigger t = getTrigger(e.joystickMove);
 					float p = (e.joystickMove.position+100.f)/200.f;

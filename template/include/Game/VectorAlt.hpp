@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <Game/kart.hpp>
+#include <Game/Kart.hpp>
 
 	class Alteration;
 

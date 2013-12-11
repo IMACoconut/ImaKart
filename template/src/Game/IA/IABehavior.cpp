@@ -1,7 +1,8 @@
 #include <Game/IA/IABehavior.hpp>
+#include <Game/Kart.hpp>
 
 IABehavior::IABehavior(Kart& kart) :
-	m_kart(kart)
+	KartBehavior(kart)
 {}
 
 void IABehavior::onUpdate(float elapsed)

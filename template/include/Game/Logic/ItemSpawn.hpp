@@ -2,7 +2,7 @@
 #include <Utility.hpp>
 #include <Game/IA/ItemSpawnBehavior.hpp>
 #include <Game/Logic/Checkpoint.hpp>
-#include <Game/kart.hpp>
+#include <Game/Kart.hpp>
 
 class Item;
 class Map;

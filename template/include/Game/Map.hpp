@@ -1,23 +1,40 @@
 #pragma once
-
+#include <Game/Entity.hpp>
+#include <Game/Logic/Checkpoint.hpp>
+#include <Game/Logic/ItemSpawn.hpp>
+#include <Graphics.hpp>
+#include <string>
+#include <vector>
 #include <tuple>
 #include <Utility.hpp>
-#include <Game/kart.hpp>
 
-class Checkpoint;
-class ItemSpawn;
+class Kart;
 typedef std::tuple<Kart*, Util::Clock, int, bool> KartInfo;
-// Pointer to kart, clock timer for total time, loops remaining, has finished boolean
 
-class Map {
-	public:
-		void update(float elapsed);
-		Kart* addKart(KartType type);
-		std::vector<KartInfo> getResults();
-		void hasFinishedLoop(Kart& k);
+class Map : public Entity, public Graph::Node{
+public:
+	Map() = default;
+	~Map();
 
-	private:
-		std::vector<KartInfo> m_karts;
-		std::vector<Checkpoint*> m_checkpoints;
-		std::vector<ItemSpawn*> m_itemSpawns;
+	bool loadFromFile(const std::string& file);
+
+	bool loadIntoScene(Graph::Scene& scene);
+	void draw();
+	void drawCheckpoint();
+	void hasFinishedLoop(Kart& k);
+	void update(float elapsed);
+
+	Kart* addKart(KartType type);
+	std::vector<KartInfo> getResults();
+
+	Graph::Heightmap* getHeightmap();
+
+
+private:
+	Graph::Heightmap mesh;
+	Graph::Material hmtex;
+	std::vector<Checkpoint*> m_checkpoints; 
+	std::vector<ItemSpawn*> m_itemSpawns;
+	std::vector<KartInfo> m_karts;
+
 };

@@ -1,16 +1,18 @@
 #pragma once
 
-#include <GameManager/gamestate.hpp>
-#include <GameManager/gameengine.hpp>
+#include <GameManager/GameState.hpp>
+#include <GameManager/GameEngine.hpp>
+#include <Game/States/LoadingState.hpp>
 #include <SFML/Graphics.hpp>
-#include <Game/kart.hpp>
-#include <Game/map.hpp>
+#include <Game/Kart.hpp>
+#include <Game/Map.hpp>
 
 class GameEngine;
 class Game : public GameState
 {
 private:
 	Graph::Heightmap mesh;
+	Graph::Mesh mesh2;
 	Graph::Material hmtex;
 	Graph::Skydome sky;
 	Graph::PointLight light;
@@ -18,11 +20,13 @@ private:
 	Graph::SpotLight light2;
 	Graph::DirectionalLight light3;
 	Graph::Scene scene;
-	Graph::Camera cam;
-	sf::Clock frameTime, clock;
+	Graph::Camera* cam;
+	sf::Clock frameTime, clock, timeOfDay;
 	int fps = 0;
 	Map m;
 	Kart k;
+	GameEngine* m_game;
+	LoadingState<Game> m_loader;
 
 public:
 	Game();
@@ -30,12 +34,13 @@ public:
 
 
 	void Init(GameEngine* game);
+	void load();
 
-	void Pause();
-	void Resume();
-	void Initialize();
-	void Release();
-	void Cleanup();
+	void Pause(GameEngine* game);
+	void Resume(GameEngine* game);
+	void Initialize(GameEngine* game);
+	void Release(GameEngine* game);
+	void Cleanup(GameEngine* game);
 	void HandleEvents(GameEngine* game);
 	void Update(GameEngine* game);
 	void Draw(GameEngine* game);

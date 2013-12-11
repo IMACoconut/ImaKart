@@ -1,10 +1,13 @@
 #include <Game/Logic/GameLogic.hpp>
 #include <Game/Logic/Item.hpp>
 #include <Game/Map.hpp>
-#include <Game/kart.hpp>
+#include <Game/Kart.hpp>
+
+#include <Graphics.hpp>
+#include <Utility.hpp>
 
 GameLogic::GameLogic() :
-	m_map(nullptr)
+	m_map(nullptr), m_camera(nullptr)
 {}
 
 GameLogic::~GameLogic() {
@@ -14,6 +17,10 @@ GameLogic::~GameLogic() {
 GameLogic& GameLogic::getInstance() {
 	static GameLogic gl;
 	return gl;
+}
+
+void GameLogic::setCamera(Graph::Camera* cam) {
+	m_camera = cam;
 }
 
 Item* GameLogic::randomItem() {
@@ -38,4 +45,16 @@ void GameLogic::loadMap(const std::string& map) {
 
 std::vector<KartInfo> GameLogic::getRaceResults() {
 	return m_map->getResults();
+}
+
+Util::XboxInput& GameLogic::getXboxInput() {
+	if(!m_camera)
+		throw -1;
+	return m_camera->getWindow().getXbox();
+}
+
+Util::MouseInput& GameLogic::getMouseInput() {
+	if(!m_camera)
+		throw -1;
+	return m_camera->getWindow().getMouse();
 }

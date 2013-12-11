@@ -5,7 +5,7 @@
 namespace Graph {
 	class OrbitCamera : public Camera {
 	public:
-		OrbitCamera(Util::Window& window, Node* target);
+		OrbitCamera(Util::Window& window, Node* target = nullptr);
 		~OrbitCamera();
 		void setTarget(Node* target);
 

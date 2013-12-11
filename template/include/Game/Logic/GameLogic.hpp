@@ -6,9 +6,17 @@
 #include <glm/glm.hpp>
 #include <Utility.hpp>
 #include <Game/Map.hpp>
-#include <Game/kart.hpp>
+#include <Game/Kart.hpp>
 
 class Item;
+
+namespace Util {
+	class XboxInput;
+	class MouseInput;
+}
+namespace Graph {
+	class Camera;
+}
 
 class GameLogic {
 public:
@@ -16,6 +24,8 @@ public:
 	
 	Item* randomItem();
 	Kart* createKart(KartType type);
+
+	void setCamera(Graph::Camera* cam);
 	void loadMap(const std::string& map);
 	void startRace();
 	void endRace();
@@ -23,6 +33,8 @@ public:
 
 	void update(float elapsed);
 
+	Util::XboxInput& getXboxInput();
+	Util::MouseInput& getMouseInput();
 	std::vector<KartInfo> getRaceResults();
 
 private:
@@ -30,4 +42,5 @@ private:
 	~GameLogic();
 
 	Map* m_map;
+	Graph::Camera* m_camera;
 };

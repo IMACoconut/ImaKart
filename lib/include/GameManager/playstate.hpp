@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <GameManager/gamestate.hpp>
 #include <Graphics.hpp>
 #include <Utility/LogManager.hpp>
@@ -47,4 +47,4 @@ public:
 private:
 	
 
-};
+};*/

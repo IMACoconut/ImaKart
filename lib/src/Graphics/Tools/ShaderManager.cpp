@@ -145,4 +145,13 @@ Shader* ShaderManager::loadShaderFromFile(const std::string& name, const std::st
 	return s;
 }
 
+Shader* ShaderManager::getShader(const std::string& name) const {
+	for(auto it : m_shaders) {
+		if(std::get<1>(it) == name)
+			return std::get<2>(it);
+	}
+
+	return nullptr;
+}
+
 }

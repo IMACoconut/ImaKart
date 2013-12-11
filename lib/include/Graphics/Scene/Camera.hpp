@@ -7,7 +7,7 @@
 namespace Graph {
 	class Camera : public Node {
 	public:
-		Camera(Util::Window& window, const glm::vec3& pos = glm::vec3(0,0,0));
+		Camera(Util::Window& window, const glm::vec3& pos = glm::vec3(10,0,0));
 		virtual ~Camera();
 
 		void setFrustum(float near, float far);
@@ -24,6 +24,8 @@ namespace Graph {
 		glm::mat4 getProjMatrix() const;
 		glm::mat4 getViewMatrix() const;
 
+		Util::Window& getWindow();
+
 		glm::vec3 forward();
 		glm::vec3 backward();
 		glm::vec3 left();
@@ -36,7 +38,7 @@ namespace Graph {
 		static glm::vec3 absoluteUp();
 
 	protected:
-		virtual void onUpdate(float elapsed) = 0;
+		virtual void onUpdate(float elapsed) {};
 
 		void updateProjectionMatrix();
 		void updateViewMatrix();

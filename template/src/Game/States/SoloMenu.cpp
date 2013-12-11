@@ -1,8 +1,6 @@
 #include <Game/States/SoloMenu.hpp>
 #include <Game/States/Game.hpp>
-#include <GameManager/menustate.hpp>
-#include <GameManager/playstate.hpp>
-#include <GameManager/gameengine.hpp>
+#include <GameManager/GameEngine.hpp>
 
 #include <iostream>
 #include <GL/glew.h>
@@ -14,16 +12,22 @@ SoloMenu::SoloMenu(){
 }
 
 SoloMenu::~SoloMenu(){
-	delete gui;
+
 }
 
 void SoloMenu::Init(GameEngine* game){
-	gui = new tgui::Gui(game->getWindow());
-	if (gui->setGlobalFont("../resources/widgets/DejaVuSans.ttf") == false)
-        return;
+	Resume(game);
+}
 
-    int center = (game->getWindow().getSize().x)/2;
-    tgui::Button::Ptr map(*gui);
+void SoloMenu::Pause(GameEngine* game){
+	auto& gui = game->getWindow().getGui();
+	gui.removeAllWidgets();
+}
+
+void SoloMenu::Resume(GameEngine* game){
+	auto& gui = game->getWindow().getGui();
+	int center = (game->getWindow().getSize().x)/2;
+    tgui::Button::Ptr map(gui);
     map->load("../resources/widgets/Black.conf");
     map->setSize(260, 60);
     map->setPosition(center-((map->getSize().x)/2), 140);
@@ -32,7 +36,7 @@ void SoloMenu::Init(GameEngine* game){
     map->setCallbackId(1);
 
     // Create the Partie Multi button
-    tgui::Button::Ptr kart(*gui);
+    tgui::Button::Ptr kart(gui);
     kart->load("../resources/widgets/Black.conf");
     kart->setSize(260, 60);
     kart->setPosition(center-((kart->getSize().x)/2), 240);
@@ -41,40 +45,34 @@ void SoloMenu::Init(GameEngine* game){
     kart->setCallbackId(2);
 
     // Create the Quitter button
-    tgui::Button::Ptr quit(*gui);
+    tgui::Button::Ptr quit(gui);
     quit->load("../resources/widgets/Black.conf");
     quit->setSize(260, 60);
     quit->setPosition(center-((quit->getSize().x)/2), 440);
     quit->setText("Retour");
     quit->bindCallback(tgui::Button::LeftMouseClicked);
     quit->setCallbackId(3);
+	game->getWindow().setMouseCursorVisible(true);
 }
 
-void SoloMenu::Pause(){
-	std::cout << "Pause" << std::endl;
-}
-
-void SoloMenu::Resume(){
-	std::cout << "Resume" << std::endl;
-}
-
-void SoloMenu::Initialize(){
+void SoloMenu::Initialize(GameEngine* game){
 
 }
 
-void SoloMenu::Release(){
+void SoloMenu::Release(GameEngine* game){
 
 }
 
-void SoloMenu::Cleanup(){
+void SoloMenu::Cleanup(GameEngine* game){
 
 }
 
 void SoloMenu::HandleEvents(GameEngine* game){
 	sf::Event e;
-	sf::RenderWindow& window = game->getWindow();
+	auto& window = game->getWindow();
+	auto& gui = game->getWindow().getGui();
 	while(window.pollEvent(e)) {
-		gui->handleEvent(e);
+		gui.handleEvent(e);
 		switch(e.type) {
 			case sf::Event::Closed:
 				game->Quit();
@@ -102,7 +100,7 @@ void SoloMenu::HandleEvents(GameEngine* game){
 	}
 
 	tgui::Callback callback;
-	while (gui->pollCallback(callback))
+	while (gui.pollCallback(callback))
 	{
 		if (callback.id == 3)
 			game->PopState();
@@ -117,9 +115,7 @@ void SoloMenu::Update(GameEngine* game){
 }
 
 void SoloMenu::Draw(GameEngine* game){
-	sf::RenderWindow& window = game->getWindow();
+	Util::Window& window = game->getWindow();
 	window.clear();
-	window.resetGLStates(); // On reset les matrices openGL avant de dessiner la gui
-	gui->draw();
 	window.display();
 }

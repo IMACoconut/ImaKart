@@ -1,33 +1,33 @@
 #pragma once
 #include <stack>
 #include <SFML/Graphics.hpp>
-#include <GameManager/gamestate.hpp>
 
+#include <Utility/Window.hpp>
+
+class GameState;
 class GameEngine
 {
 public:
-	GameEngine(sf::RenderWindow& w) : m_window(w), m_running(true) {}
-	void Init();
+	GameEngine(Util::Window& w) : m_window(w) {}
+
 	GameState* GetCurrentState() { return ( !states.empty() ) ? states.top() : nullptr; }
-	void SetState(GameState& state);
 	void PushState(GameState& state);
 	void PopState();
 	//void Update();
-	bool Running() { return m_running; }
-	void Quit() { m_running = false; }
+	bool Running() { return states.size(); }
 
 	void HandleEvents();
 	void Update();
 	void Draw();
 
-	sf::RenderWindow& getWindow() {
+	void Quit();
+
+	Util::Window& getWindow() {
 		return m_window;
 	}
 
 private:
 	// the stack of states
-	sf::RenderWindow& m_window;
-	std::stack<GameState*> states;
-	bool m_running;
-	
+	Util::Window& m_window;
+	std::stack<GameState*> states;	
 };

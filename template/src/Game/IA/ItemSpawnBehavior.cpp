@@ -1,7 +1,7 @@
 #include <Game/IA/ItemSpawnBehavior.hpp>
 #include <Game/Logic/GameLogic.hpp>
 #include <Game/Logic/Item.hpp>
-#include <Game/kart.hpp>
+#include <Game/Kart.hpp>
 
 ItemSpawnBehavior::ItemSpawnBehavior(float delay) :
 	m_delay(delay),

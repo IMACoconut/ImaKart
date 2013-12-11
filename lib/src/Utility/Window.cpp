@@ -17,7 +17,7 @@ namespace Util {
 
 	void Window::display() {
 		resetGLStates();
-		//m_gui.draw();
+		m_gui.draw();
 		sf::RenderWindow::display();
 		m_xbox.begin();
 		m_mouse.begin();

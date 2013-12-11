@@ -1,4 +1,4 @@
-#include <GameManager/playstate.hpp>
+/*#include <GameManager/playstate.hpp>
 #include <GameManager/gamemenustate.hpp>
 #include <GameManager/menustate.hpp>
 
@@ -30,7 +30,7 @@ PlayState::PlayState() {
 	sky.setShader(skyShader);
 	
 	light.setPosition(glm::vec3(sin(0)*9000,cos(1)*9000,0));
-	//s.bind();*/
+	//s.bind();*//*
 	cam.setAspect(WINDOW_WIDTH, WINDOW_HEIGHT);
 	scene.setCamera(&cam);
 	scene.addMesh(&sky);
@@ -162,7 +162,8 @@ void PlayState::Draw(GameEngine* game)
 		mesh2.render();*/
 		
 		// Mise à jour de la fenêtre (synchronisation implicite avec OpenGL)
+		/*
 	window.display();
 	
-}
+}*/
 

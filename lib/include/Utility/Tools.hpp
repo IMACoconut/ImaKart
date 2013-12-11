@@ -29,6 +29,10 @@ namespace Util {
 
 	inline bool eqZero(float f) {
 		return std::fabs(f) < EPSILON;
+	}
+	
+	inline std::string getStringFromXML(tinyxml2::XMLElement* xml, const std::string& name){
+		tinyxml2::XMLElement* s = xml->FirstChildElement(name.c_str());
 		if (s == nullptr){
 			Util::LogManager::error("String invalide : balise <"+name+"> manquante");
 			throw 1;

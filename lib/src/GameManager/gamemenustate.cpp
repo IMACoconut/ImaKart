@@ -1,4 +1,4 @@
-#include <GameManager/gamemenustate.hpp>
+/*#include <GameManager/gamemenustate.hpp>
 #include <GameManager/menustate.hpp>
 #include <GameManager/gameengine.hpp>
 #include <iostream>
@@ -79,7 +79,7 @@ void GameMenuState::HandleEvents(GameEngine* game)
 					break;
 			}
 		}
-}
+}*//*
 
 void GameMenuState::Update(GameEngine* game) 
 {
@@ -93,5 +93,5 @@ void GameMenuState::Draw(GameEngine* game)
 
 	window.display();
 	
-}
+}*/
 

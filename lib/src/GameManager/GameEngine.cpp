@@ -1,5 +1,5 @@
-#include "GameManager/gameengine.hpp"
-#include "GameManager/gamestate.hpp"
+#include <GameManager/GameEngine.hpp>
+#include <GameManager/GameState.hpp>
 #include <iostream>
 
 
@@ -7,25 +7,18 @@
 static const unsigned int WINDOW_WIDTH = 800;
 static const unsigned int WINDOW_HEIGHT = 600;
 
-void GameEngine::Init(){
-    states.top()->Init(this);    
-    
-
-}
-
-
 void GameEngine::PopState()
 {
 
         // cleanup the current state
     if ( !states.empty() ) {
-        states.top()->Release();
+        states.top()->Release(this);
         states.pop();
     }
 
     // resume previous state
     if ( !states.empty() ) {
-        states.top()->Resume();
+        states.top()->Resume(this);
     }
 }
 
@@ -37,26 +30,7 @@ void GameEngine::PushState( GameState& state )
 
     // pause current state
     if ( !states.empty() ) {
-        states.top()->Pause();
-    }
-
-    // store and init the new state
-    states.push(&state);
-    states.top()->Init(this);
-}
-
-void GameEngine::SetState( GameState& state )
-{ 
-    /* // Delete the actual current state (if any)
-    PopState ();
- 
-    // Add the new state
-    PushState( state ); */
-
-    // cleanup the current state
-    if ( !states.empty() ) {
-        states.top()->Release();
-        states.pop();
+        states.top()->Pause(this);
     }
 
     // store and init the new state
@@ -67,17 +41,27 @@ void GameEngine::SetState( GameState& state )
 void GameEngine::HandleEvents() 
 {
     // let the state handle events
-    states.top()->HandleEvents(this);
+    if(!states.empty())
+        states.top()->HandleEvents(this);
 }
 
 void GameEngine::Update() 
 {
     // let the state update the game
-    states.top()->Update(this);
+    if(!states.empty())
+        states.top()->Update(this);
 }
 
 void GameEngine::Draw() 
 {
     // let the state draw the screen
-    states.top()->Draw(this);
+    if(!states.empty())
+        states.top()->Draw(this);
+}
+
+void GameEngine::Quit() {
+    while(!states.empty()) {
+        states.top()->Release(this);
+        states.pop();
+    }
 }
