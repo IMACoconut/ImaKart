@@ -25,7 +25,8 @@ DeferredRender::DeferredRender() : save(false), loaded(false) {
 
 	m_shadow = ShaderManager::getInstance().loadShaderFromFile(
 		"DFShadowMap", "../resources/shaders/DFShadow.vert", "../resources/shaders/DFShadow.frag");
-
+	m_custom = ShaderManager::getInstance().loadShaderFromFile(
+		"DFCustom", "../resources/shaders/DFfinal.vert", "../resources/shaders/DFCustom.frag");
 	m_currentShadowBuffer.init(1024,1024);
 	m_currentShadowBuffer.createTexture(GBuffer::GBufferTarget_Depth);
 
@@ -76,11 +77,6 @@ void DeferredRender::shadowPass() {
 			continue;
 
 		if(it->getType() == Light::LightType_Directional) {
-			/* glm::mat4 id;
-			Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(id));
-			Render::shader->send(Shader::Uniform_Matrix4f, "viewMatrix", glm::value_ptr(id));
-			Render::shader->send(Shader::Uniform_Matrix4f, "projMatrix", glm::value_ptr(id)); */
-			
 			
 			glm::vec3 lightPosition = it->getPosition();
 			cam.setPosition(lightPosition);
@@ -89,22 +85,19 @@ void DeferredRender::shadowPass() {
 			break;
 			
 		}
-		
-
-		//Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
-		
+				
 		
 	}
 
-		glm::mat4 ModelMatrix = glm::mat4(1.0);
+		glm::mat4 depthModelMatrix = glm::mat4(1.0);
 		glm::mat4 biasMatrix(
 			0.5, 0.0, 0.0, 0.0,
 			0.0, 0.5, 0.0, 0.0,
 			0.0, 0.0, 0.5, 0.0,
 			0.5, 0.5, 0.5, 1.0
 			);
-		Render::shader->send(Shader::Uniform_Matrix4f, "viewMatrix", glm::value_ptr(cam.getViewMatrix()));
-		Render::shader->send(Shader::Uniform_Matrix4f, "projMatrix", glm::value_ptr(cam.getProjMatrix()));
+		Render::shader->send(Shader::Uniform_Matrix4f, "depthviewMatrix", glm::value_ptr(cam.getViewMatrix()));
+		Render::shader->send(Shader::Uniform_Matrix4f, "depthprojMatrix", glm::value_ptr(cam.getProjMatrix()));
 		
 		Render::shader->send(Shader::Uniform_Matrix4f, "biasMatrix", glm::value_ptr(biasMatrix));
 		Render::shader->send(Shader::Uniform_Vector3f, "eyeDir", glm::value_ptr(cam.forward()));
@@ -116,17 +109,33 @@ void DeferredRender::shadowPass() {
 		Render::shader->send(Shader::Uniform_Float, "screenW", &view.x);
 		Render::shader->send(Shader::Uniform_Float, "screenH", &view.y);
 
+		
 	
 	for(auto it: m_meshs) {		
-		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
+		Render::shader->send(Shader::Uniform_Matrix4f, "depthmodelMatrix", glm::value_ptr(it->getModelMatrix()));
 		it->render();
-	}		
+	}
+
+	Material* tex = m_currentShadowBuffer.getTexture(GBuffer::GBufferTarget_Depth);
+	Material* tex1 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Position);
+	
 
 	m_shadow->unbind();
 	m_currentShadowBuffer.unbind(GL_DRAW_FRAMEBUFFER);
 
 	glDepthMask(GL_FALSE);
 	glDisable(GL_DEPTH_TEST);
+
+	m_custom->bind();
+	m_gbuffer1light.bind(GL_DRAW_FRAMEBUFFER);
+    glEnable(GL_BLEND);
+    Render::setTexture(Render::DepthTexture, tex);
+    Render::setTexture(Render::DiffuseTexture, tex1);
+    m_custom->unbind();
+	m_gbuffer1light.unbind(GL_DRAW_FRAMEBUFFER);
+
+
+
 }
 
 void DeferredRender::doRender() {
@@ -224,6 +233,7 @@ void DeferredRender::renderScreen() {
 	Render::setTexture(Render::DiffuseTexture, tex);
 	Material* tex1 = m_gbuffer1light.getTexture(GBuffer::GBufferTarget_Light);
 	Render::setTexture(Render::NormalTexture, tex1);
+	
 
 	/*if(!save && loaded) {
 		m_gbuffer1.save();

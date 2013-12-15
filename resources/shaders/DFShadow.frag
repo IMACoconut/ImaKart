@@ -1,6 +1,6 @@
 #version 330
 
-out vec3 finalData;
+out vec4 finalData;
 in vec2 outUV;
 in vec4 outColor;
 in vec3 outNormal;
@@ -20,15 +20,14 @@ float LinearizeDepth()
   return (2.0 * n) / (f + n - z * (f - n));	
 }
 
-vec3 depth() {
+float depth() {
 	float tmp = LinearizeDepth();//gl_FragCoord.z;//1 - texture2D(depthTex, outUV)/Far;
-	return vec3(tmp,tmp,tmp);
+	return tmp;
 }
 void main() {
 	
 
 	
-	vec3 LightColor = vec3(1,1,1);
 
-	finalData = depth();
+	finalData = vec4(depth(),depth(),depth(),1.); 
 }

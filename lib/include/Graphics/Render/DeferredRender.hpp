@@ -25,7 +25,7 @@ protected:
 
 	bool save, loaded;
 	GBuffer m_gbuffer1, m_gbuffer1light, m_currentShadowBuffer;
-	Graph::Shader *m_geometry, *m_alpha, *m_final, *m_shadow;
+	Graph::Shader *m_geometry, *m_alpha, *m_final, *m_shadow, *m_custom;
 	Graph::Mesh m_screen;
 };
 
