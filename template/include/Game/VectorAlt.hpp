@@ -1,9 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <Game/kart.hpp>
-
-namespace Game{
+#include <Game/Kart.hpp>
 
 	class Alteration;
 
@@ -16,5 +14,3 @@ namespace Game{
 		void pushAlteration(Alteration* alteration);
 		void apply(Kart& kart);
 	};
-
-}

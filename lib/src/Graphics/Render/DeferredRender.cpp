@@ -4,6 +4,7 @@
 #include <Graphics/Tools/Mesh.hpp>
 #include <Graphics/Tools/Shader.hpp>
 #include <Graphics/Tools/ShaderManager.hpp>
+#include <Graphics/Geometry/MeshBuffer.hpp>
 
 #include <Graphics/Scene/Camera.hpp>
 #include <Graphics/Scene/Light.hpp>
@@ -21,7 +22,8 @@ namespace Graph {
 DeferredRender::DeferredRender() : save(false), loaded(false) {
 	m_geometry = ShaderManager::getInstance().loadShaderFromFile(
 		"DFnormal", "../resources/shaders/DFbase.vert", "../resources/shaders/DFgeometry.frag");
-
+	m_clear = ShaderManager::getInstance().loadShaderFromFile(
+		"DFclear",	"../resources/shaders/DFbase.vert","../resources/shaders/DFclear.frag");
 	VertexBuffer buff;
 	buff.addVertex(Vertex3D(glm::vec3(-1,-1,0),glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,255,255,1)));
 	buff.addVertex(Vertex3D(glm::vec3(-1,1,0),glm::vec3(0,0,0), glm::vec2(0,1), sf::Color(255,255,255,1)));
@@ -32,10 +34,6 @@ DeferredRender::DeferredRender() : save(false), loaded(false) {
 	m_screen.loadFromMemory(buff);
 	m_final = ShaderManager::getInstance().loadShaderFromFile(
 		"DFfinal", "../resources/shaders/DFfinal.vert", "../resources/shaders/DFfinal.frag");
-	//m_screen.setShader(screenShad);
-
-	//glEnable(GL_CULL_FACE);
-	//glCullFace(GL_BACK);
 }
 
 void DeferredRender::setCamera(Camera* c) {
@@ -44,88 +42,91 @@ void DeferredRender::setCamera(Camera* c) {
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Position);
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Albedo);
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Normal);
-	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Depth);
 
 	m_gbuffer1light.init(c->getAspect().x, c->getAspect().y);
 	m_gbuffer1light.createTexture(GBuffer::GBufferTarget_Light);
 
-	// Double buffering
-	m_gbuffer2.init(c->getAspect().x, c->getAspect().y);
-	m_gbuffer2.createTexture(GBuffer::GBufferTarget_Position);
-	m_gbuffer2.createTexture(GBuffer::GBufferTarget_Albedo);
-	m_gbuffer2.createTexture(GBuffer::GBufferTarget_Normal);
-	m_gbuffer2.createTexture(GBuffer::GBufferTarget_Depth);
-
-	m_gbuffer2light.init(c->getAspect().x, c->getAspect().y);
-	m_gbuffer2light.createTexture(GBuffer::GBufferTarget_Light);
-
-	m_currentBuffer = &m_gbuffer1;
-	m_currentLightBuffer = &m_gbuffer1light;
-	//m_gbuffer2.setTexture(GBuffer::GBufferTarget_Depth, m_gbuffer1.getTexture(GBuffer::GBufferTarget_Depth));
 	loaded = true;
 }
 
 void DeferredRender::doRender() {
+	if(!loaded)
+		return;
 	
-	
-	
+	//std::cout << "geometry" << std::endl;
 	geometryPass();
+	//backgroundPass();
+	//std::cout << "light" << std::endl;
 	lightPass();
+	//std::cout << "alpha" << std::endl;
+	alphaPass();
 	// TODO: ajouter pass SSAO, MXAA
 
-
+	//std::cout << "final" << std::endl;
 
 	renderScreen();
-
-	/*// Double Buffering swap
-	if(m_currentBuffer == &m_gbuffer1) {
-		m_currentBuffer = &m_gbuffer2;
-		m_currentLightBuffer = &m_gbuffer2light;
-	} else {
-		m_currentBuffer = &m_gbuffer1;
-		m_currentLightBuffer = &m_gbuffer1light;
-	}*/
+	//throw -1;
 }
 
 void DeferredRender::geometryPass() {
-	m_currentBuffer->bind(GL_DRAW_FRAMEBUFFER);
+	m_gbuffer1.bind(GL_DRAW_FRAMEBUFFER);
+	
 	glEnable(GL_DEPTH_TEST);
+	/*glDepthFunc(GL_ALWAYS);
+	m_clear->bind();
+	m_screen.render();
+	m_clear->unbind();*/
+
 	glDepthFunc(GL_LESS);
 	glDepthMask(GL_TRUE);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-	
-    m_camera->draw();
-    /*if(m_background) {
-    	Render::setShader(m_background->getShader());
-    	sendUniforms();
-    	m_background->render();
-    }*/
-   	m_geometry->bind();
-    sendUniforms();
- 	
+	glCullFace(GL_BACK);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for(auto it: m_meshs) {
 		if(it == nullptr)
 			continue;
-
+		if(!it->getShader())
+			it->setShader(ShaderManager::getInstance().buildShader(it));
+		if(Render::shader != it->getShader()) {
+			it->getShader()->bind();
+			sendUniforms();
+		}
 		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
-		it->render();
+		Mesh* mesh = dynamic_cast<Mesh*>(it);
+		if(mesh) {
+			auto buffers = mesh->getMeshBuffersArray();
+
+			auto material = mesh->getMaterials();
+			for(int i = 0; i< Render::TextureChannel_Max; ++i)
+				if(material[i] != nullptr)
+					Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
+
+			for(auto b: buffers)
+				if(!b->hasAlphaBlending())
+					b->draw();
+		}
 	}
 
 	glDepthMask(GL_FALSE);
 	glDisable(GL_DEPTH_TEST);
-	m_currentBuffer->unbind(GL_DRAW_FRAMEBUFFER);
+	m_gbuffer1.unbind(GL_DRAW_FRAMEBUFFER);
 }
 
 void DeferredRender::lightPass() {
-	m_currentLightBuffer->bind(GL_DRAW_FRAMEBUFFER);
+	m_gbuffer1light.bind(GL_DRAW_FRAMEBUFFER);
 	glClear(GL_COLOR_BUFFER_BIT);
 
     glEnable(GL_BLEND);
 	glBlendEquation(GL_FUNC_ADD);
-	glBlendFunc(GL_ONE, GL_ONE);	
+	glBlendFunc(GL_ONE, GL_ONE);
+	glEnable(GL_CULL_FACE);
 
+	if(Render::shader)
+	{
+		Render::shader->unbind();
+		Render::shader = nullptr;
+	}
 	for(auto it: m_lights) {
 		if(it == nullptr)
 			continue;
@@ -133,10 +134,11 @@ void DeferredRender::lightPass() {
 		if(Render::shader != it->getShader()) {
 			it->getShader()->bind();
 			sendUniforms();
-			Material* tex = m_currentBuffer->getTexture(GBuffer::GBufferTarget_Position);
+			Material* tex = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Position);
 			Render::setTexture(Render::DiffuseTexture, tex);
-			Material* tex1 = m_currentBuffer->getTexture(GBuffer::GBufferTarget_Normal);
+			Material* tex1 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Normal);
 			Render::setTexture(Render::NormalTexture, tex1);
+
 			if(it->getType() == Light::LightType_Directional) {
 				glm::mat4 id;
 				Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(id));
@@ -148,39 +150,36 @@ void DeferredRender::lightPass() {
 		it->render();
 	}
 
-	m_currentLightBuffer->unbind(GL_DRAW_FRAMEBUFFER);
+	m_gbuffer1light.unbind(GL_DRAW_FRAMEBUFFER);
 	glDisable(GL_BLEND);
-
+	glDisable(GL_CULL_FACE);
 }
 
 void DeferredRender::renderScreen() {
 	m_final->bind();
-	Material* tex = m_currentBuffer->getTexture(GBuffer::GBufferTarget_Albedo);
+	Material* tex = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Albedo);
 	Render::setTexture(Render::DiffuseTexture, tex);
-	Material* tex1 = m_currentLightBuffer->getTexture(GBuffer::GBufferTarget_Light);
+	Material* tex1 = m_gbuffer1light.getTexture(GBuffer::GBufferTarget_Light);
 	Render::setTexture(Render::NormalTexture, tex1);
 
-	if(!save && loaded) {
-		m_currentBuffer->save();
+	/*if(!save && loaded) {
+		m_gbuffer1.save();
 		save = true;
-	}
+	}*/
     m_screen.render();
- 
- 	/*int WINDOW_WIDTH = m_camera->getAspect().x;
+ /*
+ 	int WINDOW_WIDTH = m_camera->getAspect().x;
  	int WINDOW_HEIGHT = m_camera->getAspect().y;
- 	m_gbuffer2.bind(GL_READ_FRAMEBUFFER);
-	m_gbuffer2.setBufferTarget(GBuffer::GBufferTarget_Depth);
+ 	m_gbuffer1.bind(GL_READ_FRAMEBUFFER);
+	m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Normal);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-    m_gbuffer2.unbind(GL_READ_FRAMEBUFFER);*/
-    /*m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
+    m_gbuffer1.unbind(GL_READ_FRAMEBUFFER);
+    m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
     m_gbuffer1light.setBufferTarget(GBuffer::GBufferTarget_Light);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-    m_gbuffer2.setBufferTarget(GBuffer::GBufferTarget_Depth);
-    glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
-                    WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-    m_gbuffer1light.unbind(GL_READ_FRAMEBUFFER);*/
+   	m_gbuffer1light.unbind(GL_READ_FRAMEBUFFER);*/
 }
 
 void DeferredRender::sendUniforms() {
@@ -195,5 +194,57 @@ void DeferredRender::sendUniforms() {
 		Render::shader->send(Shader::Uniform_Float, "screenW", &view.x);
 		Render::shader->send(Shader::Uniform_Float, "screenH", &view.y);
 	}
+}
+
+void DeferredRender::backgroundPass() {
+	if(m_background) {
+    	Render::setShader(m_background->getShader());
+    	sendUniforms();
+    	Render::shader->send(Shader::Uniform_Vector3f, "lightPos", glm::value_ptr(m_lights[0]->getPosition()));
+    	m_background->render();
+    }
+}
+void DeferredRender::alphaPass() {
+	m_gbuffer1.bind(GL_DRAW_FRAMEBUFFER);
+   	glEnable(GL_DEPTH_TEST);
+   	glDepthMask(GL_FALSE);
+   	glEnable(GL_BLEND);
+	glBlendEquation(GL_FUNC_ADD);
+	glBlendFunc(GL_ONE, GL_ONE);
+
+	m_geometry->bind();
+	sendUniforms();
+
+	for(auto it: m_meshs) {
+		if(it == nullptr)
+			continue;
+		/*if(Render::shader != it->getShader()) {
+			it->getShader()->bind();
+			sendUniforms();
+		}*/
+		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
+		
+
+		Mesh* mesh = dynamic_cast<Mesh*>(it);
+		if(mesh) {
+			auto buffers = mesh->getMeshBuffersArray();
+
+			
+			auto material = mesh->getMaterials();
+			for(int i = 0; i< Render::TextureChannel_Max; ++i)
+				if(material[i] != nullptr)
+					Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
+
+			for(auto b: buffers)
+				if(b->hasAlphaBlending())
+					b->draw();
+		}
+		it->render();
+	}
+
+	m_geometry->unbind();
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_BLEND);
+	m_gbuffer1.unbind(GL_DRAW_FRAMEBUFFER);
 }
 }

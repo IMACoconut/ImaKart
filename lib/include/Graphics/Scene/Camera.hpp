@@ -2,12 +2,13 @@
 
 #include <Graphics/Tools/Node.hpp>
 #include <glm/glm.hpp>
-#include <glm/gtx/quaternion.hpp>
+#include <Utility/Window.hpp>
 
 namespace Graph {
 	class Camera : public Node {
 	public:
-		Camera();
+		Camera(Util::Window& window, const glm::vec3& pos = glm::vec3(10,0,0));
+		virtual ~Camera();
 
 		void setFrustum(float near, float far);
 		void setAspect(float width, float height);
@@ -15,13 +16,15 @@ namespace Graph {
 		glm::vec2 getAspect() const;
 		glm::vec2 getFrustum() const;
 
+		void update(float elapsed);
+
 		void draw();
+		void lookAt(const glm::vec3& at);
 
 		glm::mat4 getProjMatrix() const;
 		glm::mat4 getViewMatrix() const;
 
-		void move(const glm::vec3& m);
-		void rotate(float horizontal, float vertical);
+		Util::Window& getWindow();
 
 		glm::vec3 forward();
 		glm::vec3 backward();
@@ -34,18 +37,18 @@ namespace Graph {
 		static glm::vec3 absoluteLeft();
 		static glm::vec3 absoluteUp();
 
-	private:
+	protected:
+		virtual void onUpdate(float elapsed) {};
+
 		void updateProjectionMatrix();
 		void updateViewMatrix();
 
+		Util::Window& m_window;
 		glm::mat4 m_view;
 		glm::mat4 m_proj;
 		bool m_projDirty, m_viewDirty;
 		float m_fov;
 		float m_near, m_far, m_width, m_height;
-		glm::vec3 m_forward;
-		glm::vec3 m_left;
-		glm::vec3 m_up;
-		glm::vec3 m_rotations;
+		glm::vec3 m_forward, m_left, m_up, m_rotations, m_target;
 	};
 }

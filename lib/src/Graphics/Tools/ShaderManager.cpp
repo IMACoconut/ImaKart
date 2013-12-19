@@ -35,7 +35,8 @@ Shader* ShaderManager::buildShader(Node* n) {
 
 	frag += "in vec2 vertUV;\n";
 	frag += "in vec4 vertColor;\n";
-	frag += "out vec4 fragColor;\n";
+	frag += "in vec3 vertPos;\n";
+	frag += "out vec4 fragColor[3];\n";
 
 	if(mat[Render::DiffuseTexture])
 		frag += "uniform sampler2D diffuseTex;\n";
@@ -49,19 +50,37 @@ Shader* ShaderManager::buildShader(Node* n) {
 		frag += "in vec3 vertNorm;\n";
 
 	frag += "uniform vec3 lightPos;\n";
+	frag += "uniform float Near;\n";
+	frag += "uniform float Far;\n";
 
+	frag += "float LinearizeDepth()\n";
+	frag += "{\n";
+  	frag += "float n = Near;\n";
+  	frag += "float f = Far;\n";
+  	frag += "float z = gl_FragCoord.z;\n";
+  	frag += "return (2.0 * n) / (f + n - z * (f - n));	\n";
+	frag += "}\n";
+
+	frag += "float depth() {\n";
+	frag += "return LinearizeDepth();\n";
+	frag += "}\n";
 	frag += "void main() {\n";
-	frag += "float colorContrib = 1.f;\n";
+	frag += "vec3 N = ";
 	if(mat[Render::NormalTexture]) 
-		frag += "colorContrib = texture2D(normalTex, vertUV);\n";
+		frag += "texture2D(normalTex, vertUV).xyz;\n";
 	else
-		frag += "colorContrib = dot(normalize(lightPos), normalize(vertNorm));\n";
+		frag += "vertNorm;\n";
 
-	frag += "fragColor = colorContrib*vertColor";
+	frag += "N = normalize(N);\n";
+
+	frag += "fragColor[0] = vec4(vertPos,1.f);\n";
+	frag += "fragColor[1] = vertColor";
 	if(mat[Render::DiffuseTexture])
-		frag += "*texture2D(diffuseTex, vertUV);\n";
+		frag += "*vec4(texture2D(diffuseTex, vertUV).xyz, 1.f);\n";
 	else
 		frag += ";\n";
+	frag += "fragColor[2] = vec4(N,1.f);\n";
+	frag += "gl_FragDepth = depth();\n";
 
 	frag += "}";
 
@@ -75,6 +94,7 @@ Shader* ShaderManager::buildShader(Node* n) {
 	vert += "uniform mat4 modelMatrix;\n";
 	vert += "out vec2 vertUV;\n";
 	vert += "out vec4 vertColor;\n";
+	vert += "out vec3 vertPos;\n";
 
 	if(!mat[Render::NormalTexture])
 		vert += "out vec3 vertNorm;\n";
@@ -82,10 +102,11 @@ Shader* ShaderManager::buildShader(Node* n) {
 	vert += "void main() {\n";
 	vert +=	"gl_Position = projMatrix*viewMatrix*modelMatrix*vec4(position, 1.f);\n";
 	if(!mat[Render::NormalTexture])
-		vert += "vertNorm = normal;\n";
+		vert += "vertNorm = (modelMatrix*vec4(normal,1.f)).xyz;\n";
 
 	vert += "vertColor = color;\n";
 	vert += "vertUV = uv;\n";
+	vert += "vertPos = (modelMatrix*vec4(position,1.f)).xyz;\n";
 	vert += "}";
 	
 	Shader* s = new Shader();
@@ -121,6 +142,15 @@ Shader* ShaderManager::loadShaderFromFile(const std::string& name, const std::st
 	s->compile();
 	m_shaders.push_back(std::make_tuple(reinterpret_cast<int64_t>(s), name, s));
 	return s;
+}
+
+Shader* ShaderManager::getShader(const std::string& name) const {
+	for(auto it : m_shaders) {
+		if(std::get<1>(it) == name)
+			return std::get<2>(it);
+	}
+
+	return nullptr;
 }
 
 }

@@ -21,6 +21,9 @@ namespace Graph {
 		
 		try {
 			std::ifstream file(src);
+			if(!file.is_open())
+				return false;
+			
 			std::string data;
 			char c;
 			while(!file.eof()) {

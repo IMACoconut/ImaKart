@@ -45,6 +45,16 @@ void Node::setRotation(const glm::vec3& r) {
 	modelDirty = true;
 }
 
+void Node::move(const glm::vec3 m) {
+	position += m;
+	for(Node* n: children)
+		n->move(m);
+}
+
+void Node::rotate(const glm::vec3& r) {
+	rotation += r;
+}
+
 void Node::setParent(Node* p) 
 {
 	if(p == this || p == parent)
@@ -71,14 +81,15 @@ void Node::removeChild(Node* child)
 		children.erase(it);
 }
 
-void Node::update() {
+void Node::update(float elapsed) {
 	if(modelDirty)
 		updateModelMatrix();
+
+	for(auto it: children)
+		it->update(elapsed);
 }
 
 void Node::render() {
-	update();
-	
 	//Render::setShader(shader);
 	/*Render::setMatrix(Render::ModelMatrix, modelMatrix);*/
 	
@@ -87,8 +98,8 @@ void Node::render() {
 			Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
 	
 	draw();
-	for(auto it = children.begin(); it != children.end(); ++it) {
-		(*it)->render();
+	for(auto it: children) {
+		it->render();
 	}
 }
 
