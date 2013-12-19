@@ -1,10 +1,7 @@
 #version 330
 
 out vec4 finalData;
-in vec2 outUV;
-in vec4 outColor;
-in vec3 outNormal;
-in vec3 outPosition;
+
 uniform sampler2D diffuseTex;
 uniform sampler2D normalTex;
 
@@ -18,6 +15,16 @@ uniform float lightRadius;
 uniform float lightIntensity;
 uniform float screenW;
 uniform float screenH;
+
+float celShad(float val) {
+	if(val >= 0.7)
+		return 1.f;
+	if(val >= 0.5)
+		return 0.5f;
+	if(val >= 0.2)
+		return 0.2f;
+	return 0.f;
+}
 
 float isLightened(vec3 point) {
 	vec3 x = lightPos;
@@ -42,11 +49,12 @@ float isLightened(vec3 point) {
 void main() {
 	vec2 coord = vec2(gl_FragCoord.x/screenW, gl_FragCoord.y/screenH);
 	vec3 pos = texture2D(diffuseTex, coord).xyz;
-	vec3 N = normalize(texture2D(normalTex,coord).xyz);
+
+	vec3 N = normalize(texture2D(normalTex,coord).rgb);
 
 	vec3 L = normalize(-lightDir);
 	vec3 dir = pos-lightPos;
 	vec3 D = normalize(dir);
 
-	finalData = vec4(lightColor*lightIntensity*isLightened(pos)*dot(L,N), 1.f);//*dot(L,N)*isLightened(pos);
+	finalData = vec4(lightColor*lightIntensity*max(dot(L,N),0)*celShad(isLightened(pos)), 1.f);
 }

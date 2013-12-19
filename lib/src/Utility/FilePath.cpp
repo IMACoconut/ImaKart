@@ -3,7 +3,7 @@
 namespace Util {
 	FilePath::FilePath(const std::string& path) {
 		unsigned found = path.find_last_of("/\\");
-		dir = path.substr(0,found);
+		dir = path.substr(0,found+1);
 		std::string fname = path.substr(found+1);
 		found = fname.find_last_of(".");
 		if(found < 1)

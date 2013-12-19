@@ -6,6 +6,8 @@
 #include <Graphics/Render/Render.hpp>
 
 namespace Graph {
+	class Mesh;
+	
 	class Light : public Node {
 	public:
 		typedef enum {
@@ -27,6 +29,8 @@ namespace Graph {
 		LightType getType() const {
 			return m_type;
 		}
+
+		virtual Mesh& getMesh() = 0;
 
 	protected:
 		LightType m_type;

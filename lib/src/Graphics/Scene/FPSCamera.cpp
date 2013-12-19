@@ -21,17 +21,23 @@ namespace Graph {
 		else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			mv -= m_left*elapsed*m_moveSpeed;
 
-		move(mv); 
+		auto mz = m_window.getMouse().getMouseDelta();
+		//float wheel = m_window.getMouse().getWheelDelta();
+		//zoom(wheel*elapsed*5.f);
+		rotate(mz.x*elapsed, mz.y*elapsed);
+
+		move(mv);
 	}
 
 	void FPSCamera::move(const glm::vec3& m) {
 		position += m;
+		m_target += m;
 		m_viewDirty = true;
 	}
 
 	void FPSCamera::rotate(float horizontal, float vertical) {
-		m_rotations.y -= horizontal*0.005f*5;
-		m_rotations.x += vertical*0.005f*5;
+		m_rotations.y -= horizontal*0.005f*m_rotateSpeed;
+		m_rotations.x += vertical*0.005f*m_rotateSpeed;
 
 		if(m_rotations.x < -89.f)
 			m_rotations.x = -89.f;
@@ -41,9 +47,11 @@ namespace Graph {
 		glm::mat4 rot;
 		rot = glm::rotate(rot, m_rotations.y, absoluteUp());
 		rot = glm::rotate(rot, m_rotations.x, absoluteLeft());
-		m_forward = glm::vec3(rot*glm::vec4(absoluteForward(), 1.f));
-		m_left = -glm::cross(m_forward, absoluteUp());
+		auto p = glm::vec3(rot*glm::vec4(absoluteForward(), 1.f));
+		/*m_left = -glm::cross(m_forward, absoluteUp());
+		m_up = glm::cross(m_forward, m_left);
 		m_target = position + m_forward;
-		m_viewDirty = true;
+		m_viewDirty = true;*/
+		lookAt(position+p);
 	}
 }

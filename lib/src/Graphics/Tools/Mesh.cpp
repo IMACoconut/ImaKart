@@ -62,9 +62,9 @@ Mesh Mesh::CreateSphere(const sf::Color& color) {
 	//buff.addVertex(Vertex3D(glm::vec3(0,-1,0), glm::vec3(0,-1,0), glm::vec2(0,0), sf::Color(0,0,0)));
 	for(int i = 0; i<seg; ++i) {
 		for(int j = 0; j<seg; ++j) {
-			float x = cos(2*M_PI*j*R)*sin(M_PI*i*R);
-			float y = sin(-M_PI_2+M_PI*i*R);
-			float z = sin(2*M_PI*j*R)*sin(M_PI*i*R);
+			float x = cos(2*M_PI*j*R)*sin(M_PI*i*R) /2;
+			float y = sin(-M_PI_2+M_PI*i*R) /2;
+			float z = sin(2*M_PI*j*R)*sin(M_PI*i*R) /2;
 			buff.addVertex(Vertex3D(glm::vec3(x,y,z), glm::vec3(x,y,z), glm::vec2(0,0), color));
 		}
 	}
@@ -73,8 +73,8 @@ Mesh Mesh::CreateSphere(const sf::Color& color) {
 	/*for(int i = 1; i<seg+1; ++i) {
 		buff.addTriangle(sf::Vector3i(0,i,i+1));
 	}*/
-	for(int i = 0; i<seg; ++i)
-		for(int j = 0; j<seg; ++j) {
+	for(int i = 0; i<seg-1; ++i)
+		for(int j = 0; j<seg-1; ++j) {
 			buff.addTriangle(sf::Vector3i(i*seg+j,i*seg+j+1,(i+1)*seg+j));
 			buff.addTriangle(sf::Vector3i(i*seg+j+1,(i+1)*seg+j+1, (i+1)*seg+j));
 		}

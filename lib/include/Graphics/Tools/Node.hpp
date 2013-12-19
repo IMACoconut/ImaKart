@@ -32,6 +32,9 @@ namespace Graph {
 		void setScale(const glm::vec3& scale);
 		glm::vec3 getScale() const;
 
+		void move(const glm::vec3 m);
+		void rotate(const glm::vec3& r);
+
 		virtual void update(float elapsed);
 
 		virtual void render();

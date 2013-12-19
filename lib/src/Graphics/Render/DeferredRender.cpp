@@ -23,12 +23,16 @@ DeferredRender::DeferredRender() : save(false), loaded(false) {
 	m_geometry = ShaderManager::getInstance().loadShaderFromFile(
 		"DFnormal", "../resources/shaders/DFbase.vert", "../resources/shaders/DFgeometry.frag");
 
+
 	m_shadow = ShaderManager::getInstance().loadShaderFromFile(
 		"DFShadowMap", "../resources/shaders/DFShadow.vert", "../resources/shaders/DFShadow.frag");
 	m_custom = ShaderManager::getInstance().loadShaderFromFile(
 		"DFCustom", "../resources/shaders/DFfinal.vert", "../resources/shaders/DFCustom.frag");
 	m_currentShadowBuffer.init(1024,1024);
 	m_currentShadowBuffer.createTexture(GBuffer::GBufferTarget_Depth);
+
+	m_clear = ShaderManager::getInstance().loadShaderFromFile(
+		"DFclear",	"../resources/shaders/DFbase.vert","../resources/shaders/DFclear.frag");
 
 	VertexBuffer buff;
 	buff.addVertex(Vertex3D(glm::vec3(-1,-1,0),glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,255,255,1)));
@@ -48,7 +52,6 @@ void DeferredRender::setCamera(Camera* c) {
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Position);
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Albedo);
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Normal);
-	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Depth);
 
 	m_gbuffer1light.init(c->getAspect().x, c->getAspect().y);
 	m_gbuffer1light.createTexture(GBuffer::GBufferTarget_Light);
@@ -156,50 +159,63 @@ void DeferredRender::shadowPass() {
 }
 
 void DeferredRender::doRender() {
+	if(!loaded)
+		return;
 	
-	
-	
+	//std::cout << "geometry" << std::endl;
 	geometryPass();
 	//backgroundPass();
 	//alphaPass();
 	lightPass();
+	//std::cout << "alpha" << std::endl;
+	alphaPass();
 	// TODO: ajouter pass SSAO, MXAA
 	shadowPass();
 
-
+	//std::cout << "final" << std::endl;
 
 	renderScreen();
+	//throw -1;
 }
 
 void DeferredRender::geometryPass() {
 	m_gbuffer1.bind(GL_DRAW_FRAMEBUFFER);
+	
 	glEnable(GL_DEPTH_TEST);
+	/*glDepthFunc(GL_ALWAYS);
+	m_clear->bind();
+	m_screen.render();
+	m_clear->unbind();*/
+
 	glDepthFunc(GL_LESS);
 	glDepthMask(GL_TRUE);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-  
-   	m_geometry->bind();
-    sendUniforms();
- 	
+	glCullFace(GL_BACK);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for(auto it: m_meshs) {
 		if(it == nullptr)
 			continue;
-
+		if(!it->getShader())
+			it->setShader(ShaderManager::getInstance().buildShader(it));
+		if(Render::shader != it->getShader()) {
+			it->getShader()->bind();
+			sendUniforms();
+		}
 		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
-		auto buffers = it->getMeshBuffersArray();
+		Mesh* mesh = dynamic_cast<Mesh*>(it);
+		if(mesh) {
+			auto buffers = mesh->getMeshBuffersArray();
 
-		
-		auto material = it->getMaterials();
-		for(int i = 0; i< Render::TextureChannel_Max; ++i)
-			if(material[i] != nullptr)
-				Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
+			auto material = mesh->getMaterials();
+			for(int i = 0; i< Render::TextureChannel_Max; ++i)
+				if(material[i] != nullptr)
+					Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
 
-		for(auto b: buffers)
-			if(!b->hasAlphaBlending())
-				b->draw();
-//		it->render();
+			for(auto b: buffers)
+				if(!b->hasAlphaBlending())
+					b->draw();
+		}
 	}
 	m_geometry->unbind();
 	glDepthMask(GL_FALSE);
@@ -213,12 +229,19 @@ void DeferredRender::lightPass() {
 
     glEnable(GL_BLEND);
 	glBlendEquation(GL_FUNC_ADD);
-	glBlendFunc(GL_ONE, GL_ONE);	
+	glBlendFunc(GL_ONE, GL_ONE);
+	glEnable(GL_CULL_FACE);
 
+	if(Render::shader)
+	{
+		Render::shader->unbind();
+		Render::shader = nullptr;
+	}
 	for(auto it: m_lights) {
 		if(it == nullptr)
 			continue;
-		if(it->getType() == Light::LightType_Directional) continue;
+		if(it->getType() == Light::LightType_Directional) 
+			continue;
 			
 		if(Render::shader != it->getShader()) {
 			it->getShader()->bind();
@@ -227,9 +250,6 @@ void DeferredRender::lightPass() {
 			Render::setTexture(Render::DiffuseTexture, tex);
 			Material* tex1 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Normal);
 			Render::setTexture(Render::NormalTexture, tex1);
-			Material* tex2 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Albedo);
-			Render::setTexture(Render::AmbiantTexture, tex2);
-			
 		}
 
 		it->render();
@@ -237,7 +257,7 @@ void DeferredRender::lightPass() {
 
 	m_gbuffer1light.unbind(GL_DRAW_FRAMEBUFFER);
 	glDisable(GL_BLEND);
-
+	glDisable(GL_CULL_FACE);
 }
 
 void DeferredRender::renderScreen() {
@@ -253,7 +273,7 @@ void DeferredRender::renderScreen() {
 		save = true;
 	}*/
     m_screen.render();
- 
+ /*
  	int WINDOW_WIDTH = m_camera->getAspect().x;
  	int WINDOW_HEIGHT = m_camera->getAspect().y;
  	m_gbuffer1.bind(GL_READ_FRAMEBUFFER);
@@ -270,7 +290,11 @@ void DeferredRender::renderScreen() {
     m_currentShadowBuffer.setBufferTarget(GBuffer::GBufferTarget_Depth);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+<<<<<<< HEAD
    	m_currentShadowBuffer.unbind(GL_READ_FRAMEBUFFER); 
+=======
+   	m_gbuffer1light.unbind(GL_READ_FRAMEBUFFER);*/
+>>>>>>> origin/master
 }
 
 void DeferredRender::sendUniforms() {
@@ -303,29 +327,37 @@ void DeferredRender::alphaPass() {
 	glBlendEquation(GL_FUNC_ADD);
 	glBlendFunc(GL_ONE, GL_ONE);
 
-   	m_geometry->bind();
-    sendUniforms();
- 	
+	m_geometry->bind();
+	sendUniforms();
 
 	for(auto it: m_meshs) {
 		if(it == nullptr)
 			continue;
-
+		/*if(Render::shader != it->getShader()) {
+			it->getShader()->bind();
+			sendUniforms();
+		}*/
 		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
-		auto buffers = it->getMeshBuffersArray();
 
-		
-		auto material = it->getMaterials();
-		for(int i = 0; i< Render::TextureChannel_Max; ++i)
-			if(material[i] != nullptr)
-				Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
+		Mesh* mesh = dynamic_cast<Mesh*>(it);
+		if(mesh) {
+			auto buffers = mesh->getMeshBuffersArray();
 
-		for(auto b: buffers)
-			if(b->hasAlphaBlending())
-				b->draw();
-//		it->render();
+			
+			auto material = mesh->getMaterials();
+			for(int i = 0; i< Render::TextureChannel_Max; ++i)
+				if(material[i] != nullptr)
+					Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
+
+			for(auto b: buffers)
+				if(b->hasAlphaBlending())
+					b->draw();
+		}
+		it->render();
 	}
+
+	m_geometry->unbind();
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
 	m_gbuffer1.unbind(GL_DRAW_FRAMEBUFFER);

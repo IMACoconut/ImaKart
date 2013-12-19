@@ -45,6 +45,16 @@ void Node::setRotation(const glm::vec3& r) {
 	modelDirty = true;
 }
 
+void Node::move(const glm::vec3 m) {
+	position += m;
+	for(Node* n: children)
+		n->move(m);
+}
+
+void Node::rotate(const glm::vec3& r) {
+	rotation += r;
+}
+
 void Node::setParent(Node* p) 
 {
 	if(p == this || p == parent)

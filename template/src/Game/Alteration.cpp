@@ -1,24 +1,22 @@
 #include <SFML/System/Vector3.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/glm.hpp>
-#include <Game/kart.hpp>
-#include <Game/alteration.hpp>
+#include <Game/Kart.hpp>
+#include <Game/Alteration.hpp>
 #include <iostream>
 #include <string>
 
-namespace Game{
+Alteration::Alteration(int time, std::string nameAlteration)
+		 : duration(time), currentTime(0), name(nameAlteration){}
 
-	Alteration::Alteration(int time, std::string nameAlteration)
-			 : duration(time), currentTime(0), name(nameAlteration){}
+FactorAlteration::FactorAlteration(std::string nameAlteration, std::vector<std::string> affectedVariable, std::vector<float> factor, int time)
+		 : Alteration(time, nameAlteration){
 
-	FactorAlteration::FactorAlteration(std::string nameAlteration, std::vector<std::string> affectedVariable, std::vector<float> factor, int time)
-			 : Alteration(time, nameAlteration){
+	add("affectedVariable", new Component<std::vector<std::string>>(1, affectedVariable));
+	add("modif", new Component<std::vector<float>>(1, factor));
+}
 
-		add("affectedVariable", new Component<std::vector<std::string>>(1, affectedVariable));
-		add("modif", new Component<std::vector<float>>(1, factor));
-	}
-
-	void FactorAlteration::apply(Kart& kart){
+void FactorAlteration::apply(Kart& kart){
 
 		if(currentTime == 0){
 std::cout<<"currentTime = 0"<<std::endl;
@@ -76,4 +74,3 @@ std::cout<<"on annule une modif"<<std::endl;
 		}
 		++currentTime;
 	}
-}

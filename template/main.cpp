@@ -209,7 +209,7 @@ int main(void) {
 		light4.setPosition(glm::vec3(128*14+sin(elapsed*10)*128*3,100*16,128*16+cos(elapsed*10)*128*3));
 		//glm::vec3 l2 = glm::normalize(l);
 		//glm::vec3 l(-1,-1,0);
-		//scene.render();
+		scene.render();
 		/*s2.bind();
 		//Graph::Render::shader->sendVector(l.x,l.y,l.z, "lightPos");
 		sky.render();

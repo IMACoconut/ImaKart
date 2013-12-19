@@ -58,7 +58,11 @@ void Camera::draw() {
 
 void Camera::lookAt(const glm::vec3& pos) {
 	glm::vec3 dir = glm::normalize(pos - position);
-	m_target = dir;
+
+	m_target = pos;
+	m_forward = dir;
+	m_left = -glm::cross(m_forward, m_up);
+
 	m_viewDirty = true;
 }
 
@@ -70,6 +74,10 @@ glm::mat4 Camera::getViewMatrix() const {
 	return m_view;
 }
 
+Util::Window& Camera::getWindow() {
+	return m_window;
+}
+
 void Camera::updateProjectionMatrix()
 {
 	m_proj = glm::perspective(m_fov, m_width/m_height, m_near, m_far);
@@ -78,7 +86,7 @@ void Camera::updateProjectionMatrix()
 
 void Camera::updateViewMatrix() {
 	m_view = glm::lookAt(position, m_target, m_up);
-	m_up = -glm::cross(m_left, m_forward);
+	//m_up = -glm::cross(m_left, m_forward);
 	m_viewDirty = false;
 }
 

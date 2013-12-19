@@ -1,8 +1,8 @@
 #include <Graphics/Render/RenderMethod.hpp>
 #include <Graphics/Scene/Light.hpp>
 #include <Graphics/Scene/Skydome.hpp>
-#include <Graphics/Tools/Mesh.hpp>
 #include <Graphics/Scene/Camera.hpp>
+#include <iostream>
 
 namespace Graph {
 
@@ -21,12 +21,13 @@ void RenderMethod::unregisterLight(Light* l) {
 		m_lights.erase(it);
 }
 
-void RenderMethod::registerMesh(Mesh* m) {
+void RenderMethod::registerNode(Node* m) {
 	if(std::find(m_meshs.begin(), m_meshs.end(), m) == m_meshs.end())
 		m_meshs.push_back(m);
+	//std::cout << "added " << m << std::endl;
 }
 
-void RenderMethod::unregisterMesh(Mesh* m) {
+void RenderMethod::unregisterNode(Node* m) {
 	auto it = std::find(m_meshs.begin(), m_meshs.end(), m);
 	if(it != m_meshs.end())
 		m_meshs.erase(it);
