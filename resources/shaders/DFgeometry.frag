@@ -28,4 +28,5 @@ void main() {
 	finalData[1] = vec4(texture2D(diffuseTex, outUV).rgb,1.f)*outColor;
 	finalData[2] = vec4(normalize(outNormal),1.f);
 	finalData[3] = depth();//texture2D(depthTex, outUV);//vec3(depth, depth, depth);
+	gl_FragDepth = depth();
 }

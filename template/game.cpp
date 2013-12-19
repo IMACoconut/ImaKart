@@ -183,7 +183,7 @@ int main(void) {
 		std::cerr << "Error while loading material" << std::endl;
 	}
 	mesh2.setMaterial(1,&nmtex);*/
-	mesh2.getMeshBuffer(0)->setRenderMode(Graph::RenderMode::AlphaBlending);
+	//mesh2.getMeshBuffer(0)->setRenderMode(Graph::RenderMode::AlphaBlending);
 
 	Graph::Mesh mesh3;
 	if(!mesh3.loadFromFile("../resources/models/cube.3DS")) {
@@ -213,7 +213,7 @@ int main(void) {
 	Graph::DirectionalLight light3;
 	light3.setColor(glm::vec3(1,1,1));
 	light3.setIntensity(.4f);
-	light3.setPosition(glm::vec3(sin(0.5)*15000,cos(0.5)*15000,0));
+	light3.setPosition(glm::vec3(sin(0.5)*20000,cos(0.5)*20000,0));
 	light3.setShader(lightDirectional);
 	//s.bind();*/
 	Graph::Scene scene;
@@ -277,7 +277,7 @@ int main(void) {
 		window.getMouse().setPosition(sf::Vector2i(WINDOW_WIDTH/2, WINDOW_HEIGHT/2));
 		//Util::InputManager::Mouse.setCursorPosition(WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
 
-		//light3.setPosition(glm::vec3(sin(elapsed*.5f)*9000,cos(elapsed*.5f)*9000,0));
+		//light3.setPosition(glm::vec3(sin(elapsed*.5f)*20000,cos(elapsed*.5f)*20000,0));
 		light.setPosition(glm::vec3(128*16+sin(elapsed*3)*128*3,100*16,128*16+cos(elapsed*3)*128*3));
 		light2.setPosition(glm::vec3(128*16,100*16+sin(elapsed*5),128*14+cos(elapsed*5)*128*3));
 		light4.setPosition(glm::vec3(128*14+sin(elapsed*10)*128*3,100*16,128*16+cos(elapsed*10)*128*3));

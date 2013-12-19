@@ -8,7 +8,7 @@ out vec4 color_out;
 
 void main()
 {
-	//float visibility = texture( depthTex, vec3(ShadowCoord.xy, (ShadowCoord.z)/ShadowCoord.w) );
+	
 	// Recupération de la couleur du pixel courant
 	color_out = texture2D(diffuseTex, texCoord_v)*texture2D(normalTex, texCoord_v);
 }
