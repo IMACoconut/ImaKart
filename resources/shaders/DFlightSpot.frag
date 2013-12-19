@@ -1,10 +1,6 @@
 #version 330
 
 out vec4 finalData;
-in vec2 outUV;
-in vec4 outColor;
-in vec3 outNormal;
-in vec3 outPosition;
 uniform sampler2D diffuseTex;
 uniform sampler2D normalTex;
 uniform float Near;
@@ -17,6 +13,16 @@ uniform float lightRadius;
 uniform float lightIntensity;
 uniform float screenW;
 uniform float screenH;
+
+float celShad(float val) {
+	if(val >= 0.7)
+		return 1.f;
+	if(val >= 0.5)
+		return 0.5f;
+	if(val >= 0.2)
+		return 0.2f;
+	return 0.f;
+}
 
 float isLightened(vec3 point) {
 	vec3 x = lightPos;
@@ -46,5 +52,5 @@ void main() {
 	vec3 dir = pos-lightPos;
 	vec3 D = normalize(dir);
 
-	finalData = vec4(lightColor*lightIntensity*max(dot(L,N),0)*isLightened(pos), 1.f);
+	finalData = vec4(lightColor*lightIntensity*max(dot(L,N),0)*celShad(isLightened(pos)), 1.f);
 }

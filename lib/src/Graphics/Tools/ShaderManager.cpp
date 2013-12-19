@@ -36,7 +36,7 @@ Shader* ShaderManager::buildShader(Node* n) {
 	frag += "in vec2 vertUV;\n";
 	frag += "in vec4 vertColor;\n";
 	frag += "in vec3 vertPos;\n";
-	frag += "out vec4 fragColor[4];\n";
+	frag += "out vec4 fragColor[3];\n";
 
 	if(mat[Render::DiffuseTexture])
 		frag += "uniform sampler2D diffuseTex;\n";
@@ -61,9 +61,8 @@ Shader* ShaderManager::buildShader(Node* n) {
   	frag += "return (2.0 * n) / (f + n - z * (f - n));	\n";
 	frag += "}\n";
 
-	frag += "vec4 depth() {\n";
-	frag += "float tmp = LinearizeDepth();\n";
-	frag += "return vec4(tmp,tmp,tmp,1);\n";
+	frag += "float depth() {\n";
+	frag += "return LinearizeDepth();\n";
 	frag += "}\n";
 	frag += "void main() {\n";
 	frag += "vec3 N = ";
@@ -81,7 +80,7 @@ Shader* ShaderManager::buildShader(Node* n) {
 	else
 		frag += ";\n";
 	frag += "fragColor[2] = vec4(N,1.f);\n";
-	frag += "fragColor[3] = depth();\n";
+	frag += "gl_FragDepth = depth();\n";
 
 	frag += "}";
 
@@ -103,11 +102,11 @@ Shader* ShaderManager::buildShader(Node* n) {
 	vert += "void main() {\n";
 	vert +=	"gl_Position = projMatrix*viewMatrix*modelMatrix*vec4(position, 1.f);\n";
 	if(!mat[Render::NormalTexture])
-		vert += "vertNorm = normal;\n";
+		vert += "vertNorm = (modelMatrix*vec4(normal,1.f)).xyz;\n";
 
 	vert += "vertColor = color;\n";
 	vert += "vertUV = uv;\n";
-	vert += "vertPos = position;\n";
+	vert += "vertPos = (modelMatrix*vec4(position,1.f)).xyz;\n";
 	vert += "}";
 	
 	Shader* s = new Shader();

@@ -22,7 +22,8 @@ namespace Graph {
 DeferredRender::DeferredRender() : save(false), loaded(false) {
 	m_geometry = ShaderManager::getInstance().loadShaderFromFile(
 		"DFnormal", "../resources/shaders/DFbase.vert", "../resources/shaders/DFgeometry.frag");
-
+	m_clear = ShaderManager::getInstance().loadShaderFromFile(
+		"DFclear",	"../resources/shaders/DFbase.vert","../resources/shaders/DFclear.frag");
 	VertexBuffer buff;
 	buff.addVertex(Vertex3D(glm::vec3(-1,-1,0),glm::vec3(0,0,0), glm::vec2(0,0), sf::Color(255,255,255,1)));
 	buff.addVertex(Vertex3D(glm::vec3(-1,1,0),glm::vec3(0,0,0), glm::vec2(0,1), sf::Color(255,255,255,1)));
@@ -41,7 +42,6 @@ void DeferredRender::setCamera(Camera* c) {
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Position);
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Albedo);
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Normal);
-	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Depth);
 
 	m_gbuffer1light.init(c->getAspect().x, c->getAspect().y);
 	m_gbuffer1light.createTexture(GBuffer::GBufferTarget_Light);
@@ -70,10 +70,17 @@ void DeferredRender::doRender() {
 
 void DeferredRender::geometryPass() {
 	m_gbuffer1.bind(GL_DRAW_FRAMEBUFFER);
+	
 	glEnable(GL_DEPTH_TEST);
+	/*glDepthFunc(GL_ALWAYS);
+	m_clear->bind();
+	m_screen.render();
+	m_clear->unbind();*/
+
 	glDepthFunc(GL_LESS);
 	glDepthMask(GL_TRUE);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+	glCullFace(GL_BACK);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	for(auto it: m_meshs) {
 		if(it == nullptr)
@@ -160,7 +167,7 @@ void DeferredRender::renderScreen() {
 		save = true;
 	}*/
     m_screen.render();
- 
+ /*
  	int WINDOW_WIDTH = m_camera->getAspect().x;
  	int WINDOW_HEIGHT = m_camera->getAspect().y;
  	m_gbuffer1.bind(GL_READ_FRAMEBUFFER);
@@ -168,7 +175,7 @@ void DeferredRender::renderScreen() {
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
     m_gbuffer1.unbind(GL_READ_FRAMEBUFFER);
-    /*m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
+    m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
     m_gbuffer1light.setBufferTarget(GBuffer::GBufferTarget_Light);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
@@ -232,8 +239,10 @@ void DeferredRender::alphaPass() {
 				if(b->hasAlphaBlending())
 					b->draw();
 		}
-//		it->render();
+		it->render();
 	}
+
+	m_geometry->unbind();
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
 	m_gbuffer1.unbind(GL_DRAW_FRAMEBUFFER);

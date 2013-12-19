@@ -53,24 +53,24 @@ void Game::load(){
 	}
 	mesh.setMaterial(0, &hmtex);
 	mesh.setScale(glm::vec3(16,16,16));*/
-	mesh2.loadFromFile("../resources/models/cube.3DS");
-	mesh2.setScale(glm::vec3(100,100,100));
-	mesh2.setPosition(glm::vec3(128*16,128*16,128*16));
+	//mesh2.loadFromFile("../resources/models/cube.3DS");
+	mesh2 = Graph::Mesh::CreateSphere(sf::Color(255,0,0));
+	mesh2.setScale(glm::vec3(10,10,10));
 	
 	sky.setShader(skyShader);
 	
 	
 	light.setColor(glm::vec3(0,1,0));
 	light.setIntensity(3.f);
-	light.setRadius(1000.f);
+	light.setRadius(50.f*16);
 	light.setPosition(glm::vec3(128*16,100.f*16,128*16));
 	light.setShader(lightPoint);
 
 	
 	light4.setColor(glm::vec3(0,0,1));
-	light4.setIntensity(10.f);
-	light4.setRadius(1000.f);
-	light4.setPosition(glm::vec3(128*16,100.f*16,128*16));
+	light4.setIntensity(3.f);
+	light4.setRadius(50.f*16);
+	light4.setPosition(glm::vec3(128*16,100.f*15,128*16));
 	light4.setShader(lightPoint);
 
 	
@@ -86,6 +86,9 @@ void Game::load(){
 	scene.setBackground(&sky);
 	scene.addMesh(&mesh2);
 	scene.addLight(&light3);
+	scene.addLight(&light);
+	scene.addLight(&light2);
+	scene.addLight(&light4);
 
 	
 	if(!m.loadFromFile("../resources/maps/dummy2/map.xml"))
@@ -96,7 +99,7 @@ void Game::load(){
 	k.loadIntoScene(scene);
 	k.setBehavior(new PlayerBehavior(k,0));
 
-	cam = new Graph::OrbitCamera(m_game->getWindow(), nullptr);//glm::vec3(0,0,0), glm::vec3(10,10,10), 10.f, 5.f);
+	cam = /*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);//*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(0,0,0), glm::vec3(10,10,10), 10.f, 5.f);
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(cam);
 	scene.setCamera(cam);
@@ -175,13 +178,13 @@ void Game::Update(GameEngine* game){
 		cam->move(cam->backward()*(elapsed));*/
 
 	
-	float time = timeOfDay.getElapsedTime().asMilliseconds() * 0.0001f;
+	float time = timeOfDay.getElapsedTime().asSeconds() * 0.1f;
 	game->getWindow().getMouse().setPosition(sf::Vector2i(game->getWindow().getSize().x/2, game->getWindow().getSize().y/2));
 		
-	//light3.setPosition(glm::vec3(sin(time)*9000,cos(time)*9000,0));
-	light.setPosition(glm::vec3(128*16+sin(elapsed*3)*128*3,100*16,128*16+cos(elapsed*3)*128*3));
-	light2.setPosition(glm::vec3(128*16,100*16+sin(elapsed*5),128*14+cos(elapsed*5)*128*3));
-	light4.setPosition(glm::vec3(128*14+sin(elapsed*10)*128*3,100*16,128*16+cos(elapsed*10)*128*3));
+	light3.setPosition(glm::vec3(sin(time)*9000,cos(time)*9000,0));
+	light.setPosition(glm::vec3(128*16+sin(time*3)*128*3,100*16,128*16+cos(time*3)*128*3));
+	light2.setPosition(glm::vec3(128*16,100*16+sin(time*5),128*14+cos(time*5)*128*3));
+	light4.setPosition(glm::vec3(128*14+sin(time*10)*128*3,100*16,128*16+cos(time*10)*128*3));
 
 	k.update(elapsed);
 	scene.update(elapsed);

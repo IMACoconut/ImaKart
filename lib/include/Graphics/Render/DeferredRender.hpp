@@ -24,7 +24,7 @@ protected:
 
 	bool save, loaded;
 	GBuffer m_gbuffer1, m_gbuffer1light;
-	Graph::Shader *m_geometry, *m_alpha, *m_final;
+	Graph::Shader *m_geometry, *m_alpha, *m_final, *m_clear;
 	Graph::Mesh m_screen;
 };
 
