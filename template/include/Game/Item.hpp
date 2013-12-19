@@ -3,8 +3,7 @@
 #include <vector>
 #include <string>
 
-namespace Game
-{
+//namespace Game{
 
 	class Alteration;
 	class Kart;
@@ -53,4 +52,4 @@ namespace Game
 		void use(Kart& kartUser);
 	};
 
-}
+//}

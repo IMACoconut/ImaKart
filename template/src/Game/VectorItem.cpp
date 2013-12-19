@@ -1,11 +1,11 @@
 #include <Game/VectorItem.hpp>
 #include <Game/Item.hpp>
-#include <Game/alteration.hpp>
+#include <Game/Alteration.hpp>
 #include <iostream>
 
 #define NB_ITEM 3
 
-namespace Game{
+//namespace Game{
 
 	VectorItem::VectorItem() : sizeMax(NB_ITEM), currentItem(0){}
 
@@ -24,4 +24,4 @@ namespace Game{
 	void VectorItem::use(Kart& kartUser){
 		(*(items.begin()+currentItem))->use(kartUser);
 	}
-}
+//}

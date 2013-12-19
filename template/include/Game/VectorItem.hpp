@@ -1,9 +1,9 @@
 #pragma once
 
 #include <vector>
-#include <Game/kart.hpp>
+#include <Game/Kart.hpp>
 
-namespace Game{
+//namespace Game{
 
 	class Item;
 
@@ -18,4 +18,4 @@ namespace Game{
 		void pushItem(Item* items);
 		void use(Kart& kartUser);
 	};
-}
+//}
