@@ -236,7 +236,6 @@ void Map::hasFinishedLoop(Kart& k) {
  		clock.Pause();
  	} else
  		--loops;
-
 }
 
 Graph::Heightmap* Map::getHeightmap() {

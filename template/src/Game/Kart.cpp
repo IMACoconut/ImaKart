@@ -36,9 +36,9 @@
 	}
 
 	void Kart::loadIntoScene(Graph::Scene& s){
-		this->mesh.loadFromFile("../resources/models/cube.3DS");
+		this->mesh.loadFromFile("../resources/models/kart.3DS");
 		s.addMesh(&mesh);
-		mesh.setScale(glm::vec3(100,100,100));
+		mesh.setRotation(glm::vec3(-90,0,0));
 	}
 
 	void Kart::setBehavior(KartBehavior* behavior) {

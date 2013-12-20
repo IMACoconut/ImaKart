@@ -22,8 +22,11 @@ namespace Graph {
 
 			void draw();
 
+			virtual Phys::AABB3D getBoundingBox() const;
+			virtual Phys::BSphere getBoundingSphere() const;
+
 			MeshBuffer* getMeshBuffer(size_t at) const;
-			std::vector<MeshBuffer*>& getMeshBuffersArray();
+			const std::vector<MeshBuffer*>& getMeshBuffersArray();
 
 			static Mesh CreateSphere(const sf::Color& color);
 			static Mesh CreateQuad(const sf::Color& color);

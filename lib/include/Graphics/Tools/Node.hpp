@@ -9,6 +9,9 @@
 #include <vector>
 #include <Graphics/Render/Render.hpp>
 
+#include <Physics/BSphere.hpp>
+#include <Physics/AABB3D.hpp>
+
 namespace Graph {
 	class Material;
 	class Shader;
@@ -48,6 +51,12 @@ namespace Graph {
 
 		Material* const* getMaterials() const;
 
+		virtual Phys::AABB3D getBoundingBox() const {
+			return Phys::AABB3D(position);
+		}
+		virtual Phys::BSphere getBoundingSphere() const {
+			return Phys::BSphere(position);
+		}
 	protected:
 		void updateModelMatrix();
 
