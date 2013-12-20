@@ -85,7 +85,7 @@ void DeferredRender::shadowPass() {
 			
 			glm::vec3 lightPosition = it->getPosition();
 			cam.setPosition(lightPosition);
-			cam.lookAt(glm::vec3(0.,0.,0.));
+			cam.lookAt(glm::vec3(128*16,128*16,128*16));
 			cam.update(0);
 			break;
 			

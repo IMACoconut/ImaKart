@@ -14,6 +14,7 @@ namespace Phys {
 		bool collide(const BSphere& other);
 		bool contains(const glm::vec3& point);
 		float radius() const;
+		glm::vec3 getPosition();
 
 	protected:
 		glm::vec3 m_pos;

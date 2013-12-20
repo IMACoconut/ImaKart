@@ -106,6 +106,9 @@ void Game::load(){
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(cam);
 	scene.setCamera(cam);
+
+	Phys::BSphere s = scene.computeBoundingSphere();
+	light3.setPosition(s.getPosition()+glm::vec3(cos(0.9)*s.radius(), sin(0.9)*s.radius(),0));
 	//cam->setPosition(light3.getPosition());
 	//cam->lookAt(-light3.getPosition());
 	
