@@ -7,6 +7,8 @@
 #include <Graphics/Geometry/MeshBuffer.hpp>
 
 #include <Graphics/Scene/Camera.hpp>
+#include <Graphics/Scene/OrthographicCamera.hpp>
+
 #include <Graphics/Scene/Light.hpp>
 #include <Graphics/Scene/PointLight.hpp>
 #include <SFML/Graphics.hpp>
@@ -71,8 +73,8 @@ void DeferredRender::shadowPass() {
 
 	
 	m_shadow->bind();
-	Camera cam(m_camera->getWindow());
-	cam.setFrustum(10000,30000);
+	OrthographicCamera cam(m_camera->getWindow());
+	cam.setFrustum(3000,30000);
 	cam.setAspect(1024,1024);
 
 	for(auto it: m_lights) {
@@ -113,11 +115,18 @@ void DeferredRender::shadowPass() {
 
 		
 	
-	for(auto it: m_meshs) {		
+	// for(auto it: m_meshs) {		
+	// 	Render::shader->send(Shader::Uniform_Matrix4f, "depthmodelMatrix", glm::value_ptr(it->getModelMatrix()));
+	// 	it->render();
+	// }
+	for(auto it: m_meshs) {
+		if(it == nullptr)
+			continue;
+		
 		Render::shader->send(Shader::Uniform_Matrix4f, "depthmodelMatrix", glm::value_ptr(it->getModelMatrix()));
+		
 		it->render();
 	}
-
 	
 	
 	m_shadow->unbind();
@@ -129,17 +138,17 @@ void DeferredRender::shadowPass() {
 
 	m_custom->bind();
 	m_gbuffer1light.bind(GL_DRAW_FRAMEBUFFER);
-   /* glEnable(GL_BLEND);
+   glEnable(GL_BLEND);
 	glBlendEquation(GL_FUNC_ADD);
-	glBlendFunc(GL_ONE, GL_ONE);	*/
+	glBlendFunc(GL_ONE, GL_ONE);	
 
 	Material* tex = m_currentShadowBuffer.getTexture(GBuffer::GBufferTarget_Depth); //recuperation de la shadowmap
-	//Material* tex1 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Position); //recuperation de la texture de position
-    Material* tex2 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Normal);
+	Material* tex1 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Position); //recuperation de la texture de position
+    //Material* tex2 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Normal);
 
     Render::setTexture(Render::DepthTexture, tex); //on balance au custom.frag
-    //Render::setTexture(Render::DiffuseTexture, tex1); //idem
-    Render::setTexture(Render::NormalTexture, tex2);
+    Render::setTexture(Render::DiffuseTexture, tex1); //idem
+    //Render::setTexture(Render::NormalTexture, tex2);
     Render::shader->send(Shader::Uniform_Float, "Near", &frustum.x);
 	Render::shader->send(Shader::Uniform_Float, "Far", &frustum.y);
 
@@ -153,7 +162,7 @@ void DeferredRender::shadowPass() {
     m_screen.render();
     m_custom->unbind();
 	m_gbuffer1light.unbind(GL_DRAW_FRAMEBUFFER);
-	//glDisable(GL_BLEND); 
+	glDisable(GL_BLEND); 
 
 
 }
@@ -273,7 +282,7 @@ void DeferredRender::renderScreen() {
 		save = true;
 	}*/
     m_screen.render();
- /*
+ 
  	int WINDOW_WIDTH = m_camera->getAspect().x;
  	int WINDOW_HEIGHT = m_camera->getAspect().y;
  	m_gbuffer1.bind(GL_READ_FRAMEBUFFER);
@@ -290,11 +299,9 @@ void DeferredRender::renderScreen() {
     m_currentShadowBuffer.setBufferTarget(GBuffer::GBufferTarget_Depth);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
-<<<<<<< HEAD
+
    	m_currentShadowBuffer.unbind(GL_READ_FRAMEBUFFER); 
-=======
-   	m_gbuffer1light.unbind(GL_READ_FRAMEBUFFER);*/
->>>>>>> origin/master
+
 }
 
 void DeferredRender::sendUniforms() {
@@ -358,6 +365,7 @@ void DeferredRender::alphaPass() {
 	}
 
 	m_geometry->unbind();
+	glDepthMask(GL_TRUE);
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_BLEND);
 	m_gbuffer1.unbind(GL_DRAW_FRAMEBUFFER);

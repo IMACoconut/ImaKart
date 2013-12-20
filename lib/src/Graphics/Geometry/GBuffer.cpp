@@ -26,7 +26,6 @@ void GBuffer::init(uint32_t width, uint32_t height)
     m_depthTexture = new Material;
     m_depthTexture->create(width, height, 32, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT32F);
     glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, m_depthTexture->getID(), 0);
-    
     //checkErrors();
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 }

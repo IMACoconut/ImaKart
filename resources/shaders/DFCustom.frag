@@ -21,6 +21,19 @@ float LinearizeDepth(vec4 pos)
   return (2.0 * n) / (f + n - z * (f - n));	
 }
 
+float CalcShadowFactor(vec4 LightSpacePos)
+{
+    vec3 ProjCoords = LightSpacePos.xyz / LightSpacePos.w;
+    vec2 UVCoords;
+    UVCoords.x = 0.5 * ProjCoords.x + 0.5;
+    UVCoords.y = 0.5 * ProjCoords.y + 0.5;
+    float z = 0.5 * ProjCoords.z + 0.5;
+    float Depth = texture(depthTex, UVCoords).x;
+    if (Depth < (z + 0.00001))
+        return 0.2;
+    else
+        return 1.0;
+}
 
 void main()
 {	
@@ -29,17 +42,12 @@ void main()
 
 	vec2 coord = texCoord_v;//vec2(gl_FragCoord.x/screenW, gl_FragCoord.y/screenH);
 	
-	//vec3 pos = texture2D(diffuseTex,coord).xyz;
+	vec3 pos = texture2D(diffuseTex,coord).xyz;
 	vec3 normal = texture2D(normalTex,coord).xyz;
-	vec3 pos = normal;
-	vec3 test = texture2D(depthTex, coord).xyz;
 	vec4 Shadowcoord = depthMVP*vec4(pos,1.);
 	// Recupération de la couleur du pixel courant
 	
 
-	float visibility = 1.0;
-	if ( texture(depthTex, Shadowcoord.xy).z  <  Shadowcoord.z){
-	    visibility = 0.2;
-	}
-	color_out = vec4(pos, 1.0);//visibility);
+	float visibility =CalcShadowFactor(Shadowcoord);// texture(depthTex, Shadowcoord.xy).x < Shadowcoord.z ? 0.2 : 1;
+	color_out = vec4(visibility);
 }

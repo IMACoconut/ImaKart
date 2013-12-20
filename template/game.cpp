@@ -46,7 +46,7 @@ int main(void) {
 
 	GameEngine engine(window);
 	engine.PushState(MainMenu::getInstance());
-
+	std::cout << "toto" << std::endl;
 	while(engine.Running()){
 		engine.HandleEvents();
 		engine.Update();

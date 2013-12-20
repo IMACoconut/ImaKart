@@ -27,6 +27,7 @@ private:
 	Kart k;
 	GameEngine* m_game;
 	LoadingState<Game> m_loader;
+	bool tourne;
 
 public:
 	Game();

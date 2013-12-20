@@ -9,7 +9,6 @@ namespace Graph {
 	public:
 		Camera(Util::Window& window, const glm::vec3& pos = glm::vec3(10,0,0));
 		virtual ~Camera();
-		Util::Window& getWindow(){ return m_window;}
 		void setFrustum(float near, float far);
 		void setAspect(float width, float height);
 		void setFov(float fov);
