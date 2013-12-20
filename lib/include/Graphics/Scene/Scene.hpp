@@ -9,6 +9,9 @@
 
 #include <Graphics/Tools/Mesh.hpp>
 
+#include <Physics/BSphere.hpp>
+#include <Physics/AABB3D.hpp>
+
 namespace Graph {
 	class Scene {
 	public:
@@ -27,6 +30,8 @@ namespace Graph {
 		void update(float elapsed) {
 			m_camera->update(elapsed);
 			m_background->update(elapsed);
+			for(Light* l: m_lights)
+				l->update(elapsed);
 			for(Node* n : m_nodes)
 				n->update(elapsed);
 		}
@@ -37,7 +42,7 @@ namespace Graph {
 
 		void addLight(Light* l) {
 			m_method->registerLight(l);
-			m_nodes.push_back(l);
+			m_lights.push_back(l);
 		}
 
 		void addMesh(Node* n) {
@@ -49,11 +54,32 @@ namespace Graph {
 			m_method->setBackground(d);
 			m_background = d;
 		}
+
+		glm::vec3 getCenter() {
+			auto aabb = computeBoundingBox();
+			return aabb.getCenter();
+		}
+
+		Phys::BSphere computeBoundingSphere() {
+			auto center = getCenter();
+			Phys::BSphere sphere(center);
+			for(Node* n: m_nodes)
+				sphere.extends(n->getBoundingSphere());
+			return sphere;
+		}
+
+		Phys::AABB3D computeBoundingBox() {
+			Phys::AABB3D box;
+			for(Node* n: m_nodes)
+				box.extends(n->getBoundingBox());
+			return box;
+		}
 		
 	private:
 		Camera* m_camera;
 		Skydome* m_background;
 		RenderMethod* m_method;
 		std::vector<Node*> m_nodes;
+		std::vector<Light*> m_lights;
 	};
 }

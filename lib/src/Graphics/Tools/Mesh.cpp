@@ -55,6 +55,30 @@ void Mesh::draw() {
 		b->draw();
 }
 
+Phys::AABB3D Mesh::getBoundingBox() const {
+	Phys::AABB3D box(position);
+	auto mat = getModelMatrix();
+	for(MeshBuffer* b : m_buffers)
+		for(const Vertex3D& v : b->getVertexBuffer().getVerticesArray()) {
+			glm::vec4 p = mat*glm::vec4(v.position, 1.f);
+			box.extends(glm::vec3(p.x, p.y, p.z));
+		}
+
+	return box;
+}
+
+Phys::BSphere Mesh::getBoundingSphere() const {
+	Phys::BSphere sphere(position);
+	auto mat = getModelMatrix();
+	for(MeshBuffer* b : m_buffers)
+		for(const Vertex3D& v : b->getVertexBuffer().getVerticesArray()) {
+			glm::vec4 p = mat*glm::vec4(v.position, 1.f);
+			sphere.extends(glm::vec3(p.x, p.y, p.z));
+		}
+
+	return sphere;
+}
+
 Mesh Mesh::CreateSphere(const sf::Color& color) {
 	VertexBuffer buff;
 	const int seg = 16;
@@ -182,7 +206,7 @@ MeshBuffer* Mesh::getMeshBuffer(size_t at) const {
 	return m_buffers.at(at);
 }
 
-std::vector<MeshBuffer*>& Mesh::getMeshBuffersArray() {
+const std::vector<MeshBuffer*>& Mesh::getMeshBuffersArray() {
 	return m_buffers;
 }
 }
