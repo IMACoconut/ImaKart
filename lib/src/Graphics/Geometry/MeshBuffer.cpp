@@ -67,4 +67,8 @@ bool MeshBuffer::hasAlphaBlending() const {
 	return m_renderMode == RenderMode::AlphaBlending;
 }
 
+const VertexBuffer& MeshBuffer::getVertexBuffer() const {
+	return m_buffer;
+}
+
 }

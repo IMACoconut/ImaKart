@@ -29,6 +29,8 @@ namespace Graph {
 
 		bool hasAlphaBlending() const;
 
+		const VertexBuffer& getVertexBuffer() const;
+
 	private:
 		RenderMode m_renderMode;
 		DrawMode m_drawMode;
