@@ -2,6 +2,7 @@
 #include <Game/Logic/Checkpoint.hpp>
 #include <Game/Logic/ItemSpawn.hpp>
 #include <Game/Map.hpp>
+#include <Game/IA/PlayerBehavior.hpp>
 #include <tinyxml2/tinyxml2.h>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
@@ -16,6 +17,10 @@ Map::~Map() {
 	}
 }
 bool Map::loadFromFile(const std::string& file){
+
+	int numberOfKarts = 1;
+	int numberOfPlayer = 1;
+
 	Util::FilePath path(file);
 	tinyxml2::XMLDocument doc;
 	int res = doc.LoadFile(file.c_str());
@@ -64,6 +69,13 @@ bool Map::loadFromFile(const std::string& file){
 	}
 	add("check", new Component<std::vector<glm::vec2>>(1, check));
 	
+	for (int i = 0; i < numberOfKarts; ++i)
+	{
+		Kart* tmp = addKart(KartType_2);
+		if(i < numberOfPlayer){
+			//le kart est un kart joueur
+		}
+	}
 	
 	/*tinyxml2::XMLElement* lights = root->FirstChildElement("lights");
 	if(lights == nullptr){
@@ -175,6 +187,13 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		m_checkpoints.push_back(tmp);
 	}
 	
+
+	for(auto itr: m_karts){
+		Kart* tmp = std::get<0>(itr);
+		tmp->loadIntoScene(scene);
+		tmp->setBehavior(new PlayerBehavior(*tmp, 0));
+	}
+
 	return true;
 }
 
@@ -205,7 +224,6 @@ void Map::update(float e) {
 
 Kart* Map::addKart(KartType type) {
 	Kart* k = new Kart(m_karts.size());
-	m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
 	switch(type) {
 		case KartType_1:
 			// Changer maniabilité, vitesse, etc...
@@ -217,7 +235,9 @@ Kart* Map::addKart(KartType type) {
 		default:
 			break;
 	}
+//	k->setPosition
 
+	m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
 	return k;
 }
 
