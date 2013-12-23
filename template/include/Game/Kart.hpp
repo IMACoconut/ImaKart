@@ -52,6 +52,6 @@ public:
 		KartBehavior* m_behavior;
 		Graph::Mesh mesh;
 		KartMovement m_movement;
-		float m_speedfactor, m_rotatefactor;
+		//float m_speedfactor, m_rotatefactor;
 };
 //}
