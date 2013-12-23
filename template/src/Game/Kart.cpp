@@ -15,6 +15,7 @@
 		add("skin", new Component<std::string>(1, ""));
 		add("hp", new Component<int>(1, 1));
 		add("condition", new Component<KartCondition>(1, NORMAL));
+		add("weight", new Component<float>(1, 5.f));
 		add("speedMaxForward", new Component<float>(1, 2.f));
 		add("speedMaxBack", new Component<float>(1, -1.f));
 		add("currentSpeed", new Component<float>(1, 0.f));
@@ -47,6 +48,14 @@
 	}
 
 	void Kart::update(float elapsed){
+
+		VectorAlt alterations = get<VectorAlt>("alterations"); 
+		if(!alterations.isEmpty()){
+		alterations.apply(*this);
+ 		}
+ 		set<VectorAlt>("alterations", alterations);
+
+
 		if(m_behavior)
 			m_behavior->update(elapsed);
 
@@ -117,9 +126,6 @@
 		set<glm::vec3>("forward", forward);
 		set<glm::vec3>("left", left);
 		mesh.setRotation(glm::vec3(0,get<float>("horizontalAngle"),0));
-
-std::cout<<get<float>("currentSpeed")<<std::endl;
-std::cout << get<glm::vec3>("position").x << " " << get<glm::vec3>("position").y << " " << get<glm::vec3>("position").z << std::endl;
 	}
 
 	void Kart::accelerate(float factor){
@@ -158,6 +164,12 @@ std::cout << get<glm::vec3>("position").x << " " << get<glm::vec3>("position").y
 			horizontalAngle -= get<float>("maniability")*factor;
 			set<float>("horizontalAngle", horizontalAngle);
 		} 
+	}
+
+	void Kart::addAlteration(Alteration* alteration){
+		VectorAlt alterations = get<VectorAlt>("alterations");
+		alterations.pushAlteration(alteration);
+		set<VectorAlt>("alterations", alterations);
 	}
 
 	void Kart::useItem(bool state){}
