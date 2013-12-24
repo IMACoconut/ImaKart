@@ -37,7 +37,8 @@ public:
 	Kart(const Kart&) = delete;
 	~Kart();
 
-	void setPosition(glm::vec3 position, glm::vec3 forward);	
+	void setPosition(glm::vec3 position, float horizontalAngle);
+	void updateOrientation(Graph::Heightmap& heightmap);
 	void setBehavior(KartBehavior* m_behavior);
 	void loadIntoScene(Graph::Scene& s);
 	void update(float elapsed);				//mise à jours de tout les paramètre du kart

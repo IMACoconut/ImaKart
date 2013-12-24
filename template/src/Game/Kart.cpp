@@ -1,11 +1,15 @@
 #include <Game/Kart.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/vector_angle.hpp>
 #include <iostream>
+#include <cmath>
 #include <Game/VectorAlt.hpp>
 #include <Game/Logic/Item.hpp>
 #include <Game/IA/KartBehavior.hpp>
 
 //std::string t = get<std::string>("skin");
+
+
 
 	Kart::Kart(int id) :
 		m_behavior(nullptr)/*,
@@ -16,18 +20,19 @@
 		add("hp", new Component<int>(1, 1));
 		add("condition", new Component<KartCondition>(1, NORMAL));
 		add("weight", new Component<float>(1, 5.f));
-		add("speedMaxForward", new Component<float>(1, 2.f));
+		add("speedMaxForward", new Component<float>(1, 5.f));
 		add("speedMaxBack", new Component<float>(1, -1.f));
 		add("currentSpeed", new Component<float>(1, 0.f));
 		add("acceleration", new Component<float>(1, 0.01f));
 		add("brake", new Component<float>(1,0.01f));
-		add("maniability", new Component<float>(1, 0.05));
+		add("maniability", new Component<float>(1, 1.f));
 		add("position", new Component<glm::vec3>(1, glm::vec3(3, 3, 3)));
 		add("forward", new Component<glm::vec3>(1, glm::vec3(1, 0, 0)));
 		add("left", new Component<glm::vec3>(1, glm::vec3(0, 0, 1)));
 		add("up", new Component<glm::vec3>(1, glm::vec3(0, 1, 0)));
 		add("horizontalAngle", new Component<float>(1, 0));
 		add("verticalAngle", new Component<float>(1, 0));
+		add("lateralAngle", new Component<float>(1, 0));
 		add("alterations", new Component<VectorAlt>(1, VectorAlt()));
 		//add("items", new Component<ItemList>(1, nullptr));
 		
@@ -35,6 +40,34 @@
 
 	Kart::~Kart(){
 
+	}
+
+	void Kart::setPosition(glm::vec3 position, float horizontalAngle){
+		set<glm::vec3>("position", position);
+		set<float>("horizontalAngle", horizontalAngle);
+	}
+
+	void Kart::updateOrientation(Graph::Heightmap& heightmap){
+float factor = 0.01;
+float sc = 50.;
+
+		float verticalAngle = get<float>("verticalAngle");
+		float lateralAngle = get<float>("lateralAngle");
+		glm::vec3 position = get<glm::vec3>("position");
+		glm::vec3 forward = position + factor * get<glm::vec3>("forward");
+		glm::vec3 left = position + factor * get<glm::vec3>("left");
+
+		//glm::vec3 newForward = glm::vec3(forward.x, sc * heightmap.offsetHeight(forward.x/sc, forward.z/sc), forward.z);
+		//glm::vec3 newleft = glm::vec3(left.x, sc * heightmap.offsetHeight(left.x/sc, left.z/sc), left.z);
+		glm::vec3 newForward = glm::vec3(glm::normalize(glm::vec2(forward.x, forward.z)), sc * heightmap.offsetHeight(forward.x/sc, forward.z/sc));
+		glm::vec3 newleft = glm::vec3(glm::normalize(glm::vec2(left.x, left.z)), sc * heightmap.offsetHeight(left.x/sc, left.z/sc));
+		newForward=glm::vec3(newForward.x, newForward.z, newForward.y);
+		newleft=glm::vec3(newleft.x, newleft.z, newleft.y);
+
+
+std::cerr<<forward.y<<" "<<newForward.y<<std::endl;
+		set<float>("verticalAngle", verticalAngle +  glm::orientedAngle(glm::normalize(forward), glm::normalize(newForward), left));
+		set<float>("lateralAngle", lateralAngle +  glm::orientedAngle(glm::normalize(left), glm::normalize(newleft), forward));
 	}
 
 	void Kart::loadIntoScene(Graph::Scene& s){
@@ -110,22 +143,26 @@
 				set<glm::vec3>("position", tmp);
 				mesh.setPosition(tmp);
 			}
-		*/	
+		*/
+
+		//mise à jour de la position dui kart
 		glm::vec3 dir = get<glm::vec3>("forward")*get<float>("currentSpeed")*elapsed;
 		glm::vec3 tmp = dir + get<glm::vec3>("position");
 		set<glm::vec3>("position", tmp);
 		mesh.setPosition(tmp);
 
+		//mise à jour de l'orientation du kart
+		glm::vec3 up = get<glm::vec3>("up");
 		glm::vec3 forward = get<glm::vec3>("forward");
 		glm::vec3 left = get<glm::vec3>("left");
 
 		glm::mat4 rot;
-		rot = elapsed*glm::rotate(rot, get<float>("horizontalAngle"), get<glm::vec3>("up"));
+		rot = elapsed*glm::rotate(rot, get<float>("horizontalAngle"), up);
 		forward = glm::vec3(rot*glm::vec4(glm::vec3(1, 0, 0), 1.f));
 		left = glm::vec3(rot*glm::vec4(glm::vec3(0, 0, 1), 1.f));
 		set<glm::vec3>("forward", forward);
 		set<glm::vec3>("left", left);
-		mesh.setRotation(glm::vec3(0,get<float>("horizontalAngle"),0));
+		mesh.setRotation(glm::vec3(0, get<float>("horizontalAngle"), 0));
 	}
 
 	void Kart::accelerate(float factor){

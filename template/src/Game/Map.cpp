@@ -1,7 +1,6 @@
 #include <Game/Map.hpp>
 #include <Game/Logic/Checkpoint.hpp>
 #include <Game/Logic/ItemSpawn.hpp>
-#include <Game/Map.hpp>
 #include <Game/IA/PlayerBehavior.hpp>
 #include <tinyxml2/tinyxml2.h>
 #include <Utility/LogManager.hpp>
@@ -190,6 +189,9 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 
 	for(auto itr: m_karts){
 		Kart* tmp = std::get<0>(itr);
+		glm::vec3 position = m_checkpoints[0]->getPosition();
+		tmp->setPosition(glm::vec3(position.x, position.y+200, position.z), 90.);
+		//tmp->updateOrientation(this->mesh);
 		tmp->loadIntoScene(scene);
 		tmp->setBehavior(new PlayerBehavior(*tmp, 0));
 	}
@@ -213,7 +215,8 @@ void Map::update(float e) {
 		i->update(e);
 
 	for(auto k : m_karts) {
-		Kart* kart = std::get<0>(k);
+		Kart* kart = std::get<0>(k);		
+		kart->updateOrientation(mesh);
 		kart->update(e);
 		for(auto c: m_checkpoints)
 			c->isReached(*kart);
