@@ -7,7 +7,9 @@ namespace Graph {
 
 Node::Node(Node* parent) :
 	position(0,0,0), rotation(0,0,0), scale(1,1,1), parent(parent), 
-	shader(nullptr), modelMatrix(), modelDirty(true)
+	shader(nullptr), modelMatrix(),
+	modelDirty(true), boxDirty(true), sphereDirty(true), 
+	drawBox(false),	drawSphere(false)
 {
 	for(int i = 0; i<Render::TextureChannel_Max; ++i)
 		material[i] = nullptr;
@@ -137,6 +139,38 @@ glm::mat4 Node::getModelMatrix() const {
 
 Material* const* Node::getMaterials() const {
 	return material;
+}
+
+const Phys::BSphere& Node::getBoundingSphere() {
+	if(sphereDirty)
+		computeBoundingSphere();
+
+	sphereDirty = false;
+	return m_bsphere;
+}
+
+const Phys::AABB3D& Node::getBoundingBox() {
+	if(boxDirty)
+		computeBoundingBox();
+	boxDirty = false;
+
+	return m_aabb;
+}
+
+void Node::enableDrawBoundingBox(bool draw) {
+	drawBox = draw;
+}
+
+void Node::enableDrawBoundingSphere(bool draw) {
+	drawSphere = draw;
+}
+
+bool Node::isDrawBoundingBoxEnabled() const {
+	return drawBox;
+}
+
+bool Node::isDrawBoundingSphereEnabled() const {
+	return drawSphere;
 }
 
 }

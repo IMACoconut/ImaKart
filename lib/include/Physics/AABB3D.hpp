@@ -23,5 +23,7 @@ public:
 	void extends(const AABB3D& aabb);
 
 	glm::vec3 getCenter() const;
+
+	glm::vec3 getSize() const;
 };
 }
