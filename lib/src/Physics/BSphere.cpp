@@ -45,4 +45,8 @@ namespace Phys {
 		return m_radius;
 	}
 
+	glm::vec3 BSphere::getCenter() const {
+		return m_pos;
+	}
+
 }

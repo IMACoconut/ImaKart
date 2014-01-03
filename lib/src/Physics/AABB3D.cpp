@@ -51,4 +51,8 @@ namespace Phys {
 		center /= 2;
 		return center;
 	}
+
+	glm::vec3 AABB3D::getSize() const {
+		return size;
+	}
 }
