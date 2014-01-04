@@ -122,6 +122,8 @@ void Node::updateModelMatrix() {
 	trans = glm::translate(trans,position);
 	modelMatrix = trans*rot*scaleM;
 	modelDirty = false;
+	computeBoundingSphere();
+	computeBoundingBox();
 }
 
 void Node::setShader(Shader* s)

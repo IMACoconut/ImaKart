@@ -111,12 +111,17 @@ float Heightmap::offsetHeight(float x, float y) {
 	float px2 = heightmap.getPixel(offx+1, offy).r;
 	float px3 = heightmap.getPixel(offx, offy+1).r;
 	float px4 = heightmap.getPixel(offx+1, offy+1).r;
-
-	return (px+px2+px3+px4)/4.f;
+	float fracx = x - offx, fracy = y - offy;
+	float projxnear = px2*fracx+ px*(1-fracx);
+	float projxfar = px4*fracx + px3*(1-fracx);
+	return projxnear*(1-fracy) + projxfar*fracy;
+//	return (px+px2+px3+px4)/4.f;*/
+//	return heightmap.getPixel(std::floor(x+0.5f), std::floor(y+0.5f)).r;
 }
 
-float Heightmap::realHeight(float x, float y) {
-	return offsetHeight(x,y)+position.y;
+float Heightmap::realHeight(float x, float z) {
+	//std::cout << x << " " << x/scale.x << " " << z << " " << z/scale.z << std::endl;
+	return offsetHeight(x/scale.x - position.x,z/scale.z - position.z) * scale.y+position.y;
 }
 
 }
