@@ -11,12 +11,14 @@ namespace Graph {
 
 		bool loadFromFile(const std::string& image);
 
-		float offsetHeight(float x, float y);
-		float realHeight(float x, float y);
+		float offsetHeight(float x, float z);
+		float realHeight(float x, float z);
+
+		glm::vec3 offsetNormal(float x, float z);
+		glm::vec3 realNormal(float x, float z);
 		
 	protected:
 		glm::vec3* map;
 		sf::Vector2<unsigned int> m_size;
-		//sf::Image heightmap;
 	};
 }
