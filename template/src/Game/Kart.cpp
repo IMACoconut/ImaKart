@@ -47,9 +47,9 @@
 		set<float>("horizontalAngle", horizontalAngle);
 	}
 
-	void Kart::physxKart(Graph::Heightmap& heightmap, float scaleMape, float elapsed){
+	void Kart::physxKart(Graph::Heightmap& heightmap, float elapsed){
 		glm::vec3 position = get<glm::vec3>("position");
-		float mapY = scaleMape * heightmap.realHeight(position.x/scaleMape, position.z/scaleMape);
+		float mapY = heightmap.realHeight(position.x, position.z);
 
 		if(position.y > mapY)
 			position.y -=  elapsed;
@@ -57,9 +57,11 @@
 			position.y = mapY;
 
 		set<glm::vec3>("position", position);
+
+		mesh.setPosition(position);
 	}
 
-	void Kart::updateOrientation(Graph::Heightmap& heightmap, float scaleMape, float elapsed){
+	void Kart::updateOrientation(Graph::Heightmap& heightmap, float elapsed){
 float factor = 1.0;
 
 		float verticalAngle = get<float>("verticalAngle");
@@ -71,13 +73,13 @@ float factor = 1.0;
 		glm::vec2 tmpForward = glm::normalize(glm::vec2(forward.x, forward.z));
 		glm::vec2 tmpLeft = glm::normalize(glm::vec2(left.x, left.z));
 
-		glm::vec3 newForward = glm::vec3(tmpForward.x, tmpForward.y, scaleMape * heightmap.realHeight(tmpForward.x/scaleMape, tmpForward.y/scaleMape));
-		glm::vec3 newleft = glm::vec3(tmpLeft.x, tmpLeft.y, scaleMape * heightmap.realHeight(tmpLeft.x/scaleMape, tmpLeft.y/scaleMape));
+		glm::vec3 newForward = glm::vec3(tmpForward.x, tmpForward.y, heightmap.realHeight(tmpForward.x, tmpForward.y));
+		glm::vec3 newleft = glm::vec3(tmpLeft.x, tmpLeft.y, heightmap.realHeight(tmpLeft.x, tmpLeft.y));
 		newForward=glm::normalize(glm::vec3(newForward.x, newForward.z, newForward.y));
 		newleft=glm::normalize(glm::vec3(newleft.x, newleft.z, newleft.y));
 
 
-std::cerr<<"forwardy :"<<forward.y <<" "<<scaleMape * heightmap.realHeight(position.x/scaleMape, position.z/scaleMape)<<std::endl;
+std::cerr<<"forwardy :"<<forward.y <<" "<<heightmap.realHeight(position.x, position.z)<<std::endl;
 		
 		verticalAngle =  glm::orientedAngle(glm::normalize(forward), newForward, left);
 		lateralAngle =  glm::orientedAngle(glm::normalize(left), newleft, forward);
@@ -113,7 +115,7 @@ std::cerr<<"forwardy :"<<forward.y <<" "<<scaleMape * heightmap.realHeight(posit
 		m_behavior = behavior;
 	}
 
-	void Kart::update(Graph::Heightmap& heightmap, float scaleMape, float elapsed){
+	void Kart::update(Graph::Heightmap& heightmap, float elapsed){
 
 		VectorAlt alterations = get<VectorAlt>("alterations"); 
 		if(!alterations.isEmpty()){
@@ -132,10 +134,10 @@ std::cerr<<"forwardy :"<<forward.y <<" "<<scaleMape * heightmap.realHeight(posit
 		mesh.setPosition(tmp);
 
 		//physx
-		physxKart(heightmap, scaleMape, elapsed);
+		physxKart(heightmap, elapsed);
 
 		//mise à jour de l'orientation du kart
-		updateOrientation(heightmap, scaleMape, elapsed);
+		updateOrientation(heightmap, elapsed);
 	}
 
 	void Kart::accelerate(float factor){

@@ -179,7 +179,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 			Util::LogManager::notice("Erreur au chargement des checkpoints");
 			return false;
 		}
-		tmp->setPosition(glm::vec3(c[i].x*sc, this->mesh.realHeight(c[i].x,c[i].y)*sc, c[i].y*sc));
+		tmp->setPosition(glm::vec3(c[i].x*sc, this->mesh.offsetHeight(c[i].x,c[i].y)*sc, c[i].y*sc));
 		tmp->setScale(glm::vec3(50,50,50));
 		scene.addMesh(tmp);
 		m_checkpoints.push_back(tmp);
@@ -190,7 +190,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		Kart* tmp = std::get<0>(itr);
 		glm::vec3 position = m_checkpoints[0]->getPosition();
 		tmp->setPosition(glm::vec3(position.x, position.y+500, position.z), 0.);
-		tmp->updateOrientation(this->mesh, sc, 1);
+		tmp->updateOrientation(this->mesh, 1);
 		tmp->loadIntoScene(scene);
 		tmp->setBehavior(new PlayerBehavior(*tmp, 0));
 	}
@@ -216,7 +216,7 @@ void Map::update(float e) {
 	float sc = get<float>("scale");
 	for(auto k : m_karts) {
 		Kart* kart = std::get<0>(k);		
-		kart->update(mesh, sc, e);
+		kart->update(mesh, e);
 		for(auto c: m_checkpoints)
 			c->isReached(*kart);
 		for(auto i: m_itemSpawns)
