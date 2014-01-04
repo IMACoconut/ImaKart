@@ -47,9 +47,20 @@
 		set<float>("horizontalAngle", horizontalAngle);
 	}
 
-	void Kart::updateOrientation(Graph::Heightmap& heightmap){
-float factor = 0.01;
-float sc = 50.;
+	void Kart::physxKart(Graph::Heightmap& heightmap, float scaleMape, float elapsed){
+		glm::vec3 position = get<glm::vec3>("position");
+		float mapY = scaleMape * heightmap.realHeight(position.x/scaleMape, position.z/scaleMape);
+
+		if(position.y > mapY)
+			position.y -=  elapsed;
+		else
+			position.y = mapY;
+
+		set<glm::vec3>("position", position);
+	}
+
+	void Kart::updateOrientation(Graph::Heightmap& heightmap, float scaleMape, float elapsed){
+float factor = 1.0;
 
 		float verticalAngle = get<float>("verticalAngle");
 		float lateralAngle = get<float>("lateralAngle");
@@ -57,17 +68,39 @@ float sc = 50.;
 		glm::vec3 forward = position + factor * get<glm::vec3>("forward");
 		glm::vec3 left = position + factor * get<glm::vec3>("left");
 
-		//glm::vec3 newForward = glm::vec3(forward.x, sc * heightmap.offsetHeight(forward.x/sc, forward.z/sc), forward.z);
-		//glm::vec3 newleft = glm::vec3(left.x, sc * heightmap.offsetHeight(left.x/sc, left.z/sc), left.z);
-		glm::vec3 newForward = glm::vec3(glm::normalize(glm::vec2(forward.x, forward.z)), sc * heightmap.offsetHeight(forward.x/sc, forward.z/sc));
-		glm::vec3 newleft = glm::vec3(glm::normalize(glm::vec2(left.x, left.z)), sc * heightmap.offsetHeight(left.x/sc, left.z/sc));
-		newForward=glm::vec3(newForward.x, newForward.z, newForward.y);
-		newleft=glm::vec3(newleft.x, newleft.z, newleft.y);
+		glm::vec2 tmpForward = glm::normalize(glm::vec2(forward.x, forward.z));
+		glm::vec2 tmpLeft = glm::normalize(glm::vec2(left.x, left.z));
+
+		glm::vec3 newForward = glm::vec3(tmpForward.x, tmpForward.y, scaleMape * heightmap.realHeight(tmpForward.x/scaleMape, tmpForward.y/scaleMape));
+		glm::vec3 newleft = glm::vec3(tmpLeft.x, tmpLeft.y, scaleMape * heightmap.realHeight(tmpLeft.x/scaleMape, tmpLeft.y/scaleMape));
+		newForward=glm::normalize(glm::vec3(newForward.x, newForward.z, newForward.y));
+		newleft=glm::normalize(glm::vec3(newleft.x, newleft.z, newleft.y));
 
 
-std::cerr<<forward.y<<" "<<newForward.y<<std::endl;
-		set<float>("verticalAngle", verticalAngle +  glm::orientedAngle(glm::normalize(forward), glm::normalize(newForward), left));
-		set<float>("lateralAngle", lateralAngle +  glm::orientedAngle(glm::normalize(left), glm::normalize(newleft), forward));
+std::cerr<<"forwardy :"<<forward.y <<" "<<scaleMape * heightmap.realHeight(position.x/scaleMape, position.z/scaleMape)<<std::endl;
+		
+		verticalAngle =  glm::orientedAngle(glm::normalize(forward), newForward, left);
+		lateralAngle =  glm::orientedAngle(glm::normalize(left), newleft, forward);
+
+		set<float>("verticalAngle", verticalAngle);
+		set<float>("lateralAngle", lateralAngle);
+
+
+		glm::vec3 up = get<glm::vec3>("up");
+
+		glm::mat4 rotF= elapsed*glm::rotate(glm::mat4(), get<float>("horizontalAngle"), up) * glm::rotate(glm::mat4(), get<float>("verticalAngle"), left);
+		glm::mat4 rotU= glm::rotate(glm::mat4(), get<float>("verticalAngle"), left) * glm::rotate(glm::mat4(), get<float>("lateralAngle"), forward);
+		glm::mat4 rotL = elapsed*glm::rotate(glm::mat4(), get<float>("horizontalAngle"), up) * glm::rotate(glm::mat4(), get<float>("lateralAngle"), forward);
+		forward = glm::vec3(rotF*glm::vec4(glm::vec3(1, 0, 0), 1.f));
+		up = glm::vec3(rotU*glm::vec4(glm::vec3(0, 1, 0), 1.f));
+		left = glm::vec3(rotL*glm::vec4(glm::vec3(0, 0, 1), 1.f));
+		set<glm::vec3>("forward", forward);
+		set<glm::vec3>("up", up);
+		set<glm::vec3>("left", left);
+
+
+		mesh.setRotation(glm::vec3(lateralAngle, get<float>("horizontalAngle"), verticalAngle));
+
 	}
 
 	void Kart::loadIntoScene(Graph::Scene& s){
@@ -80,11 +113,11 @@ std::cerr<<forward.y<<" "<<newForward.y<<std::endl;
 		m_behavior = behavior;
 	}
 
-	void Kart::update(float elapsed){
+	void Kart::update(Graph::Heightmap& heightmap, float scaleMape, float elapsed){
 
 		VectorAlt alterations = get<VectorAlt>("alterations"); 
 		if(!alterations.isEmpty()){
-		alterations.apply(*this);
+			alterations.apply(*this);
  		}
  		set<VectorAlt>("alterations", alterations);
 
@@ -92,82 +125,20 @@ std::cerr<<forward.y<<" "<<newForward.y<<std::endl;
 		if(m_behavior)
 			m_behavior->update(elapsed);
 
-
-
-		//bool updateRotation = true, updatePosition = true;
-		/*if(m_speedfactor > 0) {
-			float currentSpeed = get<float>("currentSpeed");
-			currentSpeed += get<float>("acceleration")*elapsed*m_speedfactor;
-			if(currentSpeed > get<float>("speedMaxForward"))
-				currentSpeed = get<float>("speedMaxForward");
-			
-			set<float>("currentSpeed", currentSpeed);
-		} else if(m_speedfactor < 0){
-			float currentSpeed = get<float>("currentSpeed");
-			if(currentSpeed < -get<float>("speedMaxBack"))
-				currentSpeed -= get<float>("acceleration")*elapsed*m_speedfactor;
-			set<float>("currentSpeed", currentSpeed);
-		} else 
-			updatePosition = false;
-
-		if(m_rotatefactor > 0) {
-			float horizontalAngle = get<float>("horizontalAngle");
-			horizontalAngle -= get<float>("maniability")*elapsed*m_rotatefactor;
-			set<float>("horizontalAngle", horizontalAngle);
-		} else if(m_rotatefactor < 0) {
-			float horizontalAngle = get<float>("horizontalAngle");
-			horizontalAngle += get<float>("maniability")*elapsed*m_rotatefactor;
-			set<float>("horizontalAngle", horizontalAngle);
-		} else {
-			updateRotation = false;
-		}
-
-			if(updateRotation) {
-				//std::cout << get<float>("horizontalAngle") << std::endl;
-				glm::vec3 forward = get<glm::vec3>("forward");
-				glm::vec3 left = get<glm::vec3>("left");
-
-				glm::mat4 rot;
-				rot = glm::rotate(rot, get<float>("horizontalAngle"), get<glm::vec3>("up"));
-				forward = glm::vec3(rot*glm::vec4(glm::vec3(1, 0, 0), 1.f));
-				left = glm::vec3(rot*glm::vec4(glm::vec3(0, 0, 1), 1.f));
-				set<glm::vec3>("forward", forward);
-				set<glm::vec3>("left", left);
-				mesh.setRotation(glm::vec3(0,get<float>("horizontalAngle"),0));
-			}
-
-			if(updatePosition) {
-				glm::vec3 dir = get<glm::vec3>("forward")*get<float>("currentSpeed")*elapsed;
-				glm::vec3 tmp = dir + get<glm::vec3>("position");
-				//std::cout << dir.x << " " << dir.y << " " << dir.z << std::endl;
-				set<glm::vec3>("position", tmp);
-				mesh.setPosition(tmp);
-			}
-		*/
-
 		//mise à jour de la position dui kart
 		glm::vec3 dir = get<glm::vec3>("forward")*get<float>("currentSpeed")*elapsed;
 		glm::vec3 tmp = dir + get<glm::vec3>("position");
 		set<glm::vec3>("position", tmp);
 		mesh.setPosition(tmp);
 
-		//mise à jour de l'orientation du kart
-		glm::vec3 up = get<glm::vec3>("up");
-		glm::vec3 forward = get<glm::vec3>("forward");
-		glm::vec3 left = get<glm::vec3>("left");
+		//physx
+		physxKart(heightmap, scaleMape, elapsed);
 
-		glm::mat4 rot;
-		rot = elapsed*glm::rotate(rot, get<float>("horizontalAngle"), up);
-		forward = glm::vec3(rot*glm::vec4(glm::vec3(1, 0, 0), 1.f));
-		left = glm::vec3(rot*glm::vec4(glm::vec3(0, 0, 1), 1.f));
-		set<glm::vec3>("forward", forward);
-		set<glm::vec3>("left", left);
-		mesh.setRotation(glm::vec3(0, get<float>("horizontalAngle"), 0));
+		//mise à jour de l'orientation du kart
+		updateOrientation(heightmap, scaleMape, elapsed);
 	}
 
 	void Kart::accelerate(float factor){
-	//	m_speedfactor = factor;
-		//std::cout << "accelerate: " << factor << std::endl;
 
 		float currentSpeed = get<float>("currentSpeed");
 		float acceleration = get<float>("acceleration");
@@ -193,8 +164,6 @@ std::cerr<<forward.y<<" "<<newForward.y<<std::endl;
 	}
 
 	void Kart::turn(float factor){
-	//	m_rotatefactor = factor;
-		//std::cout << "rotate: " << factor << std::endl;
 
 		if(factor) {
 			float horizontalAngle = get<float>("horizontalAngle");

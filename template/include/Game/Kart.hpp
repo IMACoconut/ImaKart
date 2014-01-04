@@ -38,16 +38,19 @@ public:
 	~Kart();
 
 	void setPosition(glm::vec3 position, float horizontalAngle);
-	void updateOrientation(Graph::Heightmap& heightmap);
+	void updateOrientation(Graph::Heightmap& heightmap, float scaleMape, float elapsed);
 	void setBehavior(KartBehavior* m_behavior);
 	void loadIntoScene(Graph::Scene& s);
-	void update(float elapsed);				//mise à jours de tout les paramètre du kart
+	void update(Graph::Heightmap& heightmap, float scaleMape, float elapsed);//mise à jours de tout les paramètre du kart
 	void accelerate(float factor);
 	void turn(float factor);
 	void useItem(bool state);				//utilise un objet
 	void addAlteration(Alteration* alteration);
 
 	void giveItem(Item* item);
+
+
+	void physxKart(Graph::Heightmap& heightmap, float scaleMape, float elapsed);
 
 	private:
 		KartBehavior* m_behavior;
