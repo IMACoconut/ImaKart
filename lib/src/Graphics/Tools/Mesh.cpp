@@ -64,12 +64,12 @@ void Mesh::computeBoundingBox() {
 			glm::vec4 p = mat*glm::vec4(v.position, 1.f);
 			m_aabb.extends(glm::vec3(p.x, p.y, p.z));
 		}
-
+/*
 	auto tmp = m_aabb.getCenter();
-	std::cout << "computed " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl;
+	//std::cout << "computed " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl;
 	tmp = m_aabb.getSize();
-	std::cout << "size: " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl; 
-}
+	//std::cout << "size: " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl; 
+*/}
 
 void Mesh::computeBoundingSphere() {
 	m_bsphere = Phys::BSphere(getBoundingBox().getCenter());
@@ -80,9 +80,9 @@ void Mesh::computeBoundingSphere() {
 			m_bsphere.extends(glm::vec3(p.x, p.y, p.z));
 		}
 
-	auto tmp = m_bsphere.getCenter();
-	std::cout << "computed " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl;
-	std::cout << "radius: " << m_bsphere.radius() << std::endl; 
+	//auto tmp = m_bsphere.getCenter();
+	//std::cout << "computed " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl;
+	//std::cout << "radius: " << m_bsphere.radius() << std::endl; 
 }
 
 Mesh Mesh::CreateSphere(const sf::Color& color) {
