@@ -6,7 +6,7 @@
 namespace Graph {
 	class Heightmap : public Mesh {
 	public:
-		Heightmap()= default;
+		Heightmap();
 		virtual ~Heightmap();
 
 		bool loadFromFile(const std::string& image);
@@ -15,6 +15,8 @@ namespace Graph {
 		float realHeight(float x, float y);
 		
 	protected:
-		sf::Image heightmap;
+		glm::vec3* map;
+		sf::Vector2<unsigned int> m_size;
+		//sf::Image heightmap;
 	};
 }

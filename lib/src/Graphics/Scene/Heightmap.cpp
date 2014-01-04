@@ -3,18 +3,28 @@
 
 namespace Graph {
 
-Heightmap::~Heightmap() {}
+Heightmap::Heightmap() : 
+	map(nullptr) {
+
+}
+
+Heightmap::~Heightmap() {
+	delete map;
+}
 
 bool Heightmap::loadFromFile(const std::string& image) {
+	delete map;
+	map = nullptr;
+	sf::Image heightmap;
 	if(!heightmap.loadFromFile(image))
 	{
 		return false;
 	}
 
-	//std::cout << "hstart" << std::endl;
-
 	VertexBuffer buffer;
 	auto size = heightmap.getSize();// - sf::Vector2<unsigned int>(1,1);
+	map = new glm::vec3[size.x*size.y];
+	m_size = size;
 	size.x -= 1;
 	size.y -= 1;
 
@@ -22,8 +32,7 @@ bool Heightmap::loadFromFile(const std::string& image) {
 	for(size_t x = 0; x<size.x; ++x)
 		for(size_t y = 0; y<size.y; ++y)
 			buffer.addVertex(Vertex3D(glm::vec3(x,heightmap.getPixel(x,y).r,y), glm::vec3(0,0,0), glm::vec2((1.f*x)/size.x,(1.f*y)/size.y), sf::Color(255,255,255,255)));
-
-	//std::cout << "1" << std::endl;
+	
 	// Deuxième passe: on créé les triangles.
 	std::vector<glm::vec3> normals;
 	for(size_t x = 0; x<size.x-1; ++x)
@@ -33,7 +42,6 @@ bool Heightmap::loadFromFile(const std::string& image) {
 		}
 
 	VertexBuffer buffer2 = buffer;
-	//std::cout << "2" << std::endl;
 	// Troisième passe: on lisse le terrain pour éviter l'effet escalier.
 	for(size_t x = 0; x < size.x; ++x)
 		for(size_t y = 0; y < size.y; ++y) {
@@ -47,7 +55,7 @@ bool Heightmap::loadFromFile(const std::string& image) {
 			v[0] = xm1*size.x+ym1;
 			v[1] = xm1*size.x+y;
 			v[2] = xm1*size.x+yp1;
-			v[3] = x*size.x+xm1;
+			v[3] = x*size.x+ym1;
 			v[4] = x*size.x+yp1;
 			v[5] = xp1*size.x+ym1;
 			v[6] = xp1*size.x+y;
@@ -57,8 +65,9 @@ bool Heightmap::loadFromFile(const std::string& image) {
 				sum += buffer.getVertex(v[i]).position.y;
 
 			buffer2.getVertex(x*size.x+y).position.y = sum/9.f;
+			map[x*m_size.x+y] = buffer2.getVertex(x*size.x+y).position;
 		}
-	//std::cout << "3" << std::endl;
+
 	// Quatrième passe: on génère les normales en chaque point (pour l'éclairage)
 	for(size_t x = 0; x<size.x-1; ++x)
 		for(size_t y = 0; y<size.y-1; ++y) {
@@ -103,24 +112,26 @@ bool Heightmap::loadFromFile(const std::string& image) {
 float Heightmap::offsetHeight(float x, float y) {
 	int offx = static_cast<int>(x);
 	int offy = static_cast<int>(y);
-	auto size = heightmap.getSize();
-	if(offx < 0 || offx >= static_cast<int>(size.x) || offy < 0 || offy >= static_cast<int>(size.y))
+	auto size = m_size;
+	if(offx < 0 || offx >= (int)size.x || offy < 0 || offy >= (int)size.y)
 		return -1;
 
-	float px = heightmap.getPixel(offx, offy).r;
+	/*float px = heightmap.getPixel(offx, offy).r;
 	float px2 = heightmap.getPixel(offx+1, offy).r;
 	float px3 = heightmap.getPixel(offx, offy+1).r;
-	float px4 = heightmap.getPixel(offx+1, offy+1).r;
+	float px4 = heightmap.getPixel(offx+1, offy+1).r;*/
+	
+	float px = map[offx*size.x+offy].y;
+	float px2 = map[(offx+1)*size.x+offy].y;
+	float px3 = map[offx*size.x+offy+1].y;
+	float px4 = map[(offx+1)*size.x+offy+1].y;
 	float fracx = x - offx, fracy = y - offy;
 	float projxnear = px2*fracx+ px*(1-fracx);
 	float projxfar = px4*fracx + px3*(1-fracx);
 	return projxnear*(1-fracy) + projxfar*fracy;
-//	return (px+px2+px3+px4)/4.f;*/
-//	return heightmap.getPixel(std::floor(x+0.5f), std::floor(y+0.5f)).r;
 }
 
 float Heightmap::realHeight(float x, float z) {
-	//std::cout << x << " " << x/scale.x << " " << z << " " << z/scale.z << std::endl;
 	return offsetHeight(x/scale.x - position.x,z/scale.z - position.z) * scale.y+position.y;
 }
 
