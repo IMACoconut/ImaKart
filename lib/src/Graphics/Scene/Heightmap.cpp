@@ -135,4 +135,17 @@ float Heightmap::realHeight(float x, float z) {
 	return offsetHeight(x/scale.x - position.x,z/scale.z - position.z) * scale.y+position.y;
 }
 
+glm::vec3 Heightmap::offsetNormal(float x, float y) {
+	int px = static_cast<int>(x);
+	int pz = static_cast<int>(y);
+	glm::vec3 pos(px, map[px*m_size.x+pz].y, pz);
+	glm::vec3 pos2(px, map[px*m_size.x+pz+1].y, pz+1);
+	glm::vec3 pos3(px+1, map[(px+1)*m_size.x+pz].y, pz);
+	return glm::cross(pos2-pos, pos3-pos);
+}
+
+glm::vec3 Heightmap::realNormal(float x, float z) {
+	return offsetNormal(x/scale.x - position.x,z/scale.z - position.z);
+}
+
 }
