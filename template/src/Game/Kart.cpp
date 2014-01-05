@@ -10,6 +10,7 @@
 //std::string t = get<std::string>("skin");
 
 
+static const float EPSILON_KART = 0.000005;
 
 	Kart::Kart(int id) :
 		m_behavior(nullptr)/*,
@@ -35,7 +36,8 @@
 		add("lateralAngle", new Component<float>(1, 0));
 		add("alterations", new Component<VectorAlt>(1, VectorAlt()));
 		//add("items", new Component<ItemList>(1, nullptr));
-		
+		NormalUK = glm::vec3(1, 0, 0);
+		angleNormal = 0;
 	}
 
 	Kart::~Kart(){
@@ -45,6 +47,7 @@
 	void Kart::setPosition(glm::vec3 position, float horizontalAngle){
 		set<glm::vec3>("position", position);
 		set<float>("horizontalAngle", horizontalAngle);
+
 	}
 
 	void Kart::physxKart(Graph::Heightmap& heightmap, float elapsed){
@@ -62,46 +65,82 @@
 	}
 
 	void Kart::updateOrientation(Graph::Heightmap& heightmap, float elapsed){
-float factor = 1.0;
 
 		float verticalAngle = get<float>("verticalAngle");
 		float lateralAngle = get<float>("lateralAngle");
+		float horizontalAngle =get<float>("horizontalAngle");
 		glm::vec3 position = get<glm::vec3>("position");
-		glm::vec3 forward = position + factor * get<glm::vec3>("forward");
-		glm::vec3 left = position + factor * get<glm::vec3>("left");
+		glm::vec3 forward = get<glm::vec3>("forward");
+		glm::vec3 left = get<glm::vec3>("left");
+		glm::vec3 up = get<glm::vec3>("up");
 
-		glm::vec2 tmpForward = glm::normalize(glm::vec2(forward.x, forward.z));
-		glm::vec2 tmpLeft = glm::normalize(glm::vec2(left.x, left.z));
+		glm::vec3 normalMap = glm::normalize(heightmap.realNormal(position.x, position.z));
 
-		glm::vec3 newForward = glm::vec3(tmpForward.x, tmpForward.y, heightmap.realHeight(tmpForward.x, tmpForward.y));
-		glm::vec3 newleft = glm::vec3(tmpLeft.x, tmpLeft.y, heightmap.realHeight(tmpLeft.x, tmpLeft.y));
-		newForward=glm::normalize(glm::vec3(newForward.x, newForward.z, newForward.y));
-		newleft=glm::normalize(glm::vec3(newleft.x, newleft.z, newleft.y));
+		//calcule de verticalAngle
+//std::cout<<"left : "<<left.x<< " "<<left.y<<" "<< left.z<<std::endl;
+	/*	glm::vec3 normalF = glm::normalize(glm::vec3(normalMap.y*left.z - normalMap.z*left.y, normalMap.z*left.x - normalMap.x*left.z, normalMap.x*left.y - normalMap.y*left.x));
+		if(normalF.x || normalF.y || normalF.z){
+			verticalAngle = -glm::orientedAngle(forward, normalF, left);
+			glm::mat4 rotV = glm::rotate(glm::mat4(), verticalAngle, left);
+			forward = glm::vec3(rotV*glm::vec4(glm::vec3(1, 0, 0), 1.f));
+			up = glm::vec3(rotV*glm::vec4(glm::vec3(0, 1, 0), 1.f));
+		}*/
+
+/*
+		//calcule de lateralAngle
+		lateralAngle = glm::orientedAngle(up, normalMap, forward);
+		glm::mat4 rotL = glm::rotate(glm::mat4(), lateralAngle, forward);
+		left = glm::vec3(rotL*glm::vec4(glm::vec3(0, 0, 1), 1.f));
+		up = glm::vec3(rotL*glm::vec4(glm::vec3(0, 1, 0), 1.f));*/
 
 
-std::cerr<<"forwardy :"<<forward.y <<" "<<heightmap.realHeight(position.x, position.z)<<std::endl;
-		
-		verticalAngle =  glm::orientedAngle(glm::normalize(forward), newForward, left);
-		lateralAngle =  glm::orientedAngle(glm::normalize(left), newleft, forward);
+/*
+std::cout<<"left2 : "<<left.x<< " "<<left.y<<" "<< left.z<<std::endl;
+std::cout<<lateralAngle<<" "<<verticalAngle<<" "<< horizontalAngle<< std::endl;*/
+
+
+	
+		glm::vec3 normalU = glm::vec3(normalMap.y * up.z - normalMap.z*up.y, normalMap.z * up.x - normalMap.x*up.z, normalMap.x * up.y - normalMap.y*up.x);
+
+std::cout<<"up : "<<up.x<<" "<<up.y<<" "<<up.z<<std::endl;
+std::cout<<"normalMap : "<<normalMap.x<<" "<<normalMap.y<<" "<<normalMap.z<<std::endl;
+std::cout<<"normalU : "<<normalU.x<<" "<<normalU.y<<" "<<normalU.z<<std::endl;
+std::cout<<"NormalUK : "<<NormalUK.x<<" "<<NormalUK.y<<" "<<NormalUK.z<<std::endl;
+		if((normalU.x > EPSILON_KART || normalU.x < -EPSILON_KART) || (normalU.y > EPSILON_KART || normalU.y < -EPSILON_KART) || (normalU.z > EPSILON_KART || normalU.z < -EPSILON_KART)){
+			NormalUK = glm::normalize(normalU);
+			angleNormal = glm::orientedAngle(up, normalMap, NormalUK);
+std::cout<<"angleNormal1 : "<<angleNormal << std::endl;
+		}
+		else{
+			angleNormal = 0;
+			NormalUK = forward;
+		}
+
+std::cout<<"angleNormal : "<<angleNormal << std::endl;
+		glm::mat4 rotV = glm::rotate(glm::mat4(), angleNormal, NormalUK);
+		forward = glm::vec3(rotV*glm::vec4(glm::vec3(1, 0, 0), 1.f));
+		up = glm::vec3(rotV*glm::vec4(glm::vec3(0, 1, 0), 1.f));
+		left = glm::vec3(rotV*glm::vec4(glm::vec3(0, 0, 1), 1.f));
+
+
+		//calcule de horizontalAnle
+		glm::mat4 rotH = elapsed*glm::rotate(glm::mat4(), horizontalAngle, up);
+		forward = glm::vec3(rotH*glm::vec4(forward, 1.f));
+		left = glm::vec3(rotH*glm::vec4(left, 1.f));
+
+		set<glm::vec3>("forward", glm::normalize(forward));
+		set<glm::vec3>("up", glm::normalize(up));
+		set<glm::vec3>("left", glm::normalize(left));
 
 		set<float>("verticalAngle", verticalAngle);
 		set<float>("lateralAngle", lateralAngle);
+		set<float>("horizontalAngle", horizontalAngle);
 
 
-		glm::vec3 up = get<glm::vec3>("up");
-
-		glm::mat4 rotF= elapsed*glm::rotate(glm::mat4(), get<float>("horizontalAngle"), up) * glm::rotate(glm::mat4(), get<float>("verticalAngle"), left);
-		glm::mat4 rotU= glm::rotate(glm::mat4(), get<float>("verticalAngle"), left) * glm::rotate(glm::mat4(), get<float>("lateralAngle"), forward);
-		glm::mat4 rotL = elapsed*glm::rotate(glm::mat4(), get<float>("horizontalAngle"), up) * glm::rotate(glm::mat4(), get<float>("lateralAngle"), forward);
-		forward = glm::vec3(rotF*glm::vec4(glm::vec3(1, 0, 0), 1.f));
-		up = glm::vec3(rotU*glm::vec4(glm::vec3(0, 1, 0), 1.f));
-		left = glm::vec3(rotL*glm::vec4(glm::vec3(0, 0, 1), 1.f));
-		set<glm::vec3>("forward", forward);
-		set<glm::vec3>("up", up);
-		set<glm::vec3>("left", left);
+		mesh.setRotationAxe(angleNormal, NormalUK);
+		mesh.setRotation(glm::vec3(lateralAngle, horizontalAngle, verticalAngle));
 
 
-		mesh.setRotation(glm::vec3(lateralAngle, get<float>("horizontalAngle"), verticalAngle));
 
 	}
 

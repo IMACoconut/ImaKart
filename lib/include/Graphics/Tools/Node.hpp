@@ -31,6 +31,7 @@ namespace Graph {
 
 		void setRotation(const glm::vec3& rotation);
 		glm::vec3 getRotation() const;
+		void setRotationAxe(float angle, glm::vec3 axe);
 
 		void setScale(const glm::vec3& scale);
 		glm::vec3 getScale() const;
@@ -69,6 +70,7 @@ namespace Graph {
 		}
 
 		glm::vec3 position, rotation, scale;
+		glm::mat4 mRotation;
 		Node* parent;
 		std::vector<Node*> children;
 		Material* material[Render::TextureChannel_Max];
