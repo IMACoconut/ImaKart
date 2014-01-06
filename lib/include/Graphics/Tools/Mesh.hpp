@@ -22,8 +22,11 @@ namespace Graph {
 
 			void draw();
 
+			virtual void computeBoundingBox();
+			virtual void computeBoundingSphere();
+
 			MeshBuffer* getMeshBuffer(size_t at) const;
-			std::vector<MeshBuffer*>& getMeshBuffersArray();
+			const std::vector<MeshBuffer*>& getMeshBuffersArray();
 
 			static Mesh CreateSphere(const sf::Color& color);
 			static Mesh CreateQuad(const sf::Color& color);

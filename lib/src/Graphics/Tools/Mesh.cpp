@@ -2,6 +2,7 @@
 #include <Graphics/Tools/MeshLoader.hpp>
 
 #include <Graphics/Geometry/MeshBuffer.hpp>
+#include <iostream>
 
 namespace Graph {
 
@@ -53,6 +54,35 @@ bool Mesh::loadFromMemory(const VertexBuffer& buffer)
 void Mesh::draw() {
 	for(auto b : m_buffers)
 		b->draw();
+}
+
+void Mesh::computeBoundingBox() {
+	m_aabb = Phys::AABB3D(position);
+	auto mat = getModelMatrix();
+	for(MeshBuffer* b : m_buffers)
+		for(const Vertex3D& v : b->getVertexBuffer().getVerticesArray()) {
+			glm::vec4 p = mat*glm::vec4(v.position, 1.f);
+			m_aabb.extends(glm::vec3(p.x, p.y, p.z));
+		}
+/*
+	auto tmp = m_aabb.getCenter();
+	//std::cout << "computed " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl;
+	tmp = m_aabb.getSize();
+	//std::cout << "size: " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl; 
+*/}
+
+void Mesh::computeBoundingSphere() {
+	m_bsphere = Phys::BSphere(getBoundingBox().getCenter());
+	auto mat = getModelMatrix();
+	for(MeshBuffer* b : m_buffers)
+		for(const Vertex3D& v : b->getVertexBuffer().getVerticesArray()) {
+			glm::vec4 p = mat*glm::vec4(v.position, 1.f);
+			m_bsphere.extends(glm::vec3(p.x, p.y, p.z));
+		}
+
+	//auto tmp = m_bsphere.getCenter();
+	//std::cout << "computed " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl;
+	//std::cout << "radius: " << m_bsphere.radius() << std::endl; 
 }
 
 Mesh Mesh::CreateSphere(const sf::Color& color) {
@@ -182,7 +212,7 @@ MeshBuffer* Mesh::getMeshBuffer(size_t at) const {
 	return m_buffers.at(at);
 }
 
-std::vector<MeshBuffer*>& Mesh::getMeshBuffersArray() {
+const std::vector<MeshBuffer*>& Mesh::getMeshBuffersArray() {
 	return m_buffers;
 }
 }

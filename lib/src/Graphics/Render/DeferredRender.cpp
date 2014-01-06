@@ -19,7 +19,10 @@
 
 namespace Graph {
 	
-DeferredRender::DeferredRender() : save(false), loaded(false) {
+DeferredRender::DeferredRender() : 
+	loaded(false), m_meshBox(Mesh::CreateSquare(sf::Color(0,255,0))),
+	m_meshSphere(Mesh::CreateSphere(sf::Color(0,255,0)))
+ {
 	m_geometry = ShaderManager::getInstance().loadShaderFromFile(
 		"DFnormal", "../resources/shaders/DFbase.vert", "../resources/shaders/DFgeometry.frag");
 	m_clear = ShaderManager::getInstance().loadShaderFromFile(
@@ -34,6 +37,11 @@ DeferredRender::DeferredRender() : save(false), loaded(false) {
 	m_screen.loadFromMemory(buff);
 	m_final = ShaderManager::getInstance().loadShaderFromFile(
 		"DFfinal", "../resources/shaders/DFfinal.vert", "../resources/shaders/DFfinal.frag");
+
+	m_meshBox.getMeshBuffer(0)->setDrawMode(DrawMode::Wireframe);
+	m_meshBox.setShader(ShaderManager::getInstance().buildShader(&m_meshBox));
+	m_meshSphere.getMeshBuffer(0)->setDrawMode(DrawMode::Wireframe);
+	m_meshSphere.setShader(ShaderManager::getInstance().buildShader(&m_meshBox));
 }
 
 void DeferredRender::setCamera(Camera* c) {
@@ -87,10 +95,10 @@ void DeferredRender::geometryPass() {
 			continue;
 		if(!it->getShader())
 			it->setShader(ShaderManager::getInstance().buildShader(it));
-		if(Render::shader != it->getShader()) {
+		//if(Render::shader != it->getShader()) {
 			it->getShader()->bind();
 			sendUniforms();
-		}
+		//}
 		Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(it->getModelMatrix()));
 		
 		Mesh* mesh = dynamic_cast<Mesh*>(it);
@@ -102,9 +110,39 @@ void DeferredRender::geometryPass() {
 				if(material[i] != nullptr)
 					Render::setTexture(static_cast<Render::TextureChannel>(i), material[i]);
 
-			for(auto b: buffers)
-				if(!b->hasAlphaBlending())
+			for(auto b: buffers) {
+				if(!b->hasAlphaBlending()) {
 					b->draw();
+				}
+			}
+
+			if(mesh->isDrawBoundingBoxEnabled())
+			{
+				m_meshBox.getShader()->bind();
+				sendUniforms();
+				m_meshBox.setPosition(mesh->getBoundingBox().getCenter());
+				glm::vec3 size = mesh->getBoundingBox().getSize();
+				size.x *= 0.5;
+				size.y *= 0.5;
+				size.z *= 0.5;
+				m_meshBox.setScale(size);
+				m_meshBox.update(0);
+				Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(m_meshBox.getModelMatrix()));
+				m_meshBox.getMeshBuffer(0)->draw();
+				m_meshBox.getShader()->unbind();
+			}
+			if(mesh->isDrawBoundingSphereEnabled())
+			{
+				m_meshSphere.getShader()->bind();
+				sendUniforms();
+				m_meshSphere.setPosition(mesh->getBoundingSphere().getCenter());
+				glm::vec3 size = glm::vec3(mesh->getBoundingSphere().radius()*2);
+				m_meshSphere.setScale(size);
+				m_meshSphere.update(0);
+				Render::shader->send(Shader::Uniform_Matrix4f, "modelMatrix", glm::value_ptr(m_meshSphere.getModelMatrix()));
+				m_meshSphere.getMeshBuffer(0)->draw();
+				m_meshSphere.getShader()->unbind();	
+			}
 		}
 	}
 

@@ -70,6 +70,13 @@ namespace Graph {
 		GLint loc = -1;
 		GLuint shaderProgram = shader->getProgram();
 		std::string str = "";
+
+/*
+		static const char* strs[] = {
+			"diffuseTex", "ambiantTex", "normalTex", "depthTex"
+		};
+		loc = glGetUniformLocation(shaderProgram, strs[t]);
+*/
 		switch(t) {
 			case DiffuseTexture:
 				loc = glGetUniformLocation(shaderProgram, "diffuseTex");

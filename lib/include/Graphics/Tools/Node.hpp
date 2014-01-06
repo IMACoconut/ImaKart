@@ -9,6 +9,9 @@
 #include <vector>
 #include <Graphics/Render/Render.hpp>
 
+#include <Physics/BSphere.hpp>
+#include <Physics/AABB3D.hpp>
+
 namespace Graph {
 	class Material;
 	class Shader;
@@ -48,8 +51,22 @@ namespace Graph {
 
 		Material* const* getMaterials() const;
 
+		const Phys::AABB3D& getBoundingBox();
+		const Phys::BSphere& getBoundingSphere();
+
+		void enableDrawBoundingBox(bool draw);
+		void enableDrawBoundingSphere(bool draw);
+		bool isDrawBoundingBoxEnabled() const;
+		bool isDrawBoundingSphereEnabled() const;
+
 	protected:
 		void updateModelMatrix();
+		virtual void computeBoundingBox() {
+			m_aabb = Phys::AABB3D(position);
+		}
+		virtual void computeBoundingSphere() {
+			m_bsphere = Phys::BSphere(position);
+		}
 
 		glm::vec3 position, rotation, scale;
 		Node* parent;
@@ -57,6 +74,8 @@ namespace Graph {
 		Material* material[Render::TextureChannel_Max];
 		Shader* shader;
 		glm::mat4 modelMatrix;
-		bool modelDirty;
+		bool modelDirty, boxDirty, sphereDirty, drawBox, drawSphere;
+		Phys::AABB3D m_aabb;
+		Phys::BSphere m_bsphere;
 	};
 }

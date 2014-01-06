@@ -56,6 +56,10 @@ namespace Graph {
 			return m_indices.data();
 		}
 
+		const std::vector<Vertex3D>& getVerticesArray() const {
+			return m_vertices;
+		}
+
 	private:
 		std::vector<Vertex3D> m_vertices;
 		std::vector<sf::Vector3i> m_indices;
