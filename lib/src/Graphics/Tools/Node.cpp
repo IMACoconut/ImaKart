@@ -48,7 +48,7 @@ void Node::setRotation(const glm::vec3& r) {
 }
 
 void Node::setRotationAxe(float angle, glm::vec3 axe){
-	mRotation = glm::rotate(glm::mat4(), angle, axe);
+	mRotation = glm::rotate(mRotation, angle, axe);
 }
 
 void Node::move(const glm::vec3 m) {

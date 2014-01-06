@@ -52,12 +52,13 @@ public:
 
 	void physxKart(Graph::Heightmap& heightmap, float elapsed);
 
+		Graph::Mesh mesh;
 	private:
 		KartBehavior* m_behavior;
-		Graph::Mesh mesh;
 		KartMovement m_movement;
-		glm::vec3 NormalUK;
-		float angleNormal;
+		glm::mat4 rotat;
+		/*glm::vec3 NormalUK;
+		float angleNormal;*/
 		//float m_speedfactor, m_rotatefactor;
 };
 //}

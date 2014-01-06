@@ -10,7 +10,14 @@
 //std::string t = get<std::string>("skin");
 
 
-static const float EPSILON_KART = 0.000005;
+static const float EPSILON_KART = 0.005;
+
+	float anglevector(glm::vec3 a, glm::vec3 b){
+		float result = (a.x*b.x+a.y*b.y+a.z*b.z) / sqrt((pow(a.x, 2)+pow(a.y, 2)+pow(a.z, 2)) * (pow(b.x, 2)+pow(b.y, 2)+pow(b.z, 2)));
+		result = 57.2957795 * acos(result);
+		return result;
+	}
+
 
 	Kart::Kart(int id) :
 		m_behavior(nullptr)/*,
@@ -36,8 +43,9 @@ static const float EPSILON_KART = 0.000005;
 		add("lateralAngle", new Component<float>(1, 0));
 		add("alterations", new Component<VectorAlt>(1, VectorAlt()));
 		//add("items", new Component<ItemList>(1, nullptr));
-		NormalUK = glm::vec3(1, 0, 0);
-		angleNormal = 0;
+		/*NormalUK = glm::vec3(1, 0, 0);
+		angleNormal = 0;*/
+		rotat= glm::mat4(1.);
 	}
 
 	Kart::~Kart(){
@@ -99,28 +107,31 @@ std::cout<<"left2 : "<<left.x<< " "<<left.y<<" "<< left.z<<std::endl;
 std::cout<<lateralAngle<<" "<<verticalAngle<<" "<< horizontalAngle<< std::endl;*/
 
 
-	
-		glm::vec3 normalU = glm::vec3(normalMap.y * up.z - normalMap.z*up.y, normalMap.z * up.x - normalMap.x*up.z, normalMap.x * up.y - normalMap.y*up.x);
+		glm::vec3 normalU = glm::cross(normalMap, up);
+		//glm::vec3 normalU = glm::vec3(normalMap.y * up.z - normalMap.z*up.y, normalMap.z * up.x - normalMap.x*up.z, normalMap.x * up.y - normalMap.y*up.x);
 
 std::cout<<"up : "<<up.x<<" "<<up.y<<" "<<up.z<<std::endl;
 std::cout<<"normalMap : "<<normalMap.x<<" "<<normalMap.y<<" "<<normalMap.z<<std::endl;
 std::cout<<"normalU : "<<normalU.x<<" "<<normalU.y<<" "<<normalU.z<<std::endl;
-std::cout<<"NormalUK : "<<NormalUK.x<<" "<<NormalUK.y<<" "<<NormalUK.z<<std::endl;
+//std::cout<<"NormalUK : "<<NormalUK.x<<" "<<NormalUK.y<<" "<<NormalUK.z<<std::endl;
 		if((normalU.x > EPSILON_KART || normalU.x < -EPSILON_KART) || (normalU.y > EPSILON_KART || normalU.y < -EPSILON_KART) || (normalU.z > EPSILON_KART || normalU.z < -EPSILON_KART)){
-			NormalUK = glm::normalize(normalU);
-			angleNormal = glm::orientedAngle(up, normalMap, NormalUK);
+			normalU = glm::normalize(normalU);
+			float angleNormal = glm::orientedAngle(up, normalMap, normalU);
+			//angleNormal = anglevector(normalMap, up); 
 std::cout<<"angleNormal1 : "<<angleNormal << std::endl;
+			rotat = glm::rotate(rotat, angleNormal, normalU);
+		mesh.setRotationAxe(angleNormal, normalU);
 		}
 		else{
-			angleNormal = 0;
-			NormalUK = forward;
+			//angleNormal = 0;
+			//NormalUK = forward;
 		}
 
-std::cout<<"angleNormal : "<<angleNormal << std::endl;
-		glm::mat4 rotV = glm::rotate(glm::mat4(), angleNormal, NormalUK);
-		forward = glm::vec3(rotV*glm::vec4(glm::vec3(1, 0, 0), 1.f));
-		up = glm::vec3(rotV*glm::vec4(glm::vec3(0, 1, 0), 1.f));
-		left = glm::vec3(rotV*glm::vec4(glm::vec3(0, 0, 1), 1.f));
+//std::cout<<"angleNormal : "<<angleNormal << std::endl;
+		//glm::mat4 rotV = glm::rotate(glm::mat4(), angleNormal, NormalUK);
+		forward = glm::vec3(rotat*glm::vec4(glm::vec3(1, 0, 0), 1.f));
+		up = glm::vec3(rotat*glm::vec4(glm::vec3(0, 1, 0), 1.f));
+		left = glm::vec3(rotat*glm::vec4(glm::vec3(0, 0, 1), 1.f));
 
 
 		//calcule de horizontalAnle
@@ -137,17 +148,18 @@ std::cout<<"angleNormal : "<<angleNormal << std::endl;
 		set<float>("horizontalAngle", horizontalAngle);
 
 
-		mesh.setRotationAxe(angleNormal, NormalUK);
-		mesh.setRotation(glm::vec3(lateralAngle, horizontalAngle, verticalAngle));
+		mesh.setRotation(glm::vec3(0, horizontalAngle, 0));
 
 
 
 	}
 
 	void Kart::loadIntoScene(Graph::Scene& s){
-		this->mesh.loadFromFile("../resources/models/kart.3DS");
+
+this->mesh = Graph::Mesh::CreateAxis();
+this->mesh.setScale(glm::vec3(50,50,50));
+		//this->mesh.loadFromFile("../resources/models/kart.3DS");
 		s.addMesh(&mesh);
-		mesh.setRotation(glm::vec3(-90,0,0));
 	}
 
 	void Kart::setBehavior(KartBehavior* behavior) {

@@ -132,6 +132,25 @@ Mesh Mesh::CreateQuad(const sf::Color& color) {
 	return m;
 }
 
+Mesh Mesh::CreateAxis() {
+	VertexBuffer buff;
+	buff.addVertex(Vertex3D(glm::vec3(0,0,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Red));
+	buff.addVertex(Vertex3D(glm::vec3(1,0,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Red));
+	buff.addVertex(Vertex3D(glm::vec3(1,0.1,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Red));
+	buff.addVertex(Vertex3D(glm::vec3(0,0,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Green));
+	buff.addVertex(Vertex3D(glm::vec3(0,1,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Green));
+	buff.addVertex(Vertex3D(glm::vec3(0.1,1,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Green));
+	buff.addVertex(Vertex3D(glm::vec3(0,0,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Blue));
+	buff.addVertex(Vertex3D(glm::vec3(0,0,1), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Blue));
+	buff.addVertex(Vertex3D(glm::vec3(0,0.1,1), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Blue));
+	buff.addTriangle(sf::Vector3i(0,1,2));
+	buff.addTriangle(sf::Vector3i(3,4,5));
+	buff.addTriangle(sf::Vector3i(6,7,8));
+	Mesh m;
+	m.loadFromMemory(buff);
+	return m;
+}
+
 Mesh Mesh::CreateSquare(const sf::Color& color) {
 	VertexBuffer buff;
 	buff.addVertex(Vertex3D(glm::vec3(-1,-1,-1), glm::vec3(0,0,0), glm::vec2(0,0), color));

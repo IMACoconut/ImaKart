@@ -32,6 +32,7 @@ namespace Graph {
 			static Mesh CreateQuad(const sf::Color& color);
 			static Mesh CreateSquare(const sf::Color& color);
 			static Mesh createCone(const sf::Color& color);
+			static Mesh CreateAxis();
 		protected:
 			std::vector<MeshBuffer*> m_buffers;
 
