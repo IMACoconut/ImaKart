@@ -47,6 +47,17 @@ bool Map::loadFromFile(const std::string& file){
 	std::string detailmap = Util::getStringFromXML(info, "detailmap");
 	add("detailmap", new Component<std::string>(1, path.getDirectory()+detailmap));
 
+	tinyxml2::XMLElement* startgrid = root->FirstChildElement("startgrid");
+	if(startgrid == nullptr){
+		Util::LogManager::error("Fichier map invalide : balise <startgrid> manquante");
+		return false;
+	}	
+	glm::vec3 start;
+	start.x = Util::getFloatFromXML(startgrid, "x");
+	start.y = Util::getFloatFromXML(startgrid, "y");
+	start.kart = Util::getFloatFromXML(startgrid, "kart");
+	add("startgrid", new Component<glm::vec3>(1, start));
+
 	tinyxml2::XMLElement* checkpoints = root->FirstChildElement("checkpoints");
 	if(checkpoints == nullptr){
 		Util::LogManager::error("Fichier map invalide : balise <checkpoints> manquante");
@@ -217,7 +228,7 @@ Kart* Map::addKart(KartType type) {
 		default:
 			break;
 	}
-
+	grid.placeKart(k);
 	return k;
 }
 

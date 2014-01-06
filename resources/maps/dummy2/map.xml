@@ -5,6 +5,11 @@
 		<heightmap>heightmap.png</heightmap>
 		<detailmap>detail.png</detailmap>
 	</info>
+	<startgrid>
+		<x>49</x>
+		<y>86</y>
+		<kart>8</kart>
+	</startgrid>
 	<checkpoints>
 		<checkpoint>
 			<x>49</x>

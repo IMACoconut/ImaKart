@@ -33,6 +33,7 @@ public:
 private:
 	Graph::Heightmap mesh;
 	Graph::Material hmtex;
+	Startgrid grid;
 	std::vector<Checkpoint*> m_checkpoints; 
 	std::vector<ItemSpawn*> m_itemSpawns;
 	std::vector<KartInfo> m_karts;
