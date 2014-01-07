@@ -56,9 +56,6 @@ public:
 	private:
 		KartBehavior* m_behavior;
 		KartMovement m_movement;
-		glm::mat4 rotat;
-		/*glm::vec3 NormalUK;
-		float angleNormal;*/
 		//float m_speedfactor, m_rotatefactor;
 };
 //}
