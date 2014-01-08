@@ -33,6 +33,7 @@ static const float EPSILON_KART = 0.005;
 		add("horizontalAngle", new Component<float>(1, 0));
 		add("alterations", new Component<VectorAlt>(1, VectorAlt()));
 		add("rotat", new Component<glm::mat4>(1, glm::mat4(1.)));
+		add("checkpoint", new Component<int>(1, 0));
 	}
 
 	Kart::~Kart(){
