@@ -93,7 +93,7 @@ void Game::load(){
 	scene.addLight(&light4);
 	
 
-	if(!m.loadFromFile("../resources/maps/dummy2/map.xml"))
+	if(!m.loadFromFile("../resources/maps/dummy3/map.xml"))
 		throw -1;
 
 
