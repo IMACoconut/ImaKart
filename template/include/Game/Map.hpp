@@ -9,6 +9,7 @@
 #include <Utility.hpp>
 
 class Kart;
+
 typedef std::tuple<Kart*, Util::Clock, int, bool> KartInfo;
 
 class Map : public Entity, public Graph::Node{
@@ -29,13 +30,17 @@ public:
 
 	Graph::Heightmap* getHeightmap();
 
+	std::vector<Checkpoint*> m_checkpoints; 
 
 private:
+	void sortKartByPosition();
+
 	Graph::Heightmap mesh;
 	Graph::Material hmtex;
-	Startgrid grid;
-	std::vector<Checkpoint*> m_checkpoints; 
+	//Startgrid grid;
 	std::vector<ItemSpawn*> m_itemSpawns;
 	std::vector<KartInfo> m_karts;
+
+	//void sortKartByPosition();
 
 };

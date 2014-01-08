@@ -17,9 +17,9 @@ Map::~Map() {
 }
 bool Map::loadFromFile(const std::string& file){
 
-	int numberOfKarts = 1;
+	/*int numberOfKarts = 1;
 	int numberOfPlayer = 1;
-
+*/
 	Util::FilePath path(file);
 	tinyxml2::XMLDocument doc;
 	int res = doc.LoadFile(file.c_str());
@@ -50,7 +50,7 @@ bool Map::loadFromFile(const std::string& file){
 
 	std::string detailmap = Util::getStringFromXML(info, "detailmap");
 	add("detailmap", new Component<std::string>(1, path.getDirectory()+detailmap));
-
+/*
 	tinyxml2::XMLElement* startgrid = root->FirstChildElement("startgrid");
 	if(startgrid == nullptr){
 		Util::LogManager::error("Fichier map invalide : balise <startgrid> manquante");
@@ -61,7 +61,7 @@ bool Map::loadFromFile(const std::string& file){
 	start.y = Util::getFloatFromXML(startgrid, "y");
 	start.kart = Util::getFloatFromXML(startgrid, "kart");
 	add("startgrid", new Component<glm::vec3>(1, start));
-
+*/
 	tinyxml2::XMLElement* checkpoints = root->FirstChildElement("checkpoints");
 	if(checkpoints == nullptr){
 		Util::LogManager::error("Fichier map invalide : balise <checkpoints> manquante");
@@ -223,7 +223,6 @@ void Map::update(float e) {
 	for(auto i: m_itemSpawns)
 		i->update(e);
 
-	float sc = get<float>("scale");
 	for(auto k : m_karts) {
 		Kart* kart = std::get<0>(k);		
 		kart->update(mesh, e);
@@ -232,6 +231,8 @@ void Map::update(float e) {
 		for(auto i: m_itemSpawns)
 			i->isReached(*kart);
 	}
+
+	sortKartByPosition();
 }
 
 void Map::addKart(Kart* k) {
@@ -257,4 +258,39 @@ void Map::hasFinishedLoop(Kart& k) {
 
 Graph::Heightmap* Map::getHeightmap() {
 	return &mesh;
+}
+
+struct SortKart {
+
+	Map* m;
+
+	SortKart(Map* map) : m(map){}
+
+	bool operator()(const KartInfo& k1, const KartInfo& k2){
+
+		int loop1 = std::get<2>(k1), loop2 = std::get<2>(k2);
+		int checkpoint1 = (std::get<0>(k1))->get<int>("checkpoint");
+		int checkpoint2 = (std::get<0>(k2))->get<int>("checkpoint");
+		glm::vec3 position1 = (std::get<0>(k1))->get<glm::vec3>("position");
+		glm::vec3 position2 = (std::get<0>(k2))->get<glm::vec3>("position");
+
+		if(loop1 < loop2)
+			return false;
+		else if(loop2 < loop1)
+			return true;
+
+		else if(checkpoint1 < checkpoint2)
+			return false;
+		else if(checkpoint1 > checkpoint2)
+			return true;
+		else if (glm::length(position1 - m->m_checkpoints[checkpoint1]->getPosition()) < glm::length(position2 - m->m_checkpoints[checkpoint2]->getPosition()))
+			return false;
+		
+		return true;
+
+	}
+};
+void Map::sortKartByPosition(){
+	SortKart sort(this);
+	std::sort(m_karts.begin(), m_karts.end(), sort);
 }

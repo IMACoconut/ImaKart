@@ -138,10 +138,29 @@ float Heightmap::realHeight(float x, float z) {
 glm::vec3 Heightmap::offsetNormal(float x, float y) {
 	int px = static_cast<int>(x);
 	int pz = static_cast<int>(y);
-	glm::vec3 pos(px, map[px*m_size.x+pz].y, pz);
-	glm::vec3 pos2(px, map[px*m_size.x+pz+1].y, pz+1);
-	glm::vec3 pos3(px+1, map[(px+1)*m_size.x+pz].y, pz);
-	return glm::cross(pos2-pos, pos3-pos);
+	glm::vec3 offpos(x,0,y);
+
+	glm::vec3 pos[9][4];
+	pos[4][0] = glm::vec3(px, map[px*m_size.x+pz].y, pz);
+	pos[4][1] = glm::vec3(px, map[px*m_size.x+pz+1].y, pz+1);
+	pos[4][2] = glm::vec3(px+1, map[(px+1)*m_size.x+pz].y, pz);
+	pos[4][3] = glm::vec3(px+1, map[(px+1)*m_size.x+pz+1].y, pz+1);
+	glm::vec3 norm[9][2];
+	norm[4][0] = glm::cross(pos[4][1]-pos[4][0], pos[4][2]-pos[4][0]);
+	norm[4][1] = -glm::cross(pos[4][3]-pos[4][1], pos[4][3]-pos[4][2]);
+	glm::vec3 center[9][2];
+	center[4][0] = (pos[4][0]+pos[4][1]+pos[4][2])/3.f;center[4][0].y = 0;
+	center[4][1] = (pos[4][1]+pos[4][2]+pos[4][3])/3.f;center[4][1].y = 0;
+
+	glm::vec3 result;
+	for(int i = 4; i<5; ++i) {
+		for(int j = 0; j<2; ++j) {
+			float length = glm::length(offpos-center[i][j]);
+			result += norm[i][j]*length;
+		}
+	}
+
+	return glm::normalize(result);
 }
 
 glm::vec3 Heightmap::realNormal(float x, float z) {
