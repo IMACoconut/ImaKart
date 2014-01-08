@@ -109,7 +109,7 @@ void Game::load(){
 
 	Phys::BSphere s = scene.computeBoundingSphere();
 	light3.setPosition(s.getPosition()+glm::vec3(cos(0.9)*s.radius(), sin(0.9)*s.radius(),0));
-	//cam->setPosition(light3.getPosition());
+	cam->setPosition(light3.getPosition());
 	//cam->lookAt(-light3.getPosition());
 	
 
