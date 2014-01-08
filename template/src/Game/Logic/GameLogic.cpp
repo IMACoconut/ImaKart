@@ -32,7 +32,7 @@ Kart* GameLogic::createKart(KartType type) {
 		Util::LogManager::error("Cannot create a kart before the map has been selected");
 		return nullptr;
 	}
-	return m_map->addKart(type);
+	return /*m_map->addKart(type)*/ nullptr;
 }
 
 void GameLogic::update(float elapsed) {

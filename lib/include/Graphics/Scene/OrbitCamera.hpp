@@ -9,17 +9,16 @@ namespace Graph {
 		~OrbitCamera();
 		void setTarget(Node* target);
 
-		void onUpdate(float elapsed);
+		virtual void onUpdate(float elapsed);
 
 	protected:
+		Node* m_targetNode;
+		float m_minDist, m_distance, m_maxDist;
+
 		void updateOrbit();
 
 		void move(const glm::vec3& m);
 		void rotate(float horizontal, float vertical);
 		void zoom(float delta);
-
-	private:
-		Node* m_targetNode;
-		float m_minDist, m_distance, m_maxDist;
 	};
 }

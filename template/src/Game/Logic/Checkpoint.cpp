@@ -11,10 +11,10 @@ bool Checkpoint::isReached(Kart& kart) {
 	bool reach = glm::length(kart.get<glm::vec3>("position")-position) < DIST_FACTOR;
 	if(reach && m_pos == kartCheck + 1) {// begin/end checkpoint
 		kartCheck = m_pos;
-		if(m_map = 0)	
+		if(m_pos == 0)	
 			m_map.hasFinishedLoop(kart);
 	std::cout<<"reached"<< m_pos << std::endl;
 	}
-	kart.set<int>("checkpoint", kartCheck);*
+	kart.set<int>("checkpoint", kartCheck);
 	return reach;
 }

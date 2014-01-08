@@ -24,7 +24,7 @@ public:
 	void hasFinishedLoop(Kart& k);
 	void update(float elapsed);
 
-	Kart* addKart(KartType type);
+	void addKart(Kart* k);
 	std::vector<KartInfo> getResults();
 
 	Graph::Heightmap* getHeightmap();

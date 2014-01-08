@@ -68,13 +68,10 @@ bool Map::loadFromFile(const std::string& file){
 	}
 	add("check", new Component<std::vector<glm::vec2>>(1, check));
 	
-	for (int i = 0; i < numberOfKarts; ++i)
+	/*for (int i = 0; i < (int)karts.size(); ++i)
 	{
-		Kart* tmp = addKart(KartType_2);
-		if(i < numberOfPlayer){
-			//le kart est un kart joueur
-		}
-	}
+		addKart(karts[i]);
+	}*/
 	
 	/*tinyxml2::XMLElement* lights = root->FirstChildElement("lights");
 	if(lights == nullptr){
@@ -169,7 +166,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 
 	this->mesh.setMaterial(0, &this->hmtex);
 	float sc = get<float>("scale");
-	this->mesh.setScale(glm::vec3(sc,sc,sc));
+	this->mesh.setScale(glm::vec3(sc,sc/2,sc));
 	scene.addMesh(&mesh);
 
 	auto c = this->get<std::vector<glm::vec2>>("check");
@@ -179,7 +176,9 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 			Util::LogManager::notice("Erreur au chargement des checkpoints");
 			return false;
 		}
-		tmp->setPosition(glm::vec3(c[i].x*sc, this->mesh.offsetHeight(c[i].x,c[i].y)*sc, c[i].y*sc));
+		glm::vec3 pos(c[i].x*sc, 0, c[i].y*sc);
+		pos.y = mesh.realHeight(pos.x, pos.z);
+		tmp->setPosition(pos);
 		tmp->setScale(glm::vec3(50,50,50));
 		scene.addMesh(tmp);
 		m_checkpoints.push_back(tmp);
@@ -189,7 +188,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 	for(auto itr: m_karts){
 		Kart* tmp = std::get<0>(itr);
 		glm::vec3 position = m_checkpoints[0]->getPosition();
-		tmp->setPosition(glm::vec3(position.x, position.y+500, position.z), 0.f);
+		tmp->setPosition(glm::vec3(position.x, position.y, position.z), 0.f);
 		tmp->updateOrientation(this->mesh, 1);
 		tmp->loadIntoScene(scene);
 		tmp->setBehavior(new PlayerBehavior(*tmp, 0));
@@ -224,23 +223,8 @@ void Map::update(float e) {
 	}
 }
 
-Kart* Map::addKart(KartType type) {
-	Kart* k = new Kart(m_karts.size());
-	switch(type) {
-		case KartType_1:
-			// Changer maniabilité, vitesse, etc...
-			break;
-		case KartType_2:
-			break;
-		case KartType_3:
-			break;
-		default:
-			break;
-	}
-//	k->setPosition
-
-	m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
-	return k;
+void Map::addKart(Kart* k) {
+		m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
 }
 
 std::vector<KartInfo> Map::getResults() {
