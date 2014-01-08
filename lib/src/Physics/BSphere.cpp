@@ -32,7 +32,7 @@ namespace Phys {
 			m_radius = len;
 	}
 
-	bool BSphere::collide(const BSphere& other) {
+	bool BSphere::collide(const BSphere& other) const {
 		return glm::length(m_pos-other.m_pos) < (m_radius+other.m_radius);
 	}
 
@@ -45,6 +45,8 @@ namespace Phys {
 		return m_radius;
 	}
 
-	glm::vec3 BSphere::getPosition() {return m_pos;}
+	glm::vec3 BSphere::getCenter() const {
+		return m_pos;
+	}
 
 }

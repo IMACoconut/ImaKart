@@ -5,7 +5,7 @@ namespace Phys {
 	AABB3D::AABB3D(const glm::vec3& pos, const glm::vec3& size) : 
 		size(size), pos(pos){}
 
-	bool AABB3D::collide(const AABB3D& other){
+	bool AABB3D::collide(const AABB3D& other) const{
 		if(other.pos.x >= this->pos.x + this->size.x ||
 			other.pos.x + other.size.x <= this->pos.x ||
 			other.pos.y >= this->pos.y + this->size.y ||
@@ -17,7 +17,7 @@ namespace Phys {
 			return true;
 	}
 
-	bool AABB3D::collide(const glm::vec3& point){
+	bool AABB3D::collide(const glm::vec3& point) const{
 		if(point.x >= this->pos.x &&
 			point.x < this->pos.x + this->size.x &&
 			point.y >= this->pos.y &&
@@ -50,5 +50,9 @@ namespace Phys {
 		glm::vec3 center(pos+size);
 		center /= 2;
 		return center;
+	}
+
+	glm::vec3 AABB3D::getSize() const {
+		return size;
 	}
 }

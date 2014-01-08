@@ -6,8 +6,11 @@
 namespace Graph {
 
 Node::Node(Node* parent) :
-	position(0,0,0), rotation(0,0,0), scale(1,1,1), parent(parent), 
-	shader(nullptr), modelMatrix(), modelDirty(true), isLightened(true)
+	position(0,0,0), rotation(0,0,0), scale(1,1,1), mRotation(glm::mat4(1.0)), parent(parent), 
+	shader(nullptr), modelMatrix(),
+	modelDirty(true), boxDirty(true), sphereDirty(true), 
+	drawBox(false),	drawSphere(false), isLightened(true)
+
 {
 	for(int i = 0; i<Render::TextureChannel_Max; ++i)
 		material[i] = nullptr;
@@ -43,6 +46,10 @@ void Node::setScale(const glm::vec3& s) {
 void Node::setRotation(const glm::vec3& r) {
 	rotation = r;
 	modelDirty = true;
+}
+
+void Node::setRotationAxe(float angle, glm::vec3 axe){
+	mRotation = glm::rotate(mRotation, angle, axe);
 }
 
 void Node::move(const glm::vec3 m) {
@@ -113,6 +120,8 @@ void Node::setMaterial(int pos, Material* m)
 }
 void Node::updateModelMatrix() {
 	glm::mat4 rot, scaleM, trans;
+
+	rot = mRotation * rot;
 	rot = glm::rotate(rot, rotation.x, glm::vec3(1,0,0));
 	rot = glm::rotate(rot, rotation.y, glm::vec3(0,1,0));
 	rot = glm::rotate(rot, rotation.z, glm::vec3(0,0,1));
@@ -120,6 +129,8 @@ void Node::updateModelMatrix() {
 	trans = glm::translate(trans,position);
 	modelMatrix = trans*rot*scaleM;
 	modelDirty = false;
+	computeBoundingSphere();
+	computeBoundingBox();
 }
 
 void Node::setShader(Shader* s)
@@ -137,6 +148,38 @@ glm::mat4 Node::getModelMatrix() const {
 
 Material* const* Node::getMaterials() const {
 	return material;
+}
+
+const Phys::BSphere& Node::getBoundingSphere() {
+	if(sphereDirty)
+		computeBoundingSphere();
+
+	sphereDirty = false;
+	return m_bsphere;
+}
+
+const Phys::AABB3D& Node::getBoundingBox() {
+	if(boxDirty)
+		computeBoundingBox();
+	boxDirty = false;
+
+	return m_aabb;
+}
+
+void Node::enableDrawBoundingBox(bool draw) {
+	drawBox = draw;
+}
+
+void Node::enableDrawBoundingSphere(bool draw) {
+	drawSphere = draw;
+}
+
+bool Node::isDrawBoundingBoxEnabled() const {
+	return drawBox;
+}
+
+bool Node::isDrawBoundingSphereEnabled() const {
+	return drawSphere;
 }
 
 }

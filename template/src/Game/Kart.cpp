@@ -1,235 +1,177 @@
 #include <Game/Kart.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/vector_angle.hpp>
 #include <iostream>
+#include <cmath>
 #include <Game/VectorAlt.hpp>
 #include <Game/Logic/Item.hpp>
 #include <Game/IA/KartBehavior.hpp>
 
 //std::string t = get<std::string>("skin");
 
+
+static const float EPSILON_KART = 0.005;
+
 	Kart::Kart(int id) :
-		m_behavior(nullptr),
-		m_speedfactor(0), m_rotatefactor(0)
+		m_behavior(nullptr)/*,
+		m_speedfactor(0), m_rotatefactor(0)*/
 	{
 		add("id", new Component<int>(1, id));
 		add("skin", new Component<std::string>(1, ""));
 		add("hp", new Component<int>(1, 1));
 		add("condition", new Component<KartCondition>(1, NORMAL));
-		add("speedMaxForward", new Component<float>(1, 2));
-		add("speedMaxBack", new Component<float>(1, 1.25));
-		add("currentSpeed", new Component<float>(1, 0));
-		add("acceleration", new Component<float>(1, 0.03f));
+		add("weight", new Component<float>(1, 5.f));
+		add("speedMaxForward", new Component<float>(1, 5.f));
+		add("speedMaxBack", new Component<float>(1, -1.f));
+		add("currentSpeed", new Component<float>(1, 0.f));
+		add("acceleration", new Component<float>(1, 0.01f));
 		add("brake", new Component<float>(1,0.01f));
-		add("maniability", new Component<float>(1, .1));
-		add("position", new Component<glm::vec3>(1, glm::vec3(0, 0, 0)));
+		add("maniability", new Component<float>(1, 1.f));
+		add("position", new Component<glm::vec3>(1, glm::vec3(3, 3, 3)));
 		add("forward", new Component<glm::vec3>(1, glm::vec3(1, 0, 0)));
-		add("left", new Component<glm::vec3>(1, glm::vec3(0, 0, 1)));
 		add("up", new Component<glm::vec3>(1, glm::vec3(0, 1, 0)));
 		add("horizontalAngle", new Component<float>(1, 0));
-		add("verticalAngle", new Component<float>(1, 0));
 		add("alterations", new Component<VectorAlt>(1, VectorAlt()));
-		//add("items", new Component<ItemList>(1, nullptr));
+		add("rotat", new Component<glm::mat4>(1, glm::mat4(1.)));
 	}
 
 	Kart::~Kart(){
 
 	}
 
+	void Kart::setPosition(glm::vec3 position, float horizontalAngle){
+		set<glm::vec3>("position", position);
+		set<float>("horizontalAngle", horizontalAngle);
+
+	}
+
+	void Kart::physxKart(Graph::Heightmap& heightmap, float elapsed){
+		glm::vec3 position = get<glm::vec3>("position");
+		float mapY = heightmap.realHeight(position.x, position.z);
+
+		if(position.y > mapY)
+			position.y -=  elapsed;
+		else
+			position.y = mapY;
+
+		set<glm::vec3>("position", position);
+
+		mesh.setPosition(position);
+	}
+
+	void Kart::updateOrientation(Graph::Heightmap& heightmap, float elapsed){
+
+		float horizontalAngle =get<float>("horizontalAngle");
+		glm::vec3 position = get<glm::vec3>("position");
+		glm::vec3 forward = get<glm::vec3>("forward");
+		glm::vec3 up = get<glm::vec3>("up");
+		glm::mat4 rotat = get<glm::mat4>("rotat");
+
+
+		//calcule de l'orientation du kart par rapport au sol
+		glm::vec3 normalMap = glm::normalize(heightmap.realNormal(position.x, position.z));
+		glm::vec3 normalU = glm::cross(normalMap, up);		
+		if((normalU.x > EPSILON_KART || normalU.x < -EPSILON_KART) || (normalU.y > EPSILON_KART || normalU.y < -EPSILON_KART) || (normalU.z > EPSILON_KART || normalU.z < -EPSILON_KART)){
+			normalU = glm::normalize(normalU);
+			float angleNormal = glm::orientedAngle(up, normalMap, normalU);
+			
+			rotat = glm::rotate(rotat, angleNormal, normalU);
+			mesh.setRotationAxe(angleNormal, normalU);
+		}
+
+		forward = glm::vec3(rotat*glm::vec4(glm::vec3(1, 0, 0), 1.f));
+		up = glm::vec3(rotat*glm::vec4(glm::vec3(0, 1, 0), 1.f));
+
+
+		//calcule de l'angle horizontale du kart (action du joueur)
+		glm::mat4 rotH = elapsed*glm::rotate(glm::mat4(), horizontalAngle, up);
+		forward = glm::vec3(rotH*glm::vec4(forward, 1.f));
+
+		set<glm::vec3>("forward", glm::normalize(forward));
+		set<glm::vec3>("up", glm::normalize(up));
+
+		set<float>("horizontalAngle", horizontalAngle);
+		set<glm::mat4>("rotat", rotat);
+
+
+		mesh.setRotation(glm::vec3(0, horizontalAngle, 0));
+	}
+
 	void Kart::loadIntoScene(Graph::Scene& s){
-		this->mesh.loadFromFile("../resources/models/kart.3DS");
+
+this->mesh = Graph::Mesh::CreateAxis();
+this->mesh.setScale(glm::vec3(50,50,50));
+		//this->mesh.loadFromFile("../resources/models/kart.3DS");
 		s.addMesh(&mesh);
-		mesh.setRotation(glm::vec3(-90,0,0));
 	}
 
 	void Kart::setBehavior(KartBehavior* behavior) {
 		m_behavior = behavior;
 	}
 
-	void Kart::update(float elapsed){
+	void Kart::update(Graph::Heightmap& heightmap, float elapsed){
+
+		VectorAlt alterations = get<VectorAlt>("alterations"); 
+		if(!alterations.isEmpty()){
+			alterations.apply(*this);
+ 		}
+ 		set<VectorAlt>("alterations", alterations);
+
+
 		if(m_behavior)
 			m_behavior->update(elapsed);
 
-		bool updateRotation = true, updatePosition = true;
-		if(m_speedfactor > 0) {
-			float currentSpeed = get<float>("currentSpeed");
-			currentSpeed += get<float>("acceleration")*elapsed*m_speedfactor;
-			if(currentSpeed > get<float>("speedMaxForward"))
-				currentSpeed = get<float>("speedMaxForward");
-			
-			set<float>("currentSpeed", currentSpeed);
-		} else if(m_speedfactor < 0){
-			float currentSpeed = get<float>("currentSpeed");
-			if(currentSpeed > -get<float>("speedMaxBack"))
-				currentSpeed -= get<float>("acceleration")*elapsed*m_speedfactor;
-			set<float>("currentSpeed", currentSpeed);
-		} else 
-			updatePosition = false;
+		//mise à jour de la position dui kart
+		glm::vec3 dir = get<glm::vec3>("forward")*get<float>("currentSpeed")*elapsed;
+		glm::vec3 tmp = dir + get<glm::vec3>("position");
+		set<glm::vec3>("position", tmp);
+		mesh.setPosition(tmp);
 
-		if(m_rotatefactor > 0) {
-			float horizontalAngle = get<float>("horizontalAngle");
-			horizontalAngle -= get<float>("maniability")*elapsed*m_rotatefactor;
-			set<float>("horizontalAngle", horizontalAngle);
-		} else if(m_rotatefactor < 0) {
-			float horizontalAngle = get<float>("horizontalAngle");
-			horizontalAngle += get<float>("maniability")*elapsed*m_rotatefactor;
-			set<float>("horizontalAngle", horizontalAngle);
-		} else {
-			updateRotation = false;
-		}
+		//physx
+		physxKart(heightmap, elapsed);
 
-		/*
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)){
-			
-
-		} else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-						
-		}else{
-			float currentSpeed = get<float>("currentSpeed");
-			
-			currentSpeed -= get<float>("brake")*elapsed;
-			if(currentSpeed < 0)
-				currentSpeed = 0;
-			set<float>("currentSpeed", currentSpeed);
-		} 
-
-
-
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q)){
-			
-		}else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D)){
-			
-		} else {
-			updateRotation = false;
-		}
-
-
-		/*switch(get<KartCondition>("conditon")){
-			case NORMAL:
-			{
-				*/
-			/*}
-			break;
-			
-			default:
-			break;
-		}*/
-		/*	glm::vec3 dir(0,0,0);
-			{
-				float cs = get<float>("currentSpeed");
-				if(rolls) {
-					if(cs< 1)
-						cs += .1*elapsed;
-					else
-						cs = 1;			
-				} else {
-					if(cs > 0)
-						cs -= .05*elapsed;
-					else
-						cs = 0;
-				}
-				set<float>("currentSpeed", cs);
-			}
-			{
-				if(left || right) {
-					std::cout << "rotate" << std::endl;
-					float horizontalAngle = get<float>("horizontalAngle");
-					glm::vec3 forward = get<glm::vec3>("forward");
-					glm::vec3 leftv = get<glm::vec3>("left");
-
-					if(left)
-						horizontalAngle -= get<float>("maniability")*.01f;
-					else
-						horizontalAngle += get<float>("maniability")*.01f;
-
-					glm::mat4 rot;
-					rot = glm::rotate(rot, horizontalAngle, get<glm::vec3>("up"));
-					forward = glm::vec3(rot*glm::vec4(forward, 1.f));
-					leftv = glm::vec3(rot*glm::vec4(leftv, 1.f));
-					set<glm::vec3>("forward", forward);
-					set<glm::vec3>("left", leftv);
-					mesh.setRotation(glm::vec3(0,horizontalAngle,0));
-				}
-			}*/
-			if(updateRotation) {
-				//std::cout << get<float>("horizontalAngle") << std::endl;
-				glm::vec3 forward = get<glm::vec3>("forward");
-				glm::vec3 left = get<glm::vec3>("left");
-
-				glm::mat4 rot;
-				rot = glm::rotate(rot, get<float>("horizontalAngle"), get<glm::vec3>("up"));
-				forward = glm::vec3(rot*glm::vec4(glm::vec3(1, 0, 0), 1.f));
-				left = glm::vec3(rot*glm::vec4(glm::vec3(0, 0, 1), 1.f));
-				set<glm::vec3>("forward", forward);
-				set<glm::vec3>("left", left);
-				mesh.setRotation(glm::vec3(0,get<float>("horizontalAngle"),0));
-			}
-
-			if(updatePosition) {
-				glm::vec3 dir = get<glm::vec3>("forward")*get<float>("currentSpeed")*elapsed;
-				glm::vec3 tmp = dir + get<glm::vec3>("position");
-				//std::cout << dir.x << " " << dir.y << " " << dir.z << std::endl;
-				set<glm::vec3>("position", tmp);
-				mesh.setPosition(tmp);
-			}
-		/*if(rolls){
-			float currentSpeed = get<float>("currentSpeed");
-			if(currentSpeed < get<float>("speedMaxForward"))
-				currentSpeed += get<float>("acceleration");
-			set<float>("currentSpeed", 1.f);
-		}
-		if(backtrack){
-			float currentSpeed = get<float>("currentSpeed");
-			if(currentSpeed < get<float>("speedMaxBack"))
-				currentSpeed -= get<float>("acceleration");
-			set<float>("currentSpeed", currentSpeed);
-		}
-		if(slowDown){
-			float currentSpeed = get<float>("currentSpeed");
-			float acceleration = get<float>("acceleration");
-			if(currentSpeed > 0)
-				currentSpeed -= acceleration;
-			else if(currentSpeed < 0)
-				currentSpeed += acceleration;
-			set<float>("currentSpeed", currentSpeed);
-		}
-		if(left){
-			float horizontalAngle = get<float>("horizontalAngle");
-			glm::vec3 forward = get<glm::vec3>("forward");
-			glm::vec3 left = get<glm::vec3>("left");
-
-			horizontalAngle -= get<float>("maniability")*0.01f;
-
-			glm::mat4 rot;
-			rot = glm::rotate(rot, horizontalAngle, get<glm::vec3>("up"));
-			forward = glm::vec3(rot*glm::vec4(forward, 1.f));
-			left = glm::vec3(rot*glm::vec4(left, 1.f));
-			set<glm::vec3>("forward", forward);
-			set<glm::vec3>("left", left);
-		}
-		if(right){
-			float horizontalAngle = get<float>("horizontalAngle");
-			glm::vec3 forward = get<glm::vec3>("forward");
-			glm::vec3 left = get<glm::vec3>("left");
-
-			horizontalAngle += get<float>("maniability")*0.01f;
-
-			glm::mat4 rot;
-			rot = glm::rotate(rot, horizontalAngle, get<glm::vec3>("up"));
-			forward = glm::vec3(rot*glm::vec4(forward, 1.f));
-			left = glm::vec3(rot*glm::vec4(left, 1.f));
-			set<glm::vec3>("forward", forward);
-			set<glm::vec3>("left", left);
-		}*/
+		//mise à jour de l'orientation du kart
+		updateOrientation(heightmap, elapsed);
 	}
 
 	void Kart::accelerate(float factor){
-		m_speedfactor = factor;
-		//std::cout << "accelerate: " << factor << std::endl;
+
+		float currentSpeed = get<float>("currentSpeed");
+		float acceleration = get<float>("acceleration");
+
+		if(currentSpeed > 0 - acceleration && currentSpeed < 0 + acceleration && !factor){
+			currentSpeed = 0; 
+		}
+		else if(currentSpeed >= 0){
+			currentSpeed += factor * 2 * acceleration - acceleration;
+			float speedMaxForward =get<float>("speedMaxForward");
+			if(currentSpeed > speedMaxForward)
+				currentSpeed = speedMaxForward;
+		}
+		else if(currentSpeed < 0){
+			currentSpeed += factor * 2 * acceleration + acceleration;
+			float speedMaxBack =get<float>("speedMaxBack");
+			if(currentSpeed < speedMaxBack)
+				currentSpeed = speedMaxBack;
+		}
+
+
+		set<float>("currentSpeed", currentSpeed);
 	}
 
 	void Kart::turn(float factor){
-		m_rotatefactor = factor;
-		//std::cout << "rotate: " << factor << std::endl;
+
+		if(factor) {
+			float horizontalAngle = get<float>("horizontalAngle");
+			horizontalAngle -= get<float>("maniability")*factor;
+			set<float>("horizontalAngle", horizontalAngle);
+		} 
+	}
+
+	void Kart::addAlteration(Alteration* alteration){
+		VectorAlt alterations = get<VectorAlt>("alterations");
+		alterations.pushAlteration(alteration);
+		set<VectorAlt>("alterations", alterations);
 	}
 
 	void Kart::useItem(bool state){}

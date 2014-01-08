@@ -24,7 +24,6 @@ private:
 	sf::Clock frameTime, clock, timeOfDay;
 	int fps = 0;
 	Map m;
-	Kart k;
 	GameEngine* m_game;
 	LoadingState<Game> m_loader;
 	bool tourne;

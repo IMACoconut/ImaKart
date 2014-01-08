@@ -33,8 +33,13 @@ bool MeshLoader::load(const std::string& fname, Mesh& mesh) {
 
 			for(int j=0;j<3;j++)
 			{
-				aiVector3D uvtmp = m->mTextureCoords[0][face.mIndices[j]];
-				glm::vec2 uv(uvtmp.x, uvtmp.y);
+				glm::vec2 uv;
+				if(m->mTextureCoords[0] != nullptr) {
+					aiVector3D uvtmp = m->mTextureCoords[0][face.mIndices[j]];
+					uv = glm::vec2(uvtmp.x, 1-uvtmp.y);
+				} else {
+					uv = glm::vec2(0,0);
+				}
 				 
 				aiVector3D normaltmp = m->mNormals[face.mIndices[j]];
 				glm::vec3 normal(normaltmp.x, normaltmp.y, normaltmp.z);

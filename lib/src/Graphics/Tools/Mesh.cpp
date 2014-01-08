@@ -2,6 +2,7 @@
 #include <Graphics/Tools/MeshLoader.hpp>
 
 #include <Graphics/Geometry/MeshBuffer.hpp>
+#include <iostream>
 
 namespace Graph {
 
@@ -55,28 +56,33 @@ void Mesh::draw() {
 		b->draw();
 }
 
-Phys::AABB3D Mesh::getBoundingBox() const {
-	Phys::AABB3D box(position);
+void Mesh::computeBoundingBox() {
+	m_aabb = Phys::AABB3D(position);
 	auto mat = getModelMatrix();
 	for(MeshBuffer* b : m_buffers)
 		for(const Vertex3D& v : b->getVertexBuffer().getVerticesArray()) {
 			glm::vec4 p = mat*glm::vec4(v.position, 1.f);
-			box.extends(glm::vec3(p.x, p.y, p.z));
+			m_aabb.extends(glm::vec3(p.x, p.y, p.z));
 		}
+/*
+	auto tmp = m_aabb.getCenter();
+	//std::cout << "computed " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl;
+	tmp = m_aabb.getSize();
+	//std::cout << "size: " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl; 
+*/}
 
-	return box;
-}
-
-Phys::BSphere Mesh::getBoundingSphere() const {
-	Phys::BSphere sphere(position);
+void Mesh::computeBoundingSphere() {
+	m_bsphere = Phys::BSphere(getBoundingBox().getCenter());
 	auto mat = getModelMatrix();
 	for(MeshBuffer* b : m_buffers)
 		for(const Vertex3D& v : b->getVertexBuffer().getVerticesArray()) {
 			glm::vec4 p = mat*glm::vec4(v.position, 1.f);
-			sphere.extends(glm::vec3(p.x, p.y, p.z));
+			m_bsphere.extends(glm::vec3(p.x, p.y, p.z));
 		}
 
-	return sphere;
+	//auto tmp = m_bsphere.getCenter();
+	//std::cout << "computed " << tmp.x << " " << tmp.y << " " << tmp.z << std::endl;
+	//std::cout << "radius: " << m_bsphere.radius() << std::endl; 
 }
 
 Mesh Mesh::CreateSphere(const sf::Color& color) {
@@ -121,6 +127,25 @@ Mesh Mesh::CreateQuad(const sf::Color& color) {
 	buff.addVertex(Vertex3D(glm::vec3(-1,1,0), glm::vec3(0,0,0), glm::vec2(0,0), color));
 	buff.addTriangle(sf::Vector3i(0,1,2));
 	buff.addTriangle(sf::Vector3i(0,2,3));
+	Mesh m;
+	m.loadFromMemory(buff);
+	return m;
+}
+
+Mesh Mesh::CreateAxis() {
+	VertexBuffer buff;
+	buff.addVertex(Vertex3D(glm::vec3(0,0,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Red));
+	buff.addVertex(Vertex3D(glm::vec3(1,0,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Red));
+	buff.addVertex(Vertex3D(glm::vec3(1,0.1,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Red));
+	buff.addVertex(Vertex3D(glm::vec3(0,0,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Green));
+	buff.addVertex(Vertex3D(glm::vec3(0,1,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Green));
+	buff.addVertex(Vertex3D(glm::vec3(0.1,1,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Green));
+	buff.addVertex(Vertex3D(glm::vec3(0,0,0), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Blue));
+	buff.addVertex(Vertex3D(glm::vec3(0,0,1), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Blue));
+	buff.addVertex(Vertex3D(glm::vec3(0,0.1,1), glm::vec3(0,1,0), glm::vec2(0,0), sf::Color::Blue));
+	buff.addTriangle(sf::Vector3i(0,1,2));
+	buff.addTriangle(sf::Vector3i(3,4,5));
+	buff.addTriangle(sf::Vector3i(6,7,8));
 	Mesh m;
 	m.loadFromMemory(buff);
 	return m;

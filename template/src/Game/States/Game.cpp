@@ -6,11 +6,11 @@
 #include <Graphics/Scene/FPSCamera.hpp>
 #include <Graphics/Scene/OrbitCamera.hpp>
 
-#include <Game/IA/PlayerBehavior.hpp>
+//#include <Game/IA/PlayerBehavior.hpp>
 #include <Game/Logic/GameLogic.hpp>
 
 Game::Game() :
-	k(0), m_loader(*this)
+	m_loader(*this)
 {
 	Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
@@ -36,6 +36,7 @@ void Game::Init(GameEngine* game) {
 }
 
 void Game::load(){
+
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().getShader("skyBox");
 	Graph::Shader* celShad = Graph::ShaderManager::getInstance().getShader("celShad");
 	Graph::Shader* lightPoint = Graph::ShaderManager::getInstance().getShader("DFlightPoint");
@@ -54,11 +55,8 @@ void Game::load(){
 	mesh.setMaterial(0, &hmtex);
 	mesh.setScale(glm::vec3(16,16,16));*/
 	//mesh2.loadFromFile("../resources/models/cube.3DS");
-	mesh2 = Graph::Mesh::CreateQuad(sf::Color(0,0,127));
-	mesh2.setScale(glm::vec3(5000,5000,5000));
-	mesh2.setRotation(glm::vec3(90,0,0));
-	mesh2.setPosition(glm::vec3(128*16,128*9,128*16));
-	mesh2.getMeshBuffer(0)->setRenderMode(Graph::RenderMode::AlphaBlending);
+	mesh2 = Graph::Mesh::CreateSphere(sf::Color(255,0,0));
+	mesh2.setScale(glm::vec3(10,10,10));
 	
 	sky.setShader(skyShader);
 	
@@ -83,40 +81,31 @@ void Game::load(){
 	
 	light3.setColor(glm::vec3(1,1,1));
 	light3.setIntensity(.4f);
-	light3.setPosition(glm::vec3(0,9000,0));
+	light3.setPosition(glm::vec3(0,-9000,0));
 	light3.setShader(lightDirectional);
 	
 	scene.setBackground(&sky);
-	//scene.addMesh(&mesh2);
+	scene.addMesh(&mesh2);
 	scene.addLight(&light3);
 	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light4);
-
 	
 	if(!m.loadFromFile("../resources/maps/dummy2/map.xml"))
 		throw -1;
 
 	if(!m.loadIntoScene(scene))
 		throw -1;
-	k.loadIntoScene(scene);
-	k.setBehavior(new PlayerBehavior(k,0));
 
 	cam = /*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);//*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(0,0,0), glm::vec3(10,10,10), 10.f, 5.f);
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(cam);
 	scene.setCamera(cam);
-
-	Phys::BSphere s = scene.computeBoundingSphere();
-	light3.setPosition(s.getPosition()+glm::vec3(cos(0.9)*s.radius(), sin(0.9)*s.radius(),0));
-	cam->setPosition(light3.getPosition());
-	//cam->lookAt(-light3.getPosition());
 	
 
 	m_game->getWindow().setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
-	tourne = true;
 
 	Util::LogManager::notice("Running");
 }
@@ -162,12 +151,8 @@ void Game::HandleEvents(GameEngine* game){
 				break;
 			default:
 				break;
-
 		}
-	}
-	
-
-	
+	}	
 }
 
 void Game::Update(GameEngine* game){
@@ -189,14 +174,14 @@ void Game::Update(GameEngine* game){
 	
 	float time = timeOfDay.getElapsedTime().asSeconds() * 0.1f;
 	game->getWindow().getMouse().setPosition(sf::Vector2i(game->getWindow().getSize().x/2, game->getWindow().getSize().y/2));
-	
-	//if(tourne)
+		
 	//light3.setPosition(glm::vec3(sin(time)*9000,cos(time)*9000,0));
 	light.setPosition(glm::vec3(128*16+sin(time*3)*128*3,100*16,128*16+cos(time*3)*128*3));
 	light2.setPosition(glm::vec3(128*16,100*16+sin(time*5),128*14+cos(time*5)*128*3));
 	light4.setPosition(glm::vec3(128*14+sin(time*10)*128*3,100*16,128*16+cos(time*10)*128*3));
 
-	k.update(elapsed);
+
+	m.update(elapsed);
 	scene.update(elapsed);
 	clock.restart();
 	if(frameTime.getElapsedTime().asSeconds() >= 1) {

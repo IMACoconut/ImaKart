@@ -14,14 +14,18 @@ public:
 
 	~AABB3D() = default;
 
-	bool collide(const AABB3D& other);
+	bool collide(const AABB3D& other) const;
 
-	bool collide(const glm::vec3& point);
+	/*collision :  la position de la collision + la normale au point */
+
+	bool collide(const glm::vec3& point) const;
 
 	void extends(const glm::vec3& point);
 
 	void extends(const AABB3D& aabb);
 
 	glm::vec3 getCenter() const;
+
+	glm::vec3 getSize() const;
 };
 }
