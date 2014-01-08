@@ -37,14 +37,16 @@ namespace Graph {
 				if(loc != -1) {
 					switch(t) {
 						case Uniform_Matrix4f:
-							glUniformMatrix4fv(loc, 1,  GL_FALSE, val);
+							glUniformMatrix4fv(loc, 1,  GL_FALSE, reinterpret_cast<const GLfloat*>(val));
 							break;
 						case Uniform_Vector3f:
-							glUniform3fv(loc, 1, val);
+							glUniform3fv(loc, 1, reinterpret_cast<const GLfloat*>(val));
 							break;
 						case Uniform_Float:
-							glUniform1f(loc, *val);
+							glUniform1f(loc, *reinterpret_cast<const GLfloat*>(val));
 							break;
+						case Uniform_Integer: 
+							glUniform1i(loc, *reinterpret_cast<const GLint*>(val));	
 						default:
 							break;
 					}

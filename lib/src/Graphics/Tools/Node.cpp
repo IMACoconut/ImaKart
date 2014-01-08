@@ -7,7 +7,7 @@ namespace Graph {
 
 Node::Node(Node* parent) :
 	position(0,0,0), rotation(0,0,0), scale(1,1,1), parent(parent), 
-	shader(nullptr), modelMatrix(), modelDirty(true)
+	shader(nullptr), modelMatrix(), modelDirty(true), isLightened(true)
 {
 	for(int i = 0; i<Render::TextureChannel_Max; ++i)
 		material[i] = nullptr;

@@ -45,6 +45,7 @@ void main()
 	vec3 pos = texture2D(diffuseTex,coord).xyz;
 	vec3 normal = texture2D(normalTex,coord).xyz;
 	vec4 Shadowcoord = depthMVP*vec4(pos,1.);
+  Shadowcoord.z += 0.5;
 	// Recupération de la couleur du pixel courant
 	
 

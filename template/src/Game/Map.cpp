@@ -174,6 +174,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		scene.addMesh(tmp);
 		m_checkpoints.push_back(tmp);
 	}
+	mesh.setLightened(true);
 	
 	return true;
 }

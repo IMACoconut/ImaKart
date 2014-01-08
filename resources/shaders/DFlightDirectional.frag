@@ -25,7 +25,15 @@ float celShad(float val) {
 
 void main() {
 	vec2 coord = vec2(gl_FragCoord.x/screenW, gl_FragCoord.y/screenH);
+	
+	
+
 	vec3 N = normalize(texture2D(normalTex,coord).rgb);
 	vec3 L = normalize(-lightDir);
+	float P = texture2D(diffuseTex, coord).w;
+	if(P < .5) {
+		finalData = vec4(1.,1.,1.,1.); // - vec4(lightColor*lightIntensity*celShad(max(dot(L,N), 0.f)),0.f);
+		return;
+	}
 	finalData = vec4(lightColor*lightIntensity*celShad(max(dot(L,N), 0.f)),1.f);
 }

@@ -10,6 +10,7 @@ uniform sampler2D normalTex;
 uniform sampler2D depthTex;
 uniform float Near;
 uniform float Far;
+uniform int isLightened;
 
 float LinearizeDepth()
 {
@@ -24,7 +25,7 @@ float depth() {
 }
 
 void main() {
-	finalData[0] = vec4(outPosition,1.f);
+	finalData[0] = vec4(outPosition,isLightened);
 	finalData[1] = vec4(texture2D(diffuseTex, outUV).rgb*outColor.rgb,1.f);
 	finalData[2] = vec4(normalize(outNormal),1.f);
 	gl_FragDepth = depth();

@@ -50,6 +50,12 @@ void main() {
 	vec2 coord = vec2(gl_FragCoord.x/screenW, gl_FragCoord.y/screenH);
 	vec3 pos = texture2D(diffuseTex,coord).rgb;
 	vec3 N = normalize(texture2D(normalTex,coord).rgb);
+	float P = texture2D(diffuseTex, coord).w;
+	if(P < .5) {
+		finalData = vec4(1.,1.,1.,1.); // - vec4(lightColor*lightIntensity*celShad(max(dot(L,N), 0.f)),0.f);
+		return;
+	}
+
 	vec3 dir = normalize(lightPos-pos);
 	float scalaire = max(scal(N,dir),0);
 	finalData = vec4(lightColor*lightIntensity*scalaire*celShad(attenuation(pos, lightPos, lightRadius)),1.f);

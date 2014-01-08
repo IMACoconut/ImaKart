@@ -22,6 +22,9 @@ namespace Graph {
 		Node(const Node& other) = delete;
 		virtual ~Node();
 
+		void setLightened(bool b) { isLightened = b ; }
+		bool getLightened() const { return isLightened ;}
+
 		void setParent(Node* parent);
 		void addChild(Node* child);
 		void removeChild(Node* child);
@@ -67,5 +70,6 @@ namespace Graph {
 		Shader* shader;
 		glm::mat4 modelMatrix;
 		bool modelDirty;
+		bool isLightened; 
 	};
 }
