@@ -83,7 +83,7 @@ void Game::load(){
 	
 	light3.setColor(glm::vec3(1,1,1));
 	light3.setIntensity(.4f);
-	light3.setPosition(glm::vec3(cos(0.9)*9000,sin(0.9)*9000,0));
+	light3.setPosition(glm::vec3(0,9000,0));
 	light3.setShader(lightDirectional);
 	
 	scene.setBackground(&sky);
@@ -190,7 +190,7 @@ void Game::Update(GameEngine* game){
 	float time = timeOfDay.getElapsedTime().asSeconds() * 0.1f;
 	game->getWindow().getMouse().setPosition(sf::Vector2i(game->getWindow().getSize().x/2, game->getWindow().getSize().y/2));
 	
-	if(tourne)
+	//if(tourne)
 	//light3.setPosition(glm::vec3(sin(time)*9000,cos(time)*9000,0));
 	light.setPosition(glm::vec3(128*16+sin(time*3)*128*3,100*16,128*16+cos(time*3)*128*3));
 	light2.setPosition(glm::vec3(128*16,100*16+sin(time*5),128*14+cos(time*5)*128*3));
