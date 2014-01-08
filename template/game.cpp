@@ -25,6 +25,7 @@
 static const unsigned int FPS = 30;
 
 int main(void) {
+
 	tinyxml2::XMLDocument doc;
 	doc.LoadFile("../resources/data/config.xml");
 

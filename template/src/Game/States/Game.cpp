@@ -6,11 +6,11 @@
 #include <Graphics/Scene/FPSCamera.hpp>
 #include <Graphics/Scene/OrbitCamera.hpp>
 
-#include <Game/IA/PlayerBehavior.hpp>
+//#include <Game/IA/PlayerBehavior.hpp>
 #include <Game/Logic/GameLogic.hpp>
 
 Game::Game() :
-	k(0), m_loader(*this)
+	m_loader(*this)
 {
 	Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
@@ -36,6 +36,7 @@ void Game::Init(GameEngine* game) {
 }
 
 void Game::load(){
+
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().getShader("skyBox");
 	Graph::Shader* celShad = Graph::ShaderManager::getInstance().getShader("celShad");
 	Graph::Shader* lightPoint = Graph::ShaderManager::getInstance().getShader("DFlightPoint");
@@ -89,15 +90,12 @@ void Game::load(){
 	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light4);
-
 	
 	if(!m.loadFromFile("../resources/maps/dummy2/map.xml"))
 		throw -1;
 
 	if(!m.loadIntoScene(scene))
 		throw -1;
-	k.loadIntoScene(scene);
-	k.setBehavior(new PlayerBehavior(k,0));
 
 	cam = /*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);//*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(0,0,0), glm::vec3(10,10,10), 10.f, 5.f);
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
@@ -153,12 +151,8 @@ void Game::HandleEvents(GameEngine* game){
 				break;
 			default:
 				break;
-
 		}
-	}
-	
-
-	
+	}	
 }
 
 void Game::Update(GameEngine* game){
@@ -181,12 +175,13 @@ void Game::Update(GameEngine* game){
 	float time = timeOfDay.getElapsedTime().asSeconds() * 0.1f;
 	game->getWindow().getMouse().setPosition(sf::Vector2i(game->getWindow().getSize().x/2, game->getWindow().getSize().y/2));
 		
-	light3.setPosition(glm::vec3(sin(time)*9000,cos(time)*9000,0));
+	//light3.setPosition(glm::vec3(sin(time)*9000,cos(time)*9000,0));
 	light.setPosition(glm::vec3(128*16+sin(time*3)*128*3,100*16,128*16+cos(time*3)*128*3));
 	light2.setPosition(glm::vec3(128*16,100*16+sin(time*5),128*14+cos(time*5)*128*3));
 	light4.setPosition(glm::vec3(128*14+sin(time*10)*128*3,100*16,128*16+cos(time*10)*128*3));
 
-	k.update(elapsed);
+
+	m.update(elapsed);
 	scene.update(elapsed);
 	clock.restart();
 	if(frameTime.getElapsedTime().asSeconds() >= 1) {

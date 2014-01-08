@@ -1,7 +1,7 @@
 #include <Game/Map.hpp>
 #include <Game/Logic/Checkpoint.hpp>
 #include <Game/Logic/ItemSpawn.hpp>
-#include <Game/Map.hpp>
+#include <Game/IA/PlayerBehavior.hpp>
 #include <tinyxml2/tinyxml2.h>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
@@ -16,6 +16,10 @@ Map::~Map() {
 	}
 }
 bool Map::loadFromFile(const std::string& file){
+
+	int numberOfKarts = 1;
+	int numberOfPlayer = 1;
+
 	Util::FilePath path(file);
 	tinyxml2::XMLDocument doc;
 	int res = doc.LoadFile(file.c_str());
@@ -75,6 +79,13 @@ bool Map::loadFromFile(const std::string& file){
 	}
 	add("check", new Component<std::vector<glm::vec2>>(1, check));
 	
+	for (int i = 0; i < numberOfKarts; ++i)
+	{
+		Kart* tmp = addKart(KartType_2);
+		if(i < numberOfPlayer){
+			//le kart est un kart joueur
+		}
+	}
 	
 	/*tinyxml2::XMLElement* lights = root->FirstChildElement("lights");
 	if(lights == nullptr){
@@ -179,13 +190,22 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 			Util::LogManager::notice("Erreur au chargement des checkpoints");
 			return false;
 		}
-
 		tmp->setPosition(glm::vec3(c[i].x*sc, this->mesh.offsetHeight(c[i].x,c[i].y)*sc, c[i].y*sc));
 		tmp->setScale(glm::vec3(50,50,50));
 		scene.addMesh(tmp);
 		m_checkpoints.push_back(tmp);
 	}
 	
+
+	for(auto itr: m_karts){
+		Kart* tmp = std::get<0>(itr);
+		glm::vec3 position = m_checkpoints[0]->getPosition();
+		tmp->setPosition(glm::vec3(position.x, position.y+500, position.z), 0.f);
+		tmp->updateOrientation(this->mesh, 1);
+		tmp->loadIntoScene(scene);
+		tmp->setBehavior(new PlayerBehavior(*tmp, 0));
+	}
+
 	return true;
 }
 
@@ -204,9 +224,10 @@ void Map::update(float e) {
 	for(auto i: m_itemSpawns)
 		i->update(e);
 
+	float sc = get<float>("scale");
 	for(auto k : m_karts) {
-		Kart* kart = std::get<0>(k);
-		kart->update(e);
+		Kart* kart = std::get<0>(k);		
+		kart->update(mesh, e);
 		for(auto c: m_checkpoints)
 			c->isReached(*kart);
 		for(auto i: m_itemSpawns)
@@ -216,7 +237,6 @@ void Map::update(float e) {
 
 Kart* Map::addKart(KartType type) {
 	Kart* k = new Kart(m_karts.size());
-	m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
 	switch(type) {
 		case KartType_1:
 			// Changer maniabilité, vitesse, etc...
@@ -228,7 +248,9 @@ Kart* Map::addKart(KartType type) {
 		default:
 			break;
 	}
-	grid.placeKart(k);
+//	k->setPosition
+
+	m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
 	return k;
 }
 

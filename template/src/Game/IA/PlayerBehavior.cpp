@@ -22,9 +22,13 @@ void PlayerBehavior::onUpdate(float elapsed)
 		m_kart.accelerate(1.f);
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 		m_kart.accelerate(-1.f);
+	else
+		m_kart.accelerate(0.f);
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 		m_kart.turn(-1.f);
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		m_kart.turn(1.f);
+	else
+		m_kart.turn(0.f);
 }

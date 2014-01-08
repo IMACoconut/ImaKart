@@ -6,7 +6,7 @@
 namespace Graph {
 
 Node::Node(Node* parent) :
-	position(0,0,0), rotation(0,0,0), scale(1,1,1), parent(parent), 
+	position(0,0,0), rotation(0,0,0), scale(1,1,1), mRotation(glm::mat4(1.0)), parent(parent), 
 	shader(nullptr), modelMatrix(),
 	modelDirty(true), boxDirty(true), sphereDirty(true), 
 	drawBox(false),	drawSphere(false)
@@ -45,6 +45,10 @@ void Node::setScale(const glm::vec3& s) {
 void Node::setRotation(const glm::vec3& r) {
 	rotation = r;
 	modelDirty = true;
+}
+
+void Node::setRotationAxe(float angle, glm::vec3 axe){
+	mRotation = glm::rotate(mRotation, angle, axe);
 }
 
 void Node::move(const glm::vec3 m) {
@@ -115,6 +119,8 @@ void Node::setMaterial(int pos, Material* m)
 }
 void Node::updateModelMatrix() {
 	glm::mat4 rot, scaleM, trans;
+
+	rot = mRotation * rot;
 	rot = glm::rotate(rot, rotation.x, glm::vec3(1,0,0));
 	rot = glm::rotate(rot, rotation.y, glm::vec3(0,1,0));
 	rot = glm::rotate(rot, rotation.z, glm::vec3(0,0,1));
