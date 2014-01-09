@@ -1,9 +1,12 @@
 <map>
 	<info>
 		<name>Test</name>
+		<preview>detail.png</preview>
 		<scale>16</scale>
-		<heightmap>heightmap.png</heightmap>
-		<detailmap>detail.png</detailmap>
+		<heightmap>heightmap8.png</heightmap>
+		<detailmap>detail3.png</detailmap>
+		<time></time>
+		
 	</info>
 	<startgrid>
 		<x>49</x>

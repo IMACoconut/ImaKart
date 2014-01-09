@@ -5,6 +5,7 @@
 #include <Utility.hpp>
 #include <Graphics/Scene/FPSCamera.hpp>
 #include <Graphics/Scene/OrbitCamera.hpp>
+#include <Graphics/Scene/KartCamera.hpp>
 
 //#include <Game/IA/PlayerBehavior.hpp>
 #include <Game/Logic/GameLogic.hpp>
@@ -91,13 +92,29 @@ void Game::load(){
 	scene.addLight(&light2);
 	scene.addLight(&light4);
 	
-	if(!m.loadFromFile("../resources/maps/dummy2/map.xml"))
+
+	if(!m.loadFromFile("../resources/maps/dummy3/map.xml"))
 		throw -1;
+
+
+//////init kart ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	int numberOfKarts = 1;
+	int numberOfPlayer = 1;
+
+	for (int i = 0; i < numberOfKarts; ++i)
+	{
+		Kart* tmp = addKart(KartType_2);
+		if(i < numberOfPlayer){
+			//le kart est un kart joueur
+		}
+	}
+
 
 	if(!m.loadIntoScene(scene))
 		throw -1;
 
-	cam = /*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);//*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(0,0,0), glm::vec3(10,10,10), 10.f, 5.f);
+//////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	cam = new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));/*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*///new Graph::FPSCamera(m_game->getWindow(), glm::vec3(0,0,0), glm::vec3(10,10,10), 10.f, 5.f);
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(cam);
 	scene.setCamera(cam);
@@ -160,6 +177,7 @@ void Game::Update(GameEngine* game){
 	
 	std::string fpsStr = "0 FPS";
 
+	//cam->onUpdate(elapsed);
 	//k.update(elapsed);
 	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		cam->move(cam->left()*(elapsed));
@@ -200,4 +218,22 @@ void Game::Draw(GameEngine* game){
 	scene.render();
 	window.display();
 	fps++;
+}
+
+Kart* Game::addKart(KartType type){
+	Kart* k = new Kart(karts.size());
+	switch(type) {
+		case KartType_1:
+			// Changer maniabilité, vitesse, etc...
+			break;
+		case KartType_2:
+			break;
+		case KartType_3:
+			break;
+		default:
+			break;
+	}
+	m.addKart(k);
+	karts.push_back(k);
+	return k;
 }

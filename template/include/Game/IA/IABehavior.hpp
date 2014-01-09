@@ -15,12 +15,18 @@ public:
 		STEP_FORWARD
 	} IAPriority;
 
-	IABehavior(Kart& kart);
+	IABehavior(Kart& kart, std::vector<Checkpoint*> map_check);
 
 protected:
 	void onUpdate(float elapsed);
 
 private:
 	std::vector<IAPriority> m_priorities;
-	std::stack<Checkpoint*> m_directions;
+	std::vector<Checkpoint*> m_directions;
+
+	void addCheckpoints(std::vector<Checkpoint*> map_check);
+	void pusshPrioritie(IAPriority prioritie);
+	void punishPlayer();
+	void findItem();
+	void goToTheNextCheckpoint();
 };

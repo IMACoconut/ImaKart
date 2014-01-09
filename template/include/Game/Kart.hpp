@@ -30,6 +30,7 @@ typedef enum {
 class Alteration;
 class Item;
 class KartBehavior;
+
 class Kart: public Entity
 {
 public:

@@ -26,7 +26,8 @@ private:
 	Map m;
 	GameEngine* m_game;
 	LoadingState<Game> m_loader;
-	bool tourne;
+
+	std::vector<Kart*> karts;
 
 public:
 	Game();
@@ -44,6 +45,7 @@ public:
 	void HandleEvents(GameEngine* game);
 	void Update(GameEngine* game);
 	void Draw(GameEngine* game);
+	Kart* addKart(KartType type);
 
 	static Game& getInstance() {
 		static Game s;

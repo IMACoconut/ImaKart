@@ -43,6 +43,10 @@ void Node::setScale(const glm::vec3& s) {
 	modelDirty = true;
 }
 
+glm::vec3 Node::getScale() const {
+	return scale;
+}
+
 void Node::setRotation(const glm::vec3& r) {
 	rotation = r;
 	modelDirty = true;
@@ -119,15 +123,15 @@ void Node::setMaterial(int pos, Material* m)
 	material[pos] = m;
 }
 void Node::updateModelMatrix() {
-	glm::mat4 rot, scaleM, trans;
+	glm::mat4 scaleM, trans;
 
-	rot = mRotation * rot;
-	rot = glm::rotate(rot, rotation.x, glm::vec3(1,0,0));
-	rot = glm::rotate(rot, rotation.y, glm::vec3(0,1,0));
-	rot = glm::rotate(rot, rotation.z, glm::vec3(0,0,1));
+	m_Rotation_Matrix = mRotation;
+	m_Rotation_Matrix = glm::rotate(m_Rotation_Matrix, rotation.x, glm::vec3(1,0,0));
+	m_Rotation_Matrix = glm::rotate(m_Rotation_Matrix, rotation.y, glm::vec3(0,1,0));
+	m_Rotation_Matrix = glm::rotate(m_Rotation_Matrix, rotation.z, glm::vec3(0,0,1));
 	scaleM = glm::scale(scaleM, scale);
 	trans = glm::translate(trans,position);
-	modelMatrix = trans*rot*scaleM;
+	modelMatrix = trans*m_Rotation_Matrix*scaleM;
 	modelDirty = false;
 	computeBoundingSphere();
 	computeBoundingBox();
@@ -144,6 +148,10 @@ Shader* Node::getShader() const {
 
 glm::mat4 Node::getModelMatrix() const {
 	return modelMatrix;
+}
+
+glm::mat4 Node::getRotationMatrix() const {
+	return m_Rotation_Matrix;
 }
 
 Material* const* Node::getMaterials() const {

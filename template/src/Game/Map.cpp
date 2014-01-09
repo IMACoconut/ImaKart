@@ -2,6 +2,7 @@
 #include <Game/Logic/Checkpoint.hpp>
 #include <Game/Logic/ItemSpawn.hpp>
 #include <Game/IA/PlayerBehavior.hpp>
+#include <Game/IA/IABehavior.hpp>
 #include <tinyxml2/tinyxml2.h>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
@@ -17,9 +18,9 @@ Map::~Map() {
 }
 bool Map::loadFromFile(const std::string& file){
 
-	int numberOfKarts = 1;
+	/*int numberOfKarts = 1;
 	int numberOfPlayer = 1;
-
+*/
 	Util::FilePath path(file);
 	tinyxml2::XMLDocument doc;
 	int res = doc.LoadFile(file.c_str());
@@ -50,7 +51,18 @@ bool Map::loadFromFile(const std::string& file){
 
 	std::string detailmap = Util::getStringFromXML(info, "detailmap");
 	add("detailmap", new Component<std::string>(1, path.getDirectory()+detailmap));
-
+/*
+	tinyxml2::XMLElement* startgrid = root->FirstChildElement("startgrid");
+	if(startgrid == nullptr){
+		Util::LogManager::error("Fichier map invalide : balise <startgrid> manquante");
+		return false;
+	}	
+	glm::vec3 start;
+	start.x = Util::getFloatFromXML(startgrid, "x");
+	start.y = Util::getFloatFromXML(startgrid, "y");
+	start.kart = Util::getFloatFromXML(startgrid, "kart");
+	add("startgrid", new Component<glm::vec3>(1, start));
+*/
 	tinyxml2::XMLElement* checkpoints = root->FirstChildElement("checkpoints");
 	if(checkpoints == nullptr){
 		Util::LogManager::error("Fichier map invalide : balise <checkpoints> manquante");
@@ -68,13 +80,10 @@ bool Map::loadFromFile(const std::string& file){
 	}
 	add("check", new Component<std::vector<glm::vec2>>(1, check));
 	
-	for (int i = 0; i < numberOfKarts; ++i)
+	/*for (int i = 0; i < (int)karts.size(); ++i)
 	{
-		Kart* tmp = addKart(KartType_2);
-		if(i < numberOfPlayer){
-			//le kart est un kart joueur
-		}
-	}
+		addKart(karts[i]);
+	}*/
 	
 	/*tinyxml2::XMLElement* lights = root->FirstChildElement("lights");
 	if(lights == nullptr){
@@ -169,7 +178,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 
 	this->mesh.setMaterial(0, &this->hmtex);
 	float sc = get<float>("scale");
-	this->mesh.setScale(glm::vec3(sc,sc,sc));
+	this->mesh.setScale(glm::vec3(sc,sc/2,sc));
 	scene.addMesh(&mesh);
 
 	auto c = this->get<std::vector<glm::vec2>>("check");
@@ -179,7 +188,9 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 			Util::LogManager::notice("Erreur au chargement des checkpoints");
 			return false;
 		}
-		tmp->setPosition(glm::vec3(c[i].x*sc, this->mesh.offsetHeight(c[i].x,c[i].y)*sc, c[i].y*sc));
+		glm::vec3 pos(c[i].x*sc, 0, c[i].y*sc);
+		pos.y = mesh.realHeight(pos.x, pos.z);
+		tmp->setPosition(pos);
 		tmp->setScale(glm::vec3(50,50,50));
 		scene.addMesh(tmp);
 		m_checkpoints.push_back(tmp);
@@ -190,10 +201,10 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 	for(auto itr: m_karts){
 		Kart* tmp = std::get<0>(itr);
 		glm::vec3 position = m_checkpoints[0]->getPosition();
-		tmp->setPosition(glm::vec3(position.x, position.y+500, position.z), 0.f);
+		tmp->setPosition(glm::vec3(position.x, position.y, position.z), 0.f);
 		tmp->updateOrientation(this->mesh, 1);
 		tmp->loadIntoScene(scene);
-		tmp->setBehavior(new PlayerBehavior(*tmp, 0));
+		tmp->setBehavior(new IABehavior(*tmp, m_checkpoints));
 	}
 
 	return true;
@@ -214,7 +225,6 @@ void Map::update(float e) {
 	for(auto i: m_itemSpawns)
 		i->update(e);
 
-	float sc = get<float>("scale");
 	for(auto k : m_karts) {
 		Kart* kart = std::get<0>(k);		
 		kart->update(mesh, e);
@@ -223,25 +233,12 @@ void Map::update(float e) {
 		for(auto i: m_itemSpawns)
 			i->isReached(*kart);
 	}
+
+	sortKartByPosition();
 }
 
-Kart* Map::addKart(KartType type) {
-	Kart* k = new Kart(m_karts.size());
-	switch(type) {
-		case KartType_1:
-			// Changer maniabilité, vitesse, etc...
-			break;
-		case KartType_2:
-			break;
-		case KartType_3:
-			break;
-		default:
-			break;
-	}
-//	k->setPosition
-
-	m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
-	return k;
+void Map::addKart(Kart* k) {
+		m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
 }
 
 std::vector<KartInfo> Map::getResults() {
@@ -252,15 +249,54 @@ void Map::hasFinishedLoop(Kart& k) {
 	int id = k.get<int>("id");
  	auto& infos = m_karts[id];
  	int& loops = std::get<2>(infos);
- 	if(loops == 0) {
+ 	if(loops == 1) {
  		bool& finished = std::get<3>(infos);
  		finished = true;
  		auto& clock = std::get<1>(infos);
  		clock.Pause();
+
  	} else
  		--loops;
+
+ 	auto& clock = std::get<1>(infos);
+ 	std::cout << clock.GetMinutes()<< " : "<<clock.GetSeconds() % 60<<std::endl;
 }
 
 Graph::Heightmap* Map::getHeightmap() {
 	return &mesh;
+}
+
+struct SortKart {
+
+	Map* m;
+
+	SortKart(Map* map) : m(map){}
+
+	bool operator()(const KartInfo& k1, const KartInfo& k2){
+
+		int loop1 = std::get<2>(k1), loop2 = std::get<2>(k2);
+		int checkpoint1 = (std::get<0>(k1))->get<int>("checkpoint");
+		int checkpoint2 = (std::get<0>(k2))->get<int>("checkpoint");
+		glm::vec3 position1 = (std::get<0>(k1))->get<glm::vec3>("position");
+		glm::vec3 position2 = (std::get<0>(k2))->get<glm::vec3>("position");
+
+		if(loop1 < loop2)
+			return false;
+		else if(loop2 < loop1)
+			return true;
+
+		else if(checkpoint1 < checkpoint2)
+			return false;
+		else if(checkpoint1 > checkpoint2)
+			return true;
+		else if (glm::length(position1 - m->m_checkpoints[checkpoint1]->getPosition()) < glm::length(position2 - m->m_checkpoints[checkpoint2]->getPosition()))
+			return false;
+		
+		return true;
+
+	}
+};
+void Map::sortKartByPosition(){
+	SortKart sort(this);
+	std::sort(m_karts.begin(), m_karts.end(), sort);
 }
