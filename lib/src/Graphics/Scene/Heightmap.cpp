@@ -9,11 +9,11 @@ Heightmap::Heightmap() :
 }
 
 Heightmap::~Heightmap() {
-	delete map;
+	delete[] map;
 }
 
 bool Heightmap::loadFromFile(const std::string& image) {
-	delete map;
+	delete[] map;
 	map = nullptr;
 	sf::Image heightmap;
 	if(!heightmap.loadFromFile(image))

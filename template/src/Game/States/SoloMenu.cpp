@@ -52,6 +52,8 @@ void SoloMenu::Resume(GameEngine* game){
     quit->setText("Retour");
     quit->bindCallback(tgui::Button::LeftMouseClicked);
     quit->setCallbackId(3);
+
+
 	game->getWindow().setMouseCursorVisible(true);
 }
 

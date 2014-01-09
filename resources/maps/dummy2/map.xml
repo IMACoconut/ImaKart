@@ -6,9 +6,15 @@
 		<detailmap>detail.png</detailmap>
 	</info>
 	<startgrid>
-		<x>49</x>
-		<y>86</y>
-		<kart>8</kart>
+		<pos>
+			<x>49</x>
+			<y>86</y>		
+		</pos>
+		<width>7</width>
+		<dir>
+			<x>1</x>
+			<y>0</y>
+		</dir>
 	</startgrid>
 	<checkpoints>
 		<checkpoint>

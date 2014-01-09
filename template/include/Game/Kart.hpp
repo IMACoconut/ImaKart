@@ -52,6 +52,8 @@ public:
 
 	void physxKart(Graph::Heightmap& heightmap, float elapsed);
 
+	Graph::Mesh* getMesh() { return &mesh;}
+
 		Graph::Mesh mesh;
 	private:
 		KartBehavior* m_behavior;

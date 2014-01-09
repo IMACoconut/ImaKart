@@ -56,11 +56,20 @@ bool Map::loadFromFile(const std::string& file){
 		Util::LogManager::error("Fichier map invalide : balise <startgrid> manquante");
 		return false;
 	}	
+	tinyxml2::XMLElement* startpos = startgrid->FirstChildElement("pos");
 	glm::vec3 start;
-	start.x = Util::getFloatFromXML(startgrid, "x");
-	start.y = Util::getFloatFromXML(startgrid, "y");
-	start.kart = Util::getFloatFromXML(startgrid, "kart");
-	add("startgrid", new Component<glm::vec3>(1, start));
+	start.x = Util::getFloatFromXML(startpos, "x");
+	start.z = Util::getFloatFromXML(startpos, "y");
+
+	float width = Util::getFloatFromXML(startgrid, "width");
+
+	tinyxml2::XMLElement* startdir = startgrid->FirstChildElement("dir");
+	glm::vec3 direction;
+	direction.x = Util::getFloatFromXML(startdir, "x");
+	direction.z = Util::getFloatFromXML(startdir, "y");
+
+	grid = Startgrid(start, direction, width);
+
 
 	tinyxml2::XMLElement* checkpoints = root->FirstChildElement("checkpoints");
 	if(checkpoints == nullptr){
@@ -248,8 +257,10 @@ Kart* Map::addKart(KartType type) {
 		default:
 			break;
 	}
-//	k->setPosition
-
+	grid.placeKart(*k);
+	glm::vec3 pos = k->get<glm::vec3>("position")*get<float>("scale");
+	pos.y = mesh.realHeight(pos.x,pos.z);
+	k->setPosition(pos, 0);
 	m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
 	return k;
 }

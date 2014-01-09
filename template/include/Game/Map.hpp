@@ -2,6 +2,7 @@
 #include <Game/Entity.hpp>
 #include <Game/Logic/Checkpoint.hpp>
 #include <Game/Logic/ItemSpawn.hpp>
+#include <Game/Logic/Startgrid.hpp>
 #include <Graphics.hpp>
 #include <string>
 #include <vector>
