@@ -224,11 +224,31 @@ Kart* Game::addKart(KartType type){
 	Kart* k = new Kart(karts.size());
 	switch(type) {
 		case KartType_1:
-			// Changer maniabilité, vitesse, etc...
+			k->set<std::string>("skin", "");
+			k->set<int>("hp", 5);
+			k->set<float>("weight", 5);
+			k->set<float>("speedMaxForward", 5.f);
+			k->set<float>("speedMaxBack", -1.f);
+			k->set<float>("acceleration", 0.025f);
+			k->set<float>("maniability", 0.3f);
 			break;
 		case KartType_2:
+			k->set<std::string>("skin", "");
+			k->set<int>("hp", 8);
+			k->set<float>("weight", 8);
+			k->set<float>("speedMaxForward", 8.f);
+			k->set<float>("speedMaxBack", -2.f);
+			k->set<float>("acceleration", 0.01f);
+			k->set<float>("maniability", 0.2f);
 			break;
 		case KartType_3:
+			k->set<std::string>("skin", "");
+			k->set<int>("hp", 3);
+			k->set<float>("weight", 4);
+			k->set<float>("speedMaxForward", 4.f);
+			k->set<float>("speedMaxBack", -1.f);
+			k->set<float>("acceleration", 0.05f);
+			k->set<float>("maniability", 0.4f);
 			break;
 		default:
 			break;
