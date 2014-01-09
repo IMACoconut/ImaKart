@@ -6,6 +6,10 @@ include_directories(${OPENGL_INCLUDE_DIR})
 include_directories(third-party/SFML-2.1/include)
 add_subdirectory(third-party/SFML-2.1)
 
+set(BUILD_DEMO OFF)
+include_directories(third-party/bullet-2.82/include)
+add_subdirectory(third-party/bullet-2.82)
+
 include_directories(third-party/glew-1.10.0/include)
 add_definitions(-DGLEW_STATIC=1)
 add_subdirectory(third-party/glew-1.10.0)
@@ -27,6 +31,6 @@ include_directories(third-party/glm)
 include_directories(lib/include)
 add_subdirectory(lib)
 
-set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} imacoconut tinyxml2 tgui assimp ${SFML_LIBRARIES})
+set(ALL_LIBRARIES glew ${OPENGL_LIBRARIES} imacoconut tinyxml2 tgui assimp ${SFML_LIBRARIES} BulletDynamics BulletCollision LinearMath)
 
 add_subdirectory(template)

@@ -1,5 +1,7 @@
 #pragma once 
 #include <glm/glm.hpp>
+#include <btBulletDynamicsCommon.h>
+
 
 namespace Graph { class Node; }
 
@@ -8,16 +10,15 @@ namespace Phys {
 	
 	class Collidable {
 	public:
-		Collidable(Graph::Node* n, float mass, float acceleration, float speed, bool isCollidable, 
-			        bool gravity, glm::vec3 direction, glm::vec3 normal );
+		Collidable(Graph::Node* n);
+		void Init(btCollisionShape* shape);
+		~Collidable() {
+			delete m_shape;
+		}
 		
 
-		float mass, acceleration, speed; 
-		bool isCollidable;
-		bool gravity;
-		glm::vec3 direction;
-		glm::vec3 normal;
 		Graph::Node* collidableNode;
+		btCollisionShape* m_shape;
 				
 
 	};
