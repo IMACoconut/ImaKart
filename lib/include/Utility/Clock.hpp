@@ -25,6 +25,13 @@ class Clock {
 			else
 				return std::chrono::duration_cast<std::chrono::seconds>(pause-begin).count();
 		}
+		uint32_t GetMinutes() const {
+			auto elapsed = std::chrono::system_clock::now();
+			if(!paused)
+				return std::chrono::duration_cast<std::chrono::minutes>(elapsed-begin).count();
+			else
+				return std::chrono::duration_cast<std::chrono::minutes>(pause-begin).count();
+		}
 
 		void Pause() {
 			if(!paused)

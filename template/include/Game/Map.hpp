@@ -10,6 +10,7 @@
 #include <Utility.hpp>
 
 class Kart;
+
 typedef std::tuple<Kart*, Util::Clock, int, bool> KartInfo;
 
 class Map : public Entity, public Graph::Node{
@@ -25,18 +26,22 @@ public:
 	void hasFinishedLoop(Kart& k);
 	void update(float elapsed);
 
-	Kart* addKart(KartType type);
+	void addKart(Kart* k);
 	std::vector<KartInfo> getResults();
 
 	Graph::Heightmap* getHeightmap();
 
+	std::vector<Checkpoint*> m_checkpoints; 
 
 private:
+	void sortKartByPosition();
+
 	Graph::Heightmap mesh;
 	Graph::Material hmtex;
 	Startgrid grid;
-	std::vector<Checkpoint*> m_checkpoints; 
 	std::vector<ItemSpawn*> m_itemSpawns;
 	std::vector<KartInfo> m_karts;
+
+	//void sortKartByPosition();
 
 };

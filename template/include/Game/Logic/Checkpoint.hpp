@@ -2,7 +2,7 @@
 
 #include <Graphics/Tools/Mesh.hpp>
 
-#define DIST_FACTOR 10.f
+#define DIST_FACTOR 200.f
 
 class Map;
 class Kart;
@@ -14,5 +14,5 @@ protected:
 	Map& m_map;
 	int m_pos;
 private:
-
+	static int countCheck;
 };

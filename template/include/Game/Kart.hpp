@@ -30,6 +30,7 @@ typedef enum {
 class Alteration;
 class Item;
 class KartBehavior;
+
 class Kart: public Entity
 {
 public:
@@ -38,7 +39,7 @@ public:
 	~Kart();
 
 	void setPosition(glm::vec3 position, float horizontalAngle);
-	void updateOrientation(Graph::Heightmap& heightmap, float elapsed);
+	glm::vec3 updateOrientation(Graph::Heightmap& heightmap, float elapsed);
 	void setBehavior(KartBehavior* m_behavior);
 	void loadIntoScene(Graph::Scene& s);
 	void update(Graph::Heightmap& heightmap, float elapsed);//mise à jours de tout les paramètre du kart
@@ -50,7 +51,7 @@ public:
 	void giveItem(Item* item);
 
 
-	void physxKart(Graph::Heightmap& heightmap, float elapsed);
+	glm::vec3 physxKart(Graph::Heightmap& heightmap, float elapsed, const glm::vec3& pos);
 
 	Graph::Mesh* getMesh() { return &mesh;}
 
