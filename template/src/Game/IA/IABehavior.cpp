@@ -43,9 +43,12 @@ void IABehavior::goToTheNextCheckpoint(){
 	if(toCheck == (int)(m_directions.size()) )
 		toCheck = 0;
 
-	glm::vec3 direction = m_directions[toCheck]->getPosition();
-	float angle = glm::orientedAngle(glm::normalize(m_kart.get<glm::vec3>("position") - direction), m_kart.get<glm::vec3>("forward"), m_kart.get<glm::vec3>("up"));
+	glm::vec3 direction = m_kart.get<glm::vec3>("position") - m_directions[toCheck]->getPosition();
+	float angle = glm::orientedAngle(glm::normalize(direction), m_kart.get<glm::vec3>("forward"), m_kart.get<glm::vec3>("up"));
+	float distance = glm::length(direction);
 
+std::cout<<angle<<" : "<<distance<<std::endl;
+	
 	if(angle < -0.000001)
 		m_kart.turn(1.f);
 	else if(angle > 0.000001)
@@ -53,7 +56,25 @@ void IABehavior::goToTheNextCheckpoint(){
 	else
 		m_kart.turn(0);
 	
-	m_kart.accelerate(1.f);
+	if(distance > 700){
+		if(fabs(angle) < 90)
+			m_kart.accelerate(-1.0);
+
+		else if(fabs(angle) < 135)
+			m_kart.accelerate(0);
+		else
+			m_kart.accelerate(1.f);
+	}
+	else{
+		if(fabs(angle) < 135)
+			m_kart.accelerate(-1.0);
+		else if(fabs(angle) < 160)
+			m_kart.accelerate(0);
+		else
+			m_kart.accelerate(1.0);
+
+
+	}
 	/*m_kart.turn(-1.f);
 	*/
 }
