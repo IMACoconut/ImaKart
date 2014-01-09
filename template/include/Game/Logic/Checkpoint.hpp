@@ -14,5 +14,5 @@ protected:
 	Map& m_map;
 	int m_pos;
 private:
-
+	static int countCheck;
 };

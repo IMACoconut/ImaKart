@@ -2,6 +2,7 @@
 #include <Game/Logic/Checkpoint.hpp>
 #include <Game/Logic/ItemSpawn.hpp>
 #include <Game/IA/PlayerBehavior.hpp>
+#include <Game/IA/IABehavior.hpp>
 #include <tinyxml2/tinyxml2.h>
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
@@ -202,7 +203,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		tmp->setPosition(glm::vec3(position.x, position.y, position.z), 0.f);
 		tmp->updateOrientation(this->mesh, 1);
 		tmp->loadIntoScene(scene);
-		tmp->setBehavior(new PlayerBehavior(*tmp, 0));
+		tmp->setBehavior(new IABehavior(*tmp, m_checkpoints));
 	}
 
 	return true;
@@ -247,13 +248,17 @@ void Map::hasFinishedLoop(Kart& k) {
 	int id = k.get<int>("id");
  	auto& infos = m_karts[id];
  	int& loops = std::get<2>(infos);
- 	if(loops == 0) {
+ 	if(loops == 1) {
  		bool& finished = std::get<3>(infos);
  		finished = true;
  		auto& clock = std::get<1>(infos);
  		clock.Pause();
+
  	} else
  		--loops;
+
+ 	auto& clock = std::get<1>(infos);
+ 	std::cout << clock.GetMinutes()<< " : "<<clock.GetSeconds() % 60<<std::endl;
 }
 
 Graph::Heightmap* Map::getHeightmap() {

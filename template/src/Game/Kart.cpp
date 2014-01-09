@@ -26,7 +26,7 @@ static const float EPSILON_KART = 0.005;
 		add("currentSpeed", new Component<float>(1, 0.f));
 		add("acceleration", new Component<float>(1, 0.01f));
 		add("brake", new Component<float>(1,0.01f));
-		add("maniability", new Component<float>(1, 1.f));
+		add("maniability", new Component<float>(1, 0.2));
 		add("position", new Component<glm::vec3>(1, glm::vec3(3, 3, 3)));
 		add("forward", new Component<glm::vec3>(1, glm::vec3(1, 0, 0)));
 		add("up", new Component<glm::vec3>(1, glm::vec3(0, 1, 0)));
@@ -62,7 +62,7 @@ static const float EPSILON_KART = 0.005;
 
 	void Kart::updateOrientation(Graph::Heightmap& heightmap, float elapsed){
 
-		float horizontalAngle =get<float>("horizontalAngle");
+		float horizontalAngle =get<float>("horizontalAngle"), maniability = get<float>("maniability");
 		glm::vec3 position = get<glm::vec3>("position");
 		glm::vec3 forward = get<glm::vec3>("forward");
 		glm::vec3 up = get<glm::vec3>("up");
@@ -85,7 +85,7 @@ static const float EPSILON_KART = 0.005;
 
 
 		//calcule de l'angle horizontale du kart (action du joueur)
-		glm::mat4 rotH = elapsed*glm::rotate(glm::mat4(), horizontalAngle, up);
+		glm::mat4 rotH = elapsed*maniability*glm::rotate(glm::mat4(), horizontalAngle, up);
 		forward = glm::vec3(rotH*glm::vec4(forward, 1.f));
 
 		set<glm::vec3>("forward", glm::normalize(forward));
