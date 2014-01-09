@@ -201,7 +201,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		pos.y = mesh.realHeight(pos.x, pos.z);
 		tmp->setPosition(pos);
 		tmp->setScale(glm::vec3(50,50,50));
-		scene.addMesh(tmp);
+		//scene.addMesh(tmp);
 		m_checkpoints.push_back(tmp);
 	}
 	
@@ -241,7 +241,7 @@ void Map::update(float e) {
 		i->update(e);
 
 	for(auto k : m_karts) {
-		Kart* kart = std::get<0>(k);		
+		Kart* kart = std::get<0>(k);	
 		kart->update(mesh, e);
 		for(auto c: m_checkpoints)
 			c->isReached(*kart);
@@ -268,7 +268,7 @@ void Map::addKart(Kart* k) {
 	//m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
 }
 
-std::vector<KartInfo> Map::getResults() {
+std::vector<KartInfos> Map::getResults() {
 	sortKartByPosition();
 	return m_karts;
 }
@@ -300,7 +300,7 @@ struct SortKart {
 
 	SortKart(Map* map) : m(map){}
 
-	bool operator()(const KartInfo& k1, const KartInfo& k2){
+	bool operator()(const KartInfos& k1, const KartInfos& k2){
 
 		int loop1 = std::get<2>(k1), loop2 = std::get<2>(k2);
 		int checkpoint1 = (std::get<0>(k1))->get<int>("checkpoint");
@@ -317,7 +317,7 @@ struct SortKart {
 			return false;
 		else if(checkpoint1 > checkpoint2)
 			return true;
-		else if (glm::length(position1 - m->m_checkpoints[checkpoint1]->getPosition()) < glm::length(position2 - m->m_checkpoints[checkpoint2]->getPosition()))
+		else if (glm::length(position1 - m->getCheckpoints()[checkpoint1]->getPosition()) < glm::length(position2 - m->getCheckpoints()[checkpoint2]->getPosition()))
 			return false;
 		
 		return true;

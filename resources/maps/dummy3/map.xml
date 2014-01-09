@@ -1,10 +1,10 @@
 <map>
 	<info>
-		<name>Test</name>
-		<preview>detail.png</preview>
+		<name>This Aint Luigi's Island</name>
+		<preview>detailmap2.png</preview>
 		<scale>16</scale>
 		<heightmap>heightmap8.png</heightmap>
-		<detailmap>detail3.png</detailmap>
+		<detailmap>detailmap2.png</detailmap>
 		<time></time>
 		
 	</info>

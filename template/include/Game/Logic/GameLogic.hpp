@@ -18,12 +18,32 @@ namespace Graph {
 	class Camera;
 }
 
+struct MapInfo {
+	MapInfo(const std::string& file) :
+		file(file)
+	{}
+
+	Util::FilePath file;
+	std::string name, image;
+};
+
+struct KartInfo {
+	KartInfo(const std::string& file) :
+		file(file)
+	{}
+
+	Util::FilePath file;
+	std::string name;
+	KartType type;
+};
+
 class GameLogic {
 public:
 	static GameLogic& getInstance();
 	
 	Item* randomItem();
 	Kart* createKart(KartType type);
+	Map* getMap();
 
 	void setCamera(Graph::Camera* cam);
 	void loadMap(const std::string& map);
@@ -35,12 +55,17 @@ public:
 
 	Util::XboxInput& getXboxInput();
 	Util::MouseInput& getMouseInput();
-	std::vector<KartInfo> getRaceResults();
+	std::vector<KartInfos> getRaceResults();
+
+	const std::vector<MapInfo>& getMapList();
+	const std::vector<KartInfo>& getKartList();
 
 private:
 	GameLogic();
 	~GameLogic();
 
-	Map* m_map;
+	Map m_map;
 	Graph::Camera* m_camera;
+	std::vector<MapInfo> m_maps;
+	std::vector<KartInfo> m_karts;
 };

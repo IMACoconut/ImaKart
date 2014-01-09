@@ -11,7 +11,7 @@
 
 class Kart;
 
-typedef std::tuple<Kart*, Util::Clock, int, bool> KartInfo;
+typedef std::tuple<Kart*, Util::Clock, int, bool> KartInfos;
 
 class Map : public Entity, public Graph::Node{
 public:
@@ -27,11 +27,14 @@ public:
 	void update(float elapsed);
 
 	void addKart(Kart* k);
-	std::vector<KartInfo> getResults();
+	std::vector<KartInfos> getResults();
 
 	Graph::Heightmap* getHeightmap();
 
-	std::vector<Checkpoint*> m_checkpoints; 
+	const std::vector<Checkpoint*>& getCheckpoints() const {
+		return m_checkpoints;
+	}
+	
 
 private:
 	void sortKartByPosition();
@@ -40,8 +43,8 @@ private:
 	Graph::Material hmtex;
 	Startgrid grid;
 	std::vector<ItemSpawn*> m_itemSpawns;
-	std::vector<KartInfo> m_karts;
-
+	std::vector<KartInfos> m_karts;
+	std::vector<Checkpoint*> m_checkpoints; 
 	//void sortKartByPosition();
 
 };

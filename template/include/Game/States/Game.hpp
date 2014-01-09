@@ -11,9 +11,7 @@ class GameEngine;
 class Game : public GameState
 {
 private:
-	Graph::Heightmap mesh;
 	Graph::Mesh mesh2;
-	Graph::Material hmtex;
 	Graph::Skydome sky;
 	Graph::PointLight light;
 	Graph::PointLight light4;
@@ -23,9 +21,10 @@ private:
 	Graph::Camera* cam;
 	sf::Clock frameTime, clock, timeOfDay;
 	int fps = 0;
-	Map m;
-	GameEngine* m_game;
 	LoadingState<Game> m_loader;
+	Map* map;
+	GameEngine* m_game;
+	
 	std::vector<Kart*> karts;
 
 public:

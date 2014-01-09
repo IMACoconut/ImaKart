@@ -83,9 +83,9 @@ static const float EPSILON_KART = 0.005;
 
 
 		//calcule de l'angle horizontale du kart (action du joueur)
-			std::cout << elapsed*maniability*horizontalAngle << " " << horizontalAngle << std::endl;
-		glm::mat4 rotH = glm::rotate(glm::mat4(), elapsed*maniability*horizontalAngle, up);
-		forward = glm::vec3(rotH*glm::vec4(glm::vec3(1, 0, 0), 1.f));
+		//std::cout << elapsed*maniability*horizontalAngle << " " << horizontalAngle << std::endl;
+		glm::mat4 rotH = glm::rotate(glm::mat4(), horizontalAngle, up);
+		forward = glm::vec3(rotH*glm::vec4(1,0,0, 1.f));
 
 		std::cout << " " << position.x << " " << position.y << " " << position.z << std::endl;
 		//std::cout << forward.x << " " << forward.y << " " << forward.z << std::endl;
@@ -134,11 +134,11 @@ this->mesh.setScale(glm::vec3(10,10,10));
 		
 
 		//physx
-		tmp = physxKart(heightmap, elapsed, tmp);
+		//tmp = physxKart(heightmap, elapsed, tmp);
 		mesh.setPosition(tmp);
 		//mise à jour de l'orientation du kart
-		tmp = updateOrientation(heightmap, elapsed);
-		mesh.setRotation(tmp);
+		//tmp = updateOrientation(heightmap, elapsed);
+		//mesh.setRotation(tmp);
 		
 	}
 

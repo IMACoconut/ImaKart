@@ -12,7 +12,7 @@
 #include <Game/Logic/GameLogic.hpp>
 
 Game::Game() :
-	m_loader(*this)
+	m_loader(*this), map(nullptr)
 {
 	Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
@@ -33,6 +33,7 @@ Game::~Game(){
 
 void Game::Init(GameEngine* game) {
 	m_game = game;
+	map = GameLogic::getInstance().getMap();
 	load();
 	//game->PushState(m_loader);
 }
@@ -82,7 +83,7 @@ void Game::load(){
 
 	
 	light3.setColor(glm::vec3(1,1,1));
-	light3.setIntensity(.4f);
+	light3.setIntensity(.7f);
 	light3.setPosition(glm::vec3(0,-9000,0));
 	light3.setShader(lightDirectional);
 	
@@ -92,11 +93,6 @@ void Game::load(){
 	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light4);
-	
-
-	if(!m.loadFromFile("../resources/maps/dummy3/map.xml"))
-		throw -1;
-
 
 //////init kart ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	int numberOfKarts = 2;
@@ -108,9 +104,6 @@ void Game::load(){
 		//std::cout << p.x << " " << p.y << " " << p.z << std::endl;
 	}
 
-	if(!m.loadIntoScene(scene))
-		throw -1;
-
 	for (int i = 0; i < numberOfKarts; ++i)
 	{
 		auto tmp = karts[i];
@@ -120,11 +113,11 @@ void Game::load(){
 		}
 		else {
 			std::cout << "IA" << std::endl;
-			tmp->setBehavior(new IABehavior(*tmp, m.m_checkpoints));
+			//tmp->setBehavior(new IABehavior(*tmp, map->getCheckpoints()));
 		}
 	}
 
-
+map->loadIntoScene(scene);
 	
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,7 +125,6 @@ void Game::load(){
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(cam);
 	scene.setCamera(cam);
-	
 
 	m_game->getWindow().setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
@@ -213,7 +205,7 @@ void Game::Update(GameEngine* game){
 	light4.setPosition(glm::vec3(128*14+sin(time*10)*128*3,100*16,128*16+cos(time*10)*128*3));
 
 
-	m.update(elapsed);
+	map->update(elapsed);
 	scene.update(elapsed);
 	clock.restart();
 	if(frameTime.getElapsedTime().asSeconds() >= 1) {
@@ -267,7 +259,7 @@ Kart* Game::addKart(KartType type){
 		default:
 			break;
 	}
-	m.addKart(k);
+	map->addKart(k);
 	karts.push_back(k);
 	return k;
 }

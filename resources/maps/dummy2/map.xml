@@ -1,7 +1,8 @@
 <map>
 	<info>
-		<name>Test</name>
+		<name>This Is Dummy</name>
 		<scale>16</scale>
+		<preview>detail.png</preview>
 		<heightmap>heightmap.png</heightmap>
 		<detailmap>detail.png</detailmap>
 	</info>
