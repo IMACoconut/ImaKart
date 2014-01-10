@@ -4,22 +4,15 @@
 #include <Physics/BSphere.hpp>
 #include <Physics/Collidable.hpp>
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <btBulletDynamicsCommon.h>
-
+#include <iostream>
 #include <vector>
 
 
 namespace Phys {
 
-	/*void Physics::Init() {
-		myCollisionConfiguration = new btDefaultCollisionConfiguration();
-		myDispatcher = new	btCollisionDispatcher(myCollisionConfiguration);
-		myBroadphase = new btDbvtBroadphase();
-		mySequentialImpulseConstraintSolver = new btSequentialImpulseConstraintSolver;
-		myWorld = new btDiscreteDynamicsWorld(myDispatcher,myBroadphase,mySequentialImpulseConstraintSolver,myCollisionConfiguration); 
-		myWorld->setGravity( btVector3(0,-9.81,0) ); 	
 
-	}*/
 
 	Physics::Physics() : 
 		myBroadphase(),
@@ -28,7 +21,8 @@ namespace Phys {
 		mySequentialImpulseConstraintSolver(),
 		myWorld(&myDispatcher, &myBroadphase, &mySequentialImpulseConstraintSolver,&myCollisionConfiguration)
 	{
-		myWorld.setGravity(btVector3(0.,9.81,0.));
+		myWorld.setGravity(btVector3(0.,-10,0.));
+		std::cout << "initialisation Physics" << std::endl;
 	}
 
 
@@ -40,32 +34,41 @@ namespace Phys {
 		vecCollidable.push_back(n);
 	}
 
+	void Physics::Initialisation() {
+		
+	}
 
-	/*
-
-	void Physics::Update(float elapsed) {
+	void Physics::AddBodyToWorld() {
 		for(Collidable* c1:vecCollidable) {
-			for(Collidable* c2:vecCollidable) {
-				if(c1 == c2) continue ;
-					if(c1->isCollidable && c1->isCollidable &&
-						(c1->collidableNode->getBoundingBox()).collide(c2->collidableNode->getBoundingBox()) &&
-						(c1->collidableNode->getBoundingSphere()).collide(c2->collidableNode->getBoundingSphere())  ) {
-						//c1 and c2 are colliding
-						
-						if(!c1->gravity && !c2->gravity) continue ; //objects not moving
-						if(c1->gravity && !c2->gravity) { 
-							
-
-						}	
-
-
-
-
-
-					}
-			}
+			
+			myWorld.addRigidBody(c1->body);
+			std::cout << "body added to world" << std::endl;
 		}
-	} */
+	}
+
+	void Physics::update(float elapsed) {
+		myWorld.stepSimulation( elapsed );
+
+		for(Collidable* c1:vecCollidable) {
+			
+			glm::vec3 test = c1->collidableNode->getBoundingBox().getCenter();
+			c1->myMotionState->m_graphicsWorldTrans.getOpenGLMatrix( c1->matrix );
+			glm::mat4 M = glm::make_mat4(c1->matrix); // pos2(c1->matrix[12], c1->matrix[13], c1->matrix[14]); 
+			glm::vec3 res ;
+
+			if(c1->statique == true) res = glm::vec3(0.,0.,0.);
+			else res = glm::vec3(M*glm::vec4(test, 1.f)); 
+
+			c1->collidableNode->setPosition(res) ;
+
+			test = c1->collidableNode->getBoundingBox().getSize();
+			std::cout << test.x << "," << test.y << "," << test.z << std::endl;
+			//test = c1->collidableNode->getPosition() ; 
+	
+			c1->collidableNode->update(0);
+		}
+		
+	} 
 
 	Collidable* Physics::getCollidable(int index){
 		return vecCollidable[index];

@@ -45,10 +45,10 @@ void IABehavior::goToTheNextCheckpoint(){
 
 	glm::vec3 direction = m_directions[toCheck]->getPosition();
 	float angle = glm::orientedAngle(glm::normalize(m_kart.get<glm::vec3>("position") - direction), m_kart.get<glm::vec3>("forward"), m_kart.get<glm::vec3>("up"));
-
-	if(angle < -0.000001)
+	//std::cout<<toCheck<<" "<<angle<<std::endl;
+	if(angle < -0.00000001)
 		m_kart.turn(1.f);
-	else if(angle > 0.000001)
+	else if(angle > 0.00000001)
 		m_kart.turn(-1.f);
 	else
 		m_kart.turn(0);

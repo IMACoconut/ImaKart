@@ -7,6 +7,8 @@
 #include <Game/Kart.hpp>
 #include <Game/Map.hpp>
 
+#include <Physics/Physics.hpp>
+
 class GameEngine;
 class Game : public GameState
 {
@@ -28,6 +30,7 @@ private:
 	LoadingState<Game> m_loader;
 
 	std::vector<Kart*> karts;
+	Phys::Physics PhysicManager;
 
 public:
 	Game();

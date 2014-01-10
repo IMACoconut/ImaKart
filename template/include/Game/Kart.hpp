@@ -5,7 +5,7 @@
 #include <SFML/System/Vector3.hpp>
 #include <Game/Entity.hpp>
 #include <Graphics.hpp>
-
+#include <Physics/Collidable.hpp>
 //namespace Game{
 
 enum KartCondition{
@@ -50,10 +50,12 @@ public:
 
 	void giveItem(Item* item);
 
-
+	Graph::Mesh* getMesh() { return &mesh;}
 	void physxKart(Graph::Heightmap& heightmap, float elapsed);
 
 		Graph::Mesh mesh;
+		Phys::Collidable collidable;
+
 	private:
 		KartBehavior* m_behavior;
 		KartMovement m_movement;

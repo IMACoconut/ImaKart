@@ -6,6 +6,8 @@
 #include <Game/VectorAlt.hpp>
 #include <Game/Logic/Item.hpp>
 #include <Game/IA/KartBehavior.hpp>
+#include <Physics/Collidable.hpp>
+#include <btBulletDynamicsCommon.h>
 
 //std::string t = get<std::string>("skin");
 
@@ -13,7 +15,7 @@
 static const float EPSILON_KART = 0.005;
 
 	Kart::Kart(int id) :
-		m_behavior(nullptr)/*,
+		collidable(&mesh), m_behavior(nullptr)/*,
 		m_speedfactor(0), m_rotatefactor(0)*/
 	{
 		add("id", new Component<int>(1, id));
@@ -26,7 +28,7 @@ static const float EPSILON_KART = 0.005;
 		add("currentSpeed", new Component<float>(1, 0.f));
 		add("acceleration", new Component<float>(1, 0.01f));
 		add("brake", new Component<float>(1,0.01f));
-		add("maniability", new Component<float>(1, 0.2));
+		add("maniability", new Component<float>(1, 0.5f));
 		add("position", new Component<glm::vec3>(1, glm::vec3(3, 3, 3)));
 		add("forward", new Component<glm::vec3>(1, glm::vec3(1, 0, 0)));
 		add("up", new Component<glm::vec3>(1, glm::vec3(0, 1, 0)));
@@ -88,7 +90,7 @@ static const float EPSILON_KART = 0.005;
 		glm::mat4 rotH = elapsed*maniability*glm::rotate(glm::mat4(), horizontalAngle, up);
 		forward = glm::vec3(rotH*glm::vec4(forward, 1.f));
 
-		set<glm::vec3>("forward", glm::normalize(forward));
+		set<glm::vec3>("forward", forward);
 		set<glm::vec3>("up", glm::normalize(up));
 
 		set<float>("horizontalAngle", horizontalAngle);
@@ -100,8 +102,14 @@ static const float EPSILON_KART = 0.005;
 
 	void Kart::loadIntoScene(Graph::Scene& s){
 
-this->mesh = Graph::Mesh::CreateAxis();
-this->mesh.setScale(glm::vec3(10,10,10));
+		this->mesh = Graph::Mesh::CreateAxis();
+		this->mesh.setScale(glm::vec3(10,10,10));
+		this->mesh.update(0);
+		glm::vec3 test = this->mesh.getBoundingBox().getSize();
+		btCollisionShape* shape = new btBoxShape( btVector3(test.x,test.y,test.z) );
+		collidable.Init(shape);
+
+
 		//this->mesh.loadFromFile("../resources/models/kart.3DS");
 		s.addMesh(&mesh);
 	}

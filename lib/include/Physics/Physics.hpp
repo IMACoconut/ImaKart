@@ -7,16 +7,17 @@ namespace Phys {
 class Collidable;
 
 	class Physics {
-	public:
+	public: 
 		Physics();
 		//Physics(const Physics& P);
-		~Physics();
+		//~Physics();
 		void addCollidable(Collidable* n);
-		//void Update(float elapsed);
+		void update(float elapsed);
  		Collidable* getCollidable(int index);
+ 		void Initialisation();
+ 		void AddBodyToWorld();
 
-	protected:
-		std::vector<Collidable*> vecCollidable; //vecteur de tous nos objets physique
+ 		std::vector<Collidable*> vecCollidable; //vecteur de tous nos objets physique
 
 		
 		btDbvtBroadphase myBroadphase;
@@ -24,7 +25,13 @@ class Collidable;
 		btCollisionDispatcher myDispatcher;
 		btSequentialImpulseConstraintSolver mySequentialImpulseConstraintSolver;
 		btDiscreteDynamicsWorld myWorld;
-		btTransform myTransform;
+		
+ 		btDefaultMotionState *myMotionState;
+ 		
+
+	protected:
+		
+		
 
 
 	};

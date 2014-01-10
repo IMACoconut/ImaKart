@@ -7,14 +7,15 @@
 #include <vector>
 #include <tuple>
 #include <Utility.hpp>
+#include <Physics/Collidable.hpp>
 
 class Kart;
 
 typedef std::tuple<Kart*, Util::Clock, int, bool> KartInfo;
 
-class Map : public Entity, public Graph::Node{
+class Map : public Entity{
 public:
-	Map() = default;
+	Map() ;
 	~Map();
 
 	bool loadFromFile(const std::string& file);
@@ -31,6 +32,7 @@ public:
 	Graph::Heightmap* getHeightmap();
 
 	std::vector<Checkpoint*> m_checkpoints; 
+	Phys::Collidable collidable;
 
 private:
 	void sortKartByPosition();

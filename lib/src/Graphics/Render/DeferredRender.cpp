@@ -330,7 +330,7 @@ void DeferredRender::renderScreen() {
 		save = true;
 	}*/
     m_screen.render();
- 
+ 	/*
  	int WINDOW_WIDTH = m_camera->getAspect().x;
  	int WINDOW_HEIGHT = m_camera->getAspect().y;
  	m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
@@ -352,7 +352,7 @@ void DeferredRender::renderScreen() {
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
                     WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
     m_gbuffer1.unbind(GL_READ_FRAMEBUFFER);
-
+	*/
  		/*
  	
  	

@@ -10,6 +10,10 @@
 #include <vector>
 #include <iostream>
 
+Map::Map() : 
+	collidable(&mesh) {}
+
+
 Map::~Map() {
 	while(m_checkpoints.size()) {
 		delete m_checkpoints.back();
@@ -206,6 +210,11 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		tmp->loadIntoScene(scene);
 		tmp->setBehavior(new IABehavior(*tmp, m_checkpoints));
 	}
+	//this->mesh.update(0);
+	glm::vec3 test = this->mesh.getBoundingBox().getSize(); glm::vec3 A(sc,sc/4,sc) ;
+	test*=A;
+	btCollisionShape* shape = new btBoxShape( btVector3(test.x,test.y,test.z) );
+	collidable.InitMap(shape);
 
 	return true;
 }
@@ -227,7 +236,7 @@ void Map::update(float e) {
 
 	for(auto k : m_karts) {
 		Kart* kart = std::get<0>(k);		
-		kart->update(mesh, e);
+		//kart->update(mesh, e);
 		for(auto c: m_checkpoints)
 			c->isReached(*kart);
 		for(auto i: m_itemSpawns)
