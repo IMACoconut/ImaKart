@@ -26,10 +26,6 @@ Game::Game() :
 }
 
 Game::~Game(){
-	delete cam;
-	for(auto* k: karts)
-		delete k;
-	karts.clear();
 }
 
 void Game::Init(GameEngine* game) {
@@ -37,21 +33,24 @@ void Game::Init(GameEngine* game) {
 	map = GameLogic::getInstance().getMap();
 	
 	auto& gui = m_game->getWindow().getGui();
+	gui.removeAllWidgets();
+
 	m_clockDisplay = tgui::Label::Ptr(gui);
 	m_clockDisplay->setPosition(750,40);
+	//scene.clear();
 	load();
 	//game->PushState(m_loader);
 }
 
 void Game::load(){
-
+	std::cout << 1 << std::endl;
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().getShader("skyBox");
 	Graph::Shader* lightPoint = Graph::ShaderManager::getInstance().getShader("DFlightPoint");
 	Graph::Shader* lightDirectional = Graph::ShaderManager::getInstance().getShader("DFlightDirectional");
 	Graph::Shader* lightSpot = Graph::ShaderManager::getInstance().getShader("DFlightSpot");
 	glClearColor(0,0,0,0);
 	
-	
+	std::cout << 2 << std::endl;
 	/*if(!mesh.loadFromFile("../resources/maps/dummy2/heightmap.png")) {
 		std::cerr << "Error" << std::endl;
 	}
@@ -87,13 +86,13 @@ void Game::load(){
 	light3.setIntensity(.7f);
 	light3.setPosition(glm::vec3(0,-9000,0));
 	light3.setShader(lightDirectional);
-	
+	std::cout << 3 << std::endl;
 	scene.setBackground(&sky);
 	scene.addLight(&light3);
 	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light4);
-
+	std::cout << 4 << std::endl;
 //////init kart ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	int numberOfKarts = 3;
 	int numberOfPlayer = 1;
@@ -119,21 +118,22 @@ void Game::load(){
 		}
 
 	}
-
-map->loadIntoScene(scene);
-	
+	std::cout << 5 << std::endl;
+	map->loadIntoScene(scene);
+	std::cout << 6 << std::endl;
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	cam =  new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
-	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
-	GameLogic::getInstance().setCamera(cam);
-	scene.setCamera(cam);
+	m_camera =  new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
+	m_camera->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
+	GameLogic::getInstance().setCamera(m_camera);
+	scene.setCamera(m_camera);
 
 	m_game->getWindow().setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
 	GameLogic::getInstance().startRace();
 	Util::LogManager::notice("Running");
+	std::cout << 7 << std::endl;
 }
 
 void Game::Pause(GameEngine* game){
@@ -151,7 +151,15 @@ void Game::Initialize(GameEngine* game){
 void Game::Release(GameEngine* game){
 	auto& gui = game->getWindow().getGui();
 	gui.removeAllWidgets();
+	delete m_camera;
+	m_camera = nullptr;
+	GameLogic::getInstance().setCamera(nullptr);
 	scene.clear();
+
+	for(auto* k: karts)
+		delete k;
+	karts.clear();
+	map = nullptr;
 }
 
 void Game::Cleanup(GameEngine* game){

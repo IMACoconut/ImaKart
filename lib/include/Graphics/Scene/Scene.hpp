@@ -19,7 +19,7 @@ namespace Graph {
 		{}
 
 		~Scene() {
-			delete m_method;
+			clear();
 		}
 
 		void setCamera(Camera* c) {

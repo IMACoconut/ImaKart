@@ -102,8 +102,8 @@ static const float EPSILON_KART = 0.005;
 
 	void Kart::loadIntoScene(Graph::Scene& s){
 
-this->mesh = Graph::Mesh::CreateAxis();
-this->mesh.setScale(glm::vec3(10,10,10));
+		mesh.loadFromFile("../resources/models/kart3.3DS");//Graph::Mesh::CreateAxis();
+		mesh.setScale(glm::vec3(0.1f,0.1f,0.1f));
 		//this->mesh.loadFromFile("../resources/models/kart.3DS");
 		s.addMesh(&mesh);
 	}

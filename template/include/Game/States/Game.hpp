@@ -17,7 +17,7 @@ private:
 	Graph::SpotLight light2;
 	Graph::DirectionalLight light3;
 	Graph::Scene scene;
-	Graph::Camera* cam;
+	Graph::Camera* m_camera;
 	sf::Clock frameTime, clock, timeOfDay;
 	int fps = 0;
 	LoadingState<Game> m_loader;
