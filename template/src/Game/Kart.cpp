@@ -69,7 +69,7 @@ static const float EPSILON_KART = 0.005;
 
 
 		//calcule de l'orientation du kart par rapport au sol
-		glm::vec3 normalMap = glm::normalize(heightmap.realNormal(position.x, position.z));
+		/*glm::vec3 normalMap = glm::normalize(heightmap.realNormal(position.x, position.z));
 		glm::vec3 normalU = glm::cross(normalMap, up);		
 		if((normalU.x > EPSILON_KART || normalU.x < -EPSILON_KART) || (normalU.y > EPSILON_KART || normalU.y < -EPSILON_KART) || (normalU.z > EPSILON_KART || normalU.z < -EPSILON_KART)){
 			normalU = glm::normalize(normalU);
@@ -81,11 +81,12 @@ static const float EPSILON_KART = 0.005;
 
 		forward = glm::vec3(rotat*glm::vec4(glm::vec3(1, 0, 0), 1.f));
 		up = glm::vec3(rotat*glm::vec4(glm::vec3(0, 1, 0), 1.f));
-
+*/
 
 		//calcule de l'angle horizontale du kart (action du joueur)
 		glm::mat4 rotH = elapsed*maniability*glm::rotate(glm::mat4(), horizontalAngle, up);
-		forward = glm::vec3(rotH*glm::vec4(forward, 1.f));
+		forward = glm::vec3(rotH*glm::vec4(glm::vec3(1,0,0), 1.f));
+		//forward = glm::vec3(rotH*glm::vec4(forward, 1.f));
 
 		set<glm::vec3>("forward", glm::normalize(forward));
 		set<glm::vec3>("up", glm::normalize(up));
