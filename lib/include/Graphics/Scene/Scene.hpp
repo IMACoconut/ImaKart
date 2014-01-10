@@ -39,12 +39,20 @@ namespace Graph {
 		}
 
 		void clear() {
+			//for(auto* l: m_lights)
+			//	m_method->unregisterLight(l);
 			m_lights.clear();
+			//for(auto* n: m_nodes)
+			//	m_method->unregisterNode(n);
+
 			m_nodes.clear();
 			m_background = nullptr;
+			//_method->setBackground(nullptr);
+			//m_method->setCamera(nullptr);
 			m_camera = nullptr;
-			delete m_method;
-			m_method = new DeferredRender();
+			m_method->clear();
+			//delete m_method;
+			//m_method = new DeferredRender();
 		}
 
 		void render() {

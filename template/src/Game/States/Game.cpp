@@ -152,6 +152,7 @@ void Game::Release(GameEngine* game){
 	auto& gui = game->getWindow().getGui();
 	gui.removeAllWidgets();
 	scene.clear();
+	map->clear();
 }
 
 void Game::Cleanup(GameEngine* game){

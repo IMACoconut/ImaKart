@@ -8,6 +8,7 @@ class Kart;
 class KartBehavior : public ia::Behavior {
 public:
 	KartBehavior(Kart& kart);
+	virtual ~KartBehavior() {}
 
 protected:
 	Kart& m_kart;

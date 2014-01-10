@@ -10,6 +10,13 @@ RenderMethod::RenderMethod() :
 	m_camera(nullptr), m_background(nullptr)
 {}
 
+void RenderMethod::clear() {
+	m_lights.clear();
+	m_meshs.clear();
+	m_camera = nullptr;
+	m_background = nullptr;
+}
+
 void RenderMethod::registerLight(Light* l) {
 	if(std::find(m_lights.begin(), m_lights.end(), l) == m_lights.end())
 		m_lights.push_back(l);
@@ -35,7 +42,8 @@ void RenderMethod::unregisterNode(Node* m) {
 
 void RenderMethod::setBackground(Skydome* sky) {
 	m_background = sky;
-	m_meshs.push_back(sky);
+	if(sky)
+		m_meshs.push_back(sky);
 }
 
 void RenderMethod::setCamera(Camera* c) {
