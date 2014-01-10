@@ -223,7 +223,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		//pos.x *= sc; pos.z *= sc;
 		pos.y = mesh.realHeight(pos.x, pos.z);//pos.y = mesh.offsetHeight(c[0].x,c[0].y)*get<float>("scale")/2;
 		tmp->setPosition(pos, 0);
-		//std::cout << pos.x << " " << pos.y << " " << pos.z << std::endl;
+		//std::cout << pos.x << " " << pos.y << " " << pos.z << std::endl
 	}
 
 	return true;
@@ -284,6 +284,7 @@ void Map::hasFinishedLoop(Kart& k) {
  	if(loops == 1) {
  		bool& finished = std::get<3>(infos);
  		finished = true;
+
  		auto& clock = GameLogic::getInstance().getClock();
  		std::get<1>(infos) = clock.GetMilliseconds();
  		//if(k.isPlayer()) {

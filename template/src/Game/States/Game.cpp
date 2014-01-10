@@ -92,11 +92,20 @@ void Game::load(){
 	scene.addLight(&light4);
 
 //////init kart ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	int numberOfKarts = 2;
+	int numberOfKarts = 3;
 	int numberOfPlayer = 1;
+
 	for (int i = 0; i < numberOfKarts; ++i)
 	{
-		Kart* tmp = addKart(KartType_3);
+		Kart* tmp;
+
+		if(i%3 == 0)
+			tmp = addKart(KartType_2);
+		else if(i%3 == 1)
+			tmp = addKart(KartType_3);
+		else if(i%3 == 2)
+			tmp = addKart(KartType_1);
+
 		if(i < numberOfPlayer){
 			//std::cout << "Player" << std::endl;
 			tmp->setBehavior(new PlayerBehavior(*tmp, i));
@@ -105,6 +114,9 @@ void Game::load(){
 			//std::cout << "IA" << std::endl;
 			tmp->setBehavior(new IABehavior(*tmp, map->getCheckpoints()));
 		}
+		else
+			tmp->setBehavior(new IABehavior(*tmp));
+
 	}
 
 map->loadIntoScene(scene);
@@ -240,16 +252,16 @@ Kart* Game::addKart(KartType type){
 			k->set<float>("speedMaxForward", 5.f);
 			k->set<float>("speedMaxBack", -1.f);
 			k->set<float>("acceleration", 0.025f);
-			k->set<float>("maniability", 0.35f);
+			k->set<float>("maniability", 0.95f);
 			break;
 		case KartType_2:
 			k->set<std::string>("skin", "");
 			k->set<int>("hp", 8);
 			k->set<float>("weight", 8);
-			k->set<float>("speedMaxForward", 8.f);
+			k->set<float>("speedMaxForward", 6.f);
 			k->set<float>("speedMaxBack", -2.f);
 			k->set<float>("acceleration", 0.01f);
-			k->set<float>("maniability", 0.3f);
+			k->set<float>("maniability", 0.90f);
 			break;
 		case KartType_3:
 			k->set<std::string>("skin", "");
@@ -258,7 +270,7 @@ Kart* Game::addKart(KartType type){
 			k->set<float>("speedMaxForward", 4.f);
 			k->set<float>("speedMaxBack", -1.f);
 			k->set<float>("acceleration", 0.05f);
-			k->set<float>("maniability", 0.4f);
+			k->set<float>("maniability", 1.f);
 			break;
 		default:
 			break;
