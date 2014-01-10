@@ -102,6 +102,29 @@ namespace Graph {
 			for(size_t y = 0; y<size.y-1; ++y)
 				buffer2.getVertex(x*(size.x-1)+y-1).normal = glm::normalize(buffer2.getVertex(x*(size.x-1)+y-1).normal);
 		*/
+		std::vector<sf::Vector3i> indices = buffer.getIndicesArray();
+		std::vector<Vertex3D> vertices = buffer.getVerticesArray();
+		std::vector<btVector3> vertices2;
+		std::vector<int> indices2;
+
+		for(sf::Vector3i i: indices) {
+		Vertex3D v1 = vertices[i.x];
+
+		vertices2.push_back( btVector3(v1.position.x, v1.position.y, v1.position.z) );
+
+		indices2.push_back(i.x); indices2.push_back(i.y); indices2.push_back(i.z);
+
+		// là v1 v2 et v3 c'est les 3 vertices de ton triangle
+		}
+
+
+       //vertices.push_back(btVector3(v.X, v.Y, v.Z));
+ 
+    btTriangleIndexVertexArray* vertexArray;
+	vertexArray = new btTriangleIndexVertexArray(indices2.size()/3, &indices2[0], sizeof(int)*3, vertices2.size(), &vertices2[0][0], sizeof(btVector3));
+	btBvhTriangleMeshShape* shape = new btBvhTriangleMeshShape(vertexArray, true);
+        
+
 
 		loadFromMemory(buffer2);
 

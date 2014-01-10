@@ -7,6 +7,7 @@
 #include <Utility/LogManager.hpp>
 #include <Utility/Tools.hpp>
 #include <Utility/FilePath.hpp>
+#include <BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h>
 #include <vector>
 #include <iostream>
 
@@ -211,9 +212,28 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		tmp->setBehavior(new IABehavior(*tmp, m_checkpoints));
 	}
 	//this->mesh.update(0);
-	glm::vec3 test = this->mesh.getBoundingBox().getSize(); glm::vec3 A(sc,sc/4,sc) ;
-	test*=A;
-	btCollisionShape* shape = new btBoxShape( btVector3(test.x,test.y,test.z) );
+	auto size = this->mesh.getSize();
+	std::vector<float> dataVector ;
+	size.x -=1;
+	size.y -=1;
+
+	for(size_t x = 0; x<size.x*size.y; x+=3){
+		dataVector.push_back(this->mesh.getMap()[x].x) ; 
+		dataVector.push_back(this->mesh.getMap()[x].y) ;
+		dataVector.push_back(this->mesh.getMap()[x].z) ;
+		//std::cout << this->mesh.getMap()[x].x << this->mesh.getMap()[x].y << this->mesh.getMap()[x].z  << std::endl;
+
+
+		 }
+	float* heightfield = &dataVector[0];
+		
+
+
+		//std::cout << this->mesh.getMap()[x].x << std::endl;
+
+	glm::vec3 test = this->mesh.getBoundingBox().getSize(); glm::vec3 A(sc,sc/5,sc) ;
+	test*=A; 
+	btCollisionShape* shape = new btBoxShape( btVector3(test.x,test.y,test.z) ); //this->mesh.shape ; // //new btHeightfieldTerrainShape(size.x,size.y, heightfield, 1255, 1, false, false); // 
 	collidable.InitMap(shape);
 
 	return true;

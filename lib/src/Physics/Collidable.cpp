@@ -16,7 +16,7 @@ namespace Phys {
 		m_shape = shape;
 		myTransform.setIdentity();
 		glm::vec3 test = collidableNode->getBoundingBox().getCenter();
-			myTransform.setOrigin( btVector3(500,  1500 , 500) ); 
+			myTransform.setOrigin( btVector3(500.5,1589.5,500.5) ); 
 			btVector3 localInertia(0,0,0);
 			btScalar mass = 0.5f;
 
@@ -36,9 +36,9 @@ namespace Phys {
 		myTransform.setIdentity();
 		glm::vec3 test = collidableNode->getBoundingBox().getCenter();
 			myTransform.setOrigin( btVector3(test.x,test.y,test.z) ); 
-			std::cout << test.x << "," << test.y << "," << test.z << std::endl;
-			glm::vec3 size = collidableNode->getBoundingBox().getSize();
-			std::cout << size.x << "," << size.y << "," << size.z << std::endl;
+			//std::cout << test.x << "," << test.y << "," << test.z << std::endl;
+			//glm::vec3 size = collidableNode->getBoundingBox().getSize();
+			//std::cout << size.x << "," << size.y << "," << size.z << std::endl;
 			btVector3 localInertia(0,0,0);
 			btScalar mass = 0.f;
 
