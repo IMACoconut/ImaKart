@@ -18,7 +18,14 @@ Map::~Map() {
 	}
 }
 bool Map::loadFromFile(const std::string& file){
-
+	while(m_checkpoints.size()) {
+		delete m_checkpoints.back();
+		m_checkpoints.pop_back();
+	}
+	for(auto& it : m_karts) {
+		delete std::get<0>(it);
+	}
+	m_karts.clear();
 	/*int numberOfKarts = 1;
 	int numberOfPlayer = 1;
 */

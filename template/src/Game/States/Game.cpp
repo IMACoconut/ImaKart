@@ -27,6 +27,9 @@ Game::Game() :
 
 Game::~Game(){
 	delete cam;
+	for(auto* k: karts)
+		delete k;
+	karts.clear();
 }
 
 void Game::Init(GameEngine* game) {
@@ -114,8 +117,6 @@ void Game::load(){
 			//std::cout << "IA" << std::endl;
 			tmp->setBehavior(new IABehavior(*tmp, map->getCheckpoints()));
 		}
-		else
-			tmp->setBehavior(new IABehavior(*tmp));
 
 	}
 
@@ -123,7 +124,7 @@ map->loadIntoScene(scene);
 	
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	cam =  new Graph::KartCamera(m_game->getWindow(), &(karts[1]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
+	cam =  new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(cam);
 	scene.setCamera(cam);
@@ -148,7 +149,9 @@ void Game::Initialize(GameEngine* game){
 }
 
 void Game::Release(GameEngine* game){
-
+	auto& gui = game->getWindow().getGui();
+	gui.removeAllWidgets();
+	scene.clear();
 }
 
 void Game::Cleanup(GameEngine* game){

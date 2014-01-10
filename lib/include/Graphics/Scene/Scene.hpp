@@ -28,12 +28,23 @@ namespace Graph {
 		}
 
 		void update(float elapsed) {
-			m_camera->update(elapsed);
-			m_background->update(elapsed);
+			if(m_camera)
+				m_camera->update(elapsed);
+			if(m_background)
+				m_background->update(elapsed);
 			for(Light* l: m_lights)
 				l->update(elapsed);
 			for(Node* n : m_nodes)
 				n->update(elapsed);
+		}
+
+		void clear() {
+			m_lights.clear();
+			m_nodes.clear();
+			m_background = nullptr;
+			m_camera = nullptr;
+			delete m_method;
+			m_method = new DeferredRender();
 		}
 
 		void render() {

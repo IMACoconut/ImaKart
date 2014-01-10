@@ -37,7 +37,7 @@ static const float EPSILON_KART = 0.005;
 	}
 
 	Kart::~Kart(){
-
+		delete m_behavior;
 	}
 
 	void Kart::setPosition(glm::vec3 position, float horizontalAngle){
