@@ -3,7 +3,6 @@
 #include <vector>
 #include <stack>
 
-#include <Game/Logic/Checkpoint.hpp>
 #include <Game/IA/KartBehavior.hpp>
 #include <Game/Kart.hpp>
 
@@ -15,18 +14,20 @@ public:
 		STEP_FORWARD
 	} IAPriority;
 
-	IABehavior(Kart& kart, std::vector<Checkpoint*> map_check);
+	IABehavior(Kart& kart, const std::vector<Checkpoint*>& map_check);
+
 
 protected:
 	void onUpdate(float elapsed);
 
 private:
 	std::vector<IAPriority> m_priorities;
-	std::vector<Checkpoint*> m_directions;
 
-	void addCheckpoints(std::vector<Checkpoint*> map_check);
+	const std::vector<Checkpoint*>& m_directions;
+
+
 	void pusshPrioritie(IAPriority prioritie);
 	void punishPlayer();
 	void findItem();
-	void goToTheNextCheckpoint();
+	void goToTheNextCheckpoint(float elapsed);
 };

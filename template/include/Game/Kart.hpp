@@ -14,9 +14,9 @@ enum KartCondition{
 };
 
 typedef enum {
-	KartType_1,
-	KartType_2,
-	KartType_3
+	KartType_1 = 0,
+	KartType_2 = 1,
+	KartType_3 = 2
 } KartType;
 
 typedef enum {
@@ -43,8 +43,8 @@ public:
 	void setBehavior(KartBehavior* m_behavior);
 	void loadIntoScene(Graph::Scene& s);
 	void update(Graph::Heightmap& heightmap, float elapsed);//mise à jours de tout les paramètre du kart
-	void accelerate(float factor);
-	void turn(float factor);
+	void accelerate(float factor, float elapsed);
+	void turn(float factor, float elapsed);
 	void useItem(bool state);				//utilise un objet
 	void addAlteration(Alteration* alteration);
 
@@ -53,12 +53,16 @@ public:
 	Graph::Mesh* getMesh() { return &mesh;}
 	void physxKart(Graph::Heightmap& heightmap, float elapsed);
 
+	Graph::Mesh* getMesh() { return &mesh; };
 		Graph::Mesh mesh;
+
 		Phys::Collidable collidable;
+
 
 	private:
 		KartBehavior* m_behavior;
 		KartMovement m_movement;
+		Graph::Material texture;
 		//float m_speedfactor, m_rotatefactor;
 };
 //}

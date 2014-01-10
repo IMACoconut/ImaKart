@@ -45,7 +45,9 @@ namespace Graph {
 						case Uniform_Float:
 							glUniform1f(loc, *reinterpret_cast<const GLfloat*>(val));
 							break;
-						case Uniform_Integer: 
+
+						case Uniform_Integer:
+
 							glUniform1i(loc, *reinterpret_cast<const GLint*>(val));	
 						default:
 							break;

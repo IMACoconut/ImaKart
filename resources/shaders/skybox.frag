@@ -7,7 +7,7 @@ uniform sampler2D textureChannel2;
 
 in vec3 vertexPos;
 in vec3 vertexNorm;
-uniform vec3 lightPos;
+vec3 lightPos;
 uniform float Near;
 uniform float Far;
 
@@ -18,8 +18,21 @@ float saturate(float value)
 	return clamp(value,0.0,1.0);
 }
 
+float LinearizeDepth()
+{
+  float n = Near; // camera z near
+  float f = Far; // camera z far
+  float z = gl_FragCoord.z;
+  return (2.0 * n) / (f + n - z * (f - n)); 
+}
+
+float depth() {
+    return LinearizeDepth();
+}
+
 void main()
 {
+    lightPos = vec3(0,9000,0);
 	vec3 horizon = vec3(0.70, 0.40, 0.20);
 	vec3 zenith = vec3(0.00, 0.44, 0.81);
 	vec3 night = vec3(0.0156, 0.1019, 0.1843);
@@ -57,6 +70,7 @@ void main()
     finalData[0] = vec4(vertexPos,1.f);
     finalData[1] = vec4((sky + moon + light), 1.f);
     finalData[2] = vec4(normalize(vertexNorm),1.f);
-    finalData[3] = vec4(Far-1, Far-1, Far-1,1.f);
+    finalData[3] = vec4(0.f,0.f,0.f,0.f);
+    gl_FragDepth = depth();
     //finalData[1] = vec4(N, 1.f);
 }

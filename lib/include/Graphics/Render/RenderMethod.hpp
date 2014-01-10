@@ -12,6 +12,8 @@ namespace Graph {
 			RenderMethod();
 			virtual ~RenderMethod() {};
 			
+			void clear();
+			
 			void registerLight(Light* l);
 			void unregisterLight(Light* l);
 

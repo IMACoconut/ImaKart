@@ -9,7 +9,8 @@ Node::Node(Node* parent) :
 	position(0,0,0), rotation(0,0,0), scale(1,1,1), mRotation(glm::mat4(1.0)), parent(parent), 
 	shader(nullptr), modelMatrix(),
 	modelDirty(true), boxDirty(true), sphereDirty(true), 
-	drawBox(false),	drawSphere(false), isLightened(true)
+
+	drawBox(false),	drawSphere(false), isLight(true)
 
 {
 	for(int i = 0; i<Render::TextureChannel_Max; ++i)
@@ -27,6 +28,14 @@ Node::~Node() {
 	for(Node* c : children)
 		c->setParent(nullptr);
 	setParent(nullptr);
+}
+
+void Node::setLightening(bool b) {
+	isLight = b;
+}
+
+bool Node::isLightened() const {
+	return isLight;
 }
 
 void Node::setPosition(const glm::vec3& p) {

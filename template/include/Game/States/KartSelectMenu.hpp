@@ -1,18 +1,21 @@
 #pragma once
 
 #include <GameManager/GameState.hpp>
-#include <SFML/Graphics.hpp>
-#include <TGUI/TGUI.hpp>
 #include <Game/Logic/GameLogic.hpp>
 
-class GameEngine;
-class SoloMenu : public GameState{
-private:
+#include <TGUI/TGUI.hpp>
 
-public:
-	SoloMenu();
-	~SoloMenu();
-	
+class GameEngine;
+class KartSelectMenu : public GameState{
+private:
+	const std::vector<KartInfo>& karts;
+	tgui::ListBox::Ptr listBox;
+	tgui::Picture::Ptr picture;
+
+	KartSelectMenu();
+	~KartSelectMenu();
+
+public:	
 	void Init(GameEngine* game);
 
 	void Pause(GameEngine* game);
@@ -24,17 +27,12 @@ public:
 	void Update(GameEngine* game);
 	void Draw(GameEngine* game);
 
-	void setSelectedMap(int p);
+	void setSelectedKart(int p);
 
-	static SoloMenu& getInstance() {
-		static SoloMenu s;
+	static KartSelectMenu& getInstance() {
+		static KartSelectMenu s;
 		return s;
 	}
-
-private:
-	const std::vector<MapInfo>& maps;
-	tgui::ListBox::Ptr listBox;
-	tgui::Picture::Ptr picture;
 
 	
 };

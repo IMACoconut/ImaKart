@@ -28,4 +28,8 @@ namespace Util {
 		return dir;
 	}
 
+	std::string FilePath::getFullPath() const {
+	return dir+file+'.'+ext;
+	}
+
 }

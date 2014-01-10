@@ -19,7 +19,7 @@ namespace Graph {
 		{}
 
 		~Scene() {
-			delete m_method;
+			clear();
 		}
 
 		void setCamera(Camera* c) {
@@ -28,12 +28,31 @@ namespace Graph {
 		}
 
 		void update(float elapsed) {
-			m_camera->update(elapsed);
-			m_background->update(elapsed);
+			if(m_camera)
+				m_camera->update(elapsed);
+			if(m_background)
+				m_background->update(elapsed);
 			for(Light* l: m_lights)
 				l->update(elapsed);
 			for(Node* n : m_nodes)
 				n->update(elapsed);
+		}
+
+		void clear() {
+			//for(auto* l: m_lights)
+			//	m_method->unregisterLight(l);
+			m_lights.clear();
+			//for(auto* n: m_nodes)
+			//	m_method->unregisterNode(n);
+
+			m_nodes.clear();
+			m_background = nullptr;
+			//_method->setBackground(nullptr);
+			//m_method->setCamera(nullptr);
+			m_camera = nullptr;
+			m_method->clear();
+			//delete m_method;
+			//m_method = new DeferredRender();
 		}
 
 		void render() {

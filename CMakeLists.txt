@@ -27,6 +27,7 @@ set(ENABLE_BOOST_WORKAROUND ON)
 include_directories(third-party/assimp/include)
 add_subdirectory(third-party/assimp)
 
+#add_definitions(-DGLM_FORCE_RADIANS)
 include_directories(third-party/glm)
 include_directories(lib/include)
 add_subdirectory(lib)

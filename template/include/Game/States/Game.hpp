@@ -13,24 +13,23 @@ class GameEngine;
 class Game : public GameState
 {
 private:
-	Graph::Heightmap mesh;
-	Graph::Mesh mesh2;
-	Graph::Material hmtex;
 	Graph::Skydome sky;
 	Graph::PointLight light;
 	Graph::PointLight light4;
 	Graph::SpotLight light2;
 	Graph::DirectionalLight light3;
 	Graph::Scene scene;
-	Graph::Camera* cam;
+	Graph::Camera* m_camera;
 	sf::Clock frameTime, clock, timeOfDay;
 	int fps = 0;
-	Map m;
-	GameEngine* m_game;
 	LoadingState<Game> m_loader;
 
-	std::vector<Kart*> karts;
 	Phys::Physics PhysicManager;
+
+	Map* map;
+	GameEngine* m_game;
+	std::vector<Kart*> karts;
+	tgui::Label::Ptr m_clockDisplay;
 
 public:
 	Game();

@@ -10,6 +10,7 @@ namespace Util {
 		std::string getExtension() const;
 		std::string getFilename() const;
 		std::string getDirectory() const;
+		std::string getFullPath() const;
 
 	private:
 		std::string dir;

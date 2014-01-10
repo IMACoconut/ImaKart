@@ -1,60 +1,256 @@
 <map>
 	<info>
-		<name>Test</name>
-		<preview>detail.png</preview>
+		<name>This Aint Luigi's Island</name>
+		<preview>detail2.png</preview>
 		<scale>16</scale>
 		<heightmap>heightmap8.png</heightmap>
-		<detailmap>detail3.png</detailmap>
+		<detailmap>detail2.png</detailmap>
 		<time></time>
 		
 	</info>
 	<startgrid>
-		<x>49</x>
-		<y>86</y>
-		<kart>8</kart>
+		<pos>
+			<x>91</x>
+			<y>124</y>		
+		</pos>
+		<width>68</width>
+		<dir>
+			<x>1</x>
+			<y>0</y>
+		</dir>
 	</startgrid>
 	<checkpoints>
 		<checkpoint>
-			<x>49</x>
-			<y>86</y>
+			<x>95</x>
+			<y>124</y>
 		</checkpoint>
 		<checkpoint>
-			<x>35</x>
-			<y>138</y>
+			<x>95</x>
+			<y>119</y>
 		</checkpoint>
 		<checkpoint>
-			<x>21</x>
-			<y>188</y>
+			<x>92</x>
+			<y>113</y>
 		</checkpoint>
 		<checkpoint>
-			<x>50</x>
-			<y>228</y>
+			<x>86</x>
+			<y>107</y>
 		</checkpoint>
 		<checkpoint>
-			<x>115</x>
-			<y>232</y>
+			<x>81</x>
+			<y>99</y>
 		</checkpoint>
 		<checkpoint>
-			<x>164</x>
-			<y>206</y>
+			<x>77</x>
+			<y>88</y>
 		</checkpoint>
 		<checkpoint>
-			<x>198</x>
-			<y>162</y>
+			<x>75</x>
+			<y>76</y>
 		</checkpoint>
 		<checkpoint>
-			<x>192</x>
-			<y>108</y>
+			<x>78</x>
+			<y>66</y>
 		</checkpoint>
 		<checkpoint>
-			<x>153</x>
-			<y>63</y>
+			<x>87</x>
+			<y>56</y>
 		</checkpoint>
 		<checkpoint>
 			<x>97</x>
-			<y>62</y>
+			<y>57</y>
+		</checkpoint>
+		<checkpoint>
+			<x>114</x>
+			<y>68</y>
+		</checkpoint>
+		<checkpoint>
+			<x>117</x>
+			<y>82</y>
+		</checkpoint>
+		<checkpoint>
+			<x>123</x>
+			<y>91</y>
+		</checkpoint>
+		<checkpoint>
+			<x>133</x>
+			<y>98</y>
+		</checkpoint>
+		<checkpoint>
+			<x>140</x>
+			<y>103</y>
+		</checkpoint>
+		<checkpoint>
+			<x>193</x>
+			<y>116</y>
+		</checkpoint>
+		<checkpoint>
+			<x>202</x>
+			<y>123</y>
+		</checkpoint>
+		<checkpoint>
+			<x>204</x>
+			<y>131</y>
+		</checkpoint>
+		<checkpoint>
+			<x>184</x>
+			<y>168</y>
+		</checkpoint>
+		<checkpoint>
+			<x>182</x>
+			<y>176</y>
+		</checkpoint>
+		<checkpoint>
+			<x>175</x>
+			<y>184</y>
+		</checkpoint>
+		<checkpoint>
+			<x>170</x>
+			<y>191</y>
+		</checkpoint>
+		<checkpoint>
+			<x>167</x>
+			<y>200</y>
+		</checkpoint>
+		<checkpoint>
+			<x>162</x>
+			<y>210</y>
+		</checkpoint>
+		<checkpoint>
+			<x>157</x>
+			<y>217</y>
+		</checkpoint>
+		<checkpoint>
+			<x>148</x>
+			<y>219</y>
+		</checkpoint>
+		<checkpoint>
+			<x>139</x>
+			<y>215</y>
+		</checkpoint>
+		<checkpoint>
+			<x>132</x>
+			<y>208</y>
+		</checkpoint>
+		<checkpoint>
+			<x>130</x>
+			<y>197</y>
+		</checkpoint>
+		<checkpoint>
+			<x>133</x>
+			<y>187</y>
+		</checkpoint>
+		<checkpoint>
+			<x>134</x>
+			<y>178</y>
+		</checkpoint>
+		<checkpoint>
+			<x>134</x>
+			<y>168</y>
+		</checkpoint>
+		<checkpoint>
+			<x>133</x>
+			<y>159</y>
+		</checkpoint>
+		<checkpoint>
+			<x>128</x>
+			<y>153</y>
+		</checkpoint>
+		<checkpoint>
+			<x>120</x>
+			<y>155</y>
+		</checkpoint>
+		<checkpoint>
+			<x>113</x>
+			<y>165</y>
+		</checkpoint>
+		<checkpoint>
+			<x>104</x>
+			<y>163</y>
+		</checkpoint>
+		<checkpoint>
+			<x>95</x>
+			<y>154</y>
+		</checkpoint>
+		<checkpoint>
+			<x>89</x>
+			<y>144</y>
+		</checkpoint>
+		<checkpoint>
+			<x>93</x>
+			<y>134</y>
 		</checkpoint>
 	</checkpoints>
+	<alterations>
+		<alteration>
+			<x>72</x>
+			<y>72</y>
+		</alteration>
+		<alteration>
+			<x>76</x>
+			<y>73</y>
+		</alteration>
+		<alteration>
+			<x>80</x>
+			<y>74</y>
+		</alteration>
+		<alteration>
+			<x>129</x>
+			<y>94</y>
+		</alteration>
+		<alteration>
+			<x>127</x>
+			<y>97</y>
+		</alteration>
+		<alteration>
+			<x>125</x>
+			<y>100</y>
+		</alteration>
+		<alteration>
+			<x>170</x>
+			<y>121</y>
+		</alteration>
+		<alteration>
+			<x>176</x>
+			<y>109</y>
+		</alteration>
+		<alteration>
+			<x>183</x>
+			<y>98</y>
+		</alteration>
+		<alteration>
+			<x>186</x>
+			<y>144</y>
+		</alteration>
+		<alteration>
+			<x>193</x>
+			<y>148</y> 
+		</alteration>
+		<alteration>
+			<x>200</x>
+			<y>152</y>
+		</alteration>
+		<alteration>
+			<x>151</x>
+			<y>218</y>
+		</alteration>
+		<alteration>
+			<x>151</x>
+			<y>221</y>
+		</alteration>
+		<alteration>
+			<x>124</x>
+			<y>148</y>
+		</alteration>
+		<alteration>
+			<x>124</x>
+			<y>151</y>
+		</alteration>
+		<alteration>
+			<x>125</x>
+			<y>154</y>
+		</alteration>
+	</alterations>
 	<lights>
 		<spotlight>
 			<position>

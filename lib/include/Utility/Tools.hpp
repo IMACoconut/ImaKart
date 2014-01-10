@@ -8,6 +8,8 @@
 #include <glm/glm.hpp>
 
 #define EPSILON 0.00001f
+#define DEG_TO_RAD 0.0174532925
+#define RAD_TO_DEG 57.2957795
 
 namespace Util {
 	template <class T> inline std::string ToString(T val) {

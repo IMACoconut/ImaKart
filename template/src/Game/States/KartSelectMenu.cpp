@@ -1,35 +1,35 @@
-#include <Game/States/SoloMenu.hpp>
 #include <Game/States/KartSelectMenu.hpp>
+#include <Game/States/Game.hpp>
 #include <GameManager/GameEngine.hpp>
 
 #include <iostream>
 #include <GL/glew.h>
 #include <TGUI/TGUI.hpp>
 
-SoloMenu::SoloMenu() :
-	maps(GameLogic::getInstance().getMapList())
+KartSelectMenu::KartSelectMenu() :
+	karts(GameLogic::getInstance().getKartList())
 {
 
 }
 
-SoloMenu::~SoloMenu(){
+KartSelectMenu::~KartSelectMenu(){
 
 }
 
-void SoloMenu::Init(GameEngine* game){
+void KartSelectMenu::Init(GameEngine* game){
 	Resume(game);
 }
 
-void SoloMenu::Pause(GameEngine* game){
+void KartSelectMenu::Pause(GameEngine* game){
 	auto& gui = game->getWindow().getGui();
 	gui.removeAllWidgets();
 }
 
-void SoloMenu::Resume(GameEngine* game){
+void KartSelectMenu::Resume(GameEngine* game){
 	auto& gui = game->getWindow().getGui();
 	int center = (game->getWindow().getSize().x)/2;
 
-    listBox = tgui::ListBox::Ptr(gui);
+	listBox = tgui::ListBox::Ptr(gui);
     listBox->load("../resources/widgets/Black.conf");
     listBox->setSize(240, 300);
     listBox->setItemHeight(20);
@@ -38,42 +38,32 @@ void SoloMenu::Resume(GameEngine* game){
     listBox->setCallbackId(2);
 
 
-    for(auto m: maps) {
+    for(auto m: karts) {
     	listBox->addItem(m.name);
     }
+    listBox->setSelectedItem(0);
 
     picture = tgui::Picture::Ptr(gui);
-
-    setSelectedMap(0);
-    
-    // Create the Quitter button
-    tgui::Button::Ptr quit(gui);
-    quit->load("../resources/widgets/Black.conf");
-    quit->setSize(240, 60);
-    quit->setPosition(40, 440);
-    quit->setText("Retour");
-    quit->bindCallback(tgui::Button::LeftMouseClicked);
-    quit->setCallbackId(3);
-
+    setSelectedKart(0);
 
 	game->getWindow().setMouseCursorVisible(true);
 }
 
-void SoloMenu::Initialize(GameEngine* game){
+void KartSelectMenu::Initialize(GameEngine* game){
 
 }
 
-void SoloMenu::Release(GameEngine* game){
+void KartSelectMenu::Release(GameEngine* game){
 	auto& gui = game->getWindow().getGui();
 	gui.removeAllWidgets();
 }
 
-void SoloMenu::Cleanup(GameEngine* game){
+void KartSelectMenu::Cleanup(GameEngine* game){
 	auto& gui = game->getWindow().getGui();
 	gui.removeAllWidgets();
 }
 
-void SoloMenu::HandleEvents(GameEngine* game){
+void KartSelectMenu::HandleEvents(GameEngine* game){
 	sf::Event e;
 	auto& window = game->getWindow();
 	auto& gui = game->getWindow().getGui();
@@ -94,20 +84,20 @@ void SoloMenu::HandleEvents(GameEngine* game){
 
 					case sf::Keyboard::Key::Return:
 						// Set kart selection menu
-						GameLogic::getInstance().loadMap(maps[listBox->getSelectedItemIndex()].file.getFullPath());
+
 						game->PopState();
-						game->PushState(KartSelectMenu::getInstance());
+						game->PushState(Game::getInstance());
 						break;
 					case sf::Keyboard::Key::Up:
 						{
 							int p = listBox->getSelectedItemIndex();
-							setSelectedMap(p-1);
+							setSelectedKart(p-1);
 						}
 						break;
 					case sf::Keyboard::Key::Down:
 						{
 							int p = listBox->getSelectedItemIndex();
-							setSelectedMap(p+1);
+							setSelectedKart(p+1);
 						}
 					break;
 
@@ -120,6 +110,12 @@ void SoloMenu::HandleEvents(GameEngine* game){
 		}
 	}
 
+	for(int i = 0; i<4; ++i)
+		if(window.getXbox().isConnected(i) && window.getXbox().isPressed(i, Util::XboxButton::A)) {
+			game->PopState();
+			game->PushState(Game::getInstance());
+		}
+
 	tgui::Callback callback;
 	while (gui.pollCallback(callback))
 	{
@@ -128,26 +124,26 @@ void SoloMenu::HandleEvents(GameEngine* game){
 		else if(callback.id == 2)
 		{
 			int p = listBox->getSelectedItemIndex();
-			setSelectedMap(p);
+			setSelectedKart(p);
 		}
 	}
 }
 
-void SoloMenu::Update(GameEngine* game){
+void KartSelectMenu::Update(GameEngine* game){
 
 }
 
-void SoloMenu::Draw(GameEngine* game){
+void KartSelectMenu::Draw(GameEngine* game){
 	Util::Window& window = game->getWindow();
 	window.clear();
 	window.display();
 }
 
-void SoloMenu::setSelectedMap(int p) {
-	p = (p<0 || p >= maps.size()) ? 0 : p;
+void KartSelectMenu::setSelectedKart(int p) {
+	p = (p<0 || p >= karts.size()) ? 0 : p;
 
 	listBox->setSelectedItem(p);
-	picture->load(maps[p].file.getDirectory()+"/"+maps[p].image);
+	picture->load(karts[p].file.getFullPath());
 	picture->setSize(400,400);
 	picture->setPosition(400,100);
 }

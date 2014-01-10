@@ -2,18 +2,17 @@
 #include <iostream>
 
 namespace Graph {
+Heightmap::Heightmap() : 
+	map(nullptr) {
 
-	Heightmap::Heightmap() : 
-		map(nullptr) {
+}
 
-	}
-
-	Heightmap::~Heightmap() {
-		delete map;
-	}
+Heightmap::~Heightmap() {
+	delete[] map;
+}
 
 	bool Heightmap::loadFromFile(const std::string& image) {
-		delete map;
+		delete[] map;
 		map = nullptr;
 		sf::Image heightmap;
 		if(!heightmap.loadFromFile(image))
@@ -136,6 +135,7 @@ namespace Graph {
 		int offx = static_cast<int>(x);
 		int offy = static_cast<int>(y);
 		auto size = m_size;
+		//std::cout << offx << " " << offy << " " << size.x << " " << size.y << std::endl;
 		if(offx < 0 || offx >= (int)size.x || offy < 0 || offy >= (int)size.y)
 			return -1;
 

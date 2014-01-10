@@ -2,6 +2,7 @@
 #include <Game/Entity.hpp>
 #include <Game/Logic/Checkpoint.hpp>
 #include <Game/Logic/ItemSpawn.hpp>
+#include <Game/Logic/Startgrid.hpp>
 #include <Graphics.hpp>
 #include <string>
 #include <vector>
@@ -11,12 +12,14 @@
 
 class Kart;
 
-typedef std::tuple<Kart*, Util::Clock, int, bool> KartInfo;
+typedef std::tuple<Kart*, int, int, bool> KartInfos;
 
 class Map : public Entity{
 public:
 	Map() ;
 	~Map();
+
+	void clear();
 
 	bool loadFromFile(const std::string& file);
 
@@ -27,22 +30,26 @@ public:
 	void update(float elapsed);
 
 	void addKart(Kart* k);
-	std::vector<KartInfo> getResults();
+	std::vector<KartInfos> getResults();
 
 	Graph::Heightmap* getHeightmap();
 
-	std::vector<Checkpoint*> m_checkpoints; 
 	Phys::Collidable collidable;
+
+	const std::vector<Checkpoint*>& getCheckpoints() const {
+		return m_checkpoints;
+	}
+
 
 private:
 	void sortKartByPosition();
 
 	Graph::Heightmap mesh;
 	Graph::Material hmtex;
-	//Startgrid grid;
+	Startgrid grid;
 	std::vector<ItemSpawn*> m_itemSpawns;
-	std::vector<KartInfo> m_karts;
-
+	std::vector<KartInfos> m_karts;
+	std::vector<Checkpoint*> m_checkpoints; 
 	//void sortKartByPosition();
 
 };

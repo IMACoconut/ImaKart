@@ -6,16 +6,15 @@
 #include <Graphics/Scene/OrbitCamera.hpp>
 #include <Graphics/Scene/KartCamera.hpp>
 
-//#include <Game/IA/PlayerBehavior.hpp>
+#include <Game/IA/PlayerBehavior.hpp>
+#include <Game/IA/IABehavior.hpp>
 #include <Game/Logic/GameLogic.hpp>
 
 Game::Game() :
-	m_loader(*this)
+	m_loader(*this), map(nullptr)
 {
 	Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
-	Graph::ShaderManager::getInstance().loadShaderFromFile(
-		"celShad", "../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
 
 	Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"DFlightPoint", "../resources/shaders/DFbase.vert", "../resources/shaders/DFlightPoint.frag");
@@ -26,11 +25,18 @@ Game::Game() :
 }
 
 Game::~Game(){
-	delete cam;
 }
 
 void Game::Init(GameEngine* game) {
 	m_game = game;
+	map = GameLogic::getInstance().getMap();
+	
+	auto& gui = m_game->getWindow().getGui();
+	gui.removeAllWidgets();
+
+	m_clockDisplay = tgui::Label::Ptr(gui);
+	m_clockDisplay->setPosition(750,40);
+	//scene.clear();
 	load();
 	//game->PushState(m_loader);
 }
@@ -38,13 +44,12 @@ void Game::Init(GameEngine* game) {
 void Game::load(){
 	
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().getShader("skyBox");
-	Graph::Shader* celShad = Graph::ShaderManager::getInstance().getShader("celShad");
 	Graph::Shader* lightPoint = Graph::ShaderManager::getInstance().getShader("DFlightPoint");
 	Graph::Shader* lightDirectional = Graph::ShaderManager::getInstance().getShader("DFlightDirectional");
 	Graph::Shader* lightSpot = Graph::ShaderManager::getInstance().getShader("DFlightSpot");
 	glClearColor(0,0,0,0);
 	
-	
+
 	/*if(!mesh.loadFromFile("../resources/maps/dummy2/heightmap.png")) {
 		std::cerr << "Error" << std::endl;
 	}
@@ -56,8 +61,9 @@ void Game::load(){
 	mesh.setScale(glm::vec3(16,16,16));*/
 	//mesh2.loadFromFile("../resources/models/cube.3DS");
 
-	
+
 	sky.setShader(skyShader);
+	sky.setLightening(false);
 	
 	
 	light.setColor(glm::vec3(0,1,0));
@@ -72,58 +78,64 @@ void Game::load(){
 	light4.setRadius(50.f*16);
 	light4.setPosition(glm::vec3(128*16,100.f*15,128*16));
 	light4.setShader(lightPoint);
-
 	
 	light2.setColor(glm::vec3(1,0, 0));
 	light2.setShader(lightSpot);
 
 	
 	light3.setColor(glm::vec3(1,1,1));
-	light3.setIntensity(.4f);
+	light3.setIntensity(.7f);
 	light3.setPosition(glm::vec3(0,-9000,0));
 	light3.setShader(lightDirectional);
-	
+
 	scene.setBackground(&sky);
 	scene.addLight(&light3);
 	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light4);
-	
-
-	if(!m.loadFromFile("../resources/maps/dummy3/map.xml"))
-		throw -1;
-
 
 //////init kart ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	int numberOfKarts = 1;
+	int numberOfKarts = 3;
 	int numberOfPlayer = 1;
 
 	for (int i = 0; i < numberOfKarts; ++i)
 	{
-		Kart* tmp = addKart(KartType_2);
+		Kart* tmp;
+
+		if(i%3 == 0)
+			tmp = addKart(KartType_3);
+		else if(i%3 == 1)
+			tmp = addKart(KartType_2);
+		else if(i%3 == 2)
+			tmp = addKart(KartType_1);
+
 		if(i < numberOfPlayer){
-			//le kart est un kart joueur
+			//std::cout << "Player" << std::endl;
+			tmp->setBehavior(new PlayerBehavior(*tmp, i));
 		}
+		else {
+			//std::cout << "IA" << std::endl;
+			tmp->setBehavior(new IABehavior(*tmp, map->getCheckpoints()));
+		}
+
 	}
 
 
-	if(!m.loadIntoScene(scene))
-		throw -1;
-	PhysicManager.addCollidable(&m.collidable);
-	
+	map->loadIntoScene(scene);
+	PhysicManager.addCollidable(&map.collidable);
+
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	cam = new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));/*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*///new Graph::FPSCamera(m_game->getWindow(), glm::vec3(0,0,0), glm::vec3(10,10,10), 10.f, 5.f);
-	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
-	GameLogic::getInstance().setCamera(cam);
-	scene.setCamera(cam);
-	
+	m_camera =  new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
+	m_camera->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
+	GameLogic::getInstance().setCamera(m_camera);
+	scene.setCamera(m_camera);
 
 	m_game->getWindow().setMouseCursorVisible(false);
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
-
+	GameLogic::getInstance().startRace();
 	Util::LogManager::notice("Running");
 	PhysicManager.AddBodyToWorld();
 }
@@ -141,7 +153,20 @@ void Game::Initialize(GameEngine* game){
 }
 
 void Game::Release(GameEngine* game){
+	auto& gui = game->getWindow().getGui();
+	gui.removeAllWidgets();
+	delete m_camera;
+	m_camera = nullptr;
+	GameLogic::getInstance().setCamera(nullptr);
+	scene.clear();
 
+	map->clear();
+
+
+	for(auto* k: karts)
+		delete k;
+	karts.clear();
+	map = nullptr;
 }
 
 void Game::Cleanup(GameEngine* game){
@@ -199,10 +224,28 @@ void Game::Update(GameEngine* game){
 	light2.setPosition(glm::vec3(128*16,100*16+sin(time*5),128*14+cos(time*5)*128*3));
 	light4.setPosition(glm::vec3(128*14+sin(time*10)*128*3,100*16,128*16+cos(time*10)*128*3));
 
+
 	PhysicManager.update(elapsed);
-	m.update(elapsed);
+
+
+	map->update(elapsed);
+
 	scene.update(elapsed);
 	clock.restart();
+	const Util::Clock& raceTimer = GameLogic::getInstance().getClock();
+	std::string sec;
+	if(raceTimer.GetSeconds()%60 < 10)
+		sec = "0"+ Util::ToString(raceTimer.GetSeconds()%60);
+	else
+		sec = Util::ToString(raceTimer.GetSeconds()%60);
+	std::string msec = "";
+	if(raceTimer.GetMilliseconds()%1000 < 100)
+		msec += '0';
+	if(raceTimer.GetMilliseconds()%1000 < 10)
+		msec += '0';
+	msec += Util::ToString(raceTimer.GetMilliseconds()%1000);
+
+	m_clockDisplay->setText(Util::ToString(raceTimer.GetMinutes())+":"+sec+":"+msec);
 	if(frameTime.getElapsedTime().asSeconds() >= 1) {
 		frameTime.restart();
 		fpsStr = Util::ToString(fps)+"FPS";
@@ -228,16 +271,36 @@ Kart* Game::addKart(KartType type){
 
 	switch(type) {
 		case KartType_1:
-			// Changer maniabilité, vitesse, etc...
+			k->set<std::string>("skin", "../resources/images/uvtest.png");
+			k->set<int>("hp", 5);
+			k->set<float>("weight", 5);
+			k->set<float>("speedMaxForward", 5.f);
+			k->set<float>("speedMaxBack", -1.f);
+			k->set<float>("acceleration", 0.025f);
+			k->set<float>("maniability", 0.95f);
 			break;
 		case KartType_2:
+			k->set<std::string>("skin", "../resources/images/uvblue.png");
+			k->set<int>("hp", 8);
+			k->set<float>("weight", 8);
+			k->set<float>("speedMaxForward", 6.f);
+			k->set<float>("speedMaxBack", -2.f);
+			k->set<float>("acceleration", 0.01f);
+			k->set<float>("maniability", 0.90f);
 			break;
 		case KartType_3:
+			k->set<std::string>("skin", "../resources/images/uvgreen.png");
+			k->set<int>("hp", 3);
+			k->set<float>("weight", 4);
+			k->set<float>("speedMaxForward", 4.f);
+			k->set<float>("speedMaxBack", -1.f);
+			k->set<float>("acceleration", 0.05f);
+			k->set<float>("maniability", 1.f);
 			break;
 		default:
 			break;
 	}
-	m.addKart(k);
+	map->addKart(k);
 	karts.push_back(k);
 
 

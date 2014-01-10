@@ -26,12 +26,14 @@ static const unsigned int FPS = 30;
 
 int main(void) {
 
-	tinyxml2::XMLDocument doc;
+	/*tinyxml2::XMLDocument doc;
 	doc.LoadFile("../resources/data/config.xml");
 
 	uint32_t WINDOW_WIDTH = Util::FromString<uint32_t>(std::string(doc.FirstChildElement("window")->FirstChildElement("width")->GetText()));
 	uint32_t WINDOW_HEIGHT = Util::FromString<uint32_t>(std::string(doc.FirstChildElement("window")->FirstChildElement("height")->GetText()));
-
+*/
+	uint32_t WINDOW_WIDTH = 1280;
+	uint32_t WINDOW_HEIGHT = 720;
 	Util::LogManager::init();
 	NzNetwork::Initialize();
 
@@ -47,7 +49,9 @@ int main(void) {
 
 	GameEngine engine(window);
 	engine.PushState(MainMenu::getInstance());
-	std::cout << "toto" << std::endl;
+
+	window.setVerticalSyncEnabled(true);
+
 	while(engine.Running()){
 		engine.HandleEvents();
 		engine.Update();

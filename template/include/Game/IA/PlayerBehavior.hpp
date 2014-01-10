@@ -9,5 +9,5 @@ public:
 protected:
 	void onUpdate(float elapsed);
 	
-	int m_playerId;
+	int m_playerId, m_controllerId;
 };

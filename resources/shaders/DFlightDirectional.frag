@@ -1,5 +1,6 @@
 #version 330
 
+in vec2 outUV;
 out vec4 finalData;
 uniform sampler2D normalTex;
 uniform sampler2D diffuseTex;
@@ -29,11 +30,14 @@ void main() {
 	
 
 	vec3 N = normalize(texture2D(normalTex,coord).rgb);
-	vec3 L = normalize(-lightDir);
-	float P = texture2D(diffuseTex, coord).w;
-	if(P < .5) {
-		finalData = vec4(1.,1.,1.,1.); // - vec4(lightColor*lightIntensity*celShad(max(dot(L,N), 0.f)),0.f);
-		return;
+
+	float P = texture2D(ambiantTex, coord).r;
+	if(P >0.1)
+	{
+		finalData = vec4(1,1,1,1.f);
+	} else {
+		vec3 L = normalize(-lightDir);
+		finalData = vec4(lightColor*lightIntensity*celShad(max(dot(L,N), 0.f)),1.f);
 	}
-	finalData = vec4(lightColor*lightIntensity*celShad(max(dot(L,N), 0.f)),1.f);
+
 }
