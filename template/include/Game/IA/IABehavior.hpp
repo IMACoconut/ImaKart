@@ -28,5 +28,5 @@ private:
 	void pusshPrioritie(IAPriority prioritie);
 	void punishPlayer();
 	void findItem();
-	void goToTheNextCheckpoint();
+	void goToTheNextCheckpoint(float elapsed);
 };
