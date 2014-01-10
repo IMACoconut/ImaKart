@@ -103,7 +103,7 @@ void Game::load(){
 
 	for (int i = 0; i < numberOfKarts; ++i)
 	{
-		Kart* tmp = addKart(KartType_2);
+		Kart* tmp = addKart(KartType_3);
 		if(i < numberOfPlayer){
 			//le kart est un kart joueur
 		}
@@ -230,7 +230,7 @@ Kart* Game::addKart(KartType type){
 			k->set<float>("speedMaxForward", 5.f);
 			k->set<float>("speedMaxBack", -1.f);
 			k->set<float>("acceleration", 0.025f);
-			k->set<float>("maniability", 0.3f);
+			k->set<float>("maniability", 0.35f);
 			break;
 		case KartType_2:
 			k->set<std::string>("skin", "");
@@ -239,7 +239,7 @@ Kart* Game::addKart(KartType type){
 			k->set<float>("speedMaxForward", 8.f);
 			k->set<float>("speedMaxBack", -2.f);
 			k->set<float>("acceleration", 0.01f);
-			k->set<float>("maniability", 0.2f);
+			k->set<float>("maniability", 0.3f);
 			break;
 		case KartType_3:
 			k->set<std::string>("skin", "");

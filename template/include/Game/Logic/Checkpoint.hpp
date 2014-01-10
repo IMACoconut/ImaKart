@@ -2,7 +2,7 @@
 
 #include <Graphics/Tools/Mesh.hpp>
 
-#define DIST_FACTOR 200.f
+#define DIST_FACTOR 80.f
 
 class Map;
 class Kart;

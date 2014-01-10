@@ -200,7 +200,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 	for(auto itr: m_karts){
 		Kart* tmp = std::get<0>(itr);
 		glm::vec3 position = m_checkpoints[0]->getPosition();
-		tmp->setPosition(glm::vec3(position.x, position.y, position.z), 0.f);
+		tmp->setPosition(glm::vec3(position.x, position.y, position.z), 90.f);
 		tmp->updateOrientation(this->mesh, 1);
 		tmp->loadIntoScene(scene);
 		tmp->setBehavior(new IABehavior(*tmp, m_checkpoints));
