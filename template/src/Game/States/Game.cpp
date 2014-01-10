@@ -95,7 +95,7 @@ void Game::load(){
 	scene.addLight(&light4);
 
 //////init kart ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	int numberOfKarts = 1;
+	int numberOfKarts = 2;
 	int numberOfPlayer = 1;
 	for (int i = 0; i < numberOfKarts; ++i)
 	{
@@ -114,7 +114,7 @@ map->loadIntoScene(scene);
 	
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	cam =  /*new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));*//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
+	cam =  new Graph::OrbitCamera(m_game->getWindow(), &(karts[1]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(cam);
 	scene.setCamera(cam);

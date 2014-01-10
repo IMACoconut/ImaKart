@@ -143,49 +143,28 @@ static const float EPSILON_KART = 0.005;
 
 	void Kart::accelerate(float factor){
 
-		float currentSpeed = get<float>("currentSpeed");
-		float acceleration = get<float>("acceleration");
-		float speedMaxForward =get<float>("speedMaxForward");
-		float speedMaxBack =get<float>("speedMaxBack");
+                float currentSpeed = get<float>("currentSpeed");
+                float acceleration = get<float>("acceleration");
 
-		if(Util::eqZero(factor)) {
-			if(currentSpeed-2*acceleration > 0)
-				currentSpeed -= 2*acceleration;
-			else if(currentSpeed+2*acceleration < 0) {
-				currentSpeed += 2*acceleration;
-			} else
-				currentSpeed = 0;
-		} else if(factor < 0) {
-			currentSpeed += factor * 2 * acceleration + acceleration;
-			
-			if(currentSpeed < speedMaxBack)
-				currentSpeed = speedMaxBack;
-		} else {
-			currentSpeed += factor * 2 * acceleration - acceleration;
-			
-			if(currentSpeed > speedMaxForward)
-				currentSpeed = speedMaxForward;
-		}
+                if(currentSpeed > 0 - acceleration && currentSpeed < 0 + acceleration && !factor){
+                        currentSpeed = 0;
+                }
+                else if(currentSpeed >= 0){
+                        currentSpeed += factor * 2 * acceleration - acceleration;
+                        float speedMaxForward =get<float>("speedMaxForward");
+                        if(currentSpeed > speedMaxForward)
+                                currentSpeed = speedMaxForward;
+                }
+                else if(currentSpeed < 0){
+                        currentSpeed += factor * 2 * acceleration + acceleration;
+                        float speedMaxBack =get<float>("speedMaxBack");
+                        if(currentSpeed < speedMaxBack)
+                                currentSpeed = speedMaxBack;
+                }
 
-		/*if(currentSpeed > 0 - acceleration && currentSpeed < 0 + acceleration && !factor){
-			currentSpeed = 0; 
-		}
-		else if(currentSpeed >= 0){
-			currentSpeed += factor * 2 * acceleration - acceleration;
-			
-			if(currentSpeed > speedMaxForward)
-				currentSpeed = speedMaxForward;
-		}
-		else if(currentSpeed < 0){
-			currentSpeed += factor * 2 * acceleration + acceleration;
-			
-			if(currentSpeed < speedMaxBack)
-				currentSpeed = speedMaxBack;
-		}*/
 
-		std::cout << "speed: " << currentSpeed << std::endl;
-		set<float>("currentSpeed", currentSpeed);
-	}
+                set<float>("currentSpeed", currentSpeed);
+        }
 
 	void Kart::turn(float factor){
 
