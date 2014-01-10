@@ -81,7 +81,7 @@ void IABehavior::goToTheNextCheckpoint(float elapsed){
 				m_kart.accelerate(1.f, elapsed);
 		}
 		else
-			if(fabs(angle) < 110)
+			if(fabs(angle) < 120)
 				m_kart.accelerate(-1.f, elapsed);
 			else if(fabs(angle) < 155)
 				m_kart.accelerate(0, elapsed);
@@ -106,9 +106,9 @@ void IABehavior::goToTheNextCheckpoint(float elapsed){
 				m_kart.accelerate(1.f, elapsed);
 		}
 		else
-			if(fabs(angle) < 95)
+			if(fabs(angle) < 120)
 				m_kart.accelerate(-1.f, elapsed);
-			else if(fabs(angle) < 145)
+			else if(fabs(angle) < 150)
 				m_kart.accelerate(0, elapsed);
 			else
 				m_kart.accelerate(1.f, elapsed);

@@ -183,7 +183,6 @@ this->mesh.setScale(glm::vec3(10,10,10));
 
 
 	void Kart::setCheckpoint(std::vector<Checkpoint*> check){
-std::cerr<<"checkpoint"<<std::endl;
 		this->m_behavior->addCheckpoints(check);
 	}
 

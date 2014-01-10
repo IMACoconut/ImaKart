@@ -255,6 +255,9 @@ void Map::hasFinishedLoop(Kart& k) {
  		auto& clock = std::get<1>(infos);
  		clock.Pause();
 
+ 		for(auto itr : m_karts){
+ 			std::cout<<std::get<0>(itr)->get<int>("id")<<std::endl;
+ 		}
  	} else
  		--loops;
 
