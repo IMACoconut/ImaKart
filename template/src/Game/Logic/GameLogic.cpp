@@ -46,11 +46,20 @@ GameLogic::GameLogic() :
 	}
 	closedir(dir);
 
-	for(int i = 0; i<3; ++i) {
-		KartInfo k("../resources/images/128.png");
-		k.name = "dummy";
-		m_karts.push_back(k);
-	}
+
+	KartInfo k("../resources/images/uvtest.png");
+	k.name = "dummy";
+	k.type = KartType_1;
+	m_karts.push_back(k);
+	KartInfo k2("../resources/images/uvgreen.png");
+	k2.name = "dummy";
+	k2.type = KartType_2;
+	m_karts.push_back(k2);
+	KartInfo k3("../resources/images/uvblue.png");
+	k3.type = KartType_3;
+	k3.name = "dummy";
+	m_karts.push_back(k3);
+
 }
 
 GameLogic::~GameLogic() {

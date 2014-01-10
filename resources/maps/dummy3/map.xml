@@ -181,6 +181,76 @@
 			<y>134</y>
 		</checkpoint>
 	</checkpoints>
+	<alterations>
+		<alteration>
+			<x>72</x>
+			<y>72</y>
+		</alteration>
+		<alteration>
+			<x>76</x>
+			<y>73</y>
+		</alteration>
+		<alteration>
+			<x>80</x>
+			<y>74</y>
+		</alteration>
+		<alteration>
+			<x>129</x>
+			<y>94</y>
+		</alteration>
+		<alteration>
+			<x>127</x>
+			<y>97</y>
+		</alteration>
+		<alteration>
+			<x>125</x>
+			<y>100</y>
+		</alteration>
+		<alteration>
+			<x>170</x>
+			<y>121</y>
+		</alteration>
+		<alteration>
+			<x>176</x>
+			<y>109</y>
+		</alteration>
+		<alteration>
+			<x>183</x>
+			<y>98</y>
+		</alteration>
+		<alteration>
+			<x>186</x>
+			<y>144</y>
+		</alteration>
+		<alteration>
+			<x>193</x>
+			<y>148</y> 
+		</alteration>
+		<alteration>
+			<x>200</x>
+			<y>152</y>
+		</alteration>
+		<alteration>
+			<x>151</x>
+			<y>218</y>
+		</alteration>
+		<alteration>
+			<x>151</x>
+			<y>221</y>
+		</alteration>
+		<alteration>
+			<x>124</x>
+			<y>148</y>
+		</alteration>
+		<alteration>
+			<x>124</x>
+			<y>151</y>
+		</alteration>
+		<alteration>
+			<x>125</x>
+			<y>154</y>
+		</alteration>
+	</alterations>
 	<lights>
 		<spotlight>
 			<position>

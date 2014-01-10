@@ -14,9 +14,9 @@ enum KartCondition{
 };
 
 typedef enum {
-	KartType_1,
-	KartType_2,
-	KartType_3
+	KartType_1 = 0,
+	KartType_2 = 1,
+	KartType_3 = 2
 } KartType;
 
 typedef enum {

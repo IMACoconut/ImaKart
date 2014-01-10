@@ -45,11 +45,11 @@ namespace Graph {
 		float y = m_distance*cos(m_rotations.x*M_PI/180.f);
 */
 		if(m_targetNode)
-			m_target = m_targetNode->getPosition() + glm::vec3(glm::scale(glm::mat4(), m_targetNode->getScale()) * glm::vec4(0, 1, 0, 1));
+			m_target = m_targetNode->getPosition() + glm::vec3(glm::scale(glm::mat4(), m_targetNode->getScale()) * glm::vec4(0, 50, 0, 1));
 		else
 			m_target = glm::vec3(0,0,0);
 
-		position = glm::vec3(kartMMatrix * glm::vec4(-2, 2, 0, 1));//m_target + glm::vec3(kartRotat * glm::vec4(x,y,z,1));
+		position = glm::vec3(kartMMatrix * glm::vec4(-2*100, 2*75, 0, 1));//m_target + glm::vec3(kartRotat * glm::vec4(x,y,z,1));
 		m_viewDirty = true;
 	}
 

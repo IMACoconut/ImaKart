@@ -110,6 +110,12 @@ void KartSelectMenu::HandleEvents(GameEngine* game){
 		}
 	}
 
+	for(int i = 0; i<4; ++i)
+		if(window.getXbox().isConnected(i) && window.getXbox().isPressed(i, Util::XboxButton::A)) {
+			game->PopState();
+			game->PushState(Game::getInstance());
+		}
+
 	tgui::Callback callback;
 	while (gui.pollCallback(callback))
 	{
