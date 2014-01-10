@@ -5,6 +5,7 @@
 #include <cmath>
 #include <Game/VectorAlt.hpp>
 #include <Game/Logic/Item.hpp>
+#include <Game/Logic/Checkpoint.hpp>
 #include <Game/IA/KartBehavior.hpp>
 
 //std::string t = get<std::string>("skin");
@@ -119,8 +120,9 @@ this->mesh.setScale(glm::vec3(10,10,10));
  		set<VectorAlt>("alterations", alterations);
 
 
-		if(m_behavior)
+		if(m_behavior){
 			m_behavior->update(elapsed);
+		}
 
 		//mise à jour de la position dui kart
 		glm::vec3 dir = get<glm::vec3>("forward")*get<float>("currentSpeed");
@@ -178,5 +180,11 @@ this->mesh.setScale(glm::vec3(10,10,10));
 	void Kart::useItem(bool state){}
 
 	void Kart::giveItem(Item* i) {}
+
+
+	void Kart::setCheckpoint(std::vector<Checkpoint*> check){
+std::cerr<<"checkpoint"<<std::endl;
+		this->m_behavior->addCheckpoints(check);
+	}
 
 //}

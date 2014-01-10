@@ -30,6 +30,7 @@ typedef enum {
 class Alteration;
 class Item;
 class KartBehavior;
+class Checkpoint;
 
 class Kart: public Entity
 {
@@ -47,6 +48,7 @@ public:
 	void turn(float factor, float elapsed);
 	void useItem(bool state);				//utilise un objet
 	void addAlteration(Alteration* alteration);
+	void setCheckpoint(std::vector<Checkpoint*> check);
 
 	void giveItem(Item* item);
 

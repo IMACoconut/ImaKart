@@ -203,7 +203,8 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		tmp->setPosition(glm::vec3(position.x, position.y, position.z), 90.f);
 		tmp->updateOrientation(this->mesh, 1);
 		tmp->loadIntoScene(scene);
-		tmp->setBehavior(new IABehavior(*tmp, m_checkpoints));
+		tmp->setCheckpoint(m_checkpoints);
+		//tmp->setBehavior(new IABehavior(*tmp, m_checkpoints));
 	}
 
 	return true;

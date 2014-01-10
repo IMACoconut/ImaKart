@@ -7,7 +7,8 @@
 #include <Graphics/Scene/OrbitCamera.hpp>
 #include <Graphics/Scene/KartCamera.hpp>
 
-//#include <Game/IA/PlayerBehavior.hpp>
+#include <Game/IA/PlayerBehavior.hpp>
+#include <Game/IA/IABehavior.hpp>
 #include <Game/Logic/GameLogic.hpp>
 
 Game::Game() :
@@ -98,15 +99,24 @@ void Game::load(){
 
 
 //////init kart ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	int numberOfKarts = 1;
-	int numberOfPlayer = 1;
+	int numberOfKarts = 2;
+	int numberOfPlayer = 0;
 
 	for (int i = 0; i < numberOfKarts; ++i)
 	{
-		Kart* tmp = addKart(KartType_3);
+		Kart* tmp;
+
+		if(i%2 == 0)
+			tmp = addKart(KartType_1);
+		else
+			tmp = addKart(KartType_3);
+
 		if(i < numberOfPlayer){
-			//le kart est un kart joueur
+			tmp->setBehavior(new PlayerBehavior(*tmp, i));
 		}
+		else
+			tmp->setBehavior(new IABehavior(*tmp));
+
 	}
 
 

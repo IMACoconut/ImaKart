@@ -5,13 +5,9 @@
 
 //static const float EPSILON_Angle = 1;
 
-IABehavior::IABehavior(Kart& kart, std::vector<Checkpoint*> map_check) :
-	KartBehavior(kart), m_directions(map_check)
+IABehavior::IABehavior(Kart& kart/*, std::vector<Checkpoint*> map_check*/) :
+	KartBehavior(kart)//, m_directions(map_check)
 {}
-
-void IABehavior::addCheckpoints(std::vector<Checkpoint*> map_check){
-	m_directions = map_check;
-}
 
 void IABehavior::pusshPrioritie(IAPriority prioritie){
 	m_priorities.push_back(prioritie);
@@ -39,10 +35,11 @@ void IABehavior::findItem(){
 void IABehavior::goToTheNextCheckpoint(float elapsed){
 	//auto pos = m_kart.get<glm::vec3>("position");
 	int toCheck = m_kart.get<int>("checkpoint") +1;
-	if(toCheck == m_directions.size())
+	if(toCheck == (int)m_directions.size())
 		toCheck = 1;
 
-	glm::vec3 direction = m_kart.get<glm::vec3>("position") - (m_directions[toCheck]->getPosition());
+	glm::vec3 checkPosition = m_directions[toCheck]->getPosition();
+	glm::vec3 direction = m_kart.get<glm::vec3>("position") - checkPosition;
 	glm::vec2 direction2D = glm::normalize(glm::vec2(direction.x, direction.z));
 	glm::vec2 forward2D = glm::normalize(glm::vec2(m_kart.get<glm::vec3>("forward").x, m_kart.get<glm::vec3>("forward").z));
 	
