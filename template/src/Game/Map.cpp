@@ -256,7 +256,7 @@ void Map::update(float e) {
 
 	for(auto k : m_karts) {
 		Kart* kart = std::get<0>(k);		
-		//kart->update(mesh, e);
+		kart->update(mesh, e);
 		for(auto c: m_checkpoints)
 			c->isReached(*kart);
 		for(auto i: m_itemSpawns)
