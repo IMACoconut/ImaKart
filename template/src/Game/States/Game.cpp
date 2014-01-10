@@ -99,14 +99,7 @@ void Game::load(){
 	int numberOfPlayer = 1;
 	for (int i = 0; i < numberOfKarts; ++i)
 	{
-		Kart* tmp = addKart(KartType_2);
-		//glm::vec3 p = tmp->get<glm::vec3>("position");
-		//std::cout << p.x << " " << p.y << " " << p.z << std::endl;
-	}
-
-	for (int i = 0; i < numberOfKarts; ++i)
-	{
-		auto tmp = karts[i];
+		Kart* tmp = addKart(KartType_3);
 		if(i < numberOfPlayer){
 			//std::cout << "Player" << std::endl;
 			tmp->setBehavior(new PlayerBehavior(*tmp, i));
@@ -250,7 +243,7 @@ Kart* Game::addKart(KartType type){
 			k->set<float>("speedMaxForward", 5.f);
 			k->set<float>("speedMaxBack", -1.f);
 			k->set<float>("acceleration", 0.025f);
-			k->set<float>("maniability", 0.3f);
+			k->set<float>("maniability", 0.35f);
 			break;
 		case KartType_2:
 			k->set<std::string>("skin", "");
@@ -259,7 +252,7 @@ Kart* Game::addKart(KartType type){
 			k->set<float>("speedMaxForward", 8.f);
 			k->set<float>("speedMaxBack", -2.f);
 			k->set<float>("acceleration", 0.01f);
-			k->set<float>("maniability", 1.f);
+			k->set<float>("maniability", 0.3f);
 			break;
 		case KartType_3:
 			k->set<std::string>("skin", "");

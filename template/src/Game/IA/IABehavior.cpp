@@ -35,15 +35,24 @@ void IABehavior::findItem(){
 void IABehavior::goToTheNextCheckpoint(){
 	//auto pos = m_kart.get<glm::vec3>("position");
 	int toCheck = m_kart.get<int>("checkpoint") +1;
+	if(toCheck >= m_directions.size())
+		toCheck = 1;
 
-	if(toCheck >= (int)(m_directions.size()) )
-		toCheck = 0;
+	glm::vec3 direction = m_kart.get<glm::vec3>("position") - (m_directions[toCheck]->getPosition());
+	glm::vec2 direction2D = glm::normalize(glm::vec2(direction.x, direction.z));
+	glm::vec2 forward2D = glm::normalize(glm::vec2(m_kart.get<glm::vec3>("forward").x, m_kart.get<glm::vec3>("forward").z));
+	
+	float angle;
+	if(forward2D == direction2D)
+		angle = 0;
+	else
+		angle = glm::orientedAngle(forward2D, direction2D);
 
-	glm::vec3 direction = m_kart.get<glm::vec3>("position") - m_directions[toCheck]->getPosition();
-	float angle = glm::orientedAngle(glm::normalize(direction), m_kart.get<glm::vec3>("forward"), m_kart.get<glm::vec3>("up"));
 	float distance = glm::length(direction);
 
-	//std::cout<<angle<<" : "<<distance<<std::endl;
+	float currentSpeed = m_kart.get<float>("currentSpeed");
+	float acceleration = m_kart.get<float>("acceleration");
+
 	
 	if(angle < -0.000001)
 		m_kart.turn(1.f);
@@ -51,28 +60,63 @@ void IABehavior::goToTheNextCheckpoint(){
 		m_kart.turn(-1.f);
 	else
 		m_kart.turn(0);
-	
-	if(distance > 700){
-		if(fabs(angle) < 90)
-			m_kart.accelerate(-1.0);
 
-		else if(fabs(angle) < 135)
-			m_kart.accelerate(0);
+	//float factorAngle = currentSpeed / distance;
+ 	//std::cout<<angle<<" : "<<distance<<std::endl;
+
+	if(distance < 200){
+		if(currentSpeed >= 4){
+			if(fabs(angle) < 170)
+				m_kart.accelerate(-1.f);
+			else if(fabs(angle) < 175)
+				m_kart.accelerate(0);
+			else
+				m_kart.accelerate(1.f);
+		}
+		else if(currentSpeed >=2){
+			if(fabs(angle) < 160)
+				m_kart.accelerate(-1.f);
+			else if (fabs(angle) < 170)
+				m_kart.accelerate(0.f);
+			else
+				m_kart.accelerate(1.f);
+		}
 		else
-			m_kart.accelerate(1.f);
+			if(fabs(angle) < 110)
+				m_kart.accelerate(-1.f);
+			else if(fabs(angle) < 155)
+				m_kart.accelerate(0);
+			else
+				m_kart.accelerate(1.f);
 	}
-	else{
-		if(fabs(angle) < 135)
-			m_kart.accelerate(-1.0);
-		else if(fabs(angle) < 160)
-			m_kart.accelerate(0);
+	else if(distance < 500){
+		if(currentSpeed >= 4){
+			if(fabs(angle) < 160)
+				m_kart.accelerate(-1.f);
+			else if(fabs(angle) < 165)
+				m_kart.accelerate(0);
+			else
+				m_kart.accelerate(1.f);
+		}
+		else if(currentSpeed >=2){
+			if(fabs(angle) < 155)
+				m_kart.accelerate(-1.f);
+			else if (fabs(angle) < 160)
+				m_kart.accelerate(0.f);
+			else
+				m_kart.accelerate(1.f);
+		}
 		else
-			m_kart.accelerate(1.0);
-
-
+			if(fabs(angle) < 95)
+				m_kart.accelerate(-1.f);
+			else if(fabs(angle) < 145)
+				m_kart.accelerate(0);
+			else
+				m_kart.accelerate(1.f);
 	}
-	/*m_kart.turn(-1.f);
-	*/
+	else
+		m_kart.accelerate(1.f);
+
 }
 
 void IABehavior::onUpdate(float elapsed)
