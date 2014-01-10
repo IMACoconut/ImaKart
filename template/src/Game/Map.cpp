@@ -12,20 +12,22 @@
 #include <iostream>
 
 Map::~Map() {
+	clear();
+}
+
+void Map::clear() {
 	while(m_checkpoints.size()) {
 		delete m_checkpoints.back();
 		m_checkpoints.pop_back();
 	}
+	for(auto* i: m_itemSpawns)
+		delete i;
+	m_itemSpawns.clear();
+	m_karts.clear();
+
 }
 bool Map::loadFromFile(const std::string& file){
-	while(m_checkpoints.size()) {
-		delete m_checkpoints.back();
-		m_checkpoints.pop_back();
-	}
-	for(auto& it : m_karts) {
-		delete std::get<0>(it);
-	}
-	m_karts.clear();
+	clear();
 	/*int numberOfKarts = 1;
 	int numberOfPlayer = 1;
 */

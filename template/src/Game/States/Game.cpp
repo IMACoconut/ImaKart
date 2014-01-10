@@ -26,10 +26,6 @@ Game::Game() :
 }
 
 Game::~Game(){
-	delete cam;
-	for(auto* k: karts)
-		delete k;
-	karts.clear();
 }
 
 void Game::Init(GameEngine* game) {
@@ -37,8 +33,11 @@ void Game::Init(GameEngine* game) {
 	map = GameLogic::getInstance().getMap();
 	
 	auto& gui = m_game->getWindow().getGui();
+	gui.removeAllWidgets();
+
 	m_clockDisplay = tgui::Label::Ptr(gui);
 	m_clockDisplay->setPosition(750,40);
+	//scene.clear();
 	load();
 	//game->PushState(m_loader);
 }
@@ -51,7 +50,7 @@ void Game::load(){
 	Graph::Shader* lightSpot = Graph::ShaderManager::getInstance().getShader("DFlightSpot");
 	glClearColor(0,0,0,0);
 	
-	
+
 	/*if(!mesh.loadFromFile("../resources/maps/dummy2/heightmap.png")) {
 		std::cerr << "Error" << std::endl;
 	}
@@ -87,7 +86,7 @@ void Game::load(){
 	light3.setIntensity(.7f);
 	light3.setPosition(glm::vec3(0,-9000,0));
 	light3.setShader(lightDirectional);
-	
+
 	scene.setBackground(&sky);
 	scene.addLight(&light3);
 	scene.addLight(&light);
@@ -120,14 +119,13 @@ void Game::load(){
 
 	}
 
-map->loadIntoScene(scene);
-	
+	map->loadIntoScene(scene);
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	cam =  new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
-	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
-	GameLogic::getInstance().setCamera(cam);
-	scene.setCamera(cam);
+	m_camera =  /*new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
+	m_camera->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
+	GameLogic::getInstance().setCamera(m_camera);
+	scene.setCamera(m_camera);
 
 	m_game->getWindow().setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
@@ -151,8 +149,18 @@ void Game::Initialize(GameEngine* game){
 void Game::Release(GameEngine* game){
 	auto& gui = game->getWindow().getGui();
 	gui.removeAllWidgets();
+	delete m_camera;
+	m_camera = nullptr;
+	GameLogic::getInstance().setCamera(nullptr);
 	scene.clear();
+
 	map->clear();
+
+
+	for(auto* k: karts)
+		delete k;
+	karts.clear();
+	map = nullptr;
 }
 
 void Game::Cleanup(GameEngine* game){
@@ -250,7 +258,7 @@ Kart* Game::addKart(KartType type){
 	Kart* k = new Kart(karts.size());
 	switch(type) {
 		case KartType_1:
-			k->set<std::string>("skin", "");
+			k->set<std::string>("skin", "../resources/images/uvtest.png");
 			k->set<int>("hp", 5);
 			k->set<float>("weight", 5);
 			k->set<float>("speedMaxForward", 5.f);
@@ -259,7 +267,7 @@ Kart* Game::addKart(KartType type){
 			k->set<float>("maniability", 0.95f);
 			break;
 		case KartType_2:
-			k->set<std::string>("skin", "");
+			k->set<std::string>("skin", "../resources/images/uvblue.png");
 			k->set<int>("hp", 8);
 			k->set<float>("weight", 8);
 			k->set<float>("speedMaxForward", 6.f);
@@ -268,7 +276,7 @@ Kart* Game::addKart(KartType type){
 			k->set<float>("maniability", 0.90f);
 			break;
 		case KartType_3:
-			k->set<std::string>("skin", "");
+			k->set<std::string>("skin", "../resources/images/uvgreen.png");
 			k->set<int>("hp", 3);
 			k->set<float>("weight", 4);
 			k->set<float>("speedMaxForward", 4.f);

@@ -59,6 +59,7 @@ public:
 	private:
 		KartBehavior* m_behavior;
 		KartMovement m_movement;
+		Graph::Material texture;
 		//float m_speedfactor, m_rotatefactor;
 };
 //}

@@ -18,6 +18,8 @@ public:
 	Map() = default;
 	~Map();
 
+	void clear();
+
 	bool loadFromFile(const std::string& file);
 
 	bool loadIntoScene(Graph::Scene& scene);

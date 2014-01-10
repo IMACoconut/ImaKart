@@ -18,13 +18,18 @@ void PlayerBehavior::onUpdate(float elapsed)
 		m_kart.accelerate(lsaxis.y, elapsed);
 		m_kart.turn(lsaxis.x, elapsed);
 	}
-
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
 		m_kart.accelerate(1.f, elapsed);
-	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		//std::cout << "forward" << std::endl;
+	}
+	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 		m_kart.accelerate(-1.f, elapsed);
-	else
+		//std::cout << "backward" << std::endl;
+	}
+	else {
 		m_kart.accelerate(0.f, elapsed);
+		//std::cout << "no mvt" << std::endl;
+	}
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 		m_kart.turn(-1.f, elapsed);
