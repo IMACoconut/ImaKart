@@ -52,7 +52,7 @@ void IABehavior::goToTheNextCheckpoint(){
 	else
 		m_kart.turn(0);
 	
-	/*if(distance > 700){
+	if(distance > 700){
 		if(fabs(angle) < 90)
 			m_kart.accelerate(-1.0);
 
@@ -61,16 +61,16 @@ void IABehavior::goToTheNextCheckpoint(){
 		else
 			m_kart.accelerate(1.f);
 	}
-	else{*/
-		/*if(fabs(angle) < 135)
+	else{
+		if(fabs(angle) < 135)
 			m_kart.accelerate(-1.0);
 		else if(fabs(angle) < 160)
 			m_kart.accelerate(0);
-		else*/
+		else
 			m_kart.accelerate(1.0);
 
 
-	//}
+	}
 	/*m_kart.turn(-1.f);
 	*/
 }

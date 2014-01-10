@@ -13,7 +13,7 @@
 static const float EPSILON_KART = 0.005;
 
 	Kart::Kart(int id) :
-		m_behavior(nullptr)/*,
+		m_behavior(nullptr), m_isPlayer(false)/*,
 		m_speedfactor(0), m_rotatefactor(0)*/
 	{
 		add("id", new Component<int>(1, id));
@@ -25,7 +25,7 @@ static const float EPSILON_KART = 0.005;
 		add("speedMaxBack", new Component<float>(1, -1.f));
 		add("currentSpeed", new Component<float>(1, 0.f));
 		add("acceleration", new Component<float>(1, 0.01f));
-		add("maniability", new Component<float>(1, 0.5f));
+		add("maniability", new Component<float>(1, 5.f));
 		add("position", new Component<glm::vec3>(1, glm::vec3(3, 3, 3)));
 		add("forward", new Component<glm::vec3>(1, glm::vec3(1, 0, 0)));
 		add("up", new Component<glm::vec3>(1, glm::vec3(0, 1, 0)));
@@ -84,10 +84,9 @@ static const float EPSILON_KART = 0.005;
 
 		//calcule de l'angle horizontale du kart (action du joueur)
 		//std::cout << elapsed*maniability*horizontalAngle << " " << horizontalAngle << std::endl;
-		glm::mat4 rotH = glm::rotate(glm::mat4(), horizontalAngle, up);
+		glm::mat4 rotH = elapsed*maniability*glm::rotate(glm::mat4(), horizontalAngle, up);
 		forward = glm::vec3(rotH*glm::vec4(1,0,0, 1.f));
 
-		std::cout << " " << position.x << " " << position.y << " " << position.z << std::endl;
 		//std::cout << forward.x << " " << forward.y << " " << forward.z << std::endl;
 		set<glm::vec3>("forward", glm::normalize(forward));
 		//set<glm::vec3>("up", glm::normalize(up));
@@ -101,8 +100,8 @@ static const float EPSILON_KART = 0.005;
 
 	void Kart::loadIntoScene(Graph::Scene& s){
 
-this->mesh = Graph::Mesh::CreateAxis();
-this->mesh.setScale(glm::vec3(10,10,10));
+		this->mesh.loadFromFile("../resources/models/kart-2.3DS");
+		this->mesh.setScale(glm::vec3(.3,.3,.3));
 		//this->mesh.loadFromFile("../resources/models/kart.3DS");
 		s.addMesh(&mesh);
 	}
@@ -134,11 +133,11 @@ this->mesh.setScale(glm::vec3(10,10,10));
 		
 
 		//physx
-		//tmp = physxKart(heightmap, elapsed, tmp);
+		tmp = physxKart(heightmap, elapsed, tmp);
 		mesh.setPosition(tmp);
 		//mise à jour de l'orientation du kart
-		//tmp = updateOrientation(heightmap, elapsed);
-		//mesh.setRotation(tmp);
+		tmp = updateOrientation(heightmap, elapsed);
+		mesh.setRotation(tmp);
 		
 	}
 
@@ -146,24 +145,45 @@ this->mesh.setScale(glm::vec3(10,10,10));
 
 		float currentSpeed = get<float>("currentSpeed");
 		float acceleration = get<float>("acceleration");
+		float speedMaxForward =get<float>("speedMaxForward");
+		float speedMaxBack =get<float>("speedMaxBack");
 
-		if(currentSpeed > 0 - acceleration && currentSpeed < 0 + acceleration && !factor){
+		if(Util::eqZero(factor)) {
+			if(currentSpeed-2*acceleration > 0)
+				currentSpeed -= 2*acceleration;
+			else if(currentSpeed+2*acceleration < 0) {
+				currentSpeed += 2*acceleration;
+			} else
+				currentSpeed = 0;
+		} else if(factor < 0) {
+			currentSpeed += factor * 2 * acceleration + acceleration;
+			
+			if(currentSpeed < speedMaxBack)
+				currentSpeed = speedMaxBack;
+		} else {
+			currentSpeed += factor * 2 * acceleration - acceleration;
+			
+			if(currentSpeed > speedMaxForward)
+				currentSpeed = speedMaxForward;
+		}
+
+		/*if(currentSpeed > 0 - acceleration && currentSpeed < 0 + acceleration && !factor){
 			currentSpeed = 0; 
 		}
 		else if(currentSpeed >= 0){
 			currentSpeed += factor * 2 * acceleration - acceleration;
-			float speedMaxForward =get<float>("speedMaxForward");
+			
 			if(currentSpeed > speedMaxForward)
 				currentSpeed = speedMaxForward;
 		}
 		else if(currentSpeed < 0){
 			currentSpeed += factor * 2 * acceleration + acceleration;
-			float speedMaxBack =get<float>("speedMaxBack");
+			
 			if(currentSpeed < speedMaxBack)
 				currentSpeed = speedMaxBack;
-		}
+		}*/
 
-
+		std::cout << "speed: " << currentSpeed << std::endl;
 		set<float>("currentSpeed", currentSpeed);
 	}
 
@@ -186,4 +206,11 @@ this->mesh.setScale(glm::vec3(10,10,10));
 
 	void Kart::giveItem(Item* i) {}
 
+	void Kart::isPlayer(bool p) {
+		m_isPlayer = p;
+	}
+
+	bool Kart::isPlayer() const {
+		return m_isPlayer;
+	}
 //}

@@ -11,7 +11,6 @@ class GameEngine;
 class Game : public GameState
 {
 private:
-	Graph::Mesh mesh2;
 	Graph::Skydome sky;
 	Graph::PointLight light;
 	Graph::PointLight light4;
@@ -24,9 +23,8 @@ private:
 	LoadingState<Game> m_loader;
 	Map* map;
 	GameEngine* m_game;
-	
 	std::vector<Kart*> karts;
-
+	tgui::Label::Ptr m_clockDisplay;
 public:
 	Game();
 	~Game();

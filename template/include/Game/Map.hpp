@@ -11,7 +11,7 @@
 
 class Kart;
 
-typedef std::tuple<Kart*, Util::Clock, int, bool> KartInfos;
+typedef std::tuple<Kart*, int, int, bool> KartInfos;
 
 class Map : public Entity, public Graph::Node{
 public:

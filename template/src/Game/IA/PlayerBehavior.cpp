@@ -7,7 +7,7 @@
 PlayerBehavior::PlayerBehavior(Kart& kart, int playerId) :
 	KartBehavior(kart), m_playerId(playerId)
 {
-	
+	kart.isPlayer(true);
 }
 
 void PlayerBehavior::onUpdate(float elapsed) 
@@ -18,8 +18,9 @@ void PlayerBehavior::onUpdate(float elapsed)
 		m_kart.accelerate(lsaxis.y);
 		m_kart.turn(lsaxis.x);
 	}
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
 		m_kart.accelerate(1.f);
+	}
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 		m_kart.accelerate(-1.f);
 	else

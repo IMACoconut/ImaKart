@@ -34,6 +34,10 @@ Game::~Game(){
 void Game::Init(GameEngine* game) {
 	m_game = game;
 	map = GameLogic::getInstance().getMap();
+	
+	auto& gui = m_game->getWindow().getGui();
+	m_clockDisplay = tgui::Label::Ptr(gui);
+	m_clockDisplay->setPosition(750,40);
 	load();
 	//game->PushState(m_loader);
 }
@@ -58,9 +62,6 @@ void Game::load(){
 	mesh.setMaterial(0, &hmtex);
 	mesh.setScale(glm::vec3(16,16,16));*/
 	//mesh2.loadFromFile("../resources/models/cube.3DS");
-	mesh2 = Graph::Mesh::CreateSphere(sf::Color(255,0,0));
-	mesh2.setScale(glm::vec3(10,10,10));
-	
 	sky.setShader(skyShader);
 	
 	
@@ -88,14 +89,13 @@ void Game::load(){
 	light3.setShader(lightDirectional);
 	
 	scene.setBackground(&sky);
-	scene.addMesh(&mesh2);
 	scene.addLight(&light3);
 	scene.addLight(&light);
 	scene.addLight(&light2);
 	scene.addLight(&light4);
 
 //////init kart ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	int numberOfKarts = 2;
+	int numberOfKarts = 1;
 	int numberOfPlayer = 1;
 	for (int i = 0; i < numberOfKarts; ++i)
 	{
@@ -108,12 +108,12 @@ void Game::load(){
 	{
 		auto tmp = karts[i];
 		if(i < numberOfPlayer){
-			std::cout << "Player" << std::endl;
+			//std::cout << "Player" << std::endl;
 			tmp->setBehavior(new PlayerBehavior(*tmp, i));
 		}
 		else {
-			std::cout << "IA" << std::endl;
-			//tmp->setBehavior(new IABehavior(*tmp, map->getCheckpoints()));
+			//std::cout << "IA" << std::endl;
+			tmp->setBehavior(new IABehavior(*tmp, map->getCheckpoints()));
 		}
 	}
 
@@ -121,7 +121,7 @@ map->loadIntoScene(scene);
 	
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	cam =  new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(0,0,0), glm::vec3(10,10,10), 10.f, 5.f);
+	cam =  /*new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));*//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(cam);
 	scene.setCamera(cam);
@@ -129,7 +129,7 @@ map->loadIntoScene(scene);
 	m_game->getWindow().setMouseCursorVisible(false);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
-
+	GameLogic::getInstance().startRace();
 	Util::LogManager::notice("Running");
 }
 
@@ -208,6 +208,20 @@ void Game::Update(GameEngine* game){
 	map->update(elapsed);
 	scene.update(elapsed);
 	clock.restart();
+	const Util::Clock& raceTimer = GameLogic::getInstance().getClock();
+	std::string sec;
+	if(raceTimer.GetSeconds()%60 < 10)
+		sec = "0"+ Util::ToString(raceTimer.GetSeconds()%60);
+	else
+		sec = Util::ToString(raceTimer.GetSeconds()%60);
+	std::string msec = "";
+	if(raceTimer.GetMilliseconds()%1000 < 100)
+		msec += '0';
+	if(raceTimer.GetMilliseconds()%1000 < 10)
+		msec += '0';
+	msec += Util::ToString(raceTimer.GetMilliseconds()%1000);
+
+	m_clockDisplay->setText(Util::ToString(raceTimer.GetMinutes())+":"+sec+":"+msec);
 	if(frameTime.getElapsedTime().asSeconds() >= 1) {
 		frameTime.restart();
 		fpsStr = Util::ToString(fps)+"FPS";
@@ -245,7 +259,7 @@ Kart* Game::addKart(KartType type){
 			k->set<float>("speedMaxForward", 8.f);
 			k->set<float>("speedMaxBack", -2.f);
 			k->set<float>("acceleration", 0.01f);
-			k->set<float>("maniability", 0.2f);
+			k->set<float>("maniability", 1.f);
 			break;
 		case KartType_3:
 			k->set<std::string>("skin", "");

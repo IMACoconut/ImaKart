@@ -49,7 +49,8 @@ public:
 	void addAlteration(Alteration* alteration);
 
 	void giveItem(Item* item);
-
+	bool isPlayer() const;
+	void isPlayer(bool player);
 
 	glm::vec3 physxKart(Graph::Heightmap& heightmap, float elapsed, const glm::vec3& pos);
 
@@ -59,6 +60,7 @@ public:
 	private:
 		KartBehavior* m_behavior;
 		KartMovement m_movement;
+		bool m_isPlayer;
 		//float m_speedfactor, m_rotatefactor;
 };
 //}

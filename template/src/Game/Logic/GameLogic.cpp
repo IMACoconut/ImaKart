@@ -91,6 +91,14 @@ void GameLogic::loadMap(const std::string& map) {
 	}
 }
 
+void GameLogic::startRace() {
+	m_clock.Restart();
+}
+
+void GameLogic::stopRace() {
+	m_clock.Pause();
+}
+
 std::vector<KartInfos> GameLogic::getRaceResults() {
 	return m_map.getResults();
 }
@@ -113,4 +121,8 @@ const std::vector<MapInfo>& GameLogic::getMapList() {
 
 const std::vector<KartInfo>& GameLogic::getKartList() {
 	return m_karts;
+}
+
+const Util::Clock& GameLogic::getClock() const {
+	return m_clock;
 }

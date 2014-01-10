@@ -47,7 +47,10 @@ public:
 
 	void setCamera(Graph::Camera* cam);
 	void loadMap(const std::string& map);
+	
 	void startRace();
+	void stopRace();
+
 	void endRace();
 	bool isRaceFinished() const;
 
@@ -60,6 +63,8 @@ public:
 	const std::vector<MapInfo>& getMapList();
 	const std::vector<KartInfo>& getKartList();
 
+	const Util::Clock& getClock() const;
+
 private:
 	GameLogic();
 	~GameLogic();
@@ -68,4 +73,5 @@ private:
 	Graph::Camera* m_camera;
 	std::vector<MapInfo> m_maps;
 	std::vector<KartInfo> m_karts;
+	Util::Clock m_clock;
 };

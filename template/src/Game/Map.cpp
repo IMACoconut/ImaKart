@@ -1,4 +1,5 @@
 #include <Game/Map.hpp>
+#include <Game/Logic/GameLogic.hpp>
 #include <Game/Logic/Checkpoint.hpp>
 #include <Game/Logic/ItemSpawn.hpp>
 #include <Game/IA/PlayerBehavior.hpp>
@@ -215,7 +216,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 
 		grid.placeKart(*tmp);
 		
-		glm::vec3 pos = tmp->get<glm::vec3>("position");
+		glm::vec3 pos = tmp->getMesh()->getPosition();
 		//pos.x *= sc; pos.z *= sc;
 		pos.y = mesh.realHeight(pos.x, pos.z);//pos.y = mesh.offsetHeight(c[0].x,c[0].y)*get<float>("scale")/2;
 		tmp->setPosition(pos, 0);
@@ -251,7 +252,7 @@ void Map::update(float e) {
 }
 
 void Map::addKart(Kart* k) {
-	m_karts.push_back(std::make_tuple(k, Util::Clock(), 3, false));
+	m_karts.push_back(std::make_tuple(k, 0, 3, false));
 	/*Kart* k = new Kart(m_karts.size());
 	switch(type) {
 		case KartType_1:
@@ -280,14 +281,17 @@ void Map::hasFinishedLoop(Kart& k) {
  	if(loops == 1) {
  		bool& finished = std::get<3>(infos);
  		finished = true;
- 		auto& clock = std::get<1>(infos);
- 		clock.Pause();
-
+ 		auto& clock = GameLogic::getInstance().getClock();
+ 		std::get<1>(infos) = clock.GetMilliseconds();
+ 		if(k.isPlayer()) {
+ 			GameLogic::getInstance().stopRace();
+ 		}
  	} else
  		--loops;
 
- 	auto& clock = std::get<1>(infos);
+ 	auto& clock = GameLogic::getInstance().getClock();
  	std::cout << clock.GetMinutes()<< " : "<<clock.GetSeconds() % 60<<std::endl;
+ 	
 }
 
 Graph::Heightmap* Map::getHeightmap() {
