@@ -11,7 +11,7 @@ out vec3 vertexPos;
 out vec3 vertexNorm;
 
 void main() {
-	gl_Position = projMatrix*viewMatrix*vec4(position*8000, 1.f);
-	vertexPos = position*8000;
+	gl_Position = projMatrix*viewMatrix*vec4(position*6000, 1.f);
+	vertexPos = position*6000;
 	vertexNorm = normal;
 }

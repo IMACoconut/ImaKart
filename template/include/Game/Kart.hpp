@@ -39,7 +39,7 @@ public:
 	~Kart();
 
 	void setPosition(glm::vec3 position, float horizontalAngle);
-	glm::vec3 updateOrientation(Graph::Heightmap& heightmap, float elapsed);
+	void updateOrientation(Graph::Heightmap& heightmap, float elapsed);
 	void setBehavior(KartBehavior* m_behavior);
 	void loadIntoScene(Graph::Scene& s);
 	void update(Graph::Heightmap& heightmap, float elapsed);//mise à jours de tout les paramètre du kart
@@ -49,18 +49,16 @@ public:
 	void addAlteration(Alteration* alteration);
 
 	void giveItem(Item* item);
-	bool isPlayer() const;
-	void isPlayer(bool player);
 
-	glm::vec3 physxKart(Graph::Heightmap& heightmap, float elapsed, const glm::vec3& pos);
 
-	Graph::Mesh* getMesh() { return &mesh;}
+	void physxKart(Graph::Heightmap& heightmap, float elapsed);
 
+	Graph::Mesh* getMesh() { return &mesh; };
 		Graph::Mesh mesh;
+	
 	private:
 		KartBehavior* m_behavior;
 		KartMovement m_movement;
-		bool m_isPlayer;
 		//float m_speedfactor, m_rotatefactor;
 };
 //}

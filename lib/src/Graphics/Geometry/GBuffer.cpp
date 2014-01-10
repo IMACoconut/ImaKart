@@ -46,7 +46,7 @@ void GBuffer::createTexture(GBufferTarget target)
 {
     glBindFramebuffer(GL_DRAW_FRAMEBUFFER, m_fbo);
     Material* mat = new Material;
-    mat->create(m_width, m_height, 32, GL_RGB, GL_RGB32F);
+    mat->create(m_width, m_height, 32, GL_RGBA, GL_RGBA32F);
     glFramebufferTexture2D(GL_DRAW_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + m_materials.size(), GL_TEXTURE_2D, mat->getID(), 0);
     
     m_materials[target] = mat;
@@ -117,18 +117,24 @@ void GBuffer::unbind(GLuint method)
 
 void GBuffer::save() 
 {
-    /*setBufferTarget(GBuffer::GBUFFERTARGET_DIFFUSE);
-    unsigned int* pixels = new unsigned int[m_width*m_height*3];
-    glReadPixels(0,0,m_width, m_height, GL_RGB, GL_UNSIGNED_INT,  pixels);
+    bind(GL_READ_FRAMEBUFFER);
+    setBufferTarget(GBuffer::GBufferTarget_Light);
+    float* pixels = new float[m_width*m_height*4];
+
+    glReadPixels(0,0,m_width, m_height, GL_RGBA, GL_FLOAT,  pixels);
+    unbind(GL_READ_FRAMEBUFFER);
     sf::Image im;
     im.create(m_width, m_height);
-    for(size_t i = 0; i<m_width; ++i)
-        for(size_t j = 0; j<m_height; ++j) {
-            im.setPixel(i,j, sf::Color(pixels[i*m_width*3+j*3],pixels[i*m_width*3+j*3+1],pixels[i*m_width*3+j*3+2],1));
+    for(size_t i = 0; i<m_height; ++i)
+        for(size_t j = 0; j<m_width; ++j) {
+            char r = pixels[i*m_width*4+j*4+2] *255;
+            char g = pixels[i*m_width*4+j*4+2] * 255;
+            char b = pixels[i*m_width*4+j*4+2] * 255;
+            im.setPixel(j,i, sf::Color(r,g,b,1));
         }
 
     delete[] pixels;
-    im.saveToFile("test.png");*/
+    im.saveToFile("test.jpg");
 }
 
 void GBuffer::setBufferTarget(GBufferTarget target)

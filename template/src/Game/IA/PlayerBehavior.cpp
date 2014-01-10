@@ -7,7 +7,7 @@
 PlayerBehavior::PlayerBehavior(Kart& kart, int playerId) :
 	KartBehavior(kart), m_playerId(playerId)
 {
-	kart.isPlayer(true);
+	//kart.isPlayer(true);
 }
 
 void PlayerBehavior::onUpdate(float elapsed) 

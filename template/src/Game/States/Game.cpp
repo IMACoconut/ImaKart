@@ -16,8 +16,6 @@ Game::Game() :
 {
 	Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
-	Graph::ShaderManager::getInstance().loadShaderFromFile(
-		"celShad", "../resources/shaders/textured.vert", "../resources/shaders/textured.frag");
 
 	Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"DFlightPoint", "../resources/shaders/DFbase.vert", "../resources/shaders/DFlightPoint.frag");
@@ -45,7 +43,6 @@ void Game::Init(GameEngine* game) {
 void Game::load(){
 
 	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().getShader("skyBox");
-	Graph::Shader* celShad = Graph::ShaderManager::getInstance().getShader("celShad");
 	Graph::Shader* lightPoint = Graph::ShaderManager::getInstance().getShader("DFlightPoint");
 	Graph::Shader* lightDirectional = Graph::ShaderManager::getInstance().getShader("DFlightDirectional");
 	Graph::Shader* lightSpot = Graph::ShaderManager::getInstance().getShader("DFlightSpot");
@@ -63,6 +60,7 @@ void Game::load(){
 	mesh.setScale(glm::vec3(16,16,16));*/
 	//mesh2.loadFromFile("../resources/models/cube.3DS");
 	sky.setShader(skyShader);
+	sky.setLightening(false);
 	
 	
 	light.setColor(glm::vec3(0,1,0));
@@ -77,7 +75,6 @@ void Game::load(){
 	light4.setRadius(50.f*16);
 	light4.setPosition(glm::vec3(128*16,100.f*15,128*16));
 	light4.setShader(lightPoint);
-
 	
 	light2.setColor(glm::vec3(1,0, 0));
 	light2.setShader(lightSpot);
@@ -114,7 +111,7 @@ map->loadIntoScene(scene);
 	
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	cam =  new Graph::OrbitCamera(m_game->getWindow(), &(karts[1]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
+	cam =  new Graph::KartCamera(m_game->getWindow(), &(karts[1]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
 	cam->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(cam);
 	scene.setCamera(cam);

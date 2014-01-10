@@ -35,6 +35,7 @@ void RenderMethod::unregisterNode(Node* m) {
 
 void RenderMethod::setBackground(Skydome* sky) {
 	m_background = sky;
+	m_meshs.push_back(sky);
 }
 
 void RenderMethod::setCamera(Camera* c) {

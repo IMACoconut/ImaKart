@@ -26,6 +26,9 @@ namespace Graph {
 		void addChild(Node* child);
 		void removeChild(Node* child);
 
+		void setLightening(bool b);
+		bool isLightened() const;
+
 		void setPosition(const glm::vec3& position);
 		glm::vec3 getPosition() const;
 
@@ -77,7 +80,7 @@ namespace Graph {
 		Material* material[Render::TextureChannel_Max];
 		Shader* shader;
 		glm::mat4 modelMatrix;
-		bool modelDirty, boxDirty, sphereDirty, drawBox, drawSphere;
+		bool modelDirty, boxDirty, sphereDirty, drawBox, drawSphere, isLight;
 		Phys::AABB3D m_aabb;
 		Phys::BSphere m_bsphere;
 	};

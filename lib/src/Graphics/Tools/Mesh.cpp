@@ -122,9 +122,9 @@ Mesh Mesh::CreateSphere(const sf::Color& color) {
 Mesh Mesh::CreateQuad(const sf::Color& color) {
 	VertexBuffer buff;
 	buff.addVertex(Vertex3D(glm::vec3(-1,-1,0), glm::vec3(0,0,0), glm::vec2(0,0), color));
-	buff.addVertex(Vertex3D(glm::vec3(1,-1,0), glm::vec3(0,0,0), glm::vec2(0,0), color));
-	buff.addVertex(Vertex3D(glm::vec3(1,1,0), glm::vec3(0,0,0), glm::vec2(0,0), color));
-	buff.addVertex(Vertex3D(glm::vec3(-1,1,0), glm::vec3(0,0,0), glm::vec2(0,0), color));
+	buff.addVertex(Vertex3D(glm::vec3(1,-1,0), glm::vec3(0,0,0), glm::vec2(1,0), color));
+	buff.addVertex(Vertex3D(glm::vec3(1,1,0), glm::vec3(0,0,0), glm::vec2(1,1), color));
+	buff.addVertex(Vertex3D(glm::vec3(-1,1,0), glm::vec3(0,0,0), glm::vec2(0,1), color));
 	buff.addTriangle(sf::Vector3i(0,1,2));
 	buff.addTriangle(sf::Vector3i(0,2,3));
 	Mesh m;

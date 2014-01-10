@@ -13,7 +13,7 @@
 static const float EPSILON_KART = 0.005;
 
 	Kart::Kart(int id) :
-		m_behavior(nullptr), m_isPlayer(false)/*,
+		m_behavior(nullptr)/*,
 		m_speedfactor(0), m_rotatefactor(0)*/
 	{
 		add("id", new Component<int>(1, id));
@@ -25,7 +25,7 @@ static const float EPSILON_KART = 0.005;
 		add("speedMaxBack", new Component<float>(1, -1.f));
 		add("currentSpeed", new Component<float>(1, 0.f));
 		add("acceleration", new Component<float>(1, 0.01f));
-		add("maniability", new Component<float>(1, 5.f));
+		add("maniability", new Component<float>(1, 0.5f));
 		add("position", new Component<glm::vec3>(1, glm::vec3(3, 3, 3)));
 		add("forward", new Component<glm::vec3>(1, glm::vec3(1, 0, 0)));
 		add("up", new Component<glm::vec3>(1, glm::vec3(0, 1, 0)));
@@ -40,34 +40,36 @@ static const float EPSILON_KART = 0.005;
 	}
 
 	void Kart::setPosition(glm::vec3 position, float horizontalAngle){
-		mesh.setPosition(position);
+		set<glm::vec3>("position", position);
 		set<float>("horizontalAngle", horizontalAngle);
 
 	}
 
-	glm::vec3 Kart::physxKart(Graph::Heightmap& heightmap, float elapsed, const glm::vec3& pos){
-		glm::vec3 position = pos;
+	void Kart::physxKart(Graph::Heightmap& heightmap, float elapsed){
+		glm::vec3 position = get<glm::vec3>("position");
 		float mapY = heightmap.realHeight(position.x, position.z);
 
-		if(position.y-elapsed > mapY)
+		if(position.y > mapY)
 			position.y -=  elapsed;
 		else
 			position.y = mapY;
 
-		return position;
+		set<glm::vec3>("position", position);
+
+		mesh.setPosition(position);
 	}
 
-	glm::vec3 Kart::updateOrientation(Graph::Heightmap& heightmap, float elapsed){
+	void Kart::updateOrientation(Graph::Heightmap& heightmap, float elapsed){
 
 		float horizontalAngle =get<float>("horizontalAngle"), maniability = get<float>("maniability");
-		glm::vec3 position = mesh.getPosition();
+		glm::vec3 position = get<glm::vec3>("position");
 		glm::vec3 forward = get<glm::vec3>("forward");
 		glm::vec3 up = get<glm::vec3>("up");
 		glm::mat4 rotat = get<glm::mat4>("rotat");
 
-		//std::cout << position.x << " " << position.y << " " << position.z << std::endl;
+
 		//calcule de l'orientation du kart par rapport au sol
-		/*glm::vec3 normalMap = glm::normalize(heightmap.realNormal(position.x, position.z));
+		glm::vec3 normalMap = glm::normalize(heightmap.realNormal(position.x, position.z));
 		glm::vec3 normalU = glm::cross(normalMap, up);		
 		if((normalU.x > EPSILON_KART || normalU.x < -EPSILON_KART) || (normalU.y > EPSILON_KART || normalU.y < -EPSILON_KART) || (normalU.z > EPSILON_KART || normalU.z < -EPSILON_KART)){
 			normalU = glm::normalize(normalU);
@@ -75,33 +77,30 @@ static const float EPSILON_KART = 0.005;
 			
 			rotat = glm::rotate(rotat, angleNormal, normalU);
 			mesh.setRotationAxe(angleNormal, normalU);
-			std::cout << angleNormal << std::endl;
-		}*/
-		
-		//forward = glm::vec3(rotat*glm::vec4(glm::vec3(1, 0, 0), 1.f*elapsed));
-		//up = glm::vec3(rotat*glm::vec4(glm::vec3(0, 1, 0), 1.f));
+		}
+
+		forward = glm::vec3(rotat*glm::vec4(glm::vec3(1, 0, 0), 1.f));
+		up = glm::vec3(rotat*glm::vec4(glm::vec3(0, 1, 0), 1.f));
 
 
 		//calcule de l'angle horizontale du kart (action du joueur)
-		//std::cout << elapsed*maniability*horizontalAngle << " " << horizontalAngle << std::endl;
-		glm::mat4 rotH = elapsed*maniability*glm::rotate(glm::mat4(), horizontalAngle, up);
-		forward = glm::vec3(rotH*glm::vec4(1,0,0, 1.f));
+		glm::mat4 rotH = glm::rotate(glm::mat4(), horizontalAngle, up);
+		forward = glm::vec3(rotH*glm::vec4(forward, 1.f));
 
-		//std::cout << forward.x << " " << forward.y << " " << forward.z << std::endl;
 		set<glm::vec3>("forward", glm::normalize(forward));
-		//set<glm::vec3>("up", glm::normalize(up));
+		set<glm::vec3>("up", glm::normalize(up));
 
 		set<float>("horizontalAngle", horizontalAngle);
 		set<glm::mat4>("rotat", rotat);
 
 
-		return glm::vec3(0, horizontalAngle, 0);
+		mesh.setRotation(glm::vec3(0, horizontalAngle, 0));
 	}
 
 	void Kart::loadIntoScene(Graph::Scene& s){
 
-		this->mesh.loadFromFile("../resources/models/kart-2.3DS");
-		this->mesh.setScale(glm::vec3(.3,.3,.3));
+this->mesh = Graph::Mesh::CreateAxis();
+this->mesh.setScale(glm::vec3(10,10,10));
 		//this->mesh.loadFromFile("../resources/models/kart.3DS");
 		s.addMesh(&mesh);
 	}
@@ -123,48 +122,42 @@ static const float EPSILON_KART = 0.005;
 			m_behavior->update(elapsed);
 
 		//mise à jour de la position dui kart
-		/*float currentSpeed = get<float>("currentSpeed");
-		std::cout << currentSpeed*elapsed << std::endl;
-		glm::vec3 dir = get<glm::vec3>("forward");
-		std::cout << dir.x << " " << dir.y << " " << dir.z << std::endl;*/
 		glm::vec3 dir = get<glm::vec3>("forward")*get<float>("currentSpeed")*elapsed;
-		glm::vec3 tmp = dir + mesh.getPosition();
-		//set<glm::vec3>("position", tmp);
-		
+		glm::vec3 tmp = dir + get<glm::vec3>("position");
+		set<glm::vec3>("position", tmp);
+		mesh.setPosition(tmp);
 
 		//physx
-		tmp = physxKart(heightmap, elapsed, tmp);
-		mesh.setPosition(tmp);
+		physxKart(heightmap, elapsed);
+
 		//mise à jour de l'orientation du kart
-		tmp = updateOrientation(heightmap, elapsed);
-		mesh.setRotation(tmp);
-		
+		updateOrientation(heightmap, elapsed);
 	}
 
 	void Kart::accelerate(float factor){
 
-                float currentSpeed = get<float>("currentSpeed");
-                float acceleration = get<float>("acceleration");
+		float currentSpeed = get<float>("currentSpeed");
+		float acceleration = get<float>("acceleration");
 
-                if(currentSpeed > 0 - acceleration && currentSpeed < 0 + acceleration && !factor){
-                        currentSpeed = 0;
-                }
-                else if(currentSpeed >= 0){
-                        currentSpeed += factor * 2 * acceleration - acceleration;
-                        float speedMaxForward =get<float>("speedMaxForward");
-                        if(currentSpeed > speedMaxForward)
-                                currentSpeed = speedMaxForward;
-                }
-                else if(currentSpeed < 0){
-                        currentSpeed += factor * 2 * acceleration + acceleration;
-                        float speedMaxBack =get<float>("speedMaxBack");
-                        if(currentSpeed < speedMaxBack)
-                                currentSpeed = speedMaxBack;
-                }
+		if(currentSpeed > 0 - acceleration && currentSpeed < 0 + acceleration && !factor){
+			currentSpeed = 0; 
+		}
+		else if(currentSpeed >= 0){
+			currentSpeed += factor * 2 * acceleration - acceleration;
+			float speedMaxForward =get<float>("speedMaxForward");
+			if(currentSpeed > speedMaxForward)
+				currentSpeed = speedMaxForward;
+		}
+		else if(currentSpeed < 0){
+			currentSpeed += factor * 2 * acceleration + acceleration;
+			float speedMaxBack =get<float>("speedMaxBack");
+			if(currentSpeed < speedMaxBack)
+				currentSpeed = speedMaxBack;
+		}
 
 
-                set<float>("currentSpeed", currentSpeed);
-        }
+		set<float>("currentSpeed", currentSpeed);
+	}
 
 	void Kart::turn(float factor){
 
@@ -185,11 +178,4 @@ static const float EPSILON_KART = 0.005;
 
 	void Kart::giveItem(Item* i) {}
 
-	void Kart::isPlayer(bool p) {
-		m_isPlayer = p;
-	}
-
-	bool Kart::isPlayer() const {
-		return m_isPlayer;
-	}
 //}

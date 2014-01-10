@@ -190,6 +190,7 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 	float sc = get<float>("scale");
 	this->mesh.setScale(glm::vec3(sc,sc/2,sc));
 	scene.addMesh(&mesh);
+	//mesh.setLightening(false);
 
 	auto c = this->get<std::vector<glm::vec2>>("check");
 	for(size_t i = 0; i < c.size(); ++i){
@@ -218,11 +219,11 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 
 		grid.placeKart(*tmp);
 		
-		glm::vec3 pos = tmp->getMesh()->getPosition();
+		glm::vec3 pos = tmp->get<glm::vec3>("position");
 		//pos.x *= sc; pos.z *= sc;
 		pos.y = mesh.realHeight(pos.x, pos.z);//pos.y = mesh.offsetHeight(c[0].x,c[0].y)*get<float>("scale")/2;
 		tmp->setPosition(pos, 0);
-		std::cout << pos.x << " " << pos.y << " " << pos.z << std::endl;
+		//std::cout << pos.x << " " << pos.y << " " << pos.z << std::endl;
 	}
 
 	return true;
@@ -285,9 +286,9 @@ void Map::hasFinishedLoop(Kart& k) {
  		finished = true;
  		auto& clock = GameLogic::getInstance().getClock();
  		std::get<1>(infos) = clock.GetMilliseconds();
- 		if(k.isPlayer()) {
+ 		//if(k.isPlayer()) {
  			GameLogic::getInstance().stopRace();
- 		}
+ 		//}
  	} else
  		--loops;
 
