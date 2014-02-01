@@ -12,7 +12,7 @@ PlayerBehavior::PlayerBehavior(Kart& kart, int playerId) :
 }
 
 void PlayerBehavior::onUpdate(float elapsed) 
-{
+{/*
 	if(m_controllerId == -1) {
 		for(int i = 0; i<4; ++i)
 			if(GameLogic::getInstance().getXboxInput().isConnected(i)) {
@@ -22,15 +22,18 @@ void PlayerBehavior::onUpdate(float elapsed)
 	}
 
 	auto& xbox = GameLogic::getInstance().getXboxInput();
-/*	if(xbox.isConnected(m_controllerId)) {
+	if(xbox.isConnected(m_controllerId)) {
 		auto lsaxis = xbox.getAxis(m_controllerId, Util::XboxAxis::LStick);
 
-		std::cout << lsaxis.x << " " << lsaxis.y << std::endl;
+		//std::cout << lsaxis.x << " " << lsaxis.y << std::endl;
 		if(!Util::eqZero(lsaxis.y))
-			m_kart.accelerate(lsaxis.y, elapsed);
+			m_kart.accelerate(1.f, elapsed);
 
 		if(!Util::eqZero(lsaxis.x))
-			m_kart.turn(lsaxis.x, elapsed);
+			if(lsaxis.x < 0)
+				m_kart.turn(-1, elapsed);
+			else
+				m_kart.turn(1, elapsed);	
 	}*/
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
 		m_kart.accelerate(1.f, elapsed);

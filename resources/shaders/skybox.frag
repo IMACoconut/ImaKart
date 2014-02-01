@@ -67,7 +67,7 @@ void main()
 
 	//vec3 sky = c2;
 
-    finalData[0] = vec4(vertexPos,1.f);
+    finalData[0] = vec4(1.f, vertexPos);
     finalData[1] = vec4((sky + moon + light), 1.f);
     finalData[2] = vec4(normalize(vertexNorm),1.f);
     finalData[3] = vec4(0.f,0.f,0.f,0.f);

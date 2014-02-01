@@ -94,25 +94,25 @@ void Game::load(){
 	scene.addLight(&light4);
 
 //////init kart ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	int numberOfKarts = 3;
+	int numberOfKarts = 4;
 	int numberOfPlayer = 1;
 
 	for (int i = 0; i < numberOfKarts; ++i)
 	{
-		Kart* tmp;
-
-		if(i%3 == 0)
-			tmp = addKart(KartType_3);
-		else if(i%3 == 1)
-			tmp = addKart(KartType_2);
-		else if(i%3 == 2)
-			tmp = addKart(KartType_1);
 
 		if(i < numberOfPlayer){
+			Kart* tmp = addKart(GameLogic::getInstance().playerKart());
 			//std::cout << "Player" << std::endl;
 			tmp->setBehavior(new PlayerBehavior(*tmp, i));
 		}
 		else {
+			Kart* tmp;
+			if(i%3 == 1)
+				tmp = addKart(KartType_1);
+			else if(i%3 == 2)
+				tmp = addKart(KartType_2);
+			else if(i%3 == 3)
+				tmp = addKart(KartType_3);
 			//std::cout << "IA" << std::endl;
 			tmp->setBehavior(new IABehavior(*tmp, map->getCheckpoints()));
 		}
@@ -122,7 +122,7 @@ void Game::load(){
 	map->loadIntoScene(scene);
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	m_camera =  new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);
+	m_camera =  /*new Graph::FPSCamera(m_game->getWindow(), glm::vec3(128*16,128*16,128*16), glm::vec3(10,10,10), 10.f, 5.f);/*/new Graph::KartCamera(m_game->getWindow(), &(karts[0]->mesh));//*new Graph::OrbitCamera(m_game->getWindow(), &mesh2);*/
 	m_camera->setAspect(m_game->getWindow().getSize().x, m_game->getWindow().getSize().y);
 	GameLogic::getInstance().setCamera(m_camera);
 	scene.setCamera(m_camera);

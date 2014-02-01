@@ -50,7 +50,6 @@ void DeferredRender::setCamera(Camera* c) {
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Position);
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Albedo);
 	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Normal);
-	m_gbuffer1.createTexture(GBuffer::GBufferTarget_Light);
 
 	m_gbuffer1light.init(c->getAspect().x, c->getAspect().y);
 	m_gbuffer1light.createTexture(GBuffer::GBufferTarget_Light);
@@ -159,6 +158,7 @@ void DeferredRender::geometryPass() {
 
 void DeferredRender::lightPass() {
 	m_gbuffer1light.bind(GL_DRAW_FRAMEBUFFER);
+	glClearColor(0,0,0,0);
 	glClear(GL_COLOR_BUFFER_BIT);
 
     glEnable(GL_BLEND);
@@ -182,8 +182,6 @@ void DeferredRender::lightPass() {
 			Render::setTexture(Render::DiffuseTexture, tex);
 			Material* tex1 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Normal);
 			Render::setTexture(Render::NormalTexture, tex1);
-			Material* tex2 = m_gbuffer1.getTexture(GBuffer::GBufferTarget_Light);
-			Render::setTexture(Render::AmbiantTexture, tex2);
 
 			/*if(pass == 30) {
 				m_gbuffer1.save();
@@ -219,21 +217,28 @@ void DeferredRender::renderScreen() {
 	}*/
     m_screen.render();
  
- /*	int WINDOW_WIDTH = m_camera->getAspect().x;
+ 	/*int WINDOW_WIDTH = m_camera->getAspect().x;
  	int WINDOW_HEIGHT = m_camera->getAspect().y;
  	m_gbuffer1.bind(GL_READ_FRAMEBUFFER);
 	m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Normal);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
-                    WINDOW_WIDTH/2, WINDOW_HEIGHT/2, WINDOW_WIDTH, WINDOW_HEIGHT, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+                    0, 0, WINDOW_WIDTH/4, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
     
-    m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Light);
-    glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
-                    WINDOW_WIDTH/2, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+    m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Albedo);
+     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
+                    WINDOW_WIDTH/4, 0, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+   	
+   	m_gbuffer1.setBufferTarget(GBuffer::GBufferTarget_Position);
+     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
+                    WINDOW_WIDTH/2, 0, WINDOW_WIDTH/2+WINDOW_WIDTH/4, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+
    	m_gbuffer1.unbind(GL_READ_FRAMEBUFFER);
+
+
    	m_gbuffer1light.bind(GL_READ_FRAMEBUFFER);
    	m_gbuffer1light.setBufferTarget(GBuffer::GBufferTarget_Light);
     glBlitFramebuffer(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT,
-                    0, 0, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
+                    WINDOW_WIDTH/2+WINDOW_WIDTH/4, 0, WINDOW_WIDTH, WINDOW_HEIGHT/2, GL_COLOR_BUFFER_BIT, GL_LINEAR);
     m_gbuffer1light.unbind(GL_READ_FRAMEBUFFER);*/
 }
 

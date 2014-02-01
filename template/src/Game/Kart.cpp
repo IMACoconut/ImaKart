@@ -50,9 +50,9 @@ static const float EPSILON_KART = 0.005;
 		glm::vec3 position = get<glm::vec3>("position");
 		float mapY = heightmap.realHeight(position.x, position.z);
 
-		if(position.y > mapY)
+		/*if(position.y > mapY)
 			position.y -=  elapsed;
-		else
+		else*/
 			position.y = mapY;
 
 		set<glm::vec3>("position", position);
@@ -102,7 +102,7 @@ static const float EPSILON_KART = 0.005;
 
 	void Kart::loadIntoScene(Graph::Scene& s){
 
-		mesh.loadFromFile("../resources/models/kart4.3DS");//Graph::Mesh::CreateAxis();
+		mesh.loadFromFile("../resources/models/kart5.3DS");//Graph::Mesh::CreateAxis();
 		texture.loadFromFile(get<std::string>("skin"));
 		mesh.setMaterial(0, &texture);
 		mesh.setScale(glm::vec3(0.1f,0.1f,0.1f));

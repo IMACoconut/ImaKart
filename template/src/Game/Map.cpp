@@ -98,6 +98,23 @@ bool Map::loadFromFile(const std::string& file){
 		checkpoint = checkpoint->NextSibling();
 	}
 	add("check", new Component<std::vector<glm::vec2>>(1, check));
+
+	std::vector<glm::vec2> alt; 
+	tinyxml2::XMLElement* alterations = root->FirstChildElement("alterations"); 
+	if(alterations == nullptr){ 
+		Util::LogManager::error("Fichier map invalide : balise <alterations> manquante"); 
+	} else {
+		tinyxml2::XMLNode* alteration = alterations->FirstChildElement("alteration"); 
+		
+		while(alteration != nullptr){ 
+			glm::vec2 a; 
+			a.x = Util::getFloatFromXML((tinyxml2::XMLElement*)alteration,"x"); 
+			a.y = Util::getFloatFromXML((tinyxml2::XMLElement*)alteration,"y"); 
+			alt.push_back(a); 
+			alteration = alteration->NextSibling(); 
+		} 
+	}
+	add("alt", new Component<std::vector<glm::vec2>>(1, alt));
 	
 	/*for (int i = 0; i < (int)karts.size(); ++i)
 	{
@@ -211,7 +228,27 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		glm::vec3 pos(c[i].x*sc, 0, c[i].y*sc);
 		pos.y = mesh.realHeight(pos.x, pos.z);
 		tmp->setPosition(pos);
+//std::cout << pos.x << " " << pos.y << " " << pos.z << std::endl;
 		tmp->setScale(glm::vec3(50,50,50));
+		//scene.addMesh(tmp);
+		m_checkpoints.push_back(tmp);
+	}
+//	std::cout << std::endl;
+
+	c = this->get<std::vector<glm::vec2>>("alt");
+	for(size_t i = 0; i < c.size(); ++i){
+		ItemSpawn* tmp = new ItemSpawn(*this, 5000);
+		if(!tmp->loadFromFile("../resources/models/cube.3DS")){
+			Util::LogManager::notice("Erreur au chargement des altérations");
+			return false;
+		}
+		glm::vec3 pos(c[i].x*sc, 0, c[i].y*sc);
+		pos.y = mesh.realHeight(pos.x, pos.z) + sc;
+
+//std::cout<<pos.x<<" "<<pos.y<<" "<<pos.z<<std::endl;
+		tmp->setPosition(pos);
+		tmp->setScale(glm::vec3(10,10,10));
+		pos += tmp->getScale()/2.f;
 		//scene.addMesh(tmp);
 		m_checkpoints.push_back(tmp);
 	}
@@ -234,6 +271,8 @@ bool Map::loadIntoScene(Graph::Scene& scene){
 		tmp->setPosition(pos, 0);
 		//std::cout << pos.x << " " << pos.y << " " << pos.z << std::endl
 	}
+
+
 
 	return true;
 }

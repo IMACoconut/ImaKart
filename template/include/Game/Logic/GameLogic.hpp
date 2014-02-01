@@ -47,6 +47,13 @@ public:
 
 	void setCamera(Graph::Camera* cam);
 	void loadMap(const std::string& map);
+
+	KartType playerKart() const {
+		return player;
+	}
+	void setPlayerKart(KartType t) {
+		player = t;
+	}
 	
 	void startRace();
 	void stopRace();
@@ -74,4 +81,5 @@ private:
 	std::vector<MapInfo> m_maps;
 	std::vector<KartInfo> m_karts;
 	Util::Clock m_clock;
+	KartType player;
 };
