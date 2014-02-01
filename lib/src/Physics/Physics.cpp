@@ -55,7 +55,7 @@ namespace Phys {
 			c1->myMotionState->m_graphicsWorldTrans.getOpenGLMatrix( c1->matrix );
 			glm::mat4 M = glm::make_mat4(c1->matrix); // pos2(c1->matrix[12], c1->matrix[13], c1->matrix[14]); 
 			glm::vec3 res ;
-			std::cout << test.x << "," << test.y << "," << test.z << std::endl;
+			//std::cout << test.x << "," << test.y << "," << test.z << std::endl;
 			if(c1->statique == true) res = glm::vec3(0.,0.,0.);
 			else res = glm::vec3(M*glm::vec4(test, 1.f)); 
 

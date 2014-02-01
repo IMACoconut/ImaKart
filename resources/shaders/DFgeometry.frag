@@ -27,7 +27,7 @@ float depth() {
 }
 
 void main() {
-	finalData[0] = vec4(outPosition,isLightened);
+	finalData[0] = vec4(outPosition,1.f);
 	finalData[1] = vec4(texture2D(diffuseTex, outUV).rgb*outColor.rgb,1.f);
 	finalData[2] = vec4(normalize(outNormal),1.f);
 	finalData[3] = vec4(isLight, isLight, isLight, 1.f);

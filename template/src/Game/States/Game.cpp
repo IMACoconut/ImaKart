@@ -13,8 +13,8 @@
 Game::Game() :
 	m_loader(*this), map(nullptr)
 {
-	Graph::ShaderManager::getInstance().loadShaderFromFile(
-		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag");
+	/* Graph::ShaderManager::getInstance().loadShaderFromFile(
+		"skyBox", "../resources/shaders/skybox.vert", "../resources/shaders/skybox.frag"); */
 
 	Graph::ShaderManager::getInstance().loadShaderFromFile(
 		"DFlightPoint", "../resources/shaders/DFbase.vert", "../resources/shaders/DFlightPoint.frag");
@@ -43,7 +43,7 @@ void Game::Init(GameEngine* game) {
 
 void Game::load(){
 	
-	Graph::Shader* skyShader = Graph::ShaderManager::getInstance().getShader("skyBox");
+	//Graph::Shader* skyShader = Graph::ShaderManager::getInstance().getShader("skyBox");
 	Graph::Shader* lightPoint = Graph::ShaderManager::getInstance().getShader("DFlightPoint");
 	Graph::Shader* lightDirectional = Graph::ShaderManager::getInstance().getShader("DFlightDirectional");
 	Graph::Shader* lightSpot = Graph::ShaderManager::getInstance().getShader("DFlightSpot");
@@ -62,8 +62,8 @@ void Game::load(){
 	//mesh2.loadFromFile("../resources/models/cube.3DS");
 
 
-	sky.setShader(skyShader);
-	sky.setLightening(false);
+	//sky.setShader(skyShader);
+	//sky.setLightening(false);
 	
 	
 	light.setColor(glm::vec3(0,1,0));
@@ -122,7 +122,7 @@ void Game::load(){
 
 
 	map->loadIntoScene(scene);
-	PhysicManager.addCollidable(&map.collidable);
+	PhysicManager.addCollidable(&map->collidable);
 
 
 //////init camera////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -205,6 +205,7 @@ void Game::Update(GameEngine* game){
 
 	//cam->onUpdate(elapsed);
 	//k.update(elapsed);
+	/*
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		cam->move(cam->left()*(elapsed));
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
@@ -213,7 +214,7 @@ void Game::Update(GameEngine* game){
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		cam->move(cam->forward()*(elapsed));
 	else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-		cam->move(cam->backward()*(elapsed));
+		cam->move(cam->backward()*(elapsed)); */
 
 	
 	float time = timeOfDay.getElapsedTime().asSeconds() * 0.1f;

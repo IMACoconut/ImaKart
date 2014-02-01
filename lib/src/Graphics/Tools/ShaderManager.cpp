@@ -77,7 +77,7 @@ Shader* ShaderManager::buildShader(Node* n) {
 	frag += "N = normalize(N);\n";
 
 
-	frag += "fragColor[0] = vec4(vertPos.xy, isLight,1.f);\n";
+	frag += "fragColor[0] = vec4(vertPos,1.f);\n";
 
 	frag += "fragColor[1] = vertColor";
 	if(mat[Render::DiffuseTexture])

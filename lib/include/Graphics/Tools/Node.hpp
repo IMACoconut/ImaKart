@@ -22,8 +22,8 @@ namespace Graph {
 		Node(const Node& other) = delete;
 		virtual ~Node();
 
-		void setLightened(bool b) { isLightened = b ; }
-		bool getLightened() const { return isLightened ;}
+		void setLightened(bool b) { isLight = b ; }
+		bool getLightened() const { return isLight ;}
 
 		void setParent(Node* parent);
 		void addChild(Node* child);

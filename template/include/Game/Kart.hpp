@@ -50,7 +50,6 @@ public:
 
 	void giveItem(Item* item);
 
-	Graph::Mesh* getMesh() { return &mesh;}
 	void physxKart(Graph::Heightmap& heightmap, float elapsed);
 
 	Graph::Mesh* getMesh() { return &mesh; };
