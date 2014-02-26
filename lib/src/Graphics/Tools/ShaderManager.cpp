@@ -36,7 +36,7 @@ Shader* ShaderManager::buildShader(Node* n) {
 	frag += "in vec2 vertUV;\n";
 	frag += "in vec4 vertColor;\n";
 	frag += "in vec3 vertPos;\n";
-	frag += "out vec4 fragColor[3];\n";
+	frag += "out vec4 fragColor[4];\n";
 
 	if(mat[Render::DiffuseTexture])
 		frag += "uniform sampler2D diffuseTex;\n";
@@ -74,14 +74,14 @@ Shader* ShaderManager::buildShader(Node* n) {
 
 	frag += "N = normalize(N);\n";
 
-	frag += "fragColor[0] = vec4(vertPos, isLight);\n";
+	frag += "fragColor[0] = vec4(vertPos, 1.f);\n";
 	frag += "fragColor[1] = vertColor";
 	if(mat[Render::DiffuseTexture])
 		frag += "*vec4(texture2D(diffuseTex, vertUV).xyz, 1.f);\n";
 	else
 		frag += ";\n";
 	frag += "fragColor[2] = vec4(N,1.f);\n";
-	//frag += "fragColor[3] = vec4(isLight, isLight, isLight, 1.f);\n";
+	frag += "fragColor[3] = vec4(isLight, isLight, isLight, 1.f);\n";
 	frag += "gl_FragDepth = depth();\n";
 
 	frag += "}";

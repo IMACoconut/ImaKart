@@ -52,5 +52,5 @@ void main() {
 	vec3 N = normalize(texture2D(normalTex,coord).rgb);
 	vec3 dir = normalize(lightPos-pos);
 	float scalaire = max(scal(N,dir),0);
-	finalData = vec4(lightColor*lightIntensity*scalaire*celShad(attenuation(pos, lightPos, lightRadius)),1.f);
+	finalData = vec4(lightColor*lightIntensity*scalaire*attenuation(pos, lightPos, lightRadius),1.f);
 }

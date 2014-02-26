@@ -197,7 +197,7 @@ void DeferredRender::lightPass() {
 
 		it->render();
 	}
-
+	//std::cout << "render " << m_lights.size() << std::endl;
 	m_gbuffer1light.unbind(GL_DRAW_FRAMEBUFFER);
 	glDisable(GL_BLEND);
 	glDisable(GL_CULL_FACE);

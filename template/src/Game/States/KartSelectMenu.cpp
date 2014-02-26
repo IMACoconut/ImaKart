@@ -141,7 +141,7 @@ void KartSelectMenu::Draw(GameEngine* game){
 
 void KartSelectMenu::setSelectedKart(int p) {
 	p = (p<0 || p >= karts.size()) ? 0 : p;
-
+	GameLogic::getInstance().setPlayerKart(static_cast<KartType>(p));
 	listBox->setSelectedItem(p);
 	picture->load(karts[p].file.getFullPath());
 	picture->setSize(400,400);
